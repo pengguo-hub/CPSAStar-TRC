@@ -1,0 +1,830 @@
+--- 20-experiment.zip::experiment/path_simulation.py
++++ src/original_paper/experiment/path_simulation.py
+@@ -1,413 +1,415 @@
+-import json
+-import matplotlib.pyplot as plt
+-import matplotlib.colors as mcolors
+-import seaborn as sns
+-import numpy as np
+-from matplotlib.animation import FuncAnimation
+-from collections import defaultdict
+-from matplotlib.patches import Rectangle,Circle
+-import matplotlib.patches as patches
+-from matplotlib.collections import PathCollection
+-from matplotlib.lines import Line2D
+-from SRTP.experiment.map_config import ALL_MAPS
+-
+-plt.rcParams['font.sans-serif'] = ['Times New Roman']
+-plt.rcParams['axes.unicode_minus'] = False
+-MAP_KEY = 'RING'
+-WIDTH=20
+-HEIGHT=20
+-
+-class PathSimulator:
+-    def __init__(self):
+-        # 累计冲突统计
+-        self.total_node_conflicts = 0
+-        self.total_edge_conflicts = 0
+-        # 已标记的冲突（防止重复绘制）
+-        self.all_node_conflicts = set()  # {(x, y)}
+-        self.all_edge_conflicts = set()  # {(x1,y1,x2,y2)}
+-        self.recorded_frames = set()  # 记录哪些时间步已经统计过了（避免重复加）
+-        # 从 main.py 获取网格地图定义
+-        self.grid_size = (WIDTH, HEIGHT)
+-        self.grid = np.zeros((HEIGHT,WIDTH), dtype=int)
+-        self.shelf_cells = set()  # 存储所有货架区坐标
+-        self.outbound_cells = set()  # 存储所有出库区坐标
+-        # 区域定义（从 main.py 复制）
+-        self.shelf_map, self.outbound_map, self.region_values = ALL_MAPS[MAP_KEY]
+-        # self.shelf_map, self.outbound_map, self.region_values = MAP[MAP_KEY]
+-
+-
+-        self._setup_grid()
+-        # 自定义颜色：0=白色（空地），1=灰色（货架），2=浅蓝色（出库区）
+-        colors = ['white', 'gray', '#9345BA']
+-        self.custom_cmap = mcolors.ListedColormap(colors)
+-        bounds = [0, 1, 2, 3]  # 0~1, 1~2, 2~3
+-        self.norm = mcolors.BoundaryNorm(bounds, self.custom_cmap.N)
+-
+-
+-    def _setup_grid(self):
+-        """根据区域定义设置网格"""
+-        self.grid.fill(0)  # 清空地图
+-        self.shelf_cells.clear()
+-        self.outbound_cells.clear()
+-        # 设置货架区域
+-        for region_name, coords in self.shelf_map.items():
+-            value = self.region_values[region_name]
+-            for x, y in coords:
+-                if 0 <= x < self.grid_size[0] and 0 <= y < self.grid_size[1]:
+-                    self.grid[y, x] = 1
+-                    self.shelf_cells.add((x,y))
+-
+-        # 设置出库区域
+-        for region_name, coords in self.outbound_map.items():
+-            value = self.region_values[region_name]
+-            for x, y in coords:
+-                if 0 <= x < self.grid_size[0] and 0 <= y < self.grid_size[1]:
+-                    self.grid[y, x] = 2
+-                    self.outbound_cells.add((x,y))
+-
+-    def load_paths(self, json_file="paths.json"):
+-        """从 JSON 文件加载路径数据"""
+-        try:
+-            with open(json_file, 'r', encoding='utf-8') as f:
+-                paths = json.load(f)
+-            print(f"成功加载路径文件: {json_file}")
+-            return paths
+-        except FileNotFoundError:
+-            print(f"未找到路径文件: {json_file}")
+-            return {}
+-        except json.JSONDecodeError as e:
+-            print(f"JSON 解析错误: {e}")
+-            return {}
+-
+-    def detect_conflicts(self, paths, time_step):
+-        """检测在指定时间步的点冲突和边冲突，忽略已到达终点的 AGV"""
+-        conflicts = []
+-        positions_at_time = {}  # 用于检测点冲突
+-        edges_this_step = {}  # 用于检测边冲突 (x1,y1,x2,y2) -> agv_id
+-
+-        # 获取所有 AGV 的终点
+-        endpoints = {agv_id: tuple(path[-1]) for agv_id, path in paths.items() if path}
+-
+-        for agv_id, path in paths.items():
+-            if not path:
+-                continue
+-
+-            # 如果当前时间步超出路径长度，AGV 停留在最后一个位置（即终点）
+-            if time_step >= len(path):
+-                current_pos = tuple(path[-1])
+-                is_at_final = True
+-            else:
+-                current_pos = tuple(path[time_step])
+-                is_at_final = (current_pos == endpoints[agv_id])
+-
+-            # === 关键：如果 AGV 已到达终点，则不再参与任何冲突检测 ===
+-            if is_at_final:
+-                continue  # 跳过该 AGV
+-
+-            # === 1. 点冲突检测 ===
+-            if current_pos in positions_at_time:
+-                conflict_key = ('node', current_pos)
+-                if conflict_key not in conflicts:
+-                    conflicts.append(conflict_key)
+-            else:
+-                positions_at_time[current_pos] = agv_id
+-
+-            # === 2. 边冲突检测：仅当 AGV 正在移动时才检测 ===
+-            if time_step < len(path) - 1:
+-                next_pos = tuple(path[time_step + 1])
+-                x1, y1 = current_pos
+-                x2, y2 = next_pos
+-                if abs(x1 - x2) + abs(y1 - y2) == 1:  # 四邻域移动
+-                    forward_edge = (x1, y1, x2, y2)
+-                    backward_edge = (x2, y2, x1, y1)
+-                    if backward_edge in edges_this_step:
+-                        conflict_key = ('edge', (x1, y1), (x2, y2), time_step)
+-                        if conflict_key not in conflicts:
+-                            conflicts.append(conflict_key)
+-                    else:
+-                        edges_this_step[forward_edge] = agv_id
+-
+-        return conflicts
+-
+-    def calculate_statistics(self, paths):
+-        """计算路径统计信息"""
+-        stats = {
+-            'total_agvs': len(paths),
+-            'total_distance': sum(len(path) for path in paths.values()),
+-            'max_path_length': max(len(path) for path in paths.values()) if paths else 0,
+-            'min_path_length': min(len(path) for path in paths.values()) if paths else 0,
+-            'avg_path_length': sum(len(path) for path in paths.values()) / len(paths) if paths else 0
+-        }
+-        return stats
+-
+-    def visualize_static(self, paths, save_filename="static_paths.png", draw_shelf_markers=False):
+-        """静态可视化所有路径"""
+-        fig, ax = plt.subplots(figsize=(10, 10))
+-
+-        # 绘制网格背景
+-        im = ax.imshow(self.grid, cmap=self.custom_cmap, norm=self.norm, alpha=0.6, origin='lower', extent=(0, self.grid_size[0], 0, self.grid_size[1]))
+-
+-        # === 绘制特殊区域的边框 ===
+-
+-        # === 新增：绘制特殊区域的彩色边框 ===
+-        for (x, y) in self.shelf_cells:
+-            rect = Rectangle((x , y ), 1, 1, linewidth=1.2, edgecolor='black',
+-                             facecolor='none', linestyle='-')
+-            ax.add_patch(rect)
+-            # 2. 如果需要，绘制四周的菱形标记
+-            if draw_shelf_markers:
+-                # 定义菱形颜色
+-                diamond_face_color = '#83B8F5'
+-                diamond_edge_color = '#324EBA'  # 边框
+-                directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # 上下左右偏移
+-                # 菱形的大小控制 (从中心到顶点的距离)
+-                # 格子边长是1，半径设为 0.35 可以保证菱形在格子内且不碰到边界
+-                diamond_radius = 0.25
+-                for dx, dy in directions:
+-                    nx, ny = x + dx, y + dy
+-
+-                    # 检查相邻格子是否在地图范围内
+-                    if 0 <= nx < self.grid_size[0] and 0 <= ny < self.grid_size[1]:
+-                        # 格子中心坐标
+-                        cx, cy = nx + 0.5, ny + 0.5
+-
+-                        # 手动计算菱形的四个顶点 (上, 右, 下, 左)
+-                        # 这样能确保绝对是菱形，而不是旋转的正方形可能出现的显示问题
+-                        pts = [
+-                            (cx, cy + diamond_radius),  # 上
+-                            (cx + diamond_radius, cy),  # 右
+-                            (cx, cy - diamond_radius),  # 下
+-                            (cx - diamond_radius, cy)  # 左
+-                        ]
+-
+-                        # 创建多边形 (菱形)
+-                        diamond = patches.Polygon(
+-                            pts,
+-                            closed=True,
+-                            facecolor=diamond_face_color,
+-                            edgecolor=diamond_edge_color,
+-                            linewidth=1.5,
+-                            alpha=0.8
+-                        )
+-                        ax.add_patch(diamond)
+-
+-        for (x, y) in self.outbound_cells:
+-            rect = Rectangle((x , y ), 1, 1, linewidth=1.2, edgecolor='#7B379E',
+-                             facecolor='none', linestyle='-')
+-            ax.add_patch(rect)
+-        # ================================
+-        # 绘制路径
+-        colors = sns.color_palette("husl", len(paths))
+-        for i, (agv_id, path) in enumerate(paths.items()):
+-            if path:
+-                # 画路径连线，不画路径点plot
+-                x_coords = [pt[0]+0.5 for pt in path]
+-                y_coords = [pt[1]+0.5 for pt in path]
+-                ax.plot(x_coords, y_coords, color=colors[i], linewidth=2,
+-                        marker='o', markersize=3, label=f'AGV {agv_id}')
+-
+-                # 标记起点和终点
+-                # ax.plot(x_coords[0], y_coords[0], color=colors[i], marker='s',
+-                #         markersize=8, markeredgecolor='black')
+-                # ax.plot(x_coords[-1], y_coords[-1], color=colors[i], marker='^',
+-                #         markersize=8, markeredgecolor='black')
+-                # 用圆形画路径点，圆的直径=1，也就是半径0.5
+-                for (x, y) in path:
+-                    circle = patches.Circle((x + 0.5, y + 0.5), radius=0.5, edgecolor=colors[i],
+-                                            facecolor='none', linewidth=2)
+-                    ax.add_patch(circle)
+-
+-            # 设置坐标轴
+-        ax.set_xlim(0, self.grid_size[0])
+-        ax.set_ylim(0, self.grid_size[1])
+-        # ax.set_xticks(range(0, self.grid_size[0]+1))
+-        # ax.set_yticks(range(0, self.grid_size[1]+1))
+-        xticks = [0,5,10,15]
+-        yticks = [0,5,10]
+-        ax.set_xticks(xticks)
+-        ax.set_yticks(yticks)
+-        ax.tick_params(axis='x', labelsize=16)  # 设置X轴刻度字体大小 (14可改)
+-        ax.tick_params(axis='y', labelsize=16)  # 设置Y轴刻度字体大小 (14可改)
+-        ax.minorticks_on()
+-        # ax.set_xlabel('X Coordinate', fontsize=16)
+-        # ax.set_ylabel('Y Coordinate', fontsize=16)
+-        # ax.set_title('AGV Path Planning Visualization')
+-
+-        # 使用 tick_params 隐藏“标签”和“刻度线”，但保留网格所需的位置信息
+-        # labelbottom=False: 不显示底部的数字
+-        # length=0: 不显示那根小小的刻度线
+-        ax.tick_params(axis='both', which='both', labelbottom=False, labelleft=False, length=0)
+-        # 设置虚线网格
+-        ax.grid(True, linestyle='-', linewidth=0.5, alpha=0.5, which='both')
+-
+-        ax.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
+-
+-        plt.tight_layout()
+-        plt.savefig(save_filename, dpi=300, bbox_inches='tight')
+-        plt.show()
+-        print(f"静态路径图已保存为: {save_filename}")
+-
+-    def animate_paths(self, paths, save_filename="animated_paths.gif"):
+-        # 重置累计数据
+-        self.total_node_conflicts = 0
+-        self.total_edge_conflicts = 0
+-        self.all_node_conflicts.clear()
+-        self.all_edge_conflicts.clear()
+-        """动画显示 AGV 运动，带点冲突和边冲突可视化"""
+-        if not paths:
+-            print("没有路径数据可动画化")
+-            return
+-
+-        fig, ax = plt.subplots(figsize=(14, 10))
+-
+-        # 绘制网格背景
+-        im = ax.imshow(self.grid, cmap=self.custom_cmap, norm=self.norm, alpha=0.6, origin='lower',
+-                       extent=(0, self.grid_size[0], 0, self.grid_size[1]))
+-
+-        # === 绘制特殊区域边框 ===
+-        for (x, y) in self.shelf_cells:
+-            rect = Rectangle((x, y), 1, 1, linewidth=2, edgecolor='blue',
+-                             facecolor='none', linestyle='-')
+-            ax.add_patch(rect)
+-
+-        for (x, y) in self.outbound_cells:
+-            rect = Rectangle((x, y), 1, 1, linewidth=2, edgecolor='darkblue',
+-                             facecolor='none', linestyle='-')
+-            ax.add_patch(rect)
+-
+-        # 准备 AGV 圆形与轨迹
+-        colors = sns.color_palette("husl", len(paths))
+-        agv_circles = {}
+-        trail_lines = {}
+-
+-        for i, (agv_id, path) in enumerate(paths.items()):
+-            if path:
+-                first_x, first_y = path[0]
+-                circle = plt.Circle((first_x + 0.5, first_y + 0.5), radius=0.5,
+-                                    facecolor=colors[i], edgecolor='black', linewidth=1.5, label=f'AGV {agv_id}')
+-                ax.add_patch(circle)
+-                agv_circles[agv_id] = circle
+-
+-                trail_lines[agv_id], = ax.plot([], [], color=colors[i], linewidth=2, alpha=0.7)
+-
+-        ax.set_xlim(0, self.grid_size[0])
+-        ax.set_ylim(0, self.grid_size[1])
+-        ax.set_xticks(range(0, self.grid_size[0] + 1))
+-        ax.set_yticks(range(0, self.grid_size[1] + 1))
+-        ax.set_xlabel('X Coordinate')
+-        ax.set_ylabel('Y Coordinate')
+-        ax.grid(True, linestyle='--', linewidth=1, alpha=0.7, which='both')
+-        ax.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
+-
+-        max_steps = max(len(path) for path in paths.values()) if paths else 0
+-
+-        def animate(frame):
+-            # 清除上一帧的冲突标记（保留 imshow 和 patches）
+-            for artist in ax.collections[1:]:  # 跳过第一个 imshow
+-                artist.remove()
+-            # 清除所有 scatter 和 text 类型的 artist
+-            for child in ax.get_children():
+-                if isinstance(child, (PathCollection, Line2D)) and child.get_label() in [None, '_nolegend_']:
+-                    child.remove()
+-
+-            # 更新 AGV 位置和轨迹
+-            for agv_id, path in paths.items():
+-                if not path or frame >= len(path):
+-                    continue
+-
+-                x, y = path[frame]
+-                agv_circles[agv_id].center = (x + 0.5, y + 0.5)
+-
+-                trail_x = [pt[0] + 0.5 for pt in path[:frame + 1]]
+-                trail_y = [pt[1] + 0.5 for pt in path[:frame + 1]]
+-                trail_lines[agv_id].set_data(trail_x, trail_y)
+-
+-            # ======== 调用冲突检测 =========
+-            # 检测当前帧冲突
+-            conflict_list = self.detect_conflicts(paths, frame)
+-            node_conflicts = [c for c in conflict_list if c[0] == 'node']
+-            edge_conflicts = [c for c in conflict_list if c[0] == 'edge']
+-
+-            # 标记点冲突：红色方框
+-            for conflict in node_conflicts:
+-                x, y = conflict[1]
+-                ax.scatter(x + 0.5, y + 0.5, s=300, facecolors='red',
+-                           c='red', linewidths=3, alpha=0.9, marker='s', label='_nolegend_')
+-
+-            # 标记边冲突：红色圆形（边中点）
+-            for conflict in edge_conflicts:
+-                (x1, y1), (x2, y2), t = conflict[1], conflict[2], conflict[3]
+-                mid_x = (x1 + x2) / 2 + 0.5
+-                mid_y = (y1 + y2) / 2 + 0.5
+-                ax.scatter(mid_x, mid_y, s=400, marker='o',
+-                           c='red', facecolors='red', linewidths=3, alpha=0.9, label='_nolegend_')
+-
+-            # --- 更新累计统计 ---
+-            self.total_node_conflicts += len(node_conflicts)
+-            self.total_edge_conflicts += len(edge_conflicts)
+-
+-            # 更新标题
+-            ax.set_title(
+-                f"AGV Path Planning Animation - Timestep: {frame}/{max_steps - 1} | "
+-                f"Node Conflicts: {self.total_node_conflicts} | Edge Conflicts: {self.total_edge_conflicts}",
+-                pad=20
+-            )
+-
+-            return list(agv_circles.values()) + list(trail_lines.values())
+-
+-        # 创建动画
+-        anim = FuncAnimation(fig, animate, frames=max_steps, interval=40, blit=False, repeat=True)
+-
+-        # 保存为 GIF
+-        if save_filename.endswith('.gif'):
+-            try:
+-                anim.save(save_filename, writer='pillow', fps=25)  # 可调速
+-                print(f"动画已保存为: {save_filename}")
+-            except Exception as e:
+-                print(f"保存动画失败: {e}")
+-
+-        plt.tight_layout()
+-        plt.show()
+-
+-        return anim
+-
+-
+-def main():
+-    """主函数"""
+-    # 初始化仿真器
+-    simulator = PathSimulator()
+-
+-    # 加载路径数据
+-    paths = simulator.load_paths("F:/PythonFiles/pythonProject/SRTP/experiment/planning_results/1")
+-
+-    if not paths:
+-        print("没有找到有效的路径数据，创建示例数据进行测试...")
+-        # 创建示例路径用于测试
+-        paths = {
+-            # "AGV_001": [[10, 10], [11, 10], [12, 10], [13, 10], [14, 10]],
+-            # "AGV_002": [[10, 15], [11, 15], [12, 15], [13, 15], [14, 15]],
+-            # "AGV_003": [[50, 50], [51, 50], [52, 50], [53, 50], [54, 50]]
+-        }
+-
+-    # 计算并显示统计信息
+-    stats = simulator.calculate_statistics(paths)
+-    print("\n=== 路径统计信息 ===")
+-    print(f"AGV 总数: {stats['total_agvs']}")
+-    print(f"总距离: {stats['total_distance']}")
+-    print(f"最长路径: {stats['max_path_length']}")
+-    print(f"最短路径: {stats['min_path_length']}")
+-    print(f"平均路径长度: {stats['avg_path_length']:.2f}")
+-
+-    # 静态可视化
+-    print("\n生成静态路径可视化...")
+-    simulator.visualize_static(paths, "static_paths.png")
+-
+-    # 动画仿真
+-    print("\n开始动画仿真...")
+-    simulator.animate_paths(paths, "animated_paths.gif")
+-
+-    print("\n仿真完成！")
+-
+-
+-if __name__ == "__main__":
++from pathlib import Path as _RepositoryPath
++_REPO_ROOT = _RepositoryPath(__file__).resolve().parents[2]
++import json
++import matplotlib.pyplot as plt
++import matplotlib.colors as mcolors
++import seaborn as sns
++import numpy as np
++from matplotlib.animation import FuncAnimation
++from collections import defaultdict
++from matplotlib.patches import Rectangle,Circle
++import matplotlib.patches as patches
++from matplotlib.collections import PathCollection
++from matplotlib.lines import Line2D
++from src.original_paper.experiment.map_config import ALL_MAPS
++
++plt.rcParams['font.sans-serif'] = ['Times New Roman']
++plt.rcParams['axes.unicode_minus'] = False
++MAP_KEY = 'RING'
++WIDTH=20
++HEIGHT=20
++
++class PathSimulator:
++    def __init__(self):
++        # 累计冲突统计
++        self.total_node_conflicts = 0
++        self.total_edge_conflicts = 0
++        # 已标记的冲突（防止重复绘制）
++        self.all_node_conflicts = set()  # {(x, y)}
++        self.all_edge_conflicts = set()  # {(x1,y1,x2,y2)}
++        self.recorded_frames = set()  # 记录哪些时间步已经统计过了（避免重复加）
++        # 从 main.py 获取网格地图定义
++        self.grid_size = (WIDTH, HEIGHT)
++        self.grid = np.zeros((HEIGHT,WIDTH), dtype=int)
++        self.shelf_cells = set()  # 存储所有货架区坐标
++        self.outbound_cells = set()  # 存储所有出库区坐标
++        # 区域定义（从 main.py 复制）
++        self.shelf_map, self.outbound_map, self.region_values = ALL_MAPS[MAP_KEY]
++        # self.shelf_map, self.outbound_map, self.region_values = MAP[MAP_KEY]
++
++
++        self._setup_grid()
++        # 自定义颜色：0=白色（空地），1=灰色（货架），2=浅蓝色（出库区）
++        colors = ['white', 'gray', '#9345BA']
++        self.custom_cmap = mcolors.ListedColormap(colors)
++        bounds = [0, 1, 2, 3]  # 0~1, 1~2, 2~3
++        self.norm = mcolors.BoundaryNorm(bounds, self.custom_cmap.N)
++
++
++    def _setup_grid(self):
++        """根据区域定义设置网格"""
++        self.grid.fill(0)  # 清空地图
++        self.shelf_cells.clear()
++        self.outbound_cells.clear()
++        # 设置货架区域
++        for region_name, coords in self.shelf_map.items():
++            value = self.region_values[region_name]
++            for x, y in coords:
++                if 0 <= x < self.grid_size[0] and 0 <= y < self.grid_size[1]:
++                    self.grid[y, x] = 1
++                    self.shelf_cells.add((x,y))
++
++        # 设置出库区域
++        for region_name, coords in self.outbound_map.items():
++            value = self.region_values[region_name]
++            for x, y in coords:
++                if 0 <= x < self.grid_size[0] and 0 <= y < self.grid_size[1]:
++                    self.grid[y, x] = 2
++                    self.outbound_cells.add((x,y))
++
++    def load_paths(self, json_file="paths.json"):
++        """从 JSON 文件加载路径数据"""
++        try:
++            with open(json_file, 'r', encoding='utf-8') as f:
++                paths = json.load(f)
++            print(f"成功加载路径文件: {json_file}")
++            return paths
++        except FileNotFoundError:
++            print(f"未找到路径文件: {json_file}")
++            return {}
++        except json.JSONDecodeError as e:
++            print(f"JSON 解析错误: {e}")
++            return {}
++
++    def detect_conflicts(self, paths, time_step):
++        """检测在指定时间步的点冲突和边冲突，忽略已到达终点的 AGV"""
++        conflicts = []
++        positions_at_time = {}  # 用于检测点冲突
++        edges_this_step = {}  # 用于检测边冲突 (x1,y1,x2,y2) -> agv_id
++
++        # 获取所有 AGV 的终点
++        endpoints = {agv_id: tuple(path[-1]) for agv_id, path in paths.items() if path}
++
++        for agv_id, path in paths.items():
++            if not path:
++                continue
++
++            # 如果当前时间步超出路径长度，AGV 停留在最后一个位置（即终点）
++            if time_step >= len(path):
++                current_pos = tuple(path[-1])
++                is_at_final = True
++            else:
++                current_pos = tuple(path[time_step])
++                is_at_final = (current_pos == endpoints[agv_id])
++
++            # === 关键：如果 AGV 已到达终点，则不再参与任何冲突检测 ===
++            if is_at_final:
++                continue  # 跳过该 AGV
++
++            # === 1. 点冲突检测 ===
++            if current_pos in positions_at_time:
++                conflict_key = ('node', current_pos)
++                if conflict_key not in conflicts:
++                    conflicts.append(conflict_key)
++            else:
++                positions_at_time[current_pos] = agv_id
++
++            # === 2. 边冲突检测：仅当 AGV 正在移动时才检测 ===
++            if time_step < len(path) - 1:
++                next_pos = tuple(path[time_step + 1])
++                x1, y1 = current_pos
++                x2, y2 = next_pos
++                if abs(x1 - x2) + abs(y1 - y2) == 1:  # 四邻域移动
++                    forward_edge = (x1, y1, x2, y2)
++                    backward_edge = (x2, y2, x1, y1)
++                    if backward_edge in edges_this_step:
++                        conflict_key = ('edge', (x1, y1), (x2, y2), time_step)
++                        if conflict_key not in conflicts:
++                            conflicts.append(conflict_key)
++                    else:
++                        edges_this_step[forward_edge] = agv_id
++
++        return conflicts
++
++    def calculate_statistics(self, paths):
++        """计算路径统计信息"""
++        stats = {
++            'total_agvs': len(paths),
++            'total_distance': sum(len(path) for path in paths.values()),
++            'max_path_length': max(len(path) for path in paths.values()) if paths else 0,
++            'min_path_length': min(len(path) for path in paths.values()) if paths else 0,
++            'avg_path_length': sum(len(path) for path in paths.values()) / len(paths) if paths else 0
++        }
++        return stats
++
++    def visualize_static(self, paths, save_filename="static_paths.png", draw_shelf_markers=False):
++        """静态可视化所有路径"""
++        fig, ax = plt.subplots(figsize=(10, 10))
++
++        # 绘制网格背景
++        im = ax.imshow(self.grid, cmap=self.custom_cmap, norm=self.norm, alpha=0.6, origin='lower', extent=(0, self.grid_size[0], 0, self.grid_size[1]))
++
++        # === 绘制特殊区域的边框 ===
++
++        # === 新增：绘制特殊区域的彩色边框 ===
++        for (x, y) in self.shelf_cells:
++            rect = Rectangle((x , y ), 1, 1, linewidth=1.2, edgecolor='black',
++                             facecolor='none', linestyle='-')
++            ax.add_patch(rect)
++            # 2. 如果需要，绘制四周的菱形标记
++            if draw_shelf_markers:
++                # 定义菱形颜色
++                diamond_face_color = '#83B8F5'
++                diamond_edge_color = '#324EBA'  # 边框
++                directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # 上下左右偏移
++                # 菱形的大小控制 (从中心到顶点的距离)
++                # 格子边长是1，半径设为 0.35 可以保证菱形在格子内且不碰到边界
++                diamond_radius = 0.25
++                for dx, dy in directions:
++                    nx, ny = x + dx, y + dy
++
++                    # 检查相邻格子是否在地图范围内
++                    if 0 <= nx < self.grid_size[0] and 0 <= ny < self.grid_size[1]:
++                        # 格子中心坐标
++                        cx, cy = nx + 0.5, ny + 0.5
++
++                        # 手动计算菱形的四个顶点 (上, 右, 下, 左)
++                        # 这样能确保绝对是菱形，而不是旋转的正方形可能出现的显示问题
++                        pts = [
++                            (cx, cy + diamond_radius),  # 上
++                            (cx + diamond_radius, cy),  # 右
++                            (cx, cy - diamond_radius),  # 下
++                            (cx - diamond_radius, cy)  # 左
++                        ]
++
++                        # 创建多边形 (菱形)
++                        diamond = patches.Polygon(
++                            pts,
++                            closed=True,
++                            facecolor=diamond_face_color,
++                            edgecolor=diamond_edge_color,
++                            linewidth=1.5,
++                            alpha=0.8
++                        )
++                        ax.add_patch(diamond)
++
++        for (x, y) in self.outbound_cells:
++            rect = Rectangle((x , y ), 1, 1, linewidth=1.2, edgecolor='#7B379E',
++                             facecolor='none', linestyle='-')
++            ax.add_patch(rect)
++        # ================================
++        # 绘制路径
++        colors = sns.color_palette("husl", len(paths))
++        for i, (agv_id, path) in enumerate(paths.items()):
++            if path:
++                # 画路径连线，不画路径点plot
++                x_coords = [pt[0]+0.5 for pt in path]
++                y_coords = [pt[1]+0.5 for pt in path]
++                ax.plot(x_coords, y_coords, color=colors[i], linewidth=2,
++                        marker='o', markersize=3, label=f'AGV {agv_id}')
++
++                # 标记起点和终点
++                # ax.plot(x_coords[0], y_coords[0], color=colors[i], marker='s',
++                #         markersize=8, markeredgecolor='black')
++                # ax.plot(x_coords[-1], y_coords[-1], color=colors[i], marker='^',
++                #         markersize=8, markeredgecolor='black')
++                # 用圆形画路径点，圆的直径=1，也就是半径0.5
++                for (x, y) in path:
++                    circle = patches.Circle((x + 0.5, y + 0.5), radius=0.5, edgecolor=colors[i],
++                                            facecolor='none', linewidth=2)
++                    ax.add_patch(circle)
++
++            # 设置坐标轴
++        ax.set_xlim(0, self.grid_size[0])
++        ax.set_ylim(0, self.grid_size[1])
++        # ax.set_xticks(range(0, self.grid_size[0]+1))
++        # ax.set_yticks(range(0, self.grid_size[1]+1))
++        xticks = [0,5,10,15]
++        yticks = [0,5,10]
++        ax.set_xticks(xticks)
++        ax.set_yticks(yticks)
++        ax.tick_params(axis='x', labelsize=16)  # 设置X轴刻度字体大小 (14可改)
++        ax.tick_params(axis='y', labelsize=16)  # 设置Y轴刻度字体大小 (14可改)
++        ax.minorticks_on()
++        # ax.set_xlabel('X Coordinate', fontsize=16)
++        # ax.set_ylabel('Y Coordinate', fontsize=16)
++        # ax.set_title('AGV Path Planning Visualization')
++
++        # 使用 tick_params 隐藏“标签”和“刻度线”，但保留网格所需的位置信息
++        # labelbottom=False: 不显示底部的数字
++        # length=0: 不显示那根小小的刻度线
++        ax.tick_params(axis='both', which='both', labelbottom=False, labelleft=False, length=0)
++        # 设置虚线网格
++        ax.grid(True, linestyle='-', linewidth=0.5, alpha=0.5, which='both')
++
++        ax.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
++
++        plt.tight_layout()
++        plt.savefig(save_filename, dpi=300, bbox_inches='tight')
++        plt.show()
++        print(f"静态路径图已保存为: {save_filename}")
++
++    def animate_paths(self, paths, save_filename="animated_paths.gif"):
++        # 重置累计数据
++        self.total_node_conflicts = 0
++        self.total_edge_conflicts = 0
++        self.all_node_conflicts.clear()
++        self.all_edge_conflicts.clear()
++        """动画显示 AGV 运动，带点冲突和边冲突可视化"""
++        if not paths:
++            print("没有路径数据可动画化")
++            return
++
++        fig, ax = plt.subplots(figsize=(14, 10))
++
++        # 绘制网格背景
++        im = ax.imshow(self.grid, cmap=self.custom_cmap, norm=self.norm, alpha=0.6, origin='lower',
++                       extent=(0, self.grid_size[0], 0, self.grid_size[1]))
++
++        # === 绘制特殊区域边框 ===
++        for (x, y) in self.shelf_cells:
++            rect = Rectangle((x, y), 1, 1, linewidth=2, edgecolor='blue',
++                             facecolor='none', linestyle='-')
++            ax.add_patch(rect)
++
++        for (x, y) in self.outbound_cells:
++            rect = Rectangle((x, y), 1, 1, linewidth=2, edgecolor='darkblue',
++                             facecolor='none', linestyle='-')
++            ax.add_patch(rect)
++
++        # 准备 AGV 圆形与轨迹
++        colors = sns.color_palette("husl", len(paths))
++        agv_circles = {}
++        trail_lines = {}
++
++        for i, (agv_id, path) in enumerate(paths.items()):
++            if path:
++                first_x, first_y = path[0]
++                circle = plt.Circle((first_x + 0.5, first_y + 0.5), radius=0.5,
++                                    facecolor=colors[i], edgecolor='black', linewidth=1.5, label=f'AGV {agv_id}')
++                ax.add_patch(circle)
++                agv_circles[agv_id] = circle
++
++                trail_lines[agv_id], = ax.plot([], [], color=colors[i], linewidth=2, alpha=0.7)
++
++        ax.set_xlim(0, self.grid_size[0])
++        ax.set_ylim(0, self.grid_size[1])
++        ax.set_xticks(range(0, self.grid_size[0] + 1))
++        ax.set_yticks(range(0, self.grid_size[1] + 1))
++        ax.set_xlabel('X Coordinate')
++        ax.set_ylabel('Y Coordinate')
++        ax.grid(True, linestyle='--', linewidth=1, alpha=0.7, which='both')
++        ax.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
++
++        max_steps = max(len(path) for path in paths.values()) if paths else 0
++
++        def animate(frame):
++            # 清除上一帧的冲突标记（保留 imshow 和 patches）
++            for artist in ax.collections[1:]:  # 跳过第一个 imshow
++                artist.remove()
++            # 清除所有 scatter 和 text 类型的 artist
++            for child in ax.get_children():
++                if isinstance(child, (PathCollection, Line2D)) and child.get_label() in [None, '_nolegend_']:
++                    child.remove()
++
++            # 更新 AGV 位置和轨迹
++            for agv_id, path in paths.items():
++                if not path or frame >= len(path):
++                    continue
++
++                x, y = path[frame]
++                agv_circles[agv_id].center = (x + 0.5, y + 0.5)
++
++                trail_x = [pt[0] + 0.5 for pt in path[:frame + 1]]
++                trail_y = [pt[1] + 0.5 for pt in path[:frame + 1]]
++                trail_lines[agv_id].set_data(trail_x, trail_y)
++
++            # ======== 调用冲突检测 =========
++            # 检测当前帧冲突
++            conflict_list = self.detect_conflicts(paths, frame)
++            node_conflicts = [c for c in conflict_list if c[0] == 'node']
++            edge_conflicts = [c for c in conflict_list if c[0] == 'edge']
++
++            # 标记点冲突：红色方框
++            for conflict in node_conflicts:
++                x, y = conflict[1]
++                ax.scatter(x + 0.5, y + 0.5, s=300, facecolors='red',
++                           c='red', linewidths=3, alpha=0.9, marker='s', label='_nolegend_')
++
++            # 标记边冲突：红色圆形（边中点）
++            for conflict in edge_conflicts:
++                (x1, y1), (x2, y2), t = conflict[1], conflict[2], conflict[3]
++                mid_x = (x1 + x2) / 2 + 0.5
++                mid_y = (y1 + y2) / 2 + 0.5
++                ax.scatter(mid_x, mid_y, s=400, marker='o',
++                           c='red', facecolors='red', linewidths=3, alpha=0.9, label='_nolegend_')
++
++            # --- 更新累计统计 ---
++            self.total_node_conflicts += len(node_conflicts)
++            self.total_edge_conflicts += len(edge_conflicts)
++
++            # 更新标题
++            ax.set_title(
++                f"AGV Path Planning Animation - Timestep: {frame}/{max_steps - 1} | "
++                f"Node Conflicts: {self.total_node_conflicts} | Edge Conflicts: {self.total_edge_conflicts}",
++                pad=20
++            )
++
++            return list(agv_circles.values()) + list(trail_lines.values())
++
++        # 创建动画
++        anim = FuncAnimation(fig, animate, frames=max_steps, interval=40, blit=False, repeat=True)
++
++        # 保存为 GIF
++        if save_filename.endswith('.gif'):
++            try:
++                anim.save(save_filename, writer='pillow', fps=25)  # 可调速
++                print(f"动画已保存为: {save_filename}")
++            except Exception as e:
++                print(f"保存动画失败: {e}")
++
++        plt.tight_layout()
++        plt.show()
++
++        return anim
++
++
++def main():
++    """主函数"""
++    # 初始化仿真器
++    simulator = PathSimulator()
++
++    # 加载路径数据
++    paths = simulator.load_paths(str(_REPO_ROOT / 'outputs/original_paper/1'))
++
++    if not paths:
++        print("没有找到有效的路径数据，创建示例数据进行测试...")
++        # 创建示例路径用于测试
++        paths = {
++            # "AGV_001": [[10, 10], [11, 10], [12, 10], [13, 10], [14, 10]],
++            # "AGV_002": [[10, 15], [11, 15], [12, 15], [13, 15], [14, 15]],
++            # "AGV_003": [[50, 50], [51, 50], [52, 50], [53, 50], [54, 50]]
++        }
++
++    # 计算并显示统计信息
++    stats = simulator.calculate_statistics(paths)
++    print("\n=== 路径统计信息 ===")
++    print(f"AGV 总数: {stats['total_agvs']}")
++    print(f"总距离: {stats['total_distance']}")
++    print(f"最长路径: {stats['max_path_length']}")
++    print(f"最短路径: {stats['min_path_length']}")
++    print(f"平均路径长度: {stats['avg_path_length']:.2f}")
++
++    # 静态可视化
++    print("\n生成静态路径可视化...")
++    simulator.visualize_static(paths, "static_paths.png")
++
++    # 动画仿真
++    print("\n开始动画仿真...")
++    simulator.animate_paths(paths, "animated_paths.gif")
++
++    print("\n仿真完成！")
++
++
++if __name__ == "__main__":
+     main()

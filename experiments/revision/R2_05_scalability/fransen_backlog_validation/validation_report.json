@@ -1,0 +1,158 @@
+{
+  "single_and_all_plans": {
+    "single": 1,
+    "all": 15,
+    "formal_simulations_executed": 0
+  },
+  "input_matching": [
+    {
+      "case": "B_traffic_dispersed",
+      "seed": 1001,
+      "original_full_block_prefix_preserved": 248,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_dispersed",
+      "seed": 1002,
+      "original_full_block_prefix_preserved": 232,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_dispersed",
+      "seed": 1003,
+      "original_full_block_prefix_preserved": 232,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_dispersed",
+      "seed": 1004,
+      "original_full_block_prefix_preserved": 240,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_dispersed",
+      "seed": 1005,
+      "original_full_block_prefix_preserved": 240,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_intermediate",
+      "seed": 1001,
+      "original_full_block_prefix_preserved": 248,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_intermediate",
+      "seed": 1002,
+      "original_full_block_prefix_preserved": 232,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_intermediate",
+      "seed": 1003,
+      "original_full_block_prefix_preserved": 232,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_intermediate",
+      "seed": 1004,
+      "original_full_block_prefix_preserved": 240,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_intermediate",
+      "seed": 1005,
+      "original_full_block_prefix_preserved": 240,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_shared",
+      "seed": 1001,
+      "original_full_block_prefix_preserved": 248,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_shared",
+      "seed": 1002,
+      "original_full_block_prefix_preserved": 232,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_shared",
+      "seed": 1003,
+      "original_full_block_prefix_preserved": 232,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_shared",
+      "seed": 1004,
+      "original_full_block_prefix_preserved": 240,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    },
+    {
+      "case": "B_traffic_shared",
+      "seed": 1005,
+      "original_full_block_prefix_preserved": 240,
+      "original_initial_8_positions_preserved": true,
+      "agents": 200,
+      "tasks": 3000,
+      "queue_initially_contains_all_tasks": true
+    }
+  ],
+  "resume_rejects_different_condition": true,
+  "timeout_call_keywords": 0,
+  "interface_smoke": {
+    "agents": 4,
+    "tasks": 40,
+    "steps": 20,
+    "seed": 901,
+    "purpose": "smoke",
+    "returncode": 0,
+    "eligible": true,
+    "console_summary_present": true
+  },
+  "unchanged_core_runtime_hash": "89396635d4c5f9d363d898eee42b9cd6c5b4bf4a2a49d861b099b127b1f6384e",
+  "passed": true
+}

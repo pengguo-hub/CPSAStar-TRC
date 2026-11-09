@@ -1,0 +1,1900 @@
+{
+  "spec": {
+    "schema": 1,
+    "purpose": "formal",
+    "cases": [
+      {
+        "name": "A_fleet30",
+        "map": "STANDARD",
+        "fleet": 30,
+        "tiles": 1,
+        "arrival_rate": null,
+        "mode": "backlogged",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "fleet"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_fleet10",
+        "map": "STANDARD",
+        "fleet": 10,
+        "tiles": 1,
+        "arrival_rate": null,
+        "mode": "backlogged",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "fleet"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_fleet50",
+        "map": "STANDARD",
+        "fleet": 50,
+        "tiles": 1,
+        "arrival_rate": null,
+        "mode": "backlogged",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "fleet"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_open_base",
+        "map": "STANDARD",
+        "fleet": 30,
+        "tiles": 1,
+        "arrival_rate": 0.5,
+        "mode": "poisson",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "map_fixed_fleet",
+          "map_fixed_density",
+          "arrival_rate"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_map2_fixed",
+        "map": "STANDARD",
+        "fleet": 30,
+        "tiles": 2,
+        "arrival_rate": 0.5,
+        "mode": "poisson",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "map_fixed_fleet"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_map3_fixed",
+        "map": "STANDARD",
+        "fleet": 30,
+        "tiles": 3,
+        "arrival_rate": 0.5,
+        "mode": "poisson",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "map_fixed_fleet"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_map2_density",
+        "map": "STANDARD",
+        "fleet": 120,
+        "tiles": 2,
+        "arrival_rate": 2.0,
+        "mode": "poisson",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "map_fixed_density"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_map3_density",
+        "map": "STANDARD",
+        "fleet": 270,
+        "tiles": 3,
+        "arrival_rate": 4.5,
+        "mode": "poisson",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "map_fixed_density"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_rate0.25",
+        "map": "STANDARD",
+        "fleet": 30,
+        "tiles": 1,
+        "arrival_rate": 0.25,
+        "mode": "poisson",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "arrival_rate"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_rate1.0",
+        "map": "STANDARD",
+        "fleet": 30,
+        "tiles": 1,
+        "arrival_rate": 1.0,
+        "mode": "poisson",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "arrival_rate"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "A_rate2.0",
+        "map": "STANDARD",
+        "fleet": 30,
+        "tiles": 1,
+        "arrival_rate": 2.0,
+        "mode": "poisson",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "arrival_rate"
+        ],
+        "traffic_coupling": null
+      },
+      {
+        "name": "B_traffic_dispersed",
+        "map": "FRANSEN",
+        "fleet": 200,
+        "tiles": 1,
+        "arrival_rate": null,
+        "mode": "backlogged",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "traffic_coupling"
+        ],
+        "traffic_coupling": "dispersed"
+      },
+      {
+        "name": "B_traffic_intermediate",
+        "map": "FRANSEN",
+        "fleet": 200,
+        "tiles": 1,
+        "arrival_rate": null,
+        "mode": "backlogged",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "traffic_coupling"
+        ],
+        "traffic_coupling": "intermediate"
+      },
+      {
+        "name": "B_traffic_shared",
+        "map": "FRANSEN",
+        "fleet": 200,
+        "tiles": 1,
+        "arrival_rate": null,
+        "mode": "backlogged",
+        "horizon": 500,
+        "warmup": 0,
+        "axes": [
+          "traffic_coupling"
+        ],
+        "traffic_coupling": "shared"
+      }
+    ],
+    "seeds": [
+      1001,
+      1002,
+      1003,
+      1004,
+      1005
+    ],
+    "horizon": 500,
+    "warmup": 0,
+    "execution_hash": "89396635d4c5f9d363d898eee42b9cd6c5b4bf4a2a49d861b099b127b1f6384e",
+    "source_files": {
+      "original_runtime.py": "494a9e444b5b15a6ba2554dedf8fddafcac9a881453f58e29ce57a0cf0cd51d7",
+      "common.py": "b5fa34b26cc08876ed5772563a9872f141838cbac555106f139ed81a1e66658c",
+      "protocol.py": "030f8078632c78e4107e19c460df76957044423f25cce6445e1e4100cbd127ec",
+      "recorder.py": "239e2c416c9e9e43098dd9f03b6e960770341a5168bce82806f31e710aaf86ba",
+      "worker.py": "8d674e35d76a30eee563ed4b4831bb5b977906a273e37b8d9ee245819ecebab0",
+      "integration/path_planner_lifelong.py": "7062a54a8334b85141db2bc05605c250ce66130ca2bbdb043654605c31bf2370",
+      "configs/traffic_couplings.json": "96dd0e3217731a401cc8b90ea3ee34edb1f18ed661f952bc4176b9992fa67794",
+      "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Conflict_Field_Updater.py": "0487443c0b4e572d873bbe4dbdc956cd13af975ec23e7f061c61f9b7f67cb2f1",
+      "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Segment_Planner.py": "ef9085c90759572c963bba8058a5c0a58f653f3f9ef99eb812e5506635b2e798",
+      "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Ticket_Manager.py": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+      "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/benchmark_loader.py": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440",
+      "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/path_planner_lifelong.py": "2fe8a3302e8a69bd10ac5ad982c2b87d2c0ca3f03bde403b6dc2ceff56bda8da",
+      "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/test_lifelong.py": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a",
+      "vendor/SRTP/experiment/Lifelong/benchmark_loader.py": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e",
+      "vendor/SRTP/experiment/Lifelong/custom_benchmark_loader.py": "83e0c2dad1df6b9afe7857fc8d18137709e4ecd1316a578a4365215f9fd2af41",
+      "vendor/SRTP/experiment/Lifelong/map_config.py": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b",
+      "vendor/SRTP/experiment/Lifelong/plot_throughput_ourmaps.py": "e210eaf0dc7904a05c0de08cb1a1ad740c2026d6b1ec7ed78f0b979dda51d51f",
+      "vendor/SRTP/experiment/Lifelong/task_generator.py": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13",
+      "vendor/SRTP/experiment/Lifelong/test_ourmap.py": "b4d8c2f35d7443205338c44f6c5416309aa18decb66c0cb311605592e8217b6f",
+      "vendor/SRTP/experiment/map_config.py": "ab660fed08a6bae60e0e49b0c5fa5562b7b3b698f59f8edd8900c876d0028255"
+    },
+    "trial_timeout": null,
+    "planned_trials": [
+      {
+        "case": "A_fleet30",
+        "seed": 1001
+      },
+      {
+        "case": "A_fleet30",
+        "seed": 1002
+      },
+      {
+        "case": "A_fleet30",
+        "seed": 1003
+      },
+      {
+        "case": "A_fleet30",
+        "seed": 1004
+      },
+      {
+        "case": "A_fleet30",
+        "seed": 1005
+      },
+      {
+        "case": "A_fleet10",
+        "seed": 1001
+      },
+      {
+        "case": "A_fleet10",
+        "seed": 1002
+      },
+      {
+        "case": "A_fleet10",
+        "seed": 1003
+      },
+      {
+        "case": "A_fleet10",
+        "seed": 1004
+      },
+      {
+        "case": "A_fleet10",
+        "seed": 1005
+      },
+      {
+        "case": "A_fleet50",
+        "seed": 1001
+      },
+      {
+        "case": "A_fleet50",
+        "seed": 1002
+      },
+      {
+        "case": "A_fleet50",
+        "seed": 1003
+      },
+      {
+        "case": "A_fleet50",
+        "seed": 1004
+      },
+      {
+        "case": "A_fleet50",
+        "seed": 1005
+      },
+      {
+        "case": "A_open_base",
+        "seed": 1001
+      },
+      {
+        "case": "A_open_base",
+        "seed": 1002
+      },
+      {
+        "case": "A_open_base",
+        "seed": 1003
+      },
+      {
+        "case": "A_open_base",
+        "seed": 1004
+      },
+      {
+        "case": "A_open_base",
+        "seed": 1005
+      },
+      {
+        "case": "A_map2_fixed",
+        "seed": 1001
+      },
+      {
+        "case": "A_map2_fixed",
+        "seed": 1002
+      },
+      {
+        "case": "A_map2_fixed",
+        "seed": 1003
+      },
+      {
+        "case": "A_map2_fixed",
+        "seed": 1004
+      },
+      {
+        "case": "A_map2_fixed",
+        "seed": 1005
+      },
+      {
+        "case": "A_map3_fixed",
+        "seed": 1001
+      },
+      {
+        "case": "A_map3_fixed",
+        "seed": 1002
+      },
+      {
+        "case": "A_map3_fixed",
+        "seed": 1003
+      },
+      {
+        "case": "A_map3_fixed",
+        "seed": 1004
+      },
+      {
+        "case": "A_map3_fixed",
+        "seed": 1005
+      },
+      {
+        "case": "A_map2_density",
+        "seed": 1001
+      },
+      {
+        "case": "A_map2_density",
+        "seed": 1002
+      },
+      {
+        "case": "A_map2_density",
+        "seed": 1003
+      },
+      {
+        "case": "A_map2_density",
+        "seed": 1004
+      },
+      {
+        "case": "A_map2_density",
+        "seed": 1005
+      },
+      {
+        "case": "A_map3_density",
+        "seed": 1001
+      },
+      {
+        "case": "A_map3_density",
+        "seed": 1002
+      },
+      {
+        "case": "A_map3_density",
+        "seed": 1003
+      },
+      {
+        "case": "A_map3_density",
+        "seed": 1004
+      },
+      {
+        "case": "A_map3_density",
+        "seed": 1005
+      },
+      {
+        "case": "A_rate0.25",
+        "seed": 1001
+      },
+      {
+        "case": "A_rate0.25",
+        "seed": 1002
+      },
+      {
+        "case": "A_rate0.25",
+        "seed": 1003
+      },
+      {
+        "case": "A_rate0.25",
+        "seed": 1004
+      },
+      {
+        "case": "A_rate0.25",
+        "seed": 1005
+      },
+      {
+        "case": "A_rate1.0",
+        "seed": 1001
+      },
+      {
+        "case": "A_rate1.0",
+        "seed": 1002
+      },
+      {
+        "case": "A_rate1.0",
+        "seed": 1003
+      },
+      {
+        "case": "A_rate1.0",
+        "seed": 1004
+      },
+      {
+        "case": "A_rate1.0",
+        "seed": 1005
+      },
+      {
+        "case": "A_rate2.0",
+        "seed": 1001
+      },
+      {
+        "case": "A_rate2.0",
+        "seed": 1002
+      },
+      {
+        "case": "A_rate2.0",
+        "seed": 1003
+      },
+      {
+        "case": "A_rate2.0",
+        "seed": 1004
+      },
+      {
+        "case": "A_rate2.0",
+        "seed": 1005
+      },
+      {
+        "case": "B_traffic_dispersed",
+        "seed": 1001
+      },
+      {
+        "case": "B_traffic_dispersed",
+        "seed": 1002
+      },
+      {
+        "case": "B_traffic_dispersed",
+        "seed": 1003
+      },
+      {
+        "case": "B_traffic_dispersed",
+        "seed": 1004
+      },
+      {
+        "case": "B_traffic_dispersed",
+        "seed": 1005
+      },
+      {
+        "case": "B_traffic_intermediate",
+        "seed": 1001
+      },
+      {
+        "case": "B_traffic_intermediate",
+        "seed": 1002
+      },
+      {
+        "case": "B_traffic_intermediate",
+        "seed": 1003
+      },
+      {
+        "case": "B_traffic_intermediate",
+        "seed": 1004
+      },
+      {
+        "case": "B_traffic_intermediate",
+        "seed": 1005
+      },
+      {
+        "case": "B_traffic_shared",
+        "seed": 1001
+      },
+      {
+        "case": "B_traffic_shared",
+        "seed": 1002
+      },
+      {
+        "case": "B_traffic_shared",
+        "seed": 1003
+      },
+      {
+        "case": "B_traffic_shared",
+        "seed": 1004
+      },
+      {
+        "case": "B_traffic_shared",
+        "seed": 1005
+      }
+    ],
+    "baseline_gate": {
+      "behavior_gate_passed": true,
+      "parity_passed": true,
+      "execution_hash": "89396635d4c5f9d363d898eee42b9cd6c5b4bf4a2a49d861b099b127b1f6384e",
+      "validation_seed": 39,
+      "per_fleet_n": 1,
+      "throughput": {
+        "10": 0.376,
+        "30": 0.926,
+        "50": 1.082
+      },
+      "success_percent": {
+        "10": 95.43147208121827,
+        "30": 94.10569105691057,
+        "50": 92.00680272108843
+      },
+      "original_source_state_fingerprint": "220528af052c31b789474690ddfcacfa0c9acc07d2b21e5f722bcc35faead2f0",
+      "interpretation": "Single-seed behavioral baseline close to Figure 9; not a reproduction of the original five-run mean or hardware timing.",
+      "wall_timing_status": "Environment-dependent; timing repeat and initial observations both retained.",
+      "formal_trials_executed": 0,
+      "prior_execution_hash": "f2a56c3d187d5a8ee65928cd0b95c2741a5a5652563bb6d981de0bf6f9283fb0",
+      "parity_evidence": "validation/integration_parity_final/check.json"
+    }
+  },
+  "created_utc": "2026-10-27T15:41:45.446593+00:00",
+  "trials": [
+    {
+      "key": "A_fleet10__seed1001",
+      "case": "A_fleet10",
+      "seed": 1001,
+      "workload": "workloads/A_fleet10__seed1001.json",
+      "workload_hash": "223af389ba4d205478d3f3dd7a6698f3cd09f97413854bc655420fe25678a9af",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet10__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:05.210518+00:00",
+          "pid": 1719,
+          "returncode": 0,
+          "elapsed_seconds": 1.6087203845381737,
+          "finished_utc": "2026-10-27T15:42:06.821536+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet10__seed1002",
+      "case": "A_fleet10",
+      "seed": 1002,
+      "workload": "workloads/A_fleet10__seed1002.json",
+      "workload_hash": "d59a5cb108a268bbb2191506d3b176bbe0467ed375e9c4d00bfcbfd15aa93f8a",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet10__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:06.825702+00:00",
+          "pid": 1736,
+          "returncode": 0,
+          "elapsed_seconds": 1.6003690287470818,
+          "finished_utc": "2026-10-27T15:42:08.428427+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet10__seed1003",
+      "case": "A_fleet10",
+      "seed": 1003,
+      "workload": "workloads/A_fleet10__seed1003.json",
+      "workload_hash": "88e5b79438574e6bdefc353ead21b8acb0480111495fdc495312b71ff13e9f11",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet10__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:08.432573+00:00",
+          "pid": 1753,
+          "returncode": 0,
+          "elapsed_seconds": 1.5893256813287735,
+          "finished_utc": "2026-10-27T15:42:10.024578+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet10__seed1004",
+      "case": "A_fleet10",
+      "seed": 1004,
+      "workload": "workloads/A_fleet10__seed1004.json",
+      "workload_hash": "eda2cfdfa4e9c379e1a1c0c2defea3ec65c72ef3ca218fb6f71d81c280e4f9c0",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet10__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:10.026686+00:00",
+          "pid": 1771,
+          "returncode": 0,
+          "elapsed_seconds": 1.6031948179006577,
+          "finished_utc": "2026-10-27T15:42:11.630844+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet10__seed1005",
+      "case": "A_fleet10",
+      "seed": 1005,
+      "workload": "workloads/A_fleet10__seed1005.json",
+      "workload_hash": "79deab189bb074b7c5da9d9150a272e27daa22ed80b81a7d5fd0ee0c675149e2",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet10__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:11.633670+00:00",
+          "pid": 1788,
+          "returncode": 0,
+          "elapsed_seconds": 1.5788994431495667,
+          "finished_utc": "2026-10-27T15:42:13.213554+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet30__seed1001",
+      "case": "A_fleet30",
+      "seed": 1001,
+      "workload": "workloads/A_fleet30__seed1001.json",
+      "workload_hash": "bf8130f4658214fc89f454cad4432c45cb31fa0c5a43ea02f80798911bcd1fb2",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet30__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:41:46.820706+00:00",
+          "pid": 1628,
+          "returncode": 0,
+          "elapsed_seconds": 3.5341076999902725,
+          "finished_utc": "2026-10-27T15:41:50.355736+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet30__seed1002",
+      "case": "A_fleet30",
+      "seed": 1002,
+      "workload": "workloads/A_fleet30__seed1002.json",
+      "workload_hash": "19a731a759fa40068a5c6d9744d0f9e01af1be42356887f2325f260ac03af125",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet30__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:41:50.357789+00:00",
+          "pid": 1646,
+          "returncode": 0,
+          "elapsed_seconds": 3.7737850323319435,
+          "finished_utc": "2026-10-27T15:41:54.132501+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet30__seed1003",
+      "case": "A_fleet30",
+      "seed": 1003,
+      "workload": "workloads/A_fleet30__seed1003.json",
+      "workload_hash": "9e9db2d6fc515eeef554d1333869bd96b4cb90452ea6b5f2f7ea400cd3932524",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet30__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:41:54.136617+00:00",
+          "pid": 1664,
+          "returncode": 0,
+          "elapsed_seconds": 3.8098298460245132,
+          "finished_utc": "2026-10-27T15:41:57.947393+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet30__seed1004",
+      "case": "A_fleet30",
+      "seed": 1004,
+      "workload": "workloads/A_fleet30__seed1004.json",
+      "workload_hash": "4c7d0ad265db34f1e035da6f1455ed78fc9c32dcb5fad2dedde78c35ce02d15e",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet30__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:41:57.950235+00:00",
+          "pid": 1682,
+          "returncode": 0,
+          "elapsed_seconds": 3.657749682664871,
+          "finished_utc": "2026-10-27T15:42:01.608916+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet30__seed1005",
+      "case": "A_fleet30",
+      "seed": 1005,
+      "workload": "workloads/A_fleet30__seed1005.json",
+      "workload_hash": "7f151335bbf92e3fadf6637d3da152956120a6ed96a614a016d2f90a552b1002",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet30__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:01.610994+00:00",
+          "pid": 1700,
+          "returncode": 0,
+          "elapsed_seconds": 3.5943608507514,
+          "finished_utc": "2026-10-27T15:42:05.206298+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet50__seed1001",
+      "case": "A_fleet50",
+      "seed": 1001,
+      "workload": "workloads/A_fleet50__seed1001.json",
+      "workload_hash": "2b5f217391727c1adad11af8162e091d4ce74990e19c137b2b26c877b558b2b5",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet50__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:13.215618+00:00",
+          "pid": 1805,
+          "returncode": 0,
+          "elapsed_seconds": 8.076581731438637,
+          "finished_utc": "2026-10-27T15:42:21.293172+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet50__seed1002",
+      "case": "A_fleet50",
+      "seed": 1002,
+      "workload": "workloads/A_fleet50__seed1002.json",
+      "workload_hash": "e5131b21b20b9cb3c04ff8c6805abfb9f9c23517412961a2648fe792ce2c9c08",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet50__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:21.297480+00:00",
+          "pid": 1826,
+          "returncode": 0,
+          "elapsed_seconds": 10.550572611391544,
+          "finished_utc": "2026-10-27T15:42:31.850465+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet50__seed1003",
+      "case": "A_fleet50",
+      "seed": 1003,
+      "workload": "workloads/A_fleet50__seed1003.json",
+      "workload_hash": "c82d9a8a28e22f8041a2808dfd59f2db7a40733ceb828483ac5e2ac5df8da64f",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet50__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:31.855111+00:00",
+          "pid": 1849,
+          "returncode": 0,
+          "elapsed_seconds": 7.825901530683041,
+          "finished_utc": "2026-10-27T15:42:39.683465+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet50__seed1004",
+      "case": "A_fleet50",
+      "seed": 1004,
+      "workload": "workloads/A_fleet50__seed1004.json",
+      "workload_hash": "4f8075fccad6ef3f8be6eef4fd981690d64efbdbdfedfefe61f3943b8072f2c6",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet50__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:39.687822+00:00",
+          "pid": 1867,
+          "returncode": 0,
+          "elapsed_seconds": 8.738497391343117,
+          "finished_utc": "2026-10-27T15:42:48.428794+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_fleet50__seed1005",
+      "case": "A_fleet50",
+      "seed": 1005,
+      "workload": "workloads/A_fleet50__seed1005.json",
+      "workload_hash": "2fc7087582f323b15b14b59d34b17eab5fb98e80ef739f2d5928f793d96cb747",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_fleet50__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:48.433901+00:00",
+          "pid": 1886,
+          "returncode": 0,
+          "elapsed_seconds": 9.948869936168194,
+          "finished_utc": "2026-10-27T15:42:58.385302+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_density__seed1001",
+      "case": "A_map2_density",
+      "seed": 1001,
+      "workload": "workloads/A_map2_density__seed1001.json",
+      "workload_hash": "ca03fc9f30fa31bd1dcab55c50def20a45012745855a19136fc89880689d87f7",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_density__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:19.945785+00:00",
+          "pid": 2164,
+          "returncode": 0,
+          "elapsed_seconds": 7.756766512989998,
+          "finished_utc": "2026-10-27T15:43:27.705727+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_density__seed1002",
+      "case": "A_map2_density",
+      "seed": 1002,
+      "workload": "workloads/A_map2_density__seed1002.json",
+      "workload_hash": "d9173457becaf754dd88f85c710482d7d12490e1fd6365952d1552cde357bfe3",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_density__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:27.711560+00:00",
+          "pid": 2183,
+          "returncode": 0,
+          "elapsed_seconds": 7.846710495650768,
+          "finished_utc": "2026-10-27T15:43:35.561120+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_density__seed1003",
+      "case": "A_map2_density",
+      "seed": 1003,
+      "workload": "workloads/A_map2_density__seed1003.json",
+      "workload_hash": "26c31fa2544e1811af8b9f8d334b6993b8faaf56777be3c6f3577d358304f042",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_density__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:35.563519+00:00",
+          "pid": 2202,
+          "returncode": 0,
+          "elapsed_seconds": 7.702339395880699,
+          "finished_utc": "2026-10-27T15:43:43.267017+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_density__seed1004",
+      "case": "A_map2_density",
+      "seed": 1004,
+      "workload": "workloads/A_map2_density__seed1004.json",
+      "workload_hash": "6023df6cc785b2182859d4ea7f6e6e7542d28fc4e147d4eb346a4705502ad37c",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_density__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:43.271907+00:00",
+          "pid": 2220,
+          "returncode": 0,
+          "elapsed_seconds": 7.249602772295475,
+          "finished_utc": "2026-10-27T15:43:50.524369+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_density__seed1005",
+      "case": "A_map2_density",
+      "seed": 1005,
+      "workload": "workloads/A_map2_density__seed1005.json",
+      "workload_hash": "4fc36ea6fee3aa10831e8c872a69f77798953cfd6913b1505187e180043ef335",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_density__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:50.529159+00:00",
+          "pid": 2239,
+          "returncode": 0,
+          "elapsed_seconds": 8.422949589788914,
+          "finished_utc": "2026-10-27T15:43:58.954962+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_fixed__seed1001",
+      "case": "A_map2_fixed",
+      "seed": 1001,
+      "workload": "workloads/A_map2_fixed__seed1001.json",
+      "workload_hash": "e402952c21c50fe18d466147f8926fd09428262d339be54dbb7fa917c31a5d56",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_fixed__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:06.690194+00:00",
+          "pid": 1992,
+          "returncode": 0,
+          "elapsed_seconds": 1.3987351134419441,
+          "finished_utc": "2026-10-27T15:43:08.091493+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_fixed__seed1002",
+      "case": "A_map2_fixed",
+      "seed": 1002,
+      "workload": "workloads/A_map2_fixed__seed1002.json",
+      "workload_hash": "4e6ecc958e0c19c938e40e92a48372ea62bafa9e669abae887641df53b2f4072",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_fixed__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:08.095088+00:00",
+          "pid": 2009,
+          "returncode": 0,
+          "elapsed_seconds": 1.2893475592136383,
+          "finished_utc": "2026-10-27T15:43:09.386560+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_fixed__seed1003",
+      "case": "A_map2_fixed",
+      "seed": 1003,
+      "workload": "workloads/A_map2_fixed__seed1003.json",
+      "workload_hash": "6339d0d02c719f673002819171512ce5df5119278cbb24fb436838f05fdfbd61",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_fixed__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:09.388830+00:00",
+          "pid": 2026,
+          "returncode": 0,
+          "elapsed_seconds": 1.254779040813446,
+          "finished_utc": "2026-10-27T15:43:10.644693+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_fixed__seed1004",
+      "case": "A_map2_fixed",
+      "seed": 1004,
+      "workload": "workloads/A_map2_fixed__seed1004.json",
+      "workload_hash": "7ed985b62d48cf902d74e824a3e28463ac56f0d1f90fd119b3bd67a92dba4268",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_fixed__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:10.649242+00:00",
+          "pid": 2044,
+          "returncode": 0,
+          "elapsed_seconds": 1.3239972367882729,
+          "finished_utc": "2026-10-27T15:43:11.976137+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map2_fixed__seed1005",
+      "case": "A_map2_fixed",
+      "seed": 1005,
+      "workload": "workloads/A_map2_fixed__seed1005.json",
+      "workload_hash": "ffdfdef5a81d184b3e2a753df550d648bd65d78736d7df5bae18fb563a0294c4",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map2_fixed__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:11.980665+00:00",
+          "pid": 2061,
+          "returncode": 0,
+          "elapsed_seconds": 1.4808347672224045,
+          "finished_utc": "2026-10-27T15:43:13.464179+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_density__seed1001",
+      "case": "A_map3_density",
+      "seed": 1001,
+      "workload": "workloads/A_map3_density__seed1001.json",
+      "workload_hash": "40b98f3e90ccd52031353a312eae908a1b6ed999b8bb4353aea3ebb7cd2c484e",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_density__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:58.959788+00:00",
+          "pid": 2257,
+          "returncode": 0,
+          "elapsed_seconds": 20.07322897017002,
+          "finished_utc": "2026-10-27T15:44:19.035902+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_density__seed1002",
+      "case": "A_map3_density",
+      "seed": 1002,
+      "workload": "workloads/A_map3_density__seed1002.json",
+      "workload_hash": "32025d2a3be8a3bdd78123d9edf12b0589007975e816d49fd15b93a83b98580d",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_density__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:44:19.041148+00:00",
+          "pid": 2278,
+          "returncode": 0,
+          "elapsed_seconds": 19.56701871007681,
+          "finished_utc": "2026-10-27T15:44:38.611069+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_density__seed1003",
+      "case": "A_map3_density",
+      "seed": 1003,
+      "workload": "workloads/A_map3_density__seed1003.json",
+      "workload_hash": "e22e21ae2a5a48d01b87ef6bd22dbaa715bc0762099dca4b8e5912d6b1691609",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_density__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:44:38.615970+00:00",
+          "pid": 2302,
+          "returncode": 0,
+          "elapsed_seconds": 20.575488939881325,
+          "finished_utc": "2026-10-27T15:44:59.194377+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_density__seed1004",
+      "case": "A_map3_density",
+      "seed": 1004,
+      "workload": "workloads/A_map3_density__seed1004.json",
+      "workload_hash": "4626484f10bf37110bec0e6b1e3b903546d62686e6bec4320735ab3c3e529b8d",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_density__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:44:59.199278+00:00",
+          "pid": 2323,
+          "returncode": 0,
+          "elapsed_seconds": 18.647742480039597,
+          "finished_utc": "2026-10-27T15:45:17.849940+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_density__seed1005",
+      "case": "A_map3_density",
+      "seed": 1005,
+      "workload": "workloads/A_map3_density__seed1005.json",
+      "workload_hash": "319cc8490146697d436431414a3abb15b6a86b8b9fef0ccfbc6ee6802bbaa706",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_density__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:17.852382+00:00",
+          "pid": 2344,
+          "returncode": 0,
+          "elapsed_seconds": 22.03390561044216,
+          "finished_utc": "2026-10-27T15:45:39.887525+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_fixed__seed1001",
+      "case": "A_map3_fixed",
+      "seed": 1001,
+      "workload": "workloads/A_map3_fixed__seed1001.json",
+      "workload_hash": "649491ade806f768e3c12e3d3f2c4ad640e5f98ed00dcc334d09b5df6a86242c",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_fixed__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:13.468789+00:00",
+          "pid": 2078,
+          "returncode": 0,
+          "elapsed_seconds": 1.3770615234971046,
+          "finished_utc": "2026-10-27T15:43:14.848333+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_fixed__seed1002",
+      "case": "A_map3_fixed",
+      "seed": 1002,
+      "workload": "workloads/A_map3_fixed__seed1002.json",
+      "workload_hash": "8655b333b70617f7c584037f7be6696ac9a85c9a43f37dd91bd894e28b7789e5",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_fixed__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:14.852963+00:00",
+          "pid": 2095,
+          "returncode": 0,
+          "elapsed_seconds": 1.1537817418575287,
+          "finished_utc": "2026-10-27T15:43:16.009807+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_fixed__seed1003",
+      "case": "A_map3_fixed",
+      "seed": 1003,
+      "workload": "workloads/A_map3_fixed__seed1003.json",
+      "workload_hash": "359cb4604a858e74c31abf143fb36698a12b4e9359d7a207580747af56497a0d",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_fixed__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:16.014419+00:00",
+          "pid": 2113,
+          "returncode": 0,
+          "elapsed_seconds": 1.2421587482094765,
+          "finished_utc": "2026-10-27T15:43:17.259307+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_fixed__seed1004",
+      "case": "A_map3_fixed",
+      "seed": 1004,
+      "workload": "workloads/A_map3_fixed__seed1004.json",
+      "workload_hash": "297e5d88ffb696b373de01c3eb5e83e3fe6e0d9af8c4940c6ecc1fe7ff035f7c",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_fixed__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:17.263961+00:00",
+          "pid": 2130,
+          "returncode": 0,
+          "elapsed_seconds": 1.287655733525753,
+          "finished_utc": "2026-10-27T15:43:18.554394+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_map3_fixed__seed1005",
+      "case": "A_map3_fixed",
+      "seed": 1005,
+      "workload": "workloads/A_map3_fixed__seed1005.json",
+      "workload_hash": "84712ab5355cf47b6ccb4a162cb76893c5138fe3cb3f5a08beb2e362ee539696",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_map3_fixed__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:18.559017+00:00",
+          "pid": 2147,
+          "returncode": 0,
+          "elapsed_seconds": 1.3791722729802132,
+          "finished_utc": "2026-10-27T15:43:19.940984+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_open_base__seed1001",
+      "case": "A_open_base",
+      "seed": 1001,
+      "workload": "workloads/A_open_base__seed1001.json",
+      "workload_hash": "b48cb3293ff26e9727a2291c07fa5326fa04c435863a4084f9bb8771a49c40eb",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_open_base__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:42:58.387781+00:00",
+          "pid": 1905,
+          "returncode": 0,
+          "elapsed_seconds": 1.6572226285934448,
+          "finished_utc": "2026-10-27T15:43:00.046029+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_open_base__seed1002",
+      "case": "A_open_base",
+      "seed": 1002,
+      "workload": "workloads/A_open_base__seed1002.json",
+      "workload_hash": "85c0ff5d224372e6ae533099f107856042e8aa09a328088b0775b8711da446c2",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_open_base__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:00.050440+00:00",
+          "pid": 1923,
+          "returncode": 0,
+          "elapsed_seconds": 1.5106186270713806,
+          "finished_utc": "2026-10-27T15:43:01.563549+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_open_base__seed1003",
+      "case": "A_open_base",
+      "seed": 1003,
+      "workload": "workloads/A_open_base__seed1003.json",
+      "workload_hash": "4bd4dbc3fcac63524373eb3de1fad2cf78c7941067542078d0271db74d2de07b",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_open_base__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:01.568301+00:00",
+          "pid": 1940,
+          "returncode": 0,
+          "elapsed_seconds": 1.6390021294355392,
+          "finished_utc": "2026-10-27T15:43:03.209847+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_open_base__seed1004",
+      "case": "A_open_base",
+      "seed": 1004,
+      "workload": "workloads/A_open_base__seed1004.json",
+      "workload_hash": "248085ef2e9c0e4d2a585dc727e32c1baad368fc9c3e8792cfb358548f2deed7",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_open_base__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:03.214295+00:00",
+          "pid": 1957,
+          "returncode": 0,
+          "elapsed_seconds": 1.5714470520615578,
+          "finished_utc": "2026-10-27T15:43:04.788282+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_open_base__seed1005",
+      "case": "A_open_base",
+      "seed": 1005,
+      "workload": "workloads/A_open_base__seed1005.json",
+      "workload_hash": "4592b3c011376398c91c6deb995bb506676d36c693cde4e17496c961fe1d7f46",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_open_base__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:43:04.792802+00:00",
+          "pid": 1974,
+          "returncode": 0,
+          "elapsed_seconds": 1.8903526291251183,
+          "finished_utc": "2026-10-27T15:43:06.685729+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate0.25__seed1001",
+      "case": "A_rate0.25",
+      "seed": 1001,
+      "workload": "workloads/A_rate0.25__seed1001.json",
+      "workload_hash": "57f6c346224808b7ae34f1a9ca93254a345f0a9a26dc67551ce3fa6629418d8a",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate0.25__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:39.892443+00:00",
+          "pid": 2365,
+          "returncode": 0,
+          "elapsed_seconds": 0.7899925485253334,
+          "finished_utc": "2026-10-27T15:45:40.685416+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate0.25__seed1002",
+      "case": "A_rate0.25",
+      "seed": 1002,
+      "workload": "workloads/A_rate0.25__seed1002.json",
+      "workload_hash": "9787fa076ca431449be89b822095c54427b37e26df74fc3342387a8e5554b7e3",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate0.25__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:40.690367+00:00",
+          "pid": 2383,
+          "returncode": 0,
+          "elapsed_seconds": 0.6740704774856567,
+          "finished_utc": "2026-10-27T15:45:41.367429+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate0.25__seed1003",
+      "case": "A_rate0.25",
+      "seed": 1003,
+      "workload": "workloads/A_rate0.25__seed1003.json",
+      "workload_hash": "e45b2be2cd0a630cbc7446b53329a920cdfe5a4c0be3bfe252aafa3be48a08c1",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate0.25__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:41.372344+00:00",
+          "pid": 2400,
+          "returncode": 0,
+          "elapsed_seconds": 0.8114908263087273,
+          "finished_utc": "2026-10-27T15:45:42.186835+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate0.25__seed1004",
+      "case": "A_rate0.25",
+      "seed": 1004,
+      "workload": "workloads/A_rate0.25__seed1004.json",
+      "workload_hash": "b9af063925adfb423337db38af3e92e166cf475dd515fb367943c13ffdf71ef9",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate0.25__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:42.191750+00:00",
+          "pid": 2417,
+          "returncode": 0,
+          "elapsed_seconds": 0.7046017125248909,
+          "finished_utc": "2026-10-27T15:45:42.899384+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate0.25__seed1005",
+      "case": "A_rate0.25",
+      "seed": 1005,
+      "workload": "workloads/A_rate0.25__seed1005.json",
+      "workload_hash": "62049a5aface7633ec5fbd68956c822133ddf9c6a09bd27bf863366686fbb779",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate0.25__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:42.904378+00:00",
+          "pid": 2434,
+          "returncode": 0,
+          "elapsed_seconds": 0.8188625872135162,
+          "finished_utc": "2026-10-27T15:45:43.726272+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate1.0__seed1001",
+      "case": "A_rate1.0",
+      "seed": 1001,
+      "workload": "workloads/A_rate1.0__seed1001.json",
+      "workload_hash": "633b50f4d4fa3a01c997e9a7321c3a519b38a4a526a4c2bb315c6a44d5d7b4de",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate1.0__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:43.728790+00:00",
+          "pid": 2451,
+          "returncode": 0,
+          "elapsed_seconds": 3.298352137207985,
+          "finished_utc": "2026-10-27T15:45:47.028611+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate1.0__seed1002",
+      "case": "A_rate1.0",
+      "seed": 1002,
+      "workload": "workloads/A_rate1.0__seed1002.json",
+      "workload_hash": "02afcfc337a4fd6efe2200ed165e627d0c9cd2b3d7e398a3ca79ee951c0034dc",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate1.0__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:47.033668+00:00",
+          "pid": 2469,
+          "returncode": 0,
+          "elapsed_seconds": 3.2172103598713875,
+          "finished_utc": "2026-10-27T15:45:50.253941+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate1.0__seed1003",
+      "case": "A_rate1.0",
+      "seed": 1003,
+      "workload": "workloads/A_rate1.0__seed1003.json",
+      "workload_hash": "46eb97ebcddb45f01b7fa82f57e1b020c721038693f56e20ebf7ed0a47f869b8",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate1.0__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:50.258992+00:00",
+          "pid": 2487,
+          "returncode": 0,
+          "elapsed_seconds": 3.162367857992649,
+          "finished_utc": "2026-10-27T15:45:53.425347+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate1.0__seed1004",
+      "case": "A_rate1.0",
+      "seed": 1004,
+      "workload": "workloads/A_rate1.0__seed1004.json",
+      "workload_hash": "7eea29bda7b3164717ef124061b2de6567f6fe4eb39525f1ef0cd326c8d28cb8",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate1.0__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:53.430527+00:00",
+          "pid": 2504,
+          "returncode": 0,
+          "elapsed_seconds": 2.9387038126587868,
+          "finished_utc": "2026-10-27T15:45:56.372344+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate1.0__seed1005",
+      "case": "A_rate1.0",
+      "seed": 1005,
+      "workload": "workloads/A_rate1.0__seed1005.json",
+      "workload_hash": "faa464517e4bd95d7a03e5ae072cf98fd7d068464b9f6f5f2a155c33af00cd4b",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate1.0__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:56.374926+00:00",
+          "pid": 2522,
+          "returncode": 0,
+          "elapsed_seconds": 2.8332220166921616,
+          "finished_utc": "2026-10-27T15:45:59.209443+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate2.0__seed1001",
+      "case": "A_rate2.0",
+      "seed": 1001,
+      "workload": "workloads/A_rate2.0__seed1001.json",
+      "workload_hash": "c703b6f531027f7a2c16dd08c7060a8cfc0a446e0f21a4f3c758210b5bad8755",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate2.0__seed1001/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:45:59.214871+00:00",
+          "pid": 2539,
+          "returncode": 0,
+          "elapsed_seconds": 3.023028813302517,
+          "finished_utc": "2026-10-27T15:46:02.241082+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate2.0__seed1002",
+      "case": "A_rate2.0",
+      "seed": 1002,
+      "workload": "workloads/A_rate2.0__seed1002.json",
+      "workload_hash": "123ce6bb11e211b9af708cae717c1f8c5fdc7b833b63f9638c308959382fe01d",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate2.0__seed1002/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:46:02.246237+00:00",
+          "pid": 2557,
+          "returncode": 0,
+          "elapsed_seconds": 3.010743372142315,
+          "finished_utc": "2026-10-27T15:46:05.260232+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate2.0__seed1003",
+      "case": "A_rate2.0",
+      "seed": 1003,
+      "workload": "workloads/A_rate2.0__seed1003.json",
+      "workload_hash": "a72003188d2e70f3b6d5a483c12dcdd7820554811edd391beee6422b6b4bb3f8",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate2.0__seed1003/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:46:05.265456+00:00",
+          "pid": 2575,
+          "returncode": 0,
+          "elapsed_seconds": 2.9700264930725098,
+          "finished_utc": "2026-10-27T15:46:08.238688+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate2.0__seed1004",
+      "case": "A_rate2.0",
+      "seed": 1004,
+      "workload": "workloads/A_rate2.0__seed1004.json",
+      "workload_hash": "a782e8cf99983de2aca4c4c66be22ad25e6837d2d9365984323cc1d0297bac18",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate2.0__seed1004/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:46:08.243854+00:00",
+          "pid": 2592,
+          "returncode": 0,
+          "elapsed_seconds": 3.0142608657479286,
+          "finished_utc": "2026-10-27T15:46:11.261327+00:00"
+        }
+      ]
+    },
+    {
+      "key": "A_rate2.0__seed1005",
+      "case": "A_rate2.0",
+      "seed": 1005,
+      "workload": "workloads/A_rate2.0__seed1005.json",
+      "workload_hash": "b4a732dd10add3cf0accabd87a3fa3fe62680db4e88bcc77db036176cc49de13",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/A_rate2.0__seed1005/attempt_01",
+          "state": "completed",
+          "started_utc": "2026-10-27T15:46:11.266538+00:00",
+          "pid": 2610,
+          "returncode": 0,
+          "elapsed_seconds": 2.991867311298847,
+          "finished_utc": "2026-10-27T15:46:14.261693+00:00"
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_dispersed__seed1001",
+      "case": "B_traffic_dispersed",
+      "seed": 1001,
+      "workload": "workloads/B_traffic_dispersed__seed1001.json",
+      "workload_hash": "bcfce9970fb3e5a986b5bf5e463eb45feeb0f2711b6b23bc5a3cc6a9601ac24d",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_dispersed__seed1001/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:39:58.037935+00:00",
+          "finished_utc": "2026-10-29T10:40:37.910827+00:00",
+          "pid": 1540,
+          "elapsed_seconds": 39.87234315392561
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_dispersed__seed1002",
+      "case": "B_traffic_dispersed",
+      "seed": 1002,
+      "workload": "workloads/B_traffic_dispersed__seed1002.json",
+      "workload_hash": "637fa8cf2deae2f1f6b7c393f65cae85c352c1136719d710113c7841f8ce2fcd",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_dispersed__seed1002/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:40:37.912663+00:00",
+          "finished_utc": "2026-10-29T10:41:14.285517+00:00",
+          "pid": 1571,
+          "elapsed_seconds": 36.37229958199896
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_dispersed__seed1003",
+      "case": "B_traffic_dispersed",
+      "seed": 1003,
+      "workload": "workloads/B_traffic_dispersed__seed1003.json",
+      "workload_hash": "cf337f3e8054c56e3b8efd85f220959e603dd8130848a31e5d2b883f6838a43d",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_dispersed__seed1003/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:41:14.289872+00:00",
+          "finished_utc": "2026-10-29T10:41:52.253461+00:00",
+          "pid": 1607,
+          "elapsed_seconds": 37.96301968104672
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_dispersed__seed1004",
+      "case": "B_traffic_dispersed",
+      "seed": 1004,
+      "workload": "workloads/B_traffic_dispersed__seed1004.json",
+      "workload_hash": "b13f63c6e5ee24d8f7b65ce7998e1668a72654e01c54d846e017814a4ac5f5e1",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_dispersed__seed1004/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:41:52.255359+00:00",
+          "finished_utc": "2026-10-29T10:42:28.595724+00:00",
+          "pid": 1640,
+          "elapsed_seconds": 36.33967579295859
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_dispersed__seed1005",
+      "case": "B_traffic_dispersed",
+      "seed": 1005,
+      "workload": "workloads/B_traffic_dispersed__seed1005.json",
+      "workload_hash": "b7c03aadb7350ae2db972ac18f5a4c947238c102930836712436f3fdfc0501f3",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_dispersed__seed1005/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:42:28.599901+00:00",
+          "finished_utc": "2026-10-29T10:43:06.506534+00:00",
+          "pid": 1671,
+          "elapsed_seconds": 37.90526951197535
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_intermediate__seed1001",
+      "case": "B_traffic_intermediate",
+      "seed": 1001,
+      "workload": "workloads/B_traffic_intermediate__seed1001.json",
+      "workload_hash": "f5e9f1da41e5401b2d557e31730231b64c527cb072310cd99d92dab003b9649f",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_intermediate__seed1001/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:43:06.511541+00:00",
+          "finished_utc": "2026-10-29T10:43:39.278741+00:00",
+          "pid": 1706,
+          "elapsed_seconds": 32.76548349298537
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_intermediate__seed1002",
+      "case": "B_traffic_intermediate",
+      "seed": 1002,
+      "workload": "workloads/B_traffic_intermediate__seed1002.json",
+      "workload_hash": "86f44f524d333a2717c170d0b695a8d84fe165dffa29b68ce07d5a5308aa218f",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_intermediate__seed1002/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:43:39.283762+00:00",
+          "finished_utc": "2026-10-29T10:44:12.788448+00:00",
+          "pid": 1736,
+          "elapsed_seconds": 33.50298201199621
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_intermediate__seed1003",
+      "case": "B_traffic_intermediate",
+      "seed": 1003,
+      "workload": "workloads/B_traffic_intermediate__seed1003.json",
+      "workload_hash": "fcf15ccc3195159488cff253144fb9d442f232a9548141358dc8476f8e9cf5c5",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_intermediate__seed1003/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:44:12.790447+00:00",
+          "finished_utc": "2026-10-29T10:44:50.683910+00:00",
+          "pid": 1766,
+          "elapsed_seconds": 37.89281687210314
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_intermediate__seed1004",
+      "case": "B_traffic_intermediate",
+      "seed": 1004,
+      "workload": "workloads/B_traffic_intermediate__seed1004.json",
+      "workload_hash": "e750ea248d5b176bbe14df4756e827a82f0588b6b5dc5a08259e7c49f506b7ab",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_intermediate__seed1004/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:44:50.689206+00:00",
+          "finished_utc": "2026-10-29T10:45:26.608990+00:00",
+          "pid": 1799,
+          "elapsed_seconds": 35.91800519800745
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_intermediate__seed1005",
+      "case": "B_traffic_intermediate",
+      "seed": 1005,
+      "workload": "workloads/B_traffic_intermediate__seed1005.json",
+      "workload_hash": "30be3e91aa40011d87788bb339346c4547b9aade609d4c1ae70980a0bac8d42e",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_intermediate__seed1005/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:45:26.610942+00:00",
+          "finished_utc": "2026-10-29T10:46:08.130410+00:00",
+          "pid": 1834,
+          "elapsed_seconds": 41.51882881100755
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_shared__seed1001",
+      "case": "B_traffic_shared",
+      "seed": 1001,
+      "workload": "workloads/B_traffic_shared__seed1001.json",
+      "workload_hash": "6e019e96fa1e58d732428747a7564aa0485e8c307b61a1e83439a826a98ba112",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_shared__seed1001/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:46:08.135611+00:00",
+          "finished_utc": "2026-10-29T10:46:45.584581+00:00",
+          "pid": 1867,
+          "elapsed_seconds": 37.44710486498661
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_shared__seed1002",
+      "case": "B_traffic_shared",
+      "seed": 1002,
+      "workload": "workloads/B_traffic_shared__seed1002.json",
+      "workload_hash": "f6360f6e9fd77d367e666ce4e7867b653f89e0dd78021d87e1cdd86e5ca96762",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_shared__seed1002/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:46:45.586775+00:00",
+          "finished_utc": "2026-10-29T10:47:32.596252+00:00",
+          "pid": 1900,
+          "elapsed_seconds": 47.00873896095436
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_shared__seed1003",
+      "case": "B_traffic_shared",
+      "seed": 1003,
+      "workload": "workloads/B_traffic_shared__seed1003.json",
+      "workload_hash": "12d7214ccaa0818cce39f82f20f23595b3ffd96f8095bf7c0751d969b8cf778b",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_shared__seed1003/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:47:32.598945+00:00",
+          "finished_utc": "2026-10-29T10:48:09.081643+00:00",
+          "pid": 1938,
+          "elapsed_seconds": 36.481689528911375
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_shared__seed1004",
+      "case": "B_traffic_shared",
+      "seed": 1004,
+      "workload": "workloads/B_traffic_shared__seed1004.json",
+      "workload_hash": "73f21a7f9864a9f02234b6b9566648da98968398780d7371541552850f37ae2f",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_shared__seed1004/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:48:09.086883+00:00",
+          "finished_utc": "2026-10-29T10:48:44.166418+00:00",
+          "pid": 1968,
+          "elapsed_seconds": 35.077605460071936
+        }
+      ]
+    },
+    {
+      "key": "B_traffic_shared__seed1005",
+      "case": "B_traffic_shared",
+      "seed": 1005,
+      "workload": "workloads/B_traffic_shared__seed1005.json",
+      "workload_hash": "bb9036c8477e3cca2e38d25e2ae003cfa9946f844c01a94bdfd8dd5b3148b2bc",
+      "state": "completed",
+      "attempts": [
+        {
+          "directory": "trials/B_traffic_shared__seed1005/attempt_01",
+          "state": "completed",
+          "returncode": 0,
+          "started_utc": "2026-10-29T10:48:44.168466+00:00",
+          "finished_utc": "2026-10-29T10:49:16.919307+00:00",
+          "pid": 1999,
+          "elapsed_seconds": 32.75013299996499
+        }
+      ]
+    }
+  ],
+  "replacement_history": [
+    {
+      "timestamp_utc": "2026-10-29T11:20:22.706554+00:00",
+      "scope": "FRANSEN traffic trials only",
+      "fleet": 200,
+      "mode": "backlogged",
+      "horizon": 500,
+      "seeds": [
+        1001,
+        1002,
+        1003,
+        1004,
+        1005
+      ],
+      "levels": [
+        "dispersed",
+        "intermediate",
+        "shared"
+      ],
+      "note": "Per-trial execution_hash in result.json is authoritative for replacement trials; original non-traffic trials were retained."
+    }
+  ]
+}

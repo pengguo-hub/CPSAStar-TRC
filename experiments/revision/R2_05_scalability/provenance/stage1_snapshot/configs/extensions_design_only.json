@@ -1,0 +1,227 @@
+{
+  "executable": false,
+  "gate": "not_run",
+  "native_fleet": [
+    10,
+    30,
+    50
+  ],
+  "native_fleet_supply": "original_3000_queued_at_t0",
+  "seed_start": 1001,
+  "seeds": 5,
+  "horizon": 500,
+  "warmup": 0,
+  "trial_wall_timeout": null,
+  "max_expand_enabled": false,
+  "open_input_cases": [
+    {
+      "name": "A_open_base",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "tiles": 1,
+      "axes": [
+        "map_fixed_fleet",
+        "map_fixed_density",
+        "arrival_rate"
+      ],
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false,
+      "previous_hotspot_probability": 0.5,
+      "od_protocol": "original_generator_order_plus_tile_offsets_pending_validation",
+      "arrival_adapter_status": "not_implemented; original empty-queue break requires explicit outer-loop handling",
+      "task_distribution_note": "Do not carry over old 0.5 station-concentration mixture; original stations are sampled uniformly."
+    },
+    {
+      "name": "A_map2_fixed",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "tiles": 2,
+      "axes": [
+        "map_fixed_fleet"
+      ],
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false,
+      "previous_hotspot_probability": 0.5,
+      "od_protocol": "original_generator_order_plus_tile_offsets_pending_validation",
+      "arrival_adapter_status": "not_implemented; original empty-queue break requires explicit outer-loop handling",
+      "task_distribution_note": "Do not carry over old 0.5 station-concentration mixture; original stations are sampled uniformly."
+    },
+    {
+      "name": "A_map2_density",
+      "map": "STANDARD",
+      "fleet": 120,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 2.0,
+      "tiles": 2,
+      "axes": [
+        "map_fixed_density"
+      ],
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false,
+      "previous_hotspot_probability": 0.5,
+      "od_protocol": "original_generator_order_plus_tile_offsets_pending_validation",
+      "arrival_adapter_status": "not_implemented; original empty-queue break requires explicit outer-loop handling",
+      "task_distribution_note": "Do not carry over old 0.5 station-concentration mixture; original stations are sampled uniformly."
+    },
+    {
+      "name": "A_map3_fixed",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "tiles": 3,
+      "axes": [
+        "map_fixed_fleet"
+      ],
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false,
+      "previous_hotspot_probability": 0.5,
+      "od_protocol": "original_generator_order_plus_tile_offsets_pending_validation",
+      "arrival_adapter_status": "not_implemented; original empty-queue break requires explicit outer-loop handling",
+      "task_distribution_note": "Do not carry over old 0.5 station-concentration mixture; original stations are sampled uniformly."
+    },
+    {
+      "name": "A_map3_density",
+      "map": "STANDARD",
+      "fleet": 270,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 4.5,
+      "tiles": 3,
+      "axes": [
+        "map_fixed_density"
+      ],
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false,
+      "previous_hotspot_probability": 0.5,
+      "od_protocol": "original_generator_order_plus_tile_offsets_pending_validation",
+      "arrival_adapter_status": "not_implemented; original empty-queue break requires explicit outer-loop handling",
+      "task_distribution_note": "Do not carry over old 0.5 station-concentration mixture; original stations are sampled uniformly."
+    },
+    {
+      "name": "A_rate0.25",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 0.25,
+      "tiles": 1,
+      "axes": [
+        "arrival_rate"
+      ],
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false,
+      "previous_hotspot_probability": 0.5,
+      "od_protocol": "original_generator_order_plus_tile_offsets_pending_validation",
+      "arrival_adapter_status": "not_implemented; original empty-queue break requires explicit outer-loop handling",
+      "task_distribution_note": "Do not carry over old 0.5 station-concentration mixture; original stations are sampled uniformly."
+    },
+    {
+      "name": "A_rate1",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 1.0,
+      "tiles": 1,
+      "axes": [
+        "arrival_rate"
+      ],
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false,
+      "previous_hotspot_probability": 0.5,
+      "od_protocol": "original_generator_order_plus_tile_offsets_pending_validation",
+      "arrival_adapter_status": "not_implemented; original empty-queue break requires explicit outer-loop handling",
+      "task_distribution_note": "Do not carry over old 0.5 station-concentration mixture; original stations are sampled uniformly."
+    },
+    {
+      "name": "A_rate2",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 2.0,
+      "tiles": 1,
+      "axes": [
+        "arrival_rate"
+      ],
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false,
+      "previous_hotspot_probability": 0.5,
+      "od_protocol": "original_generator_order_plus_tile_offsets_pending_validation",
+      "arrival_adapter_status": "not_implemented; original empty-queue break requires explicit outer-loop handling",
+      "task_distribution_note": "Do not carry over old 0.5 station-concentration mixture; original stations are sampled uniformly."
+    },
+    {
+      "name": "B_traffic_dispersed",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": null,
+      "tiles": 1,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "od_protocol": "matched_couplings_v1",
+      "traffic_coupling": "dispersed",
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false
+    },
+    {
+      "name": "B_traffic_intermediate",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": null,
+      "tiles": 1,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "od_protocol": "matched_couplings_v1",
+      "traffic_coupling": "intermediate",
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false
+    },
+    {
+      "name": "B_traffic_shared",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": null,
+      "tiles": 1,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "od_protocol": "matched_couplings_v1",
+      "traffic_coupling": "shared",
+      "status": "blocked_pending_native_baseline_and_input_adapter_validation",
+      "executable": false
+    }
+  ],
+  "note": "11 open-input conditions cannot share results with the 3 original backlogged fleet conditions. No arrival adapter has been connected. No formal trial has been executed."
+}

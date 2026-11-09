@@ -1,0 +1,3 @@
+Data checks: PASS
+Figures written to: /workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_02_representation/supplied_CI/figures
+Tables written to: /workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_02_representation/supplied_CI/tables

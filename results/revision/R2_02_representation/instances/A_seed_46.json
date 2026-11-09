@@ -1,0 +1,1411 @@
+{
+  "map": "A",
+  "seed": 46,
+  "task_seed": 2486186472,
+  "tasks": [
+    {
+      "task_id": 1,
+      "agv_id": "TASK-0001",
+      "agv_position": [
+        3,
+        5
+      ],
+      "source": [
+        14,
+        3
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 2,
+      "agv_id": "TASK-0002",
+      "agv_position": [
+        1,
+        10
+      ],
+      "source": [
+        8,
+        6
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 3,
+      "agv_id": "TASK-0003",
+      "agv_position": [
+        14,
+        1
+      ],
+      "source": [
+        5,
+        0
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 4,
+      "agv_id": "TASK-0004",
+      "agv_position": [
+        15,
+        7
+      ],
+      "source": [
+        14,
+        2
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 5,
+      "agv_id": "TASK-0005",
+      "agv_position": [
+        2,
+        7
+      ],
+      "source": [
+        2,
+        6
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 6,
+      "agv_id": "TASK-0006",
+      "agv_position": [
+        8,
+        5
+      ],
+      "source": [
+        12,
+        1
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 7,
+      "agv_id": "TASK-0007",
+      "agv_position": [
+        2,
+        10
+      ],
+      "source": [
+        6,
+        2
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 8,
+      "agv_id": "TASK-0008",
+      "agv_position": [
+        8,
+        3
+      ],
+      "source": [
+        14,
+        9
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 9,
+      "agv_id": "TASK-0009",
+      "agv_position": [
+        9,
+        0
+      ],
+      "source": [
+        2,
+        6
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 10,
+      "agv_id": "TASK-0010",
+      "agv_position": [
+        0,
+        0
+      ],
+      "source": [
+        10,
+        9
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 11,
+      "agv_id": "TASK-0011",
+      "agv_position": [
+        0,
+        1
+      ],
+      "source": [
+        2,
+        6
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 12,
+      "agv_id": "TASK-0012",
+      "agv_position": [
+        0,
+        2
+      ],
+      "source": [
+        3,
+        10
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 13,
+      "agv_id": "TASK-0013",
+      "agv_position": [
+        14,
+        7
+      ],
+      "source": [
+        7,
+        5
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 14,
+      "agv_id": "TASK-0014",
+      "agv_position": [
+        13,
+        10
+      ],
+      "source": [
+        8,
+        1
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 15,
+      "agv_id": "TASK-0015",
+      "agv_position": [
+        10,
+        3
+      ],
+      "source": [
+        10,
+        9
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 16,
+      "agv_id": "TASK-0016",
+      "agv_position": [
+        8,
+        8
+      ],
+      "source": [
+        10,
+        3
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 17,
+      "agv_id": "TASK-0017",
+      "agv_position": [
+        4,
+        6
+      ],
+      "source": [
+        4,
+        3
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 18,
+      "agv_id": "TASK-0018",
+      "agv_position": [
+        2,
+        9
+      ],
+      "source": [
+        14,
+        7
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 19,
+      "agv_id": "TASK-0019",
+      "agv_position": [
+        10,
+        2
+      ],
+      "source": [
+        9,
+        10
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 20,
+      "agv_id": "TASK-0020",
+      "agv_position": [
+        2,
+        4
+      ],
+      "source": [
+        4,
+        6
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 21,
+      "agv_id": "TASK-0021",
+      "agv_position": [
+        4,
+        9
+      ],
+      "source": [
+        10,
+        2
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 22,
+      "agv_id": "TASK-0022",
+      "agv_position": [
+        13,
+        5
+      ],
+      "source": [
+        6,
+        7
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 23,
+      "agv_id": "TASK-0023",
+      "agv_position": [
+        12,
+        3
+      ],
+      "source": [
+        12,
+        9
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 24,
+      "agv_id": "TASK-0024",
+      "agv_position": [
+        2,
+        5
+      ],
+      "source": [
+        4,
+        3
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 25,
+      "agv_id": "TASK-0025",
+      "agv_position": [
+        12,
+        7
+      ],
+      "source": [
+        8,
+        8
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 26,
+      "agv_id": "TASK-0026",
+      "agv_position": [
+        5,
+        5
+      ],
+      "source": [
+        4,
+        6
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 27,
+      "agv_id": "TASK-0027",
+      "agv_position": [
+        0,
+        10
+      ],
+      "source": [
+        14,
+        1
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 28,
+      "agv_id": "TASK-0028",
+      "agv_position": [
+        8,
+        0
+      ],
+      "source": [
+        9,
+        0
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 29,
+      "agv_id": "TASK-0029",
+      "agv_position": [
+        2,
+        1
+      ],
+      "source": [
+        6,
+        6
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 30,
+      "agv_id": "TASK-0030",
+      "agv_position": [
+        12,
+        5
+      ],
+      "source": [
+        0,
+        1
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 31,
+      "agv_id": "TASK-0031",
+      "agv_position": [
+        9,
+        10
+      ],
+      "source": [
+        3,
+        5
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 32,
+      "agv_id": "TASK-0032",
+      "agv_position": [
+        10,
+        6
+      ],
+      "source": [
+        8,
+        8
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 33,
+      "agv_id": "TASK-0033",
+      "agv_position": [
+        2,
+        8
+      ],
+      "source": [
+        8,
+        2
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 34,
+      "agv_id": "TASK-0034",
+      "agv_position": [
+        12,
+        0
+      ],
+      "source": [
+        6,
+        4
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 35,
+      "agv_id": "TASK-0035",
+      "agv_position": [
+        0,
+        6
+      ],
+      "source": [
+        0,
+        1
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 36,
+      "agv_id": "TASK-0036",
+      "agv_position": [
+        3,
+        10
+      ],
+      "source": [
+        10,
+        8
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 37,
+      "agv_id": "TASK-0037",
+      "agv_position": [
+        7,
+        10
+      ],
+      "source": [
+        4,
+        1
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 38,
+      "agv_id": "TASK-0038",
+      "agv_position": [
+        11,
+        5
+      ],
+      "source": [
+        10,
+        6
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 39,
+      "agv_id": "TASK-0039",
+      "agv_position": [
+        6,
+        10
+      ],
+      "source": [
+        10,
+        1
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 40,
+      "agv_id": "TASK-0040",
+      "agv_position": [
+        6,
+        9
+      ],
+      "source": [
+        6,
+        8
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 41,
+      "agv_id": "TASK-0041",
+      "agv_position": [
+        0,
+        3
+      ],
+      "source": [
+        8,
+        8
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 42,
+      "agv_id": "TASK-0042",
+      "agv_position": [
+        15,
+        2
+      ],
+      "source": [
+        2,
+        9
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 43,
+      "agv_id": "TASK-0043",
+      "agv_position": [
+        11,
+        0
+      ],
+      "source": [
+        0,
+        3
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 44,
+      "agv_id": "TASK-0044",
+      "agv_position": [
+        6,
+        3
+      ],
+      "source": [
+        2,
+        8
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 45,
+      "agv_id": "TASK-0045",
+      "agv_position": [
+        15,
+        3
+      ],
+      "source": [
+        14,
+        8
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 46,
+      "agv_id": "TASK-0046",
+      "agv_position": [
+        10,
+        5
+      ],
+      "source": [
+        14,
+        4
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 47,
+      "agv_id": "TASK-0047",
+      "agv_position": [
+        5,
+        0
+      ],
+      "source": [
+        12,
+        1
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 48,
+      "agv_id": "TASK-0048",
+      "agv_position": [
+        15,
+        6
+      ],
+      "source": [
+        10,
+        1
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 49,
+      "agv_id": "TASK-0049",
+      "agv_position": [
+        14,
+        10
+      ],
+      "source": [
+        8,
+        7
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 50,
+      "agv_id": "TASK-0050",
+      "agv_position": [
+        4,
+        8
+      ],
+      "source": [
+        14,
+        3
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 51,
+      "agv_id": "TASK-0051",
+      "agv_position": [
+        14,
+        8
+      ],
+      "source": [
+        9,
+        0
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 52,
+      "agv_id": "TASK-0052",
+      "agv_position": [
+        6,
+        6
+      ],
+      "source": [
+        14,
+        2
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 53,
+      "agv_id": "TASK-0053",
+      "agv_position": [
+        6,
+        7
+      ],
+      "source": [
+        10,
+        4
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 54,
+      "agv_id": "TASK-0054",
+      "agv_position": [
+        2,
+        0
+      ],
+      "source": [
+        0,
+        3
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 55,
+      "agv_id": "TASK-0055",
+      "agv_position": [
+        4,
+        3
+      ],
+      "source": [
+        8,
+        3
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 56,
+      "agv_id": "TASK-0056",
+      "agv_position": [
+        15,
+        4
+      ],
+      "source": [
+        13,
+        10
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "emergency",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 57,
+      "agv_id": "TASK-0057",
+      "agv_position": [
+        12,
+        2
+      ],
+      "source": [
+        0,
+        2
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 58,
+      "agv_id": "TASK-0058",
+      "agv_position": [
+        12,
+        1
+      ],
+      "source": [
+        6,
+        9
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 59,
+      "agv_id": "TASK-0059",
+      "agv_position": [
+        15,
+        5
+      ],
+      "source": [
+        10,
+        1
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 60,
+      "agv_id": "TASK-0060",
+      "agv_position": [
+        10,
+        1
+      ],
+      "source": [
+        8,
+        6
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 61,
+      "agv_id": "TASK-0061",
+      "agv_position": [
+        12,
+        9
+      ],
+      "source": [
+        12,
+        6
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 62,
+      "agv_id": "TASK-0062",
+      "agv_position": [
+        10,
+        10
+      ],
+      "source": [
+        2,
+        8
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 63,
+      "agv_id": "TASK-0063",
+      "agv_position": [
+        8,
+        2
+      ],
+      "source": [
+        9,
+        0
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 64,
+      "agv_id": "TASK-0064",
+      "agv_position": [
+        8,
+        4
+      ],
+      "source": [
+        10,
+        8
+      ],
+      "destination": [
+        15,
+        5
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 65,
+      "agv_id": "TASK-0065",
+      "agv_position": [
+        4,
+        5
+      ],
+      "source": [
+        5,
+        5
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 66,
+      "agv_id": "TASK-0066",
+      "agv_position": [
+        4,
+        7
+      ],
+      "source": [
+        12,
+        4
+      ],
+      "destination": [
+        15,
+        3
+      ],
+      "constraints": {
+        "priority": "high",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 67,
+      "agv_id": "TASK-0067",
+      "agv_position": [
+        7,
+        0
+      ],
+      "source": [
+        14,
+        2
+      ],
+      "destination": [
+        15,
+        6
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 68,
+      "agv_id": "TASK-0068",
+      "agv_position": [
+        14,
+        0
+      ],
+      "source": [
+        7,
+        10
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 69,
+      "agv_id": "TASK-0069",
+      "agv_position": [
+        4,
+        0
+      ],
+      "source": [
+        0,
+        8
+      ],
+      "destination": [
+        15,
+        7
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    },
+    {
+      "task_id": 70,
+      "agv_id": "TASK-0070",
+      "agv_position": [
+        6,
+        4
+      ],
+      "source": [
+        10,
+        2
+      ],
+      "destination": [
+        15,
+        4
+      ],
+      "constraints": {
+        "priority": "normal",
+        "time_limit": null
+      }
+    }
+  ],
+  "task_pool_hash": "6a1d4e2a7e2f021a31d12e6497e61ddfa120bcfc988902772e9c20b21746e69f",
+  "task_order_rule": "stable priority descending; deadlines=None",
+  "protocol_note": "Direct one-shot planning from an empty reservation table.",
+  "instance_config_hash": "c2e17c185f0c7ae2214c7e80c87b9e9a1f93d07544b57ca7f17314657ac97a6c"
+}

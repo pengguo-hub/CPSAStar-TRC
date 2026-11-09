@@ -1,0 +1,32 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/tests/test_incremental.py
++++ experiments/revision/R2_07_factorial_ablation/tests/test_incremental.py
+@@ -1,13 +1,13 @@
+ import contextlib,io,itertools,unittest,ast
+ import numpy as np
+ import pandas as pd
+-from CPS_A_lifelong.path_planner_lifelong import LifelongPlanner
+-from CPS_A_lifelong.Conflict_Field_Updater import ConflictFieldUpdater
+-from CPS_A_lifelong.Ticket_Manager import TicketManager
+-from CPS_A_lifelong.Segment_Planner import SegmentPlanner
+-from workload import grid_for,build_workload,case,plan_cases,variants,BASELINE,ROOT
+-from observations import Recorder
+-from analysis import paired,holm,definitions,seed_contrasts
++from experiments.revision.R2_07_factorial_ablation.CPS_A_lifelong.path_planner_lifelong import LifelongPlanner
++from experiments.revision.R2_07_factorial_ablation.CPS_A_lifelong.Conflict_Field_Updater import ConflictFieldUpdater
++from experiments.revision.R2_07_factorial_ablation.CPS_A_lifelong.Ticket_Manager import TicketManager
++from experiments.revision.R2_07_factorial_ablation.CPS_A_lifelong.Segment_Planner import SegmentPlanner
++from experiments.revision.R2_07_factorial_ablation.workload import grid_for, build_workload, case, plan_cases, variants, BASELINE, ROOT
++from experiments.revision.R2_07_factorial_ablation.observations import Recorder
++from experiments.revision.R2_07_factorial_ablation.analysis import paired, holm, definitions, seed_contrasts
+ 
+ class Checks(unittest.TestCase):
+  def fixture(self):
+@@ -78,7 +78,7 @@
+   df=pd.DataFrame([dict(variant=v['name'],seed=1,workload_hash=v['name'],eligible=True,y=1.) for v in variants()])
+   self.assertFalse(seed_contrasts(df,{'seeds':[1]},'y',definitions(variants())[0][2])[0]['eligible'])
+  def test_smoke_cannot_create_formal_response(self):
+-  from make_response import require_formal
++  from experiments.revision.R2_07_factorial_ablation.make_response import require_formal
+   with self.assertRaises(AssertionError):require_formal({'smoke':True},{'eligible_trials':16})
+  def test_small_sample_and_multiple_testing(self):
+   self.assertEqual(paired([0,0,0],'zero',100)['p_value'],1)

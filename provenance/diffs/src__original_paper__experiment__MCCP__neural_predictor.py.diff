@@ -1,0 +1,420 @@
+--- 20-experiment.zip::experiment/MCCP/neural_predictor.py
++++ src/original_paper/experiment/MCCP/neural_predictor.py
+@@ -1,209 +1,209 @@
+-import torch
+-import torch.nn as nn
+-import torch.nn.functional as F
+-import numpy as np
+-from collections import defaultdict
+-from typing import Dict, List, Tuple, Optional
+-# 获取当前脚本所在的绝对路径
+-import os
+-import sys
+-current_dir = os.path.dirname(os.path.abspath(__file__))
+-# 确保当前目录在系统搜索路径中
+-if current_dir not in sys.path:
+-    sys.path.insert(0, current_dir)
+-# 然后再进行原本的导入
+-from .utils import gaussian_2d
+-
+-
+-# ---------- 傅里叶卷积层（含双路径相加 + GELU）----------
+-class FourierConvLayer(nn.Module):
+-    """
+-    符合论文图1的傅里叶卷积层：
+-    - 输入 x
+-    - 路径1：傅里叶频域处理（FFT → 可学习频域滤波 → IFFT）
+-    - 路径2：常规卷积（Conv2d, kernel=3, padding=1）
+-    - 两路输出相加，然后经过 GELU 激活
+-    """
+-    def __init__(self, in_channels, out_channels, modes1=None, modes2=None):
+-        super().__init__()
+-        self.in_channels = in_channels
+-        self.out_channels = out_channels
+-        self.modes1 = modes1
+-        self.modes2 = modes2
+-
+-        # 傅里叶路径：频域可学习复数权重
+-        scale = 1 / (in_channels * out_channels)
+-        self.weights = nn.Parameter(
+-            scale * torch.randn(out_channels, in_channels, modes1 or 1, modes2 or 1, dtype=torch.cfloat)
+-        )
+-
+-        # 常规卷积路径
+-        self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1)
+-
+-        # 激活函数（GELU）
+-        self.act = nn.GELU()
+-
+-    def forward(self, x):
+-        """
+-        x: (batch, in_channels, H, W)
+-        """
+-        batch, c, h, w = x.shape
+-
+-        # ----- 傅里叶路径 -----
+-        # 实数FFT
+-        x_fft = torch.fft.rfft2(x)  # (batch, in_channels, H, W//2+1)
+-
+-        # 频域截断（保留低频模态）
+-        modes1 = min(self.modes1, h) if self.modes1 else h
+-        modes2 = min(self.modes2, w//2+1) if self.modes2 else w//2+1
+-        x_fft_cut = x_fft[:, :, :modes1, :modes2]  # (batch, in_channels, modes1, modes2)
+-
+-        # 频域线性变换（爱因斯坦求和）
+-        weight = self.weights[None, :, :, :, :]  # (1, out_channels, in_channels, modes1, modes2)
+-        output_fft = torch.einsum("b i k l, o i k l -> b o k l", x_fft_cut, weight[0])
+-
+-        # 补零恢复原尺寸
+-        output_fft_pad = torch.zeros(batch, self.out_channels, h, w//2+1, dtype=torch.cfloat, device=x.device)
+-        output_fft_pad[:, :, :modes1, :modes2] = output_fft
+-
+-        # 逆FFT回到空间域
+-        x_fourier = torch.fft.irfft2(output_fft_pad, s=(h, w))  # (batch, out_channels, H, W)
+-
+-        # ----- 常规卷积路径 -----
+-        x_conv = self.conv(x)  # (batch, out_channels, H, W)
+-
+-        # ----- 相加并激活 -----
+-        out = self.act(x_fourier + x_conv)
+-        return out
+-
+-
+-# ---------- 完整神经网络（严格按论文图1）----------
+-class NeuralCongestionPredictor(nn.Module):
+-    """
+-    严格按论文 Figure 1 设计的神经网络：
+-    - 输入层：接受初始密度场 u0 (H,W)、空间坐标 (x,y) 和时间 t（拼接成4通道）
+-    - 提升层：用 1x1 卷积将 4 维提升到 hidden_dim
+-    - 四个重复的 FourierConvLayer（每个内部含双路径相加+GELU）
+-    - 投影层：两个 1x1 卷积（FC1 和 FC2）中间加激活，降维到 1 通道输出
+-    """
+-    def __init__(self, grid_height, grid_width, hidden_dim=32, modes1=None, modes2=None):
+-        super().__init__()
+-        self.H = grid_height
+-        self.W = grid_width
+-        self.hidden_dim = hidden_dim
+-
+-        # 提升层：1x1 卷积将4通道升维到 hidden_dim
+-        self.lifting = nn.Conv2d(4, hidden_dim, kernel_size=1)
+-
+-        # 四个傅里叶卷积层（保持通道数不变）
+-        self.fourier_conv1 = FourierConvLayer(hidden_dim, hidden_dim, modes1, modes2)
+-        self.fourier_conv2 = FourierConvLayer(hidden_dim, hidden_dim, modes1, modes2)
+-        self.fourier_conv3 = FourierConvLayer(hidden_dim, hidden_dim, modes1, modes2)
+-        self.fourier_conv4 = FourierConvLayer(hidden_dim, hidden_dim, modes1, modes2)
+-
+-        # 投影层：两个 1x1 卷积（相当于全连接）
+-        self.proj1 = nn.Conv2d(hidden_dim, hidden_dim, kernel_size=1)
+-        self.proj_act = nn.GELU()  # 论文中使用GELU，也可保持ReLU，但GELU更常见
+-        self.proj2 = nn.Conv2d(hidden_dim, 1, kernel_size=1)
+-
+-    def forward(self, u0, t):
+-        """
+-        u0: (batch, 1, H, W) 初始密度场
+-        t: (batch,) 或 (batch,1) 归一化时间
+-        """
+-        batch = u0.shape[0]
+-
+-        # 生成归一化坐标网格 (x,y) ∈ [0,1]
+-        x = torch.linspace(0, 1, self.W, device=u0.device)
+-        y = torch.linspace(0, 1, self.H, device=u0.device)
+-        grid_y, grid_x = torch.meshgrid(y, x, indexing='ij')
+-        grid_x = grid_x.unsqueeze(0).expand(batch, -1, -1)  # (B, H, W)
+-        grid_y = grid_y.unsqueeze(0).expand(batch, -1, -1)
+-
+-        # 扩展 t 到网格形状
+-        if t.dim() == 1:
+-            t = t.view(-1, 1, 1).expand(-1, self.H, self.W)
+-        else:
+-            t = t.view(batch, 1, 1).expand(-1, self.H, self.W)
+-
+-        # 拼接输入 (B, 4, H, W)
+-        inp = torch.cat([u0, grid_x.unsqueeze(1), grid_y.unsqueeze(1), t.unsqueeze(1)], dim=1)
+-
+-        # 提升层
+-        x = self.lifting(inp)  # (B, hidden, H, W)
+-
+-        # 四个傅里叶卷积层（顺序执行）
+-        x = self.fourier_conv1(x)
+-        x = self.fourier_conv2(x)
+-        x = self.fourier_conv3(x)
+-        x = self.fourier_conv4(x)
+-
+-        # 投影层
+-        x = self.proj1(x)
+-        x = self.proj_act(x)
+-        out = self.proj2(x)  # (B, 1, H, W)
+-
+-        return F.relu(out)
+-        # return out
+-
+-    def predict(self, u0_np: np.ndarray, t_norm: float) -> np.ndarray:
+-        """单次预测接口"""
+-        self.eval()
+-
+-        # 1. 获取模型所在的设备 (cpu 或 cuda:0)
+-        # next(self.parameters()) 获取模型的第一个参数，.device 获取其所在设备
+-        device = next(self.parameters()).device
+-
+-        with torch.no_grad():
+-            # 2. 创建张量并立即移动到对应设备
+-            # 原代码: u0_t = torch.from_numpy(u0_np).float().unsqueeze(0).unsqueeze(0)
+-            u0_t = torch.from_numpy(u0_np).float().unsqueeze(0).unsqueeze(0).to(device)
+-            # 原代码: t_t = torch.tensor([t_norm]).float()
+-            t_t = torch.tensor([t_norm]).float().to(device)
+-            # 3. 此时输入和模型都在同一设备，可以安全运行
+-            pred = self.forward(u0_t, t_t).squeeze().cpu().numpy()  # 输出转回 CPU 用于后续处理
+-
+-        return pred
+-
+-
+-# ---------- 包装类（与之前相同）----------
+-class NeuralPredictorWrapper:
+-    def __init__(self, grid, model_path: str = None):
+-        self.grid = grid
+-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+-        self.model = NeuralCongestionPredictor(grid.height, grid.width).to(self.device)
+-        if model_path:
+-            self.model.load_state_dict(torch.load(model_path, map_location=self.device, weights_only=True))
+-        self.model.eval()
+-        self.density_field = {}
+-
+-    def _build_initial_field(self, tasks: List[Dict]) -> np.ndarray:
+-        # 初始信息u0
+-        field = np.zeros((self.grid.height, self.grid.width))
+-        sigma = 0.8
+-        for task in tasks:
+-            x0, y0 = task['start']
+-            for ix in range(max(0, int(x0 - 3*sigma)), min(self.grid.width, int(x0 + 3*sigma) + 1)):
+-                for iy in range(max(0, int(y0 - 3*sigma)), min(self.grid.height, int(y0 + 3*sigma) + 1)):
+-                    w = gaussian_2d(ix, iy, x0, y0, sigma)
+-                    field[iy, ix] += w
+-        if len(tasks) > 0:
+-            field /= len(tasks)
+-        return field
+-
+-    def future_predict(self, tasks: List[Dict], T: int) -> Dict[Tuple[int, int, int], float]:
+-        #先调用predictor.predict(tasks, T)生成未来所有时间步的密度场，并存储在density_field字典中；然后规划器通过get_density_at(t, x, y)直接查询这个字典，无需再次传入u0。
+-        # print("____________________________________")
+-        u0 = self._build_initial_field(tasks)
+-        density = {}
+-        for t in range(T + 1):
+-            t_norm = t / T if T > 0 else 0
+-            pred = self.model.predict(u0, t_norm) # predictor.predict(tasks, T)
+-            for y in range(self.grid.height):
+-                for x in range(self.grid.width):
+-                    density[(t, x, y)] = pred[y, x]
+-        self.density_field = density
+-        return density
+-
+-    def get_density_at(self, t: int, x: int, y: int) -> float:
++import torch
++import torch.nn as nn
++import torch.nn.functional as F
++import numpy as np
++from collections import defaultdict
++from typing import Dict, List, Tuple, Optional
++# 获取当前脚本所在的绝对路径
++import os
++import sys
++current_dir = os.path.dirname(os.path.abspath(__file__))
++# 确保当前目录在系统搜索路径中
++if current_dir not in sys.path:
++    pass  # Package imports replace process-wide import-path mutation.
++# 然后再进行原本的导入
++from .utils import gaussian_2d
++
++
++# ---------- 傅里叶卷积层（含双路径相加 + GELU）----------
++class FourierConvLayer(nn.Module):
++    """
++    符合论文图1的傅里叶卷积层：
++    - 输入 x
++    - 路径1：傅里叶频域处理（FFT → 可学习频域滤波 → IFFT）
++    - 路径2：常规卷积（Conv2d, kernel=3, padding=1）
++    - 两路输出相加，然后经过 GELU 激活
++    """
++    def __init__(self, in_channels, out_channels, modes1=None, modes2=None):
++        super().__init__()
++        self.in_channels = in_channels
++        self.out_channels = out_channels
++        self.modes1 = modes1
++        self.modes2 = modes2
++
++        # 傅里叶路径：频域可学习复数权重
++        scale = 1 / (in_channels * out_channels)
++        self.weights = nn.Parameter(
++            scale * torch.randn(out_channels, in_channels, modes1 or 1, modes2 or 1, dtype=torch.cfloat)
++        )
++
++        # 常规卷积路径
++        self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1)
++
++        # 激活函数（GELU）
++        self.act = nn.GELU()
++
++    def forward(self, x):
++        """
++        x: (batch, in_channels, H, W)
++        """
++        batch, c, h, w = x.shape
++
++        # ----- 傅里叶路径 -----
++        # 实数FFT
++        x_fft = torch.fft.rfft2(x)  # (batch, in_channels, H, W//2+1)
++
++        # 频域截断（保留低频模态）
++        modes1 = min(self.modes1, h) if self.modes1 else h
++        modes2 = min(self.modes2, w//2+1) if self.modes2 else w//2+1
++        x_fft_cut = x_fft[:, :, :modes1, :modes2]  # (batch, in_channels, modes1, modes2)
++
++        # 频域线性变换（爱因斯坦求和）
++        weight = self.weights[None, :, :, :, :]  # (1, out_channels, in_channels, modes1, modes2)
++        output_fft = torch.einsum("b i k l, o i k l -> b o k l", x_fft_cut, weight[0])
++
++        # 补零恢复原尺寸
++        output_fft_pad = torch.zeros(batch, self.out_channels, h, w//2+1, dtype=torch.cfloat, device=x.device)
++        output_fft_pad[:, :, :modes1, :modes2] = output_fft
++
++        # 逆FFT回到空间域
++        x_fourier = torch.fft.irfft2(output_fft_pad, s=(h, w))  # (batch, out_channels, H, W)
++
++        # ----- 常规卷积路径 -----
++        x_conv = self.conv(x)  # (batch, out_channels, H, W)
++
++        # ----- 相加并激活 -----
++        out = self.act(x_fourier + x_conv)
++        return out
++
++
++# ---------- 完整神经网络（严格按论文图1）----------
++class NeuralCongestionPredictor(nn.Module):
++    """
++    严格按论文 Figure 1 设计的神经网络：
++    - 输入层：接受初始密度场 u0 (H,W)、空间坐标 (x,y) 和时间 t（拼接成4通道）
++    - 提升层：用 1x1 卷积将 4 维提升到 hidden_dim
++    - 四个重复的 FourierConvLayer（每个内部含双路径相加+GELU）
++    - 投影层：两个 1x1 卷积（FC1 和 FC2）中间加激活，降维到 1 通道输出
++    """
++    def __init__(self, grid_height, grid_width, hidden_dim=32, modes1=None, modes2=None):
++        super().__init__()
++        self.H = grid_height
++        self.W = grid_width
++        self.hidden_dim = hidden_dim
++
++        # 提升层：1x1 卷积将4通道升维到 hidden_dim
++        self.lifting = nn.Conv2d(4, hidden_dim, kernel_size=1)
++
++        # 四个傅里叶卷积层（保持通道数不变）
++        self.fourier_conv1 = FourierConvLayer(hidden_dim, hidden_dim, modes1, modes2)
++        self.fourier_conv2 = FourierConvLayer(hidden_dim, hidden_dim, modes1, modes2)
++        self.fourier_conv3 = FourierConvLayer(hidden_dim, hidden_dim, modes1, modes2)
++        self.fourier_conv4 = FourierConvLayer(hidden_dim, hidden_dim, modes1, modes2)
++
++        # 投影层：两个 1x1 卷积（相当于全连接）
++        self.proj1 = nn.Conv2d(hidden_dim, hidden_dim, kernel_size=1)
++        self.proj_act = nn.GELU()  # 论文中使用GELU，也可保持ReLU，但GELU更常见
++        self.proj2 = nn.Conv2d(hidden_dim, 1, kernel_size=1)
++
++    def forward(self, u0, t):
++        """
++        u0: (batch, 1, H, W) 初始密度场
++        t: (batch,) 或 (batch,1) 归一化时间
++        """
++        batch = u0.shape[0]
++
++        # 生成归一化坐标网格 (x,y) ∈ [0,1]
++        x = torch.linspace(0, 1, self.W, device=u0.device)
++        y = torch.linspace(0, 1, self.H, device=u0.device)
++        grid_y, grid_x = torch.meshgrid(y, x, indexing='ij')
++        grid_x = grid_x.unsqueeze(0).expand(batch, -1, -1)  # (B, H, W)
++        grid_y = grid_y.unsqueeze(0).expand(batch, -1, -1)
++
++        # 扩展 t 到网格形状
++        if t.dim() == 1:
++            t = t.view(-1, 1, 1).expand(-1, self.H, self.W)
++        else:
++            t = t.view(batch, 1, 1).expand(-1, self.H, self.W)
++
++        # 拼接输入 (B, 4, H, W)
++        inp = torch.cat([u0, grid_x.unsqueeze(1), grid_y.unsqueeze(1), t.unsqueeze(1)], dim=1)
++
++        # 提升层
++        x = self.lifting(inp)  # (B, hidden, H, W)
++
++        # 四个傅里叶卷积层（顺序执行）
++        x = self.fourier_conv1(x)
++        x = self.fourier_conv2(x)
++        x = self.fourier_conv3(x)
++        x = self.fourier_conv4(x)
++
++        # 投影层
++        x = self.proj1(x)
++        x = self.proj_act(x)
++        out = self.proj2(x)  # (B, 1, H, W)
++
++        return F.relu(out)
++        # return out
++
++    def predict(self, u0_np: np.ndarray, t_norm: float) -> np.ndarray:
++        """单次预测接口"""
++        self.eval()
++
++        # 1. 获取模型所在的设备 (cpu 或 cuda:0)
++        # next(self.parameters()) 获取模型的第一个参数，.device 获取其所在设备
++        device = next(self.parameters()).device
++
++        with torch.no_grad():
++            # 2. 创建张量并立即移动到对应设备
++            # 原代码: u0_t = torch.from_numpy(u0_np).float().unsqueeze(0).unsqueeze(0)
++            u0_t = torch.from_numpy(u0_np).float().unsqueeze(0).unsqueeze(0).to(device)
++            # 原代码: t_t = torch.tensor([t_norm]).float()
++            t_t = torch.tensor([t_norm]).float().to(device)
++            # 3. 此时输入和模型都在同一设备，可以安全运行
++            pred = self.forward(u0_t, t_t).squeeze().cpu().numpy()  # 输出转回 CPU 用于后续处理
++
++        return pred
++
++
++# ---------- 包装类（与之前相同）----------
++class NeuralPredictorWrapper:
++    def __init__(self, grid, model_path: str = None):
++        self.grid = grid
++        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
++        self.model = NeuralCongestionPredictor(grid.height, grid.width).to(self.device)
++        if model_path:
++            self.model.load_state_dict(torch.load(model_path, map_location=self.device, weights_only=True))
++        self.model.eval()
++        self.density_field = {}
++
++    def _build_initial_field(self, tasks: List[Dict]) -> np.ndarray:
++        # 初始信息u0
++        field = np.zeros((self.grid.height, self.grid.width))
++        sigma = 0.8
++        for task in tasks:
++            x0, y0 = task['start']
++            for ix in range(max(0, int(x0 - 3*sigma)), min(self.grid.width, int(x0 + 3*sigma) + 1)):
++                for iy in range(max(0, int(y0 - 3*sigma)), min(self.grid.height, int(y0 + 3*sigma) + 1)):
++                    w = gaussian_2d(ix, iy, x0, y0, sigma)
++                    field[iy, ix] += w
++        if len(tasks) > 0:
++            field /= len(tasks)
++        return field
++
++    def future_predict(self, tasks: List[Dict], T: int) -> Dict[Tuple[int, int, int], float]:
++        #先调用predictor.predict(tasks, T)生成未来所有时间步的密度场，并存储在density_field字典中；然后规划器通过get_density_at(t, x, y)直接查询这个字典，无需再次传入u0。
++        # print("____________________________________")
++        u0 = self._build_initial_field(tasks)
++        density = {}
++        for t in range(T + 1):
++            t_norm = t / T if T > 0 else 0
++            pred = self.model.predict(u0, t_norm) # predictor.predict(tasks, T)
++            for y in range(self.grid.height):
++                for x in range(self.grid.width):
++                    density[(t, x, y)] = pred[y, x]
++        self.density_field = density
++        return density
++
++    def get_density_at(self, t: int, x: int, y: int) -> float:
+         return self.density_field.get((t, x, y), 0.0)

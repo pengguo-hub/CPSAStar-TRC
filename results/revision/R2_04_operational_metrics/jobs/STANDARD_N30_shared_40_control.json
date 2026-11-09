@@ -1,0 +1,24 @@
+{
+  "case": "STANDARD_N30_shared",
+  "seed": 40,
+  "variant": "control",
+  "purpose": "formal",
+  "code_hash": "c605b423f78d34aa1fd80def0aab5e34656fdbc0151f7ae8d592a564bda3fa07",
+  "condition": {
+    "name": "STANDARD_N30_shared",
+    "map": "STANDARD",
+    "fleet": 30,
+    "horizon": 500,
+    "mode": "backlogged",
+    "arrival_rate": null,
+    "concentration": null,
+    "od_mode": "shared",
+    "followup": 500,
+    "initial_backlog": 3000,
+    "tiles": 1,
+    "protocol": "R2_04_fixed_OD_backlog3000_v1"
+  },
+  "workload_hash": "8175a963ee90cec13f4ac755f22153a6b6a94348bcab304bdb8a65fe10ee2f22",
+  "workload_file": "/root/autodl-tmp/R2_04_OD_backlog_ready_to_run/results_od_formal/workloads/STANDARD_N30_shared_40.json",
+  "job_hash": "bd8c859b9c3235f4785cd97b0b219577d80f8468b90463a334d36f25a23df294"
+}

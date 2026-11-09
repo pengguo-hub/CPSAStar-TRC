@@ -1,0 +1,210 @@
+{
+  "horizon": 500,
+  "warmup": 0,
+  "seeds": [
+    901
+  ],
+  "cases": [
+    {
+      "name": "A_fleet30",
+      "map": "STANDARD",
+      "fleet": 30,
+      "tiles": 1,
+      "arrival_rate": null,
+      "mode": "backlogged",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "fleet"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_fleet10",
+      "map": "STANDARD",
+      "fleet": 10,
+      "tiles": 1,
+      "arrival_rate": null,
+      "mode": "backlogged",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "fleet"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_fleet50",
+      "map": "STANDARD",
+      "fleet": 50,
+      "tiles": 1,
+      "arrival_rate": null,
+      "mode": "backlogged",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "fleet"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_open_base",
+      "map": "STANDARD",
+      "fleet": 30,
+      "tiles": 1,
+      "arrival_rate": 0.5,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "map_fixed_fleet",
+        "map_fixed_density",
+        "arrival_rate"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_map2_fixed",
+      "map": "STANDARD",
+      "fleet": 30,
+      "tiles": 2,
+      "arrival_rate": 0.5,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "map_fixed_fleet"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_map3_fixed",
+      "map": "STANDARD",
+      "fleet": 30,
+      "tiles": 3,
+      "arrival_rate": 0.5,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "map_fixed_fleet"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_map2_density",
+      "map": "STANDARD",
+      "fleet": 120,
+      "tiles": 2,
+      "arrival_rate": 2.0,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "map_fixed_density"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_map3_density",
+      "map": "STANDARD",
+      "fleet": 270,
+      "tiles": 3,
+      "arrival_rate": 4.5,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "map_fixed_density"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_rate0.25",
+      "map": "STANDARD",
+      "fleet": 30,
+      "tiles": 1,
+      "arrival_rate": 0.25,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "arrival_rate"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_rate1.0",
+      "map": "STANDARD",
+      "fleet": 30,
+      "tiles": 1,
+      "arrival_rate": 1.0,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "arrival_rate"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "A_rate2.0",
+      "map": "STANDARD",
+      "fleet": 30,
+      "tiles": 1,
+      "arrival_rate": 2.0,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "arrival_rate"
+      ],
+      "traffic_coupling": null
+    },
+    {
+      "name": "B_traffic_dispersed",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "tiles": 1,
+      "arrival_rate": 0.5,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "traffic_coupling": "dispersed"
+    },
+    {
+      "name": "B_traffic_intermediate",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "tiles": 1,
+      "arrival_rate": 0.5,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "traffic_coupling": "intermediate"
+    },
+    {
+      "name": "B_traffic_shared",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "tiles": 1,
+      "arrival_rate": 0.5,
+      "mode": "poisson",
+      "horizon": 500,
+      "warmup": 0,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "traffic_coupling": "shared"
+    }
+  ],
+  "total_trials": 14,
+  "purpose": "validation only; not publication data",
+  "timeout": null
+}

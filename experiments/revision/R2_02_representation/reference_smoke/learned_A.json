@@ -1,0 +1,29 @@
+{
+  "map": "A",
+  "height": 11,
+  "width": 16,
+  "hidden": 24,
+  "calibration_seeds": [
+    10000,
+    10001
+  ],
+  "label_generator": "collision_only_controlled_planner",
+  "label_representation": "raw_occupancy",
+  "inputs": [
+    "current_task_start_count",
+    "current_task_pickup_count",
+    "current_task_destination_count",
+    "x",
+    "y",
+    "normalized_time",
+    "obstacle_mask"
+  ],
+  "gaussian_applied_after_prediction": true,
+  "reference_horizon": 256,
+  "samples_per_episode": 3,
+  "epochs": 1,
+  "train_seed": 20261022,
+  "final_train_loss": 0.214674174785614,
+  "final_val_loss": 0.2344319075345993,
+  "note": "Conditional learned prediction; test instances are never used for training."
+}

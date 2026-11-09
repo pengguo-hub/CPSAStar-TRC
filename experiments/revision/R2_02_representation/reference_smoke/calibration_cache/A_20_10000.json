@@ -1,0 +1,15 @@
+{
+  "identity": "6008b8e726cd175c49681d0192b9ca30480273bee9d9b8a050855d41a4e0fe02",
+  "map": "A",
+  "load": 20,
+  "calibration_seed": 10000,
+  "task_seed": 3603151001,
+  "task_hash": "404cb9d2447887f7233ce30e29772447b1711815f8b71b6d532490e90ea42b64",
+  "success_count": 19,
+  "task_count": 20,
+  "timed_out": false,
+  "generator": "collision_only_controlled_planner",
+  "rollback": "off",
+  "soft_congestion": "none",
+  "created_utc": "2026-10-22T10:22:37Z"
+}

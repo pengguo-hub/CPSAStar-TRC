@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite the associated manuscript. Publication metadata and license require author confirmation."
+title: "CPS-A*: public reproducibility archive"
+type: software
+authors:
+  - family-names: Guo
+    given-names: Peng
+  - family-names: Huang
+    given-names: Jun
+  - family-names: Jiang
+    given-names: Yuchen
+  - family-names: Xin
+    given-names: Jianbin
+  - family-names: "D'Ariano"
+    given-names: Andrea
+abstract: "Archive for Spatiotemporal Potential Field-Based Proactive Coordination for Large-Scale Congested Multi-AGV Systems, manuscript TRC-26-01887."

@@ -1,0 +1,307 @@
+{
+  "map_key": "STANDARD",
+  "task_count": 80,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "results": {
+    "CA*": {
+      "42": {
+        "planning_time": 0.2282,
+        "success_rate": 0.625,
+        "success_count": 50,
+        "total_tasks": 80,
+        "total_path_length": 1811,
+        "average_path_length": 36.22
+      },
+      "43": {
+        "planning_time": 0.1691,
+        "success_rate": 0.55,
+        "success_count": 44,
+        "total_tasks": 80,
+        "total_path_length": 1398,
+        "average_path_length": 31.7727
+      },
+      "44": {
+        "planning_time": 0.158,
+        "success_rate": 0.5625,
+        "success_count": 45,
+        "total_tasks": 80,
+        "total_path_length": 1388,
+        "average_path_length": 30.8444
+      },
+      "45": {
+        "planning_time": 0.1979,
+        "success_rate": 0.575,
+        "success_count": 46,
+        "total_tasks": 80,
+        "total_path_length": 1676,
+        "average_path_length": 36.4348
+      },
+      "46": {
+        "planning_time": 0.1871,
+        "success_rate": 0.6,
+        "success_count": 48,
+        "total_tasks": 80,
+        "total_path_length": 1616,
+        "average_path_length": 33.6667
+      }
+    },
+    "CPS-A*": {
+      "42": {
+        "planning_time": 3.4935,
+        "success_rate": 0.6,
+        "success_count": 48,
+        "total_tasks": 80,
+        "total_path_length": 1900,
+        "average_path_length": 39.5833
+      },
+      "43": {
+        "planning_time": 3.189,
+        "success_rate": 0.7125,
+        "success_count": 57,
+        "total_tasks": 80,
+        "total_path_length": 2296,
+        "average_path_length": 40.2807
+      },
+      "44": {
+        "planning_time": 3.0078,
+        "success_rate": 0.6375,
+        "success_count": 51,
+        "total_tasks": 80,
+        "total_path_length": 1714,
+        "average_path_length": 33.6078
+      },
+      "45": {
+        "planning_time": 3.6182,
+        "success_rate": 0.6625,
+        "success_count": 53,
+        "total_tasks": 80,
+        "total_path_length": 2371,
+        "average_path_length": 44.7358
+      },
+      "46": {
+        "planning_time": 3.3334,
+        "success_rate": 0.6375,
+        "success_count": 51,
+        "total_tasks": 80,
+        "total_path_length": 1996,
+        "average_path_length": 39.1373
+      }
+    },
+    "PBS": {
+      "42": {
+        "planning_time": 120.091,
+        "success_rate": 0.125,
+        "success_count": 10,
+        "total_tasks": 80,
+        "total_path_length": 159,
+        "average_path_length": 15.9
+      },
+      "43": {
+        "planning_time": 120.0788,
+        "success_rate": 0.15,
+        "success_count": 12,
+        "total_tasks": 80,
+        "total_path_length": 176,
+        "average_path_length": 14.6667
+      },
+      "44": {
+        "planning_time": 120.1212,
+        "success_rate": 0.1875,
+        "success_count": 15,
+        "total_tasks": 80,
+        "total_path_length": 266,
+        "average_path_length": 17.7333
+      },
+      "45": {
+        "planning_time": 120.1189,
+        "success_rate": 0.1625,
+        "success_count": 13,
+        "total_tasks": 80,
+        "total_path_length": 229,
+        "average_path_length": 17.6154
+      },
+      "46": {
+        "planning_time": 120.0602,
+        "success_rate": 0.1875,
+        "success_count": 15,
+        "total_tasks": 80,
+        "total_path_length": 227,
+        "average_path_length": 15.1333
+      }
+    },
+    "CBS": {
+      "42": {
+        "planning_time": 120.0704,
+        "success_rate": 0.225,
+        "success_count": 18,
+        "total_tasks": 80,
+        "total_path_length": 309,
+        "average_path_length": 17.1667
+      },
+      "43": {
+        "planning_time": 120.0672,
+        "success_rate": 0.2,
+        "success_count": 16,
+        "total_tasks": 80,
+        "total_path_length": 230,
+        "average_path_length": 14.375
+      },
+      "44": {
+        "planning_time": 120.7465,
+        "success_rate": 0.25,
+        "success_count": 20,
+        "total_tasks": 80,
+        "total_path_length": 340,
+        "average_path_length": 17.0
+      },
+      "45": {
+        "planning_time": 120.071,
+        "success_rate": 0.1875,
+        "success_count": 15,
+        "total_tasks": 80,
+        "total_path_length": 259,
+        "average_path_length": 17.2667
+      },
+      "46": {
+        "planning_time": 120.0645,
+        "success_rate": 0.2,
+        "success_count": 16,
+        "total_tasks": 80,
+        "total_path_length": 250,
+        "average_path_length": 15.625
+      }
+    },
+    "Q_Learning": {
+      "42": {
+        "planning_time": 172.8784,
+        "success_rate": 0.1125,
+        "success_count": 9,
+        "total_tasks": 80,
+        "total_path_length": 360,
+        "average_path_length": 40.0
+      },
+      "43": {
+        "planning_time": 145.6851,
+        "success_rate": 0.2625,
+        "success_count": 21,
+        "total_tasks": 80,
+        "total_path_length": 1147,
+        "average_path_length": 54.619
+      },
+      "44": {
+        "planning_time": 139.422,
+        "success_rate": 0.2875,
+        "success_count": 23,
+        "total_tasks": 80,
+        "total_path_length": 1373,
+        "average_path_length": 59.6957
+      },
+      "45": {
+        "planning_time": 174.003,
+        "success_rate": 0.2125,
+        "success_count": 17,
+        "total_tasks": 80,
+        "total_path_length": 958,
+        "average_path_length": 56.3529
+      },
+      "46": {
+        "planning_time": 127.847,
+        "success_rate": 0.1375,
+        "success_count": 11,
+        "total_tasks": 80,
+        "total_path_length": 508,
+        "average_path_length": 46.1818
+      }
+    },
+    "MCCP": {
+      "42": {
+        "planning_time": 0.5392,
+        "success_rate": 0.525,
+        "success_count": 42,
+        "total_tasks": 80,
+        "total_path_length": 1468,
+        "average_path_length": 34.9524
+      },
+      "43": {
+        "planning_time": 0.5584,
+        "success_rate": 0.625,
+        "success_count": 50,
+        "total_tasks": 80,
+        "total_path_length": 1741,
+        "average_path_length": 34.82
+      },
+      "44": {
+        "planning_time": 0.5528,
+        "success_rate": 0.575,
+        "success_count": 46,
+        "total_tasks": 80,
+        "total_path_length": 1511,
+        "average_path_length": 32.8478
+      },
+      "45": {
+        "planning_time": 0.616,
+        "success_rate": 0.6875,
+        "success_count": 55,
+        "total_tasks": 80,
+        "total_path_length": 2203,
+        "average_path_length": 40.0545
+      },
+      "46": {
+        "planning_time": 0.543,
+        "success_rate": 0.5625,
+        "success_count": 45,
+        "total_tasks": 80,
+        "total_path_length": 1562,
+        "average_path_length": 34.7111
+      }
+    },
+    "LaCAM2_Guided": {
+      "42": {
+        "planning_time": 78.6573,
+        "success_rate": 0.0,
+        "success_count": 0,
+        "total_tasks": 80,
+        "total_path_length": 0,
+        "average_path_length": 0
+      },
+      "43": {
+        "planning_time": 75.2399,
+        "success_rate": 0.0,
+        "success_count": 0,
+        "total_tasks": 80,
+        "total_path_length": 0,
+        "average_path_length": 0
+      },
+      "44": {
+        "planning_time": 80.5691,
+        "success_rate": 0.0,
+        "success_count": 0,
+        "total_tasks": 80,
+        "total_path_length": 0,
+        "average_path_length": 0
+      },
+      "45": {
+        "planning_time": 79.5095,
+        "success_rate": 0.0,
+        "success_count": 0,
+        "total_tasks": 80,
+        "total_path_length": 0,
+        "average_path_length": 0
+      },
+      "46": {
+        "planning_time": 77.5708,
+        "success_rate": 0.0,
+        "success_count": 0,
+        "total_tasks": 80,
+        "total_path_length": 0,
+        "average_path_length": 0
+      }
+    }
+  }
+}

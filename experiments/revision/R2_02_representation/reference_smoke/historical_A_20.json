@@ -1,0 +1,16 @@
+{
+  "map": "A",
+  "load": 20,
+  "calibration_seeds": [
+    10000,
+    10001
+  ],
+  "generator": "collision_only_controlled_planner",
+  "rollback": "off",
+  "soft_congestion": "none",
+  "value_semantics": "mean raw occupancy E[psi(x,y,t)] in occupancy-count units",
+  "gaussian_applied_at_test_time": true,
+  "reference_horizon": 256,
+  "calibration_success_rate": 0.975,
+  "calibration_timeout_count": 0
+}

@@ -1,0 +1,146 @@
+{
+  "all_valid": true,
+  "file_count": 15,
+  "page_count": 15,
+  "scope": "Author-supplied figures.zip; PDF opening and full-page rasterization only; no numerical or visual-design validation",
+  "files": [
+    {
+      "path": "figures/original_paper/lifelong/lifelong.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 2184864,
+      "sha256": "c65237e652ac20afca602769e30edce0ad610943851a0e4e21566f5e5082f17e"
+    },
+    {
+      "path": "figures/original_paper/one_shot/e1_mapa.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 28378,
+      "sha256": "18b8a09b5508afe1ed91e246f62a24372e7ea177f36281c8c8565f4a6e5278ee"
+    },
+    {
+      "path": "figures/original_paper/one_shot/e1_mapb.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 28922,
+      "sha256": "3d3f9fbfcd8e818ed4e5f24af22161aaf28e77400bf984275c10ab785f86454e"
+    },
+    {
+      "path": "figures/original_paper/one_shot/e1_mapc.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 27629,
+      "sha256": "3680f63f1df09e98839a18ad1a9b48cfbd22306612e8601c1541a7f9bac53437"
+    },
+    {
+      "path": "figures/original_paper/one_shot/legend.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 30649,
+      "sha256": "3fd091c11a76fade6529e5c36311448b7307a5b0ed0445ad27ccb370b172f026"
+    },
+    {
+      "path": "figures/revision/R1_03_dmin/R1.3.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 65521,
+      "sha256": "e68dc8ecad9f223a4d90b55e4f88f7295a128476d5df8047cfa2492492fd0375"
+    },
+    {
+      "path": "figures/revision/R1_05_06_gaussian/R1.5_1.6.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 971270,
+      "sha256": "82d9570acf5268059a15d4c233372ce34ee5ef4120d2c24a080f935f06f40356"
+    },
+    {
+      "path": "figures/revision/R1_07_08_delta/R1.7_1.8.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 32496,
+      "sha256": "ac95df85f21be9c3f2ba56fc7dd47ad55e4d380aa7777fe599b73bfa802b38c3"
+    },
+    {
+      "path": "figures/revision/R1_09_retry_limit/R1.9.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 45217,
+      "sha256": "5e2493bdbe05c6429720110f347a547d4fc4be921db9fd9680625393cf4864ca"
+    },
+    {
+      "path": "figures/revision/R2_03/R2.3.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 87283,
+      "sha256": "426cff48ac904838c408c699eea51fd1f9fa126ee1106a62df5b2658d696fa9c"
+    },
+    {
+      "path": "figures/revision/R2_04_operational_metrics/R2.4.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 82796,
+      "sha256": "426dfa858237faf3d60892d2413aede6ca2d99cfd6d7880df0655a61b27fc55c"
+    },
+    {
+      "path": "figures/revision/R2_04_operational_metrics/R2.4_congestion_exposure_effects.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 41586,
+      "sha256": "d4ab816597d9ab5aaaab22a7f6f817babd90429d5d70902555cc1d0a627286a8"
+    },
+    {
+      "path": "figures/revision/R2_04_operational_metrics/R2.4_full_control.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 39856,
+      "sha256": "424e0eb775ababaf239a2853d4c9a120b1a3da34b2f378c4a43f606157455e7d"
+    },
+    {
+      "path": "figures/revision/R2_05_scalability/R2.5.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 92930,
+      "sha256": "ce562f304c7d00be07d4fa6704254c8e59ab8f54e8a89c7c99a99fdd0fa98b07"
+    },
+    {
+      "path": "figures/revision/R2_07_factorial_ablation/R2.7.pdf",
+      "valid": true,
+      "error": null,
+      "page_count": 1,
+      "pages_rendered": 1,
+      "size_bytes": 32119,
+      "sha256": "ed1d6eb3c4d0377980431354b3bc784c6d3ac92ff3afe242e38b1459f3cb97ba"
+    }
+  ],
+  "png_repaired_from_regenerated_pdf": [],
+  "visual_contact_sheet_reviewed": false,
+  "source_archive_sha256": "16aeb6e3a53b040a206ec137bfa4c0f37b3e4e1d71f4d96c82284465281942e6"
+}

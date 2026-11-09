@@ -1,0 +1,10 @@
+Generated:
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/01_response_letter/Figure_R2_03_Response_Omega_Interactions.png
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/01_response_letter/Figure_R2_03_Response_Omega_Interactions.pdf
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/03_supplementary/Figure_Supp_R2_03_omega_sigma_l.png
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/03_supplementary/Figure_Supp_R2_03_omega_sigma_l.pdf
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/03_supplementary/Figure_Supp_R2_03_omega_sigma_t.png
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/03_supplementary/Figure_Supp_R2_03_omega_sigma_t.pdf
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/03_supplementary/Figure_Supp_R2_03_omega_K.png
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/03_supplementary/Figure_Supp_R2_03_omega_K.pdf
+/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_03_omega_interactions/ANALYSIS_OMEGA_INTERACTIONS.md

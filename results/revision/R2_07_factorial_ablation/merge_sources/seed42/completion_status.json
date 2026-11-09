@@ -1,0 +1,11 @@
+{
+  "expected_trials": 48,
+  "recorded_trials": 48,
+  "eligible_trials": 48,
+  "status_counts": {
+    "completed": 48
+  },
+  "smoke": false,
+  "console_missing": 0,
+  "input_fingerprint": "1ca9b0feac25db3f2f43180fa28523f3799c3f7dbff317e80c423255156407e2"
+}

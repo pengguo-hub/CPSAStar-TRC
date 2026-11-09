@@ -1,0 +1,11 @@
+--- 11-R2-05.zip::R2-05/make_response.py
++++ experiments/revision/R2_05_scalability/make_response.py
+@@ -1,7 +1,7 @@
+ """Produce a result-grounded draft after formal analysis; no invented outcomes."""
+ import argparse,csv
+ from pathlib import Path
+-from common import read_json
++from experiments.revision.R2_05_scalability.common import read_json
+ 
+ def main():
+     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--analysis',type=Path,required=True);p.add_argument('--output',type=Path)

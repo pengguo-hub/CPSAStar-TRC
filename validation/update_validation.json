@@ -1,0 +1,13 @@
+{
+  "unchanged_extracted_files": 801,
+  "all_byte_identical": true,
+  "omega_logical_rows": 390,
+  "omega_unique_runs": 330,
+  "omega_run_csv_metric_checks": 3960,
+  "omega_summary_mean_sd_checks": 468,
+  "omega_shared_task_blocks_match_main_R2_03": 10,
+  "R2_02_source_digest_current": "508482deb82803acbbf2b176b603923da4ee02d4112eb0b65268a8e4941f1300",
+  "R2_02_source_digest_recorded": "6659acdcb9520766a94f5100c9da861ccfbedf5b77cada1a1d46a2eabbef3a9a",
+  "R2_02_code_digest_matches_run_manifest": false,
+  "new_experiment_invocations": 0
+}

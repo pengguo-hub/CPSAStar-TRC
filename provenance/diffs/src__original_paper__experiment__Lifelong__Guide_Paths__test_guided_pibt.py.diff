@@ -1,0 +1,32 @@
+--- 20-experiment.zip::experiment/Lifelong/Guide_Paths/test_guided_pibt.py
++++ src/original_paper/experiment/Lifelong/Guide_Paths/test_guided_pibt.py
+@@ -9,22 +9,24 @@
+   guidance=True,  R_init=100, refine_iters=10  → GP-R100-Re10
+   guidance=False, R_init=100, refine_iters=0   → PIBT baseline
+ """
++from pathlib import Path as _RepositoryPath
++_REPO_ROOT = _RepositoryPath(__file__).resolve().parents[4]
+ 
+ import time
+ import sys
+ import os
+ from datetime import datetime
+ 
+-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++pass  # Package imports replace process-wide import-path mutation.
+ 
+-from SRTP.experiment.Lifelong.benchmark_loader import BenchmarkLoader
+-from guided_pibt.lifelong_runner import GuidedPIBTRunner
++from src.original_paper.experiment.Lifelong.benchmark_loader import BenchmarkLoader
++from src.original_paper.experiment.Lifelong.Guide_Paths.guided_pibt.lifelong_runner import GuidedPIBTRunner
+ 
+ # =========================================================================
+ # 配置区
+ # =========================================================================
+-MAP_FILE  = "F:/PythonFiles/pythonProject/SRTP/experiment/Lifelong/scenarios/random-64-10/random-64-64-10.map"
+-SCEN_FILE = "F:/PythonFiles/pythonProject/SRTP/experiment/Lifelong/scenarios/random-64-10/scen-random/random-64-64-10-random-1.scen"
++MAP_FILE  = str(_REPO_ROOT / 'data/original_paper/experiment/Lifelong/scenarios/random-64-10/random-64-64-10.map')
++SCEN_FILE = str(_REPO_ROOT / 'data/original_paper/experiment/Lifelong/scenarios/random-64-10/scen-random/random-64-64-10-random-1.scen')
+ 
+ NUM_AGVS   = 1000
+ MAX_TASKS  = 1000

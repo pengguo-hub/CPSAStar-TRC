@@ -1,0 +1,10 @@
+--- 21-R1.zip::R1/R1.5_1.6/task_generator.py
++++ experiments/revision/R1_05_06_gaussian/task_generator.py
+@@ -1,6 +1,6 @@
+ # 任务生成工具与多组预生成任务集
+ import random
+-from map_config import ALL_MAPS
++from experiments.revision.R1_05_06_gaussian.map_config import ALL_MAPS
+ 
+ 
+ def is_point_on_shelf(x, y, shelf_map):

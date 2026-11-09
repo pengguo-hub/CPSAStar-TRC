@@ -1,0 +1,39 @@
+{
+  "experiment": "R1.9 bounded-rollback retry-limit sensitivity",
+  "R_values": [
+    0,
+    1,
+    3,
+    5,
+    7,
+    10
+  ],
+  "task_counts": {
+    "A": [
+      50,
+      70
+    ],
+    "B": [
+      250,
+      280
+    ],
+    "C": [
+      150,
+      200
+    ]
+  },
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "original_R": 5,
+  "lookahead_by_map": {
+    "A": true,
+    "B": false,
+    "C": false
+  },
+  "note": "Only R is varied. The map-specific heuristic setting is kept identical to the final R1.5/R1.6 experiments: A uses congestion look-ahead in h(s), B/C use Manhattan-only h(s); all three maps retain Gaussian congestion in g(s). Map layout, task generator, Gaussian field parameters, and update interval are unchanged."
+}

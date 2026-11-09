@@ -1,0 +1,79 @@
+[
+  {
+    "target": "R1_03",
+    "command": "python plotting/revision/R1/R1_03_dmin/final/plot_R1_3_dmin_sensitivity_2x3_response_v2.py",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "previous delivery validation; corresponding code and numerical inputs unchanged"
+  },
+  {
+    "target": "R1_05_06",
+    "command": "python plotting/revision/R1/R1_05_06_gaussian/final/plot_R1_gaussian_sensitivity_3x4_response.py",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "previous delivery validation; corresponding code and numerical inputs unchanged"
+  },
+  {
+    "target": "R1_07_08",
+    "command": "python plotting/revision/R1/R1_07_08_delta/final/plot_R1_delta_sensitivity_1x3_response.py",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "previous delivery validation; corresponding code and numerical inputs unchanged"
+  },
+  {
+    "target": "R2_03",
+    "command": "python plotting/revision/R2/R2_3/final/plot_R2_03_publication_package.py --input results/revision/R2_03_parameter_interactions --output figures/revision/R2_03_parameter_interactions",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "previous delivery validation; corresponding code and numerical inputs unchanged"
+  },
+  {
+    "target": "R2_04_main",
+    "command": "python plotting/revision/R2/R2_4/final/plot_r2_04_compact_full_HM_HL.py --data results/revision/R2_04_operational_metrics/raw_results.csv --inputs data/derived/R2_04_plot_inputs.json --out figures/revision/R2_04_operational_metrics/main",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "previous delivery validation; corresponding code and numerical inputs unchanged"
+  },
+  {
+    "target": "R2_04_pooled",
+    "command": "python plotting/revision/R2/R2_4/final/plot_r2_04_compact_all_conditions.py --data results/revision/R2_04_operational_metrics/raw_results.csv --inputs data/derived/R2_04_plot_inputs.json --out figures/revision/R2_04_operational_metrics/pooled",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "previous delivery validation; corresponding code and numerical inputs unchanged"
+  },
+  {
+    "target": "R2_05",
+    "command": "python plotting/revision/R2/R2_5/final/plot_r2_05_compact_reordered.py --results-zip provenance/source_archives/10-R2_5_results_formal_FRANSEN200_replaced.zip --output figures/revision/R2_05_scalability",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "previous delivery validation; corresponding code and numerical inputs unchanged"
+  },
+  {
+    "target": "R1_09",
+    "command": "python plotting/revision/R1/R1_09_retry_limit/final/plot_R1_09_response_2x3.py",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "previous delivery validation; corresponding code and numerical inputs unchanged"
+  },
+  {
+    "target": "R2_02_CI",
+    "command": "python scripts/replot_R2_02_CI.py",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "2026-11-02 update rerun"
+  },
+  {
+    "target": "R2_03_omega",
+    "command": "python experiments/revision/R2_03_parameter_interactions/R2_03_omega_interactions/plot_omega_interactions.py --input results/revision/R2_03_parameter_interactions/omega --output figures/revision/R2_03_omega_interactions",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "2026-11-02 update rerun"
+  },
+  {
+    "target": "R2_07",
+    "command": "python plotting/revision/R2/R2_7/final/plot_r2_07.py --results provenance/data_archives/19-R2_7_results_merged_seed42_46.zip --out figures/revision/R2_07_factorial_ablation",
+    "returncode": 0,
+    "passed": true,
+    "validation_scope": "2026-11-02 update rerun"
+  }
+]

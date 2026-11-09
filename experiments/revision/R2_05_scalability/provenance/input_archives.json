@@ -1,0 +1,27 @@
+[
+  {
+    "filename": "01-experiment.zip",
+    "sha256": "e184d8cb5aced3e9189e634a5581a60f6e945c3cd85dacdbf564502892571357",
+    "bytes": 1624046
+  },
+  {
+    "filename": "02-TRC-26-01887.pdf",
+    "sha256": "a83af304f7d65b3220031c5fd34b2a321dc77887a16aef949e3d386da6877205",
+    "bytes": 8056178
+  },
+  {
+    "filename": "03-TRC_Referee_Report_CPS_Astar.pdf",
+    "sha256": "69b607094f20d92ae92da40e1f610580c0d388e567f4ba534c69eca93eccc631",
+    "bytes": 426417
+  },
+  {
+    "filename": "15-R2-05_revised_ready_to_run.zip",
+    "sha256": "f672f5e42032f2006cb62f7a88c813c7da33c000c01e93693eab63a319c0c267",
+    "bytes": 3348019
+  },
+  {
+    "filename": "16-R2_05_results.zip",
+    "sha256": "6e6da81596238ad6f400d86106f9682ea72637afcd8e4100d2a8d425a296ea62",
+    "bytes": 30737447
+  }
+]

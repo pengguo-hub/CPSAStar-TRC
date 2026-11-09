@@ -1,0 +1,767 @@
+--- 20-experiment.zip::experiment/Ablation_experiment/CPS_A_NSNL/path_planner.py
++++ src/original_paper/experiment/Ablation_experiment/CPS_A_NSNL/path_planner.py
+@@ -1,382 +1,382 @@
+-import numpy as np
+-import json
+-from datetime import datetime
+-import time
+-from .Conflict_Field_Updater import ConflictFieldUpdater
+-from .Segment_Planner import SegmentPlanner
+-from .Ticket_Manager import TicketManager
+-
+-
+-class GridMap:
+-    def __init__(self, width=100, height=100,cell_size=1):
+-        self.width = width
+-        self.height = height
+-        self.cell_size = cell_size
+-        self.grid = np.zeros((height, width), dtype=int) #0表示空地，1表示障碍物
+-        self.static_obstacles = set()  # 静态障碍物坐标集合
+-        self.dynamic_obstacles = set()  # 动态障碍物集合
+-        self.agv_positions = {}  # AGV当前位置字典，格式：{agv_id: (x,y)}
+-
+-    def add_static_obstacle(self, x, y):
+-        """添加静态障碍物"""
+-        if 0 <= x < self.width and 0 <= y < self.height:
+-            self.grid[y][x] = 1
+-            self.static_obstacles.add((x, y))
+-
+-    def remove_static_obstacle(self, x, y):
+-        """移除静态障碍物"""
+-        if (x, y) in self.static_obstacles:
+-            self.static_obstacles.remove((x, y))
+-            self.grid[y][x] = 0
+-
+-    def add_dynamic_obstacle(self, x, y):
+-        """添加动态障碍物"""
+-        if 0 <= x < self.width and 0 <= y < self.height:
+-            self.dynamic_obstacles.add((x, y))
+-
+-    def remove_dynamic_obstacle(self, x, y):
+-        """移除动态障碍物"""
+-        self.dynamic_obstacles.discard((x, y))
+-
+-    def region_coordinate(self,x,y,value):
+-        if 0 <= x < self.width and 0 <= y < self.height:
+-            self.grid[y][x] = value
+-            self.static_obstacles.add((x,y))
+-
+-    def get_grid_matrix(self):
+-        """返回网格矩阵的深拷贝（NumPy数组）"""
+-        return self.grid.copy()  # 深拷贝NumPy数组
+-
+-
+-class IntegratedAGVPlanner:
+-    def __init__(self, grid):
+-        self.grid = grid
+-        # 状态记录
+-        self.agv_tasks = {}  # {agv_id: {path, tickets, ...}}
+-        self.conflict_field = None  # 动态冲突场
+-        # 核心组件
+-        self.ticket_manager = TicketManager()
+-        self.conflict_updater = ConflictFieldUpdater(self.grid,self.ticket_manager)
+-        self.segment_planner = SegmentPlanner(self.grid, self.ticket_manager,self.conflict_updater)
+-
+-
+-    def batch_plan(self,parsed_tasks):
+-        time_now=0
+-
+-        for agv_id, info in parsed_tasks.items():
+-            info["waypoints"] = [tuple(pt) for pt in info["waypoints"]]  # 把原来的list换成tuple[(x1,y1),...,(xn,yn)]
+-
+-        # Step 2: 按优先级排序
+-        ## 初始化任务状态
+-        self.agv_tasks = {
+-            agv_id: {
+-                'start': info['waypoints'][0],
+-                'end': info['waypoints'][-1],
+-                'constraints': info['constraints'],
+-                'waypoints': [tuple(info['agv_position']), tuple(info['source']), tuple(info['destination'])],
+-                'path': [],
+-                'position': info['waypoints'][0]
+-            }
+-            for agv_id, info in parsed_tasks.items()
+-        }
+-
+-        sorted_agvs = self._sort_agvs_by_priority_and_deadline()
+-
+-        # >>>>>>>>>> 新增：注册所有 AGV 起点占用 <<<<<<<<<<
+-        for agv_id, info in self.agv_tasks.items():
+-            reservations = []
+-            start_pos = info['waypoints'][0]
+-            priority = sorted_agvs[agv_id]
+-            # 记录预占的时间点
+-            reserved_times = set()
+-            for i in range(self.segment_planner.MAX_WAIT + 1):
+-                t = time_now + i
+-                reservations.append((start_pos, t))
+-                reserved_times.add(t)
+-            success = self.ticket_manager.reserve(agv_id, reservations, priority)
+-            if success:
+-                self.agv_tasks[agv_id]['reserved_start_times'] = reserved_times
+-            # else:
+-            #     print(f" {agv_id} 在起点{start_pos}预约失败")
+-        paths = {}
+-        planned_count = 0
+-        UPDATE_COUNT = 20
+-
+-        dynamic_priorities = dict(sorted_agvs)  # {agv_id: priority}，可动态修改
+-        planning_queue = list(sorted_agvs.keys())  # 动态规划队列（有序）
+-        committed_agvs = set()  # 已 finalize 固化的 AGV
+-        pending_agv_paths = {}  # {agv_id: (path, times)} 已规划但未 committed
+-        replan_attempts = {}  # {agv_id: int} 记录每个 AGV 重规划次数
+-        MAX_REPLAN_PER_AGV = 5
+-
+-        while planning_queue:
+-            agv_id = planning_queue.pop(0)
+-            weighted_priority = dynamic_priorities[agv_id]
+-
+-            path, times = self.segment_planner.plan_agv(
+-                agv_id=agv_id,
+-                waypoints=self.agv_tasks[agv_id]['waypoints'],
+-                priority=weighted_priority,
+-                enable_turn_penalty=True,
+-                current_time=round(time_now, 1)
+-            )
+-
+-            if path:
+-                # ── 规划成功 ──
+-                paths[agv_id] = path
+-                self.agv_tasks[agv_id]['path'] = path
+-                self.agv_tasks[agv_id]['times'] = times
+-                self.agv_tasks[agv_id]['status'] = 'planned'
+-                self._release_unused_start_reservations(agv_id) #释放未使用的起点预约
+-
+-                # 累积进 pending_paths
+-                self.conflict_updater.accumulate_path(path, times, agv_id)
+-                pending_agv_paths[agv_id] = (path, times)
+-                planned_count += 1
+-
+-                # 每 UPDATE_COUNT 触发固化
+-                if planned_count % UPDATE_COUNT == 0:
+-                    self.conflict_updater.batch_update_from_paths()
+-                    self.segment_planner.congestion_dict = self.conflict_updater.path_conflict_dict
+-                    # 固化这批 AGV
+-                    committed_agvs |= set(pending_agv_paths.keys())
+-                    pending_agv_paths.clear()
+-
+-            else:
+-                # ── 规划失败，尝试优先级调整 ──
+-                replan_attempts[agv_id] = replan_attempts.get(agv_id, 0) + 1
+-                if replan_attempts[agv_id] > MAX_REPLAN_PER_AGV:
+-                    # 超出重规划次数，彻底放弃
+-                    continue
+-
+-                # 寻找造成冲突的、可让步的 AGV
+-                blocker = self._find_blocker(agv_id, weighted_priority, committed_agvs, dynamic_priorities)
+-
+-                if blocker is None:
+-                    # 1）从 pending_agv_paths 里选一个未 committed 的 AGV 作为“伪 blocker”
+-                    candidate_blockers = [
+-                        bid for bid in pending_agv_paths.keys()
+-                        if bid not in committed_agvs and bid != agv_id
+-                    ]
+-                    if candidate_blockers:
+-                        # 这里可以用一些策略：
+-                        #   - 随机选一个：random.choice(candidate_blockers)
+-                        #   - 或者选优先级最高的那个：
+-                        blocker = max(candidate_blockers, key=lambda x: dynamic_priorities[x])
+-                    else:
+-                        # 没有可动的 pending AGV 了，只能放弃这次重规划
+-                        continue
+-                # ── 回滚 blocker ──
+-                self._rollback_agv(blocker, pending_agv_paths, planned_count, paths)
+-                planned_count -= 1  # planned_count 回滚
+-                # 从 pending_agv_paths 中删除
+-                pending_agv_paths.pop(blocker, None)
+-
+-                # ── 交换优先级 ──
+-                old_blocker_p = dynamic_priorities[blocker]
+-                old_failed_p = dynamic_priorities[agv_id]
+-                # failed AGV 优先级略高于原 blocker，blocker 降低
+-                dynamic_priorities[agv_id] = old_blocker_p + 1e-4
+-                dynamic_priorities[blocker] = old_failed_p - 1e-4
+-
+-                start_pos = self.agv_tasks[blocker]['waypoints'][0]
+-                new_priority = dynamic_priorities[blocker]
+-                re_reservations = []
+-                re_reserved_times = set()
+-                for i in range(self.segment_planner.MAX_WAIT + 1):
+-                    t = round(time_now + i * self.conflict_updater.delta, 1)
+-                    re_reservations.append((start_pos, t))
+-                    re_reserved_times.add(t)
+-                self.ticket_manager.reserve(blocker, re_reservations, new_priority)
+-                #同步更新，否则 _release_unused_start_reservations 会用旧集合出错
+-                self.agv_tasks[blocker]['reserved_start_times'] = re_reserved_times
+-
+-                # ── 重新排队 ──
+-                # agv_id 以新高优先级插到队列最前面
+-                planning_queue.insert(0, agv_id)
+-                # blocker 排到当前队列末尾（或按新优先级插入）
+-                planning_queue.append(blocker)
+-                # 清除 blocker 的重规划计数（新机会）
+-                # replan_attempts[blocker] = 0
+-
+-        # 处理 pending_paths 剩余（不足 UPDATE_COUNT 的尾巴）
+-        if self.conflict_updater.pending_paths:
+-            self.conflict_updater.batch_update_from_paths()
+-            self.segment_planner.congestion_dict = self.conflict_updater.path_conflict_dict
+-
+-            # print(f"[INFO] 最后 {len(self.conflict_updater.pending_paths)} 个AGV，冲突场已更新")
+-            #collision_avoidance
+-            # sensor_data = ...  # 外部感知、仿真采集或测试
+-            # self.collision_avoidance.update_sensor_data(sensor_data)
+-            # conflicts = self.collision_avoidance.check_future_conflicts(lookahead_time=10, replan_window=5)
+-            # print(f"[DEBUG] 检测到未来冲突: {conflicts}", flush=True)
+-        # self.ticket_manager.save_current_reservations_by_agv("F:/PythonFiles/pythonProject/SRTP/experiment/agv_final_state.json")
+-        # === 调试：检查时空券层面的真冲突 ===
+-        # self.debug_check_ticket_conflicts()
+-        return paths
+-
+-    def _rollback_agv(self, agv_id, pending_agv_paths, planned_count, paths):
+-        """
+-        回滚一个 pending（未 committed）AGV 的所有状态：
+-        1. 释放 ticket_manager 中的节点/边预约
+-        2. 从 conflict_updater.pending_paths 中移除
+-        3. 清除 agv_tasks 中的 path/times/status
+-        （注意：planned_count 由调用方回滚）
+-        """
+-        # 1. 释放预约（节点 + 边）
+-        self.ticket_manager.release_all(agv_id)
+-
+-        # 2. 从 conflict_updater.pending_paths 中移除该 AGV
+-        self.conflict_updater.pending_paths = [
+-            (p, t, aid)
+-            for (p, t, aid) in self.conflict_updater.pending_paths
+-            if aid != agv_id
+-        ]
+-
+-        # 4. 清除 agv_tasks 中已规划状态
+-        self.agv_tasks[agv_id]['path'] = []
+-        self.agv_tasks[agv_id]['times'] = []
+-        self.agv_tasks[agv_id].pop('status', None)
+-        paths.pop(agv_id, None)
+-
+-    def _find_blocker(self, failed_agv_id, failed_priority, committed_agvs, dynamic_priorities):
+-        """
+-        从「未固化」AGV 里，找出在 failed_agv 的路径上有节点冲突、
+-        且优先级 >= failed_priority 的 AGV，返回冲突最多的那个。
+-        """
+-        waypoint_set = set(self.agv_tasks[failed_agv_id]['waypoints'])  # 只关心这些点
+-        candidate_blockers = {}  # {agv_id: conflict_count}
+-        # 只看：有预约、未 committed、不是自己 的 AGV
+-        for agv_id, reservations in self.ticket_manager.agv_reservations.items():
+-            if agv_id == failed_agv_id or agv_id in committed_agvs:
+-                continue
+-            # 优先级比 failed_agv 低的，直接跳过
+-            current_agv_prio = dynamic_priorities.get(agv_id, 0.0)
+-            if current_agv_prio < failed_priority:
+-                continue
+-            conflict_count = 0
+-
+-            for key in reservations:
+-                # 这里只关心节点预约 (node, t)，忽略 edge 预约
+-                if isinstance(key, tuple) and len(key) == 2:
+-                    node, t = key
+-                    if node in waypoint_set:
+-                        conflict_count += 1
+-
+-            if conflict_count > 0:
+-                candidate_blockers[agv_id] = conflict_count
+-
+-        if not candidate_blockers:
+-            return None
+-
+-        # 冲突点最多的那个 AGV 作为 blocker
+-        return max(candidate_blockers, key=candidate_blockers.get)
+-
+-    def _sort_agvs_by_priority_and_deadline(self):
+-        """
+-        同时考虑 priority（emergency>high>normal）与 time_limit（HH:MM 格式或 None）排序，
+-        返回排序后的 AGV ID 列表。
+-        """
+-        now = datetime.now()
+-        # 优先级映射
+-        priority_map = {'emergency': 3, 'high': 2, 'normal': 1}
+-
+-        scores = {}
+-        # 先找出所有非 None 的剩余分钟，用于归一化
+-        all_time_left = []
+-        for agv_id, task in self.agv_tasks.items():
+-            time_limit = task['constraints'].get('time_limit')
+-            if time_limit:
+-                # 解析为 datetime（只取今日 HH:MM）
+-                deadline = datetime.strptime(time_limit, "%H:%M").replace(
+-                    year=now.year, month=now.month, day=now.day
+-                )
+-                time_left =  (deadline - now).total_seconds() / 60
+-            else:
+-                time_left = None
+-            task['priority_val'] = priority_map.get(task['constraints'].get('priority'), 1)
+-            task['timeleft_val'] = time_left
+-            if time_left is not None:
+-                all_time_left.append(time_left)
+-
+-        max_time_left = max(all_time_left) if all_time_left else 1
+-
+-        # 计算综合得分：优先级归一化 + （1 - 剩余时间归一化）
+-        for agv_id, task in self.agv_tasks.items():
+-            priority_norm = task['priority_val'] / 3.0
+-            time_left_raw = task['timeleft_val']
+-            if time_left_raw is None:
+-                time_norm = 0.0
+-            else:
+-                if time_left_raw < 0:
+-                    urgency_factor = 2
+-                    time_norm = 1 + (-time_left_raw)/max_time_left * urgency_factor
+-                else:
+-                    time_norm = 1 - (task['timeleft_val'] / max_time_left)
+-            # 权重各 0.5，可按需调整
+-            scores[agv_id] = 0.5 * priority_norm + 0.5 * time_norm
+-
+-        # 按分数降序返回 AGV ID 列表
+-        return { agv_id: scores[agv_id] for agv_id in sorted(scores.keys(), key=lambda x: scores[x], reverse=True)}
+-
+-    def _release_unused_start_reservations(self, agv_id):
+-        """基于实际路径时间，释放未使用的起点预约"""
+-        task = self.agv_tasks[agv_id]
+-
+-        if 'reserved_start_times' not in task:
+-            # print(f"{agv_id} 无 reserved_start_times")
+-            return
+-
+-        if 'times' not in task or 'path' not in task:
+-            print(f"{agv_id} 无 path 或 times，无法判断预约使用情况")
+-            return
+-
+-        start_pos = tuple(task['waypoints'][0])
+-        reserved_times = set(round(t, 1) for t in task['reserved_start_times'])  # 统一精度
+-
+-        # ✅ 从真实路径中提取在起点的时间点
+-        path = task['path']
+-        times = task['times']
+-        used_times_in_start = set()
+-
+-        for pos, t in zip(path, times):
+-            pos = tuple(pos)
+-            rounded_t = round(t, 1)
+-            if pos == start_pos and rounded_t in reserved_times:
+-                used_times_in_start.add(rounded_t)
+-
+-        times_to_release = reserved_times - used_times_in_start
+-
+-        # 逐个释放
+-        for t in times_to_release:
+-            key = (start_pos, t)
+-            # 从 node_reservations 中安全移除该 AGV未使用的起点的预约
+-            if key in self.ticket_manager.node_reservations:
+-                self.ticket_manager.node_reservations[key].pop(agv_id, None)
+-                # 如果这个时空点没有 AGV 了，删除整个条目
+-                if not self.ticket_manager.node_reservations[key]:
+-                    del self.ticket_manager.node_reservations[key]
+-
+-            # 2. 从反向索引中移除
+-            self.ticket_manager.agv_reservations[agv_id].discard((start_pos, t))
+-
+-        # print(f"AGV {agv_id}: 释放了 {len(times_to_release)} 个未使用的起点预约")
+-
+-    def debug_check_ticket_conflicts(self):
+-        """基于 TicketManager 预约表检查真·时空冲突"""
+-        node_conflicts = 0
+-        edge_conflicts = 0
+-
+-        # 节点：同一 (node, t) 有多辆车
+-        for (node, t), agv_dict in self.ticket_manager.node_reservations.items():
+-            if len(agv_dict) > 1:
+-                node_conflicts += 1
+-                print("[TICKET NODE CONFLICT]", "node=", node, "t=", t, "agvs=", list(agv_dict.keys()))
+-
+-        # 边：同一 (edge, t) 有多辆车
+-        for (n1, n2, t), agv_dict in self.ticket_manager.edge_reservations.items():
+-            if len(agv_dict) > 1:
+-                edge_conflicts += 1
+-                print("[TICKET EDGE CONFLICT]", "edge=", (n1, n2), "t=", t, "agvs=", list(agv_dict.keys()))
+-
+-        print(f"[TICKET SUMMARY] node_conflicts={node_conflicts}, edge_conflicts={edge_conflicts}")
++import numpy as np
++import json
++from datetime import datetime
++import time
++from .Conflict_Field_Updater import ConflictFieldUpdater
++from .Segment_Planner import SegmentPlanner
++from .Ticket_Manager import TicketManager
++
++
++class GridMap:
++    def __init__(self, width=100, height=100,cell_size=1):
++        self.width = width
++        self.height = height
++        self.cell_size = cell_size
++        self.grid = np.zeros((height, width), dtype=int) #0表示空地，1表示障碍物
++        self.static_obstacles = set()  # 静态障碍物坐标集合
++        self.dynamic_obstacles = set()  # 动态障碍物集合
++        self.agv_positions = {}  # AGV当前位置字典，格式：{agv_id: (x,y)}
++
++    def add_static_obstacle(self, x, y):
++        """添加静态障碍物"""
++        if 0 <= x < self.width and 0 <= y < self.height:
++            self.grid[y][x] = 1
++            self.static_obstacles.add((x, y))
++
++    def remove_static_obstacle(self, x, y):
++        """移除静态障碍物"""
++        if (x, y) in self.static_obstacles:
++            self.static_obstacles.remove((x, y))
++            self.grid[y][x] = 0
++
++    def add_dynamic_obstacle(self, x, y):
++        """添加动态障碍物"""
++        if 0 <= x < self.width and 0 <= y < self.height:
++            self.dynamic_obstacles.add((x, y))
++
++    def remove_dynamic_obstacle(self, x, y):
++        """移除动态障碍物"""
++        self.dynamic_obstacles.discard((x, y))
++
++    def region_coordinate(self,x,y,value):
++        if 0 <= x < self.width and 0 <= y < self.height:
++            self.grid[y][x] = value
++            self.static_obstacles.add((x,y))
++
++    def get_grid_matrix(self):
++        """返回网格矩阵的深拷贝（NumPy数组）"""
++        return self.grid.copy()  # 深拷贝NumPy数组
++
++
++class IntegratedAGVPlanner:
++    def __init__(self, grid):
++        self.grid = grid
++        # 状态记录
++        self.agv_tasks = {}  # {agv_id: {path, tickets, ...}}
++        self.conflict_field = None  # 动态冲突场
++        # 核心组件
++        self.ticket_manager = TicketManager()
++        self.conflict_updater = ConflictFieldUpdater(self.grid,self.ticket_manager)
++        self.segment_planner = SegmentPlanner(self.grid, self.ticket_manager,self.conflict_updater)
++
++
++    def batch_plan(self,parsed_tasks):
++        time_now=0
++
++        for agv_id, info in parsed_tasks.items():
++            info["waypoints"] = [tuple(pt) for pt in info["waypoints"]]  # 把原来的list换成tuple[(x1,y1),...,(xn,yn)]
++
++        # Step 2: 按优先级排序
++        ## 初始化任务状态
++        self.agv_tasks = {
++            agv_id: {
++                'start': info['waypoints'][0],
++                'end': info['waypoints'][-1],
++                'constraints': info['constraints'],
++                'waypoints': [tuple(info['agv_position']), tuple(info['source']), tuple(info['destination'])],
++                'path': [],
++                'position': info['waypoints'][0]
++            }
++            for agv_id, info in parsed_tasks.items()
++        }
++
++        sorted_agvs = self._sort_agvs_by_priority_and_deadline()
++
++        # >>>>>>>>>> 新增：注册所有 AGV 起点占用 <<<<<<<<<<
++        for agv_id, info in self.agv_tasks.items():
++            reservations = []
++            start_pos = info['waypoints'][0]
++            priority = sorted_agvs[agv_id]
++            # 记录预占的时间点
++            reserved_times = set()
++            for i in range(self.segment_planner.MAX_WAIT + 1):
++                t = time_now + i
++                reservations.append((start_pos, t))
++                reserved_times.add(t)
++            success = self.ticket_manager.reserve(agv_id, reservations, priority)
++            if success:
++                self.agv_tasks[agv_id]['reserved_start_times'] = reserved_times
++            # else:
++            #     print(f" {agv_id} 在起点{start_pos}预约失败")
++        paths = {}
++        planned_count = 0
++        UPDATE_COUNT = 20
++
++        dynamic_priorities = dict(sorted_agvs)  # {agv_id: priority}，可动态修改
++        planning_queue = list(sorted_agvs.keys())  # 动态规划队列（有序）
++        committed_agvs = set()  # 已 finalize 固化的 AGV
++        pending_agv_paths = {}  # {agv_id: (path, times)} 已规划但未 committed
++        replan_attempts = {}  # {agv_id: int} 记录每个 AGV 重规划次数
++        MAX_REPLAN_PER_AGV = 5
++
++        while planning_queue:
++            agv_id = planning_queue.pop(0)
++            weighted_priority = dynamic_priorities[agv_id]
++
++            path, times = self.segment_planner.plan_agv(
++                agv_id=agv_id,
++                waypoints=self.agv_tasks[agv_id]['waypoints'],
++                priority=weighted_priority,
++                enable_turn_penalty=True,
++                current_time=round(time_now, 1)
++            )
++
++            if path:
++                # ── 规划成功 ──
++                paths[agv_id] = path
++                self.agv_tasks[agv_id]['path'] = path
++                self.agv_tasks[agv_id]['times'] = times
++                self.agv_tasks[agv_id]['status'] = 'planned'
++                self._release_unused_start_reservations(agv_id) #释放未使用的起点预约
++
++                # 累积进 pending_paths
++                self.conflict_updater.accumulate_path(path, times, agv_id)
++                pending_agv_paths[agv_id] = (path, times)
++                planned_count += 1
++
++                # 每 UPDATE_COUNT 触发固化
++                if planned_count % UPDATE_COUNT == 0:
++                    self.conflict_updater.batch_update_from_paths()
++                    self.segment_planner.congestion_dict = self.conflict_updater.path_conflict_dict
++                    # 固化这批 AGV
++                    committed_agvs |= set(pending_agv_paths.keys())
++                    pending_agv_paths.clear()
++
++            else:
++                # ── 规划失败，尝试优先级调整 ──
++                replan_attempts[agv_id] = replan_attempts.get(agv_id, 0) + 1
++                if replan_attempts[agv_id] > MAX_REPLAN_PER_AGV:
++                    # 超出重规划次数，彻底放弃
++                    continue
++
++                # 寻找造成冲突的、可让步的 AGV
++                blocker = self._find_blocker(agv_id, weighted_priority, committed_agvs, dynamic_priorities)
++
++                if blocker is None:
++                    # 1）从 pending_agv_paths 里选一个未 committed 的 AGV 作为“伪 blocker”
++                    candidate_blockers = [
++                        bid for bid in pending_agv_paths.keys()
++                        if bid not in committed_agvs and bid != agv_id
++                    ]
++                    if candidate_blockers:
++                        # 这里可以用一些策略：
++                        #   - 随机选一个：random.choice(candidate_blockers)
++                        #   - 或者选优先级最高的那个：
++                        blocker = max(candidate_blockers, key=lambda x: dynamic_priorities[x])
++                    else:
++                        # 没有可动的 pending AGV 了，只能放弃这次重规划
++                        continue
++                # ── 回滚 blocker ──
++                self._rollback_agv(blocker, pending_agv_paths, planned_count, paths)
++                planned_count -= 1  # planned_count 回滚
++                # 从 pending_agv_paths 中删除
++                pending_agv_paths.pop(blocker, None)
++
++                # ── 交换优先级 ──
++                old_blocker_p = dynamic_priorities[blocker]
++                old_failed_p = dynamic_priorities[agv_id]
++                # failed AGV 优先级略高于原 blocker，blocker 降低
++                dynamic_priorities[agv_id] = old_blocker_p + 1e-4
++                dynamic_priorities[blocker] = old_failed_p - 1e-4
++
++                start_pos = self.agv_tasks[blocker]['waypoints'][0]
++                new_priority = dynamic_priorities[blocker]
++                re_reservations = []
++                re_reserved_times = set()
++                for i in range(self.segment_planner.MAX_WAIT + 1):
++                    t = round(time_now + i * self.conflict_updater.delta, 1)
++                    re_reservations.append((start_pos, t))
++                    re_reserved_times.add(t)
++                self.ticket_manager.reserve(blocker, re_reservations, new_priority)
++                #同步更新，否则 _release_unused_start_reservations 会用旧集合出错
++                self.agv_tasks[blocker]['reserved_start_times'] = re_reserved_times
++
++                # ── 重新排队 ──
++                # agv_id 以新高优先级插到队列最前面
++                planning_queue.insert(0, agv_id)
++                # blocker 排到当前队列末尾（或按新优先级插入）
++                planning_queue.append(blocker)
++                # 清除 blocker 的重规划计数（新机会）
++                # replan_attempts[blocker] = 0
++
++        # 处理 pending_paths 剩余（不足 UPDATE_COUNT 的尾巴）
++        if self.conflict_updater.pending_paths:
++            self.conflict_updater.batch_update_from_paths()
++            self.segment_planner.congestion_dict = self.conflict_updater.path_conflict_dict
++
++            # print(f"[INFO] 最后 {len(self.conflict_updater.pending_paths)} 个AGV，冲突场已更新")
++            #collision_avoidance
++            # sensor_data = ...  # 外部感知、仿真采集或测试
++            # self.collision_avoidance.update_sensor_data(sensor_data)
++            # conflicts = self.collision_avoidance.check_future_conflicts(lookahead_time=10, replan_window=5)
++            # print(f"[DEBUG] 检测到未来冲突: {conflicts}", flush=True)
++        # Historical local debug path omitted in the public copy.
++        # === 调试：检查时空券层面的真冲突 ===
++        # self.debug_check_ticket_conflicts()
++        return paths
++
++    def _rollback_agv(self, agv_id, pending_agv_paths, planned_count, paths):
++        """
++        回滚一个 pending（未 committed）AGV 的所有状态：
++        1. 释放 ticket_manager 中的节点/边预约
++        2. 从 conflict_updater.pending_paths 中移除
++        3. 清除 agv_tasks 中的 path/times/status
++        （注意：planned_count 由调用方回滚）
++        """
++        # 1. 释放预约（节点 + 边）
++        self.ticket_manager.release_all(agv_id)
++
++        # 2. 从 conflict_updater.pending_paths 中移除该 AGV
++        self.conflict_updater.pending_paths = [
++            (p, t, aid)
++            for (p, t, aid) in self.conflict_updater.pending_paths
++            if aid != agv_id
++        ]
++
++        # 4. 清除 agv_tasks 中已规划状态
++        self.agv_tasks[agv_id]['path'] = []
++        self.agv_tasks[agv_id]['times'] = []
++        self.agv_tasks[agv_id].pop('status', None)
++        paths.pop(agv_id, None)
++
++    def _find_blocker(self, failed_agv_id, failed_priority, committed_agvs, dynamic_priorities):
++        """
++        从「未固化」AGV 里，找出在 failed_agv 的路径上有节点冲突、
++        且优先级 >= failed_priority 的 AGV，返回冲突最多的那个。
++        """
++        waypoint_set = set(self.agv_tasks[failed_agv_id]['waypoints'])  # 只关心这些点
++        candidate_blockers = {}  # {agv_id: conflict_count}
++        # 只看：有预约、未 committed、不是自己 的 AGV
++        for agv_id, reservations in self.ticket_manager.agv_reservations.items():
++            if agv_id == failed_agv_id or agv_id in committed_agvs:
++                continue
++            # 优先级比 failed_agv 低的，直接跳过
++            current_agv_prio = dynamic_priorities.get(agv_id, 0.0)
++            if current_agv_prio < failed_priority:
++                continue
++            conflict_count = 0
++
++            for key in reservations:
++                # 这里只关心节点预约 (node, t)，忽略 edge 预约
++                if isinstance(key, tuple) and len(key) == 2:
++                    node, t = key
++                    if node in waypoint_set:
++                        conflict_count += 1
++
++            if conflict_count > 0:
++                candidate_blockers[agv_id] = conflict_count
++
++        if not candidate_blockers:
++            return None
++
++        # 冲突点最多的那个 AGV 作为 blocker
++        return max(candidate_blockers, key=candidate_blockers.get)
++
++    def _sort_agvs_by_priority_and_deadline(self):
++        """
++        同时考虑 priority（emergency>high>normal）与 time_limit（HH:MM 格式或 None）排序，
++        返回排序后的 AGV ID 列表。
++        """
++        now = datetime.now()
++        # 优先级映射
++        priority_map = {'emergency': 3, 'high': 2, 'normal': 1}
++
++        scores = {}
++        # 先找出所有非 None 的剩余分钟，用于归一化
++        all_time_left = []
++        for agv_id, task in self.agv_tasks.items():
++            time_limit = task['constraints'].get('time_limit')
++            if time_limit:
++                # 解析为 datetime（只取今日 HH:MM）
++                deadline = datetime.strptime(time_limit, "%H:%M").replace(
++                    year=now.year, month=now.month, day=now.day
++                )
++                time_left =  (deadline - now).total_seconds() / 60
++            else:
++                time_left = None
++            task['priority_val'] = priority_map.get(task['constraints'].get('priority'), 1)
++            task['timeleft_val'] = time_left
++            if time_left is not None:
++                all_time_left.append(time_left)
++
++        max_time_left = max(all_time_left) if all_time_left else 1
++
++        # 计算综合得分：优先级归一化 + （1 - 剩余时间归一化）
++        for agv_id, task in self.agv_tasks.items():
++            priority_norm = task['priority_val'] / 3.0
++            time_left_raw = task['timeleft_val']
++            if time_left_raw is None:
++                time_norm = 0.0
++            else:
++                if time_left_raw < 0:
++                    urgency_factor = 2
++                    time_norm = 1 + (-time_left_raw)/max_time_left * urgency_factor
++                else:
++                    time_norm = 1 - (task['timeleft_val'] / max_time_left)
++            # 权重各 0.5，可按需调整
++            scores[agv_id] = 0.5 * priority_norm + 0.5 * time_norm
++
++        # 按分数降序返回 AGV ID 列表
++        return { agv_id: scores[agv_id] for agv_id in sorted(scores.keys(), key=lambda x: scores[x], reverse=True)}
++
++    def _release_unused_start_reservations(self, agv_id):
++        """基于实际路径时间，释放未使用的起点预约"""
++        task = self.agv_tasks[agv_id]
++
++        if 'reserved_start_times' not in task:
++            # print(f"{agv_id} 无 reserved_start_times")
++            return
++
++        if 'times' not in task or 'path' not in task:
++            print(f"{agv_id} 无 path 或 times，无法判断预约使用情况")
++            return
++
++        start_pos = tuple(task['waypoints'][0])
++        reserved_times = set(round(t, 1) for t in task['reserved_start_times'])  # 统一精度
++
++        # ✅ 从真实路径中提取在起点的时间点
++        path = task['path']
++        times = task['times']
++        used_times_in_start = set()
++
++        for pos, t in zip(path, times):
++            pos = tuple(pos)
++            rounded_t = round(t, 1)
++            if pos == start_pos and rounded_t in reserved_times:
++                used_times_in_start.add(rounded_t)
++
++        times_to_release = reserved_times - used_times_in_start
++
++        # 逐个释放
++        for t in times_to_release:
++            key = (start_pos, t)
++            # 从 node_reservations 中安全移除该 AGV未使用的起点的预约
++            if key in self.ticket_manager.node_reservations:
++                self.ticket_manager.node_reservations[key].pop(agv_id, None)
++                # 如果这个时空点没有 AGV 了，删除整个条目
++                if not self.ticket_manager.node_reservations[key]:
++                    del self.ticket_manager.node_reservations[key]
++
++            # 2. 从反向索引中移除
++            self.ticket_manager.agv_reservations[agv_id].discard((start_pos, t))
++
++        # print(f"AGV {agv_id}: 释放了 {len(times_to_release)} 个未使用的起点预约")
++
++    def debug_check_ticket_conflicts(self):
++        """基于 TicketManager 预约表检查真·时空冲突"""
++        node_conflicts = 0
++        edge_conflicts = 0
++
++        # 节点：同一 (node, t) 有多辆车
++        for (node, t), agv_dict in self.ticket_manager.node_reservations.items():
++            if len(agv_dict) > 1:
++                node_conflicts += 1
++                print("[TICKET NODE CONFLICT]", "node=", node, "t=", t, "agvs=", list(agv_dict.keys()))
++
++        # 边：同一 (edge, t) 有多辆车
++        for (n1, n2, t), agv_dict in self.ticket_manager.edge_reservations.items():
++            if len(agv_dict) > 1:
++                edge_conflicts += 1
++                print("[TICKET EDGE CONFLICT]", "edge=", (n1, n2), "t=", t, "agvs=", list(agv_dict.keys()))
++
++        print(f"[TICKET SUMMARY] node_conflicts={node_conflicts}, edge_conflicts={edge_conflicts}")

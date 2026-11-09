@@ -1,0 +1,15 @@
+--- 21-R1.zip::R1/R1.3/run_R1_3_dmin_sensitivity.py
++++ experiments/revision/R1_03_dmin/run_R1_3_dmin_sensitivity.py
+@@ -12,9 +12,9 @@
+ from pathlib import Path
+ from typing import Any, Dict, List, Sequence, Tuple
+ 
+-from map_config import ALL_MAPS
+-from task_generator import generate_test_tasks
+-from CPS_A.path_planner import GridMap, IntegratedAGVPlanner
++from experiments.revision.R1_03_dmin.map_config import ALL_MAPS
++from experiments.revision.R1_03_dmin.task_generator import generate_test_tasks
++from experiments.revision.R1_03_dmin.CPS_A.path_planner import GridMap, IntegratedAGVPlanner
+ 
+ # ============================================================
+ # Reviewer 1 - Comment 3: d_min sensitivity

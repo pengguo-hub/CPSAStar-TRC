@@ -1,0 +1,137 @@
+--- 11-R2-05.zip::R2-05/provenance/original_sources.json
++++ experiments/revision/R2_05_scalability/provenance/original_sources.json
+@@ -1,86 +1,100 @@
+ [
+   {
+     "zip_member": "experiment/map_config.py",
+-    "path": "vendor/SRTP/experiment/map_config.py",
++    "path": "vendor/portable_vendor/experiment/map_config.py",
+     "sha256": "ab660fed08a6bae60e0e49b0c5fa5562b7b3b698f59f8edd8900c876d0028255",
+-    "bytes": 5844
++    "bytes": 5844,
++    "supplied_source_sha256": "ab660fed08a6bae60e0e49b0c5fa5562b7b3b698f59f8edd8900c876d0028255"
+   },
+   {
+     "zip_member": "experiment/Lifelong/map_config.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/map_config.py",
++    "path": "vendor/portable_vendor/experiment/Lifelong/map_config.py",
+     "sha256": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b",
+-    "bytes": 5965
++    "bytes": 5965,
++    "supplied_source_sha256": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b"
+   },
+   {
+     "zip_member": "experiment/Lifelong/task_generator.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/task_generator.py",
+-    "sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13",
+-    "bytes": 8809
++    "path": "vendor/portable_vendor/experiment/Lifelong/task_generator.py",
++    "sha256": "57d18a78a25ec1110b9490a006242a16a1a7a52a1291e61ac49b8c3ff9a4d900",
++    "bytes": 8809,
++    "supplied_source_sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13"
+   },
+   {
+     "zip_member": "experiment/Lifelong/benchmark_loader.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/benchmark_loader.py",
++    "path": "vendor/portable_vendor/experiment/Lifelong/benchmark_loader.py",
+     "sha256": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e",
+-    "bytes": 10134
++    "bytes": 10134,
++    "supplied_source_sha256": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e"
+   },
+   {
+     "zip_member": "experiment/Lifelong/custom_benchmark_loader.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/custom_benchmark_loader.py",
+-    "sha256": "83e0c2dad1df6b9afe7857fc8d18137709e4ecd1316a578a4365215f9fd2af41",
+-    "bytes": 5706
++    "path": "vendor/portable_vendor/experiment/Lifelong/custom_benchmark_loader.py",
++    "sha256": "46499da4c9b0c48b077f61a7425066b7a3f75fe5441ed0144e482ba9ed8fb7e5",
++    "bytes": 5706,
++    "supplied_source_sha256": "83e0c2dad1df6b9afe7857fc8d18137709e4ecd1316a578a4365215f9fd2af41"
+   },
+   {
+     "zip_member": "experiment/Lifelong/test_ourmap.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/test_ourmap.py",
+-    "sha256": "b4d8c2f35d7443205338c44f6c5416309aa18decb66c0cb311605592e8217b6f",
+-    "bytes": 10275
++    "path": "vendor/portable_vendor/experiment/Lifelong/test_ourmap.py",
++    "sha256": "d62c8eb2fa401dc2ccf2ddc003c95d280711958601010ffe8991fb3db1bb31e8",
++    "bytes": 10275,
++    "supplied_source_sha256": "b4d8c2f35d7443205338c44f6c5416309aa18decb66c0cb311605592e8217b6f"
+   },
+   {
+     "zip_member": "experiment/Lifelong/plot_throughput_ourmaps.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/plot_throughput_ourmaps.py",
++    "path": "vendor/portable_vendor/experiment/Lifelong/plot_throughput_ourmaps.py",
+     "sha256": "e210eaf0dc7904a05c0de08cb1a1ad740c2026d6b1ec7ed78f0b979dda51d51f",
+-    "bytes": 4694
++    "bytes": 4694,
++    "supplied_source_sha256": "e210eaf0dc7904a05c0de08cb1a1ad740c2026d6b1ec7ed78f0b979dda51d51f"
+   },
+   {
+     "zip_member": "experiment/Lifelong/CPS_A_lifelong/benchmark_loader.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/benchmark_loader.py",
++    "path": "vendor/portable_vendor/experiment/Lifelong/CPS_A_lifelong/benchmark_loader.py",
+     "sha256": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440",
+-    "bytes": 10133
++    "bytes": 10133,
++    "supplied_source_sha256": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440"
+   },
+   {
+     "zip_member": "experiment/Lifelong/CPS_A_lifelong/Conflict_Field_Updater.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Conflict_Field_Updater.py",
++    "path": "vendor/portable_vendor/experiment/Lifelong/CPS_A_lifelong/Conflict_Field_Updater.py",
+     "sha256": "0487443c0b4e572d873bbe4dbdc956cd13af975ec23e7f061c61f9b7f67cb2f1",
+-    "bytes": 5981
++    "bytes": 5981,
++    "supplied_source_sha256": "0487443c0b4e572d873bbe4dbdc956cd13af975ec23e7f061c61f9b7f67cb2f1"
+   },
+   {
+     "zip_member": "experiment/Lifelong/CPS_A_lifelong/path_planner_lifelong.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/path_planner_lifelong.py",
+-    "sha256": "2fe8a3302e8a69bd10ac5ad982c2b87d2c0ca3f03bde403b6dc2ceff56bda8da",
+-    "bytes": 19623
++    "path": "vendor/portable_vendor/experiment/Lifelong/CPS_A_lifelong/path_planner_lifelong.py",
++    "sha256": "609574a3c76403715182024f0747a8073f51c1c23399fa26b72fc4eb0b848177",
++    "bytes": 19623,
++    "supplied_source_sha256": "2fe8a3302e8a69bd10ac5ad982c2b87d2c0ca3f03bde403b6dc2ceff56bda8da"
+   },
+   {
+     "zip_member": "experiment/Lifelong/CPS_A_lifelong/Segment_Planner.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Segment_Planner.py",
+-    "sha256": "ef9085c90759572c963bba8058a5c0a58f653f3f9ef99eb812e5506635b2e798",
+-    "bytes": 15074
++    "path": "vendor/portable_vendor/experiment/Lifelong/CPS_A_lifelong/Segment_Planner.py",
++    "sha256": "a5027904996da2b7667c0a7bce6ddc22b213f163930cff5b313e4fd47c1b9c95",
++    "bytes": 15074,
++    "supplied_source_sha256": "ef9085c90759572c963bba8058a5c0a58f653f3f9ef99eb812e5506635b2e798"
+   },
+   {
+     "zip_member": "experiment/Lifelong/CPS_A_lifelong/test_lifelong.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/test_lifelong.py",
+-    "sha256": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a",
+-    "bytes": 2879
++    "path": "vendor/portable_vendor/experiment/Lifelong/CPS_A_lifelong/test_lifelong.py",
++    "sha256": "7cb3089f94c2d26d4b8d361babff110d2614602e8b9d72418b27ca11035a1be1",
++    "bytes": 2879,
++    "supplied_source_sha256": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a"
+   },
+   {
+     "zip_member": "experiment/Lifelong/CPS_A_lifelong/Ticket_Manager.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Ticket_Manager.py",
++    "path": "vendor/portable_vendor/experiment/Lifelong/CPS_A_lifelong/Ticket_Manager.py",
+     "sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+-    "bytes": 10224
++    "bytes": 10224,
++    "supplied_source_sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2"
+   },
+   {
+     "zip_member": "experiment/Lifelong/CPS_A_lifelong/__init__.py",
+-    "path": "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/__init__.py",
++    "path": "vendor/portable_vendor/experiment/Lifelong/CPS_A_lifelong/__init__.py",
+     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+-    "bytes": 0
++    "bytes": 0,
++    "supplied_source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   }
+ ]

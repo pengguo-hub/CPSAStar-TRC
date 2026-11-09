@@ -1,0 +1,26 @@
+--- 11-R2-05.zip::R2-05/run.py
++++ experiments/revision/R2_05_scalability/run.py
+@@ -2,9 +2,9 @@
+ import argparse,csv,os,subprocess,sys,time
+ from datetime import datetime,timezone
+ from pathlib import Path
+-from common import ROOT,read_json,write_json,digest,execution_hash,execution_sources
+-from protocol import cases,build_workload,FORMAL_SEEDS,SMOKE_SEEDS
+-from original_runtime import source_audit
++from experiments.revision.R2_05_scalability.common import ROOT, read_json, write_json, digest, execution_hash, execution_sources
++from experiments.revision.R2_05_scalability.protocol import cases, build_workload, FORMAL_SEEDS, SMOKE_SEEDS
++from experiments.revision.R2_05_scalability.original_runtime import source_audit
+ 
+ 
+ def check_gate():
+@@ -75,8 +75,8 @@
+         started=time.perf_counter();print('START',trial['key'],flush=True)
+         with (dest/'native.log').open('w',encoding='utf-8',buffering=1) as log:
+             env=dict(os.environ,PYTHONIOENCODING='utf-8',PYTHONDONTWRITEBYTECODE='1')
+-            process=subprocess.Popen([sys.executable,'-u',str(ROOT/'worker.py'),'--job',str(dest/'job.json')],
+-                                     cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,env=env)
++            process=subprocess.Popen([sys.executable,'-u','-m','experiments.revision.R2_05_scalability.worker','--job',str(dest/'job.json')],
++                                     cwd=ROOT.parents[2],stdout=log,stderr=subprocess.STDOUT,env=env)
+             attempt['pid']=process.pid;write_json(out/'manifest.json',manifest)
+             try:code=process.wait()  # No timeout, forced termination or automatic retry.
+             except KeyboardInterrupt:

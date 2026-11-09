@@ -1,0 +1,1 @@
+Validation only. Actual reference: R2_5_results_formal.zip. All 15 planned N200 workloads were generated and checked without running them. The single diagnostic simulation used 4 AGVs / 40 tasks / 20 steps / seed 901. No 200-AGV formal trial was run. Original project files remain unchanged.

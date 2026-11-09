@@ -1,0 +1,17 @@
+--- 20-experiment.zip::experiment/lacam2_python/main.py
++++ src/original_paper/experiment/lacam2_python/main.py
+@@ -26,12 +26,9 @@
+ import os
+ 
+ # 把包目录加入搜索路径（使 main.py 可以在包外直接运行）
+-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++pass  # Package imports replace process-wide import-path mutation.
+ 
+-from lacam2 import (
+-    Instance, Objective, Deadline, solve,
+-    is_feasible_solution, print_stats, make_log,
+-)
++from src.original_paper.experiment.lacam2_python.lacam2 import Instance, Objective, Deadline, solve, is_feasible_solution, print_stats, make_log
+ 
+ 
+ def main():

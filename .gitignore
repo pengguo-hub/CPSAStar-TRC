@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+outputs/
+provenance/private_source_archives/
+provenance/data_archives/
+*.log

@@ -1,0 +1,9 @@
+{
+  "status": "running",
+  "observed_time": 500.0,
+  "completed": 98,
+  "arrived": 107,
+  "queued": 0,
+  "active": 9,
+  "elapsed_seconds": 0.48844508081674576
+}

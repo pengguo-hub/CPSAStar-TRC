@@ -1,0 +1,24 @@
+{
+  "case": "RING_N80_shared",
+  "seed": 43,
+  "variant": "control",
+  "purpose": "formal",
+  "code_hash": "c605b423f78d34aa1fd80def0aab5e34656fdbc0151f7ae8d592a564bda3fa07",
+  "condition": {
+    "name": "RING_N80_shared",
+    "map": "RING",
+    "fleet": 80,
+    "horizon": 500,
+    "mode": "backlogged",
+    "arrival_rate": null,
+    "concentration": null,
+    "od_mode": "shared",
+    "followup": 500,
+    "initial_backlog": 3000,
+    "tiles": 1,
+    "protocol": "R2_04_fixed_OD_backlog3000_v1"
+  },
+  "workload_hash": "de7732402e4227389c43dea263580afa2963a2c22de904b37008f5134536d810",
+  "workload_file": "/root/autodl-tmp/R2_04_OD_backlog_ready_to_run/results_od_formal/workloads/RING_N80_shared_43.json",
+  "job_hash": "f8993c5ec04092bb1f88604703af3a979d806d75b21e2054f31e8457306af472"
+}

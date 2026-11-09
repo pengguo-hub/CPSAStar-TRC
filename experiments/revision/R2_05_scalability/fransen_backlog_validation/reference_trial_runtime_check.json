@@ -1,0 +1,122 @@
+[
+  {
+    "case": "B_traffic_dispersed",
+    "seed": 1001,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_dispersed",
+    "seed": 1002,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_dispersed",
+    "seed": 1003,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_dispersed",
+    "seed": 1004,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_dispersed",
+    "seed": 1005,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_intermediate",
+    "seed": 1001,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_intermediate",
+    "seed": 1002,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_intermediate",
+    "seed": 1003,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_intermediate",
+    "seed": 1004,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_intermediate",
+    "seed": 1005,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_shared",
+    "seed": 1001,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_shared",
+    "seed": 1002,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_shared",
+    "seed": 1003,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_shared",
+    "seed": 1004,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  },
+  {
+    "case": "B_traffic_shared",
+    "seed": 1005,
+    "runtime_hash_matches": true,
+    "fleet": 8,
+    "mode": "poisson",
+    "arrival_rate": 0.5
+  }
+]

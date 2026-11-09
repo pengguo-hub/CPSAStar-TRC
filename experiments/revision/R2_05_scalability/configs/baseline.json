@@ -1,0 +1,21 @@
+{
+  "stage": "baseline_preparation",
+  "map": "STANDARD",
+  "width": 16,
+  "height": 11,
+  "fleet": 30,
+  "horizon": 500,
+  "warmup": 0,
+  "seed": 39,
+  "max_tasks": 100,
+  "repeat": 30,
+  "initial_queue_size": 3000,
+  "speed": 1.0,
+  "use_priority_replan": true,
+  "max_expand_enabled": false,
+  "trial_wall_timeout": null,
+  "baseline_gate": "not_run",
+  "paper_replication_fleet": [10, 30, 50],
+  "paper_entry_seeds": [39, 40, 41, 42, 43],
+  "later_R2_05_seeds": [1001, 1002, 1003, 1004, 1005]
+}

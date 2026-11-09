@@ -1,0 +1,16 @@
+--- 21-R1.zip::R1/R1.3/plot_R1_3_dmin_sensitivity_2x3_response_v2.py
++++ plotting/revision/R1/R1_03_dmin/final/plot_R1_3_dmin_sensitivity_2x3_response_v2.py
+@@ -39,9 +39,10 @@
+ #       high_load_summary.csv
+ # ==========================================================
+ 
+-ZIP_PATH = Path("result_R1_3_dmin_sensitivity.zip")
+-WORK_DIR = Path("_R1_3_dmin_plot_tmp_v2")
+-OUT_DIR = Path("R1_3_dmin_figures_2x3_response_v2")
++_REPO_ROOT = Path(__file__).resolve().parents[5]
++ZIP_PATH = _REPO_ROOT / 'provenance/source_archives/07-result_R1_3_dmin_sensitivity.zip'
++WORK_DIR = _REPO_ROOT / 'outputs/plotting_tmp/R1_03_dmin'
++OUT_DIR = _REPO_ROOT / 'figures/revision/R1_03_dmin'
+ 
+ # Two traffic-load levels used in the R1.3 experiment.
+ LOW_LOAD = {"A": 30, "B": 150, "C": 100}

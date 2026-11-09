@@ -1,0 +1,19 @@
+--- 21-R1.zip::R1/R1.7_R1.8/r1_delta_sensitivity.py
++++ experiments/revision/R1_07_08_delta/r1_delta_sensitivity.py
+@@ -47,11 +47,11 @@
+ # -----------------------------------------------------------------------------
+ HERE = Path(__file__).resolve().parent
+ CPS_DIR = HERE / "CPS_A_lifelong"
+-sys.path.insert(0, str(HERE))
+-sys.path.insert(0, str(CPS_DIR))
+-
+-from custom_benchmark_loader import CustomBenchmarkLoader  # noqa: E402
+-from CPS_A_lifelong.path_planner_lifelong import LifelongPlanner as CPS_A  # noqa: E402
++pass  # Package imports replace process-wide import-path mutation.
++pass  # Package imports replace process-wide import-path mutation.
++
++from experiments.revision.R1_07_08_delta.custom_benchmark_loader import CustomBenchmarkLoader  # noqa: E402
++from experiments.revision.R1_07_08_delta.CPS_A_lifelong.path_planner_lifelong import LifelongPlanner as CPS_A  # noqa: E402
+ 
+ 
+ # -----------------------------------------------------------------------------

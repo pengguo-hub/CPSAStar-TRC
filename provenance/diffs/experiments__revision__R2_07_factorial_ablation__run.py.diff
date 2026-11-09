@@ -1,0 +1,31 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/run.py
++++ experiments/revision/R2_07_factorial_ablation/run.py
+@@ -10,8 +10,8 @@
+ import time
+ from pathlib import Path
+ import pandas as pd
+-from workload import plan_cases,build_workload,variants,write_json,ROOT
+-from verify_sources import verify
++from experiments.revision.R2_07_factorial_ablation.workload import plan_cases, build_workload, variants, write_json, ROOT
++from experiments.revision.R2_07_factorial_ablation.verify_sources import verify
+ 
+ def prepare(a):
+     checks=verify();cfg=json.loads((ROOT/'configs/experiment.json').read_text(encoding='utf-8'))
+@@ -63,7 +63,7 @@
+         interrupted=False
+         captured=[]
+         with log.open('w',encoding='utf-8') as stream:
+-            proc=subprocess.Popen([sys.executable,'-u',str(ROOT/'worker.py'),'--job',str(jobfile)],cwd=ROOT,
++            proc=subprocess.Popen([sys.executable,'-u','-m','experiments.revision.R2_07_factorial_ablation.worker','--job',str(jobfile)],cwd=ROOT.parents[2],
+                 stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,encoding='utf-8',errors='replace')
+             try:
+                 for line in proc.stdout:
+@@ -88,7 +88,7 @@
+         write_json(out/'current_trial.json',dict(trial_id=entry['trial_id'],state=status,returncode=rc))
+         print('END',entry['trial_id'],status,flush=True)
+         if interrupted:break
+-    from audit_results import collect
++    from experiments.revision.R2_07_factorial_ablation.audit_results import collect
+     collect(out)
+     print('Saved. Next: python postprocess.py '+str(out),flush=True)
+ 

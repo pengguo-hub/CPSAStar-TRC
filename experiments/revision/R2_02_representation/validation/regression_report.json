@@ -1,0 +1,10 @@
+{
+  "passed": [
+    "fixed_turn_penalty_not_parameterized",
+    "r1_aligned_loads",
+    "five_formal_runs_and_runtime_seed_disjointness",
+    "orthogonal_information_source_and_kernel_families",
+    "direct_instances_have_no_preexisting_schedule_fields",
+    "map_specific_heuristic"
+  ]
+}

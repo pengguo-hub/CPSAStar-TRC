@@ -1,0 +1,11 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/verify_inputs.py
++++ experiments/revision/R2_04_operational_metrics/verify_inputs.py
+@@ -4,7 +4,7 @@
+ from pathlib import Path
+ import numpy as np
+ import pandas as pd
+-from workload import ROOT,specs,grid_for,plan_cases,build_workload,validate_workload,write_json,digest
++from experiments.revision.R2_04_operational_metrics.workload import ROOT, specs, grid_for, plan_cases, build_workload, validate_workload, write_json, digest
+ 
+ def geometry_score(mp,s):
+     grid=grid_for(mp).grid;V=[(x,y) for y in range(grid.shape[0]) for x in range(grid.shape[1]) if grid[y,x]==0];idx={p:i for i,p in enumerate(V)}

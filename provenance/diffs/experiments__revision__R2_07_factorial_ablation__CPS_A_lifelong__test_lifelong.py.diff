@@ -1,0 +1,16 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/CPS_A_lifelong/test_lifelong.py
++++ experiments/revision/R2_07_factorial_ablation/CPS_A_lifelong/test_lifelong.py
+@@ -3,10 +3,10 @@
+ import os
+ from datetime import datetime
+ # ── 确保当前目录在 import 路径里 ──
+-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++pass  # Package imports replace process-wide import-path mutation.
+ 
+-from benchmark_loader import BenchmarkLoader
+-from path_planner_lifelong import LifelongPlanner
++from experiments.revision.R2_07_factorial_ablation.CPS_A_lifelong.benchmark_loader import BenchmarkLoader
++from experiments.revision.R2_07_factorial_ablation.CPS_A_lifelong.path_planner_lifelong import LifelongPlanner
+ 
+ # =========================================================================
+ # 配置区：修改这里的参数

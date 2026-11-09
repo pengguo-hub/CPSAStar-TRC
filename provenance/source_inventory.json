@@ -1,0 +1,154 @@
+[
+  {
+    "source": "01-TRC-26-01887.pdf",
+    "size_bytes": 8056178,
+    "sha256": "a83af304f7d65b3220031c5fd34b2a321dc77887a16aef949e3d386da6877205",
+    "disposition": "staging only; publication not authorized"
+  },
+  {
+    "source": "02-TRC_Referee_Report_CPS_Astar.pdf",
+    "size_bytes": 426417,
+    "sha256": "69b607094f20d92ae92da40e1f610580c0d388e567f4ba534c69eca93eccc631",
+    "disposition": "staging only; publication not authorized"
+  },
+  {
+    "source": "03-TRC-26-01887-reviews.pdf",
+    "size_bytes": 33632,
+    "sha256": "429c01487ca7b8c3f56c83c56300a9a5c99a9b69c7fb42a5a4133722d2422fc0",
+    "disposition": "staging only; publication not authorized"
+  },
+  {
+    "source": "04-result_R1_gaussian_sensitivity.zip",
+    "size_bytes": 30069,
+    "sha256": "e0d942c201cecf7c4aee4cf9dfa45b9b19365e85f3c045de1a5de13f26fe7728",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "05-r1_delta_results.zip",
+    "size_bytes": 872769,
+    "sha256": "c28d95f0108336ad366bd2527b12b0bdb39c5b910b27430e194fee1deed3cba5",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "06-result_R1_9_R_sensitivity.zip",
+    "size_bytes": 7804,
+    "sha256": "78c7ed64dce524a9f2903d8445660665be48b3979df48119a2bac790a8e74922",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "07-result_R1_3_dmin_sensitivity.zip",
+    "size_bytes": 83082,
+    "sha256": "48b7fce02f10a2c32913e767d87386b7e04c61d693707e90ebf301dce87f1477",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "08-results_R2_03.zip",
+    "size_bytes": 1688071,
+    "sha256": "c90b6a1dc38f3bef88523bdeb5d110a1725fa0a4cee85cbbe26d3fa7a1b3d6e2",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "09-results_R2_02.rar",
+    "size_bytes": 3974624,
+    "sha256": "d3ba4734129df66285f2504233f5a5661bf451e2a3b421d63be4c481d8597155",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "10-R2_5_results_formal_FRANSEN200_replaced.zip",
+    "size_bytes": 29136166,
+    "sha256": "2bb39099a043015c651134b0c2b9c906e93aedd5d97c388042208a8d351fbb8b",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "11-R2-05.zip",
+    "size_bytes": 10201803,
+    "sha256": "b91e32a0442ff08aee9d50de1fceae307293c53917b1f9e062855fcdca2d9ac3",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "12-R2-07_complete_verified.zip",
+    "size_bytes": 3409860,
+    "sha256": "36d89061fcd29c98332f33e9a43b894c7113f1b16d5f837a04074c2fd18a72ad",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "13-R2_4_resullts_OD-1-.zip",
+    "size_bytes": 91253,
+    "sha256": "069ef5df1afc382046daa8f7714cbed5d23b9cd89159f8607be6878a330e9f2b",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "14-R2_4_resullts_OD_jobs.zip",
+    "size_bytes": 121450,
+    "sha256": "b5936485a3a08d672a06fc9a2d62f90965516e8db3bf2c936689fb8517262f93",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "15-R2_4_resullts_OD_source_snapshot.zip",
+    "size_bytes": 66141,
+    "sha256": "323cb7e5d1fb942607861bfd9ea9cbcf8c1a3b09b7f119b36fe4a697073bb16b",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "16-R2_4_resullts_OD_workloads.zip",
+    "size_bytes": 1456212,
+    "sha256": "8376f64bc5744aa43bd0eef9d132ff89c000f51487fd48df82e7ef2a98080b97",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "17-R2_4_resullts_OD_attempts.zip",
+    "size_bytes": 199970405,
+    "sha256": "de3725add6626604bcf4ac1e60cf96a3d834b7b009ed1de3652429fee7282835",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "18-R2_04_OD_backlog_ready_to_run.zip",
+    "size_bytes": 68112449,
+    "sha256": "8d79cfee67f18046d44baa6287142b8b91817a9513070df6d7a0d54ae434571d",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "19-R2_7_results_merged_seed42_46.zip",
+    "size_bytes": 172442201,
+    "sha256": "a621cd6dd453d60c5d6af5dc684500ef104e417181950ed8d7179d0329c0f6f3",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "20-experiment.zip",
+    "size_bytes": 2289720,
+    "sha256": "c4c0fa0ba0c3462110065161218293ad5494cb6d8c9cd0363a466cfe148188a0",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "21-R1.zip",
+    "size_bytes": 3372753,
+    "sha256": "92b8250cbe937ccf43c6a70482395d9a8b98ccbeb24eab801666e2546974f4fa",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "22-Response.pdf",
+    "size_bytes": 1780904,
+    "sha256": "4817949214a94820c0b82aae6541ec110bb376074d61f2c430bab8dd818d6621",
+    "disposition": "staging only; publication not authorized"
+  },
+  {
+    "source": "23-plot_r2.zip",
+    "size_bytes": 65872,
+    "sha256": "03d05a355ece935d9caa06617472a0e988854de9a32ea2f67492cd20a383bc76",
+    "disposition": "exact original retained"
+  },
+  {
+    "source": "R2-02.zip",
+    "latest_upload": "18-R2-02.zip",
+    "size_bytes": 1286498,
+    "sha256": "268c04925814802ccf5b98e16b1765e400049dce2dbd522edae3345ef729e9bb",
+    "disposition": "2026-11-02 update; exact source retained"
+  },
+  {
+    "source": "R2-03.zip",
+    "latest_upload": "19-R2-03.zip",
+    "size_bytes": 2619483,
+    "sha256": "15178d861ae3147edacd4835cd402b518fcc6afeb25ce5d07d36846c292edd08",
+    "disposition": "2026-11-02 update; exact source retained"
+  }
+]

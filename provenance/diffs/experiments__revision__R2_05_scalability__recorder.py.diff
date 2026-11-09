@@ -1,0 +1,13 @@
+--- 11-R2-05.zip::R2-05/recorder.py
++++ experiments/revision/R2_05_scalability/recorder.py
+@@ -2,8 +2,8 @@
+ from collections import Counter,defaultdict
+ import gzip,json,time
+ import numpy as np
+-from common import ROOT,write_json,read_json
+-from protocol import endpoint_buffer
++from experiments.revision.R2_05_scalability.common import ROOT, write_json, read_json
++from experiments.revision.R2_05_scalability.protocol import endpoint_buffer
+ 
+ class Request(tuple):
+     def __new__(cls,pickup,dropoff,rid):

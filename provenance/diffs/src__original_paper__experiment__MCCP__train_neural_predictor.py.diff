@@ -1,0 +1,133 @@
+--- 20-experiment.zip::experiment/MCCP/train_neural_predictor.py
++++ src/original_paper/experiment/MCCP/train_neural_predictor.py
+@@ -1,65 +1,65 @@
+-import torch
+-import torch.nn as nn
+-import torch.optim as optim
+-from torch.utils.data import Dataset, DataLoader
+-import numpy as np
+-from tqdm import tqdm
+-
+-from neural_predictor import NeuralCongestionPredictor
+-
+-# 配置
+-DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+-BATCH_SIZE = 32
+-EPOCHS = 100
+-LR = 1e-3
+-MAP_ID = 'STANDARD'
+-
+-# 加载预先生成的数据
+-data = np.load('training_data.npz')
+-u0_all = data['u0']   # (N, H, W)
+-t_all = data['t']      # (N,)
+-ut_all = data['ut']    # (N, H, W)
+-
+-H, W = u0_all.shape[1], u0_all.shape[2]
+-
+-class CachedDataset(Dataset):
+-    def __init__(self, u0, t, ut):
+-        self.u0 = torch.from_numpy(u0).float()
+-        self.t = torch.from_numpy(t).float()
+-        self.ut = torch.from_numpy(ut).float()
+-
+-    def __len__(self):
+-        return len(self.u0)
+-
+-    def __getitem__(self, idx):
+-        return self.u0[idx].unsqueeze(0), self.t[idx], self.ut[idx].unsqueeze(0)
+-
+-dataset = CachedDataset(u0_all, t_all, ut_all)
+-dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
+-
+-model = NeuralCongestionPredictor(H, W).to(DEVICE)
+-optimizer = optim.Adam(model.parameters(), lr=LR)
+-criterion = nn.MSELoss()
+-
+-model.train()
+-for epoch in range(EPOCHS):
+-    total_loss = 0.0
+-    pbar = tqdm(dataloader, desc=f'Epoch {epoch+1}/{EPOCHS}')
+-    for u0_batch, t_batch, ut_batch in pbar:
+-        u0_batch = u0_batch.to(DEVICE)
+-        t_batch = t_batch.to(DEVICE).unsqueeze(1)  # 调整为 (B,1)
+-        ut_batch = ut_batch.to(DEVICE)
+-
+-        optimizer.zero_grad()
+-        pred = model(u0_batch, t_batch)
+-        loss = criterion(pred, ut_batch)
+-        loss.backward()
+-        optimizer.step()
+-
+-        total_loss += loss.item()
+-        pbar.set_postfix({'loss': loss.item()})
+-
+-    avg_loss = total_loss / len(dataloader)
+-    print(f'Epoch {epoch+1} average loss: {avg_loss:.6f}')
+-
+-torch.save(model.state_dict(), f'{MAP_ID}_neural_predictor_final.pth')
++import torch
++import torch.nn as nn
++import torch.optim as optim
++from torch.utils.data import Dataset, DataLoader
++import numpy as np
++from tqdm import tqdm
++
++from src.original_paper.experiment.MCCP.neural_predictor import NeuralCongestionPredictor
++
++# 配置
++DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
++BATCH_SIZE = 32
++EPOCHS = 100
++LR = 1e-3
++MAP_ID = 'STANDARD'
++
++# 加载预先生成的数据
++data = np.load('training_data.npz')
++u0_all = data['u0']   # (N, H, W)
++t_all = data['t']      # (N,)
++ut_all = data['ut']    # (N, H, W)
++
++H, W = u0_all.shape[1], u0_all.shape[2]
++
++class CachedDataset(Dataset):
++    def __init__(self, u0, t, ut):
++        self.u0 = torch.from_numpy(u0).float()
++        self.t = torch.from_numpy(t).float()
++        self.ut = torch.from_numpy(ut).float()
++
++    def __len__(self):
++        return len(self.u0)
++
++    def __getitem__(self, idx):
++        return self.u0[idx].unsqueeze(0), self.t[idx], self.ut[idx].unsqueeze(0)
++
++dataset = CachedDataset(u0_all, t_all, ut_all)
++dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
++
++model = NeuralCongestionPredictor(H, W).to(DEVICE)
++optimizer = optim.Adam(model.parameters(), lr=LR)
++criterion = nn.MSELoss()
++
++model.train()
++for epoch in range(EPOCHS):
++    total_loss = 0.0
++    pbar = tqdm(dataloader, desc=f'Epoch {epoch+1}/{EPOCHS}')
++    for u0_batch, t_batch, ut_batch in pbar:
++        u0_batch = u0_batch.to(DEVICE)
++        t_batch = t_batch.to(DEVICE).unsqueeze(1)  # 调整为 (B,1)
++        ut_batch = ut_batch.to(DEVICE)
++
++        optimizer.zero_grad()
++        pred = model(u0_batch, t_batch)
++        loss = criterion(pred, ut_batch)
++        loss.backward()
++        optimizer.step()
++
++        total_loss += loss.item()
++        pbar.set_postfix({'loss': loss.item()})
++
++    avg_loss = total_loss / len(dataloader)
++    print(f'Epoch {epoch+1} average loss: {avg_loss:.6f}')
++
++torch.save(model.state_dict(), f'{MAP_ID}_neural_predictor_final.pth')

@@ -1,0 +1,13 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/provenance/reproduce_smoke_report.py
++++ experiments/revision/R2_04_operational_metrics/provenance/reproduce_smoke_report.py
+@@ -1,8 +1,8 @@
+ from pathlib import Path
+ import pandas as pd,json,sys
+ ROOT=Path(__file__).resolve().parents[1]
+-sys.path.insert(0,str(ROOT))
+-from workload import FLEETS,LEVELS
++pass  # Package imports replace process-wide import-path mutation.
++from experiments.revision.R2_04_operational_metrics.workload import FLEETS, LEVELS
+ base=ROOT/'validation/smoke_summary';d=pd.read_csv(base/'audited_metrics.csv');s=pd.read_csv(base/'paired_statistics.csv');st=json.loads((base/'analysis_status.json').read_text())
+ assert st['all_valid'] and st['verified']==72 and st['valid_pairs']==36 and not st['formal_experiment']
+ fc=s[s.comparison=='Full-Control'];primary=['throughput','waiting_time','flow_time','queue_length']

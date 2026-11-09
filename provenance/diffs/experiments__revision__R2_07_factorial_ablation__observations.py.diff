@@ -1,0 +1,11 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/observations.py
++++ experiments/revision/R2_07_factorial_ablation/observations.py
+@@ -1,7 +1,7 @@
+ """Passive backlog task/field recorder. No physical collision checks or planner changes."""
+ import time
+ import numpy as np
+-from workload import write_json
++from experiments.revision.R2_07_factorial_ablation.workload import write_json
+ 
+ class Request(tuple):
+     def __new__(cls,pickup,dropoff,rid):

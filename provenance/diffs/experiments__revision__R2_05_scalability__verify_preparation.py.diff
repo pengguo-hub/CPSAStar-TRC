@@ -1,0 +1,13 @@
+--- 11-R2-05.zip::R2-05/verify_preparation.py
++++ experiments/revision/R2_05_scalability/verify_preparation.py
+@@ -6,8 +6,8 @@
+ import json
+ from pathlib import Path
+ 
+-from original_runtime import CORE, ROOT, build_original_inputs, source_audit
+-from run_baseline import digest, write_json
++from experiments.revision.R2_05_scalability.original_runtime import CORE, ROOT, build_original_inputs, source_audit
++from experiments.revision.R2_05_scalability.run_baseline import digest, write_json
+ 
+ 
+ def main():

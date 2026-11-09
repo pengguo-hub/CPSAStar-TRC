@@ -1,0 +1,11 @@
+--- 23-plot_r2.zip::plot_r2/R2-2/plot_R2_02_results.py
++++ plotting/revision/R2/R2_2/final/plot_R2_02_results.py
+@@ -23,7 +23,7 @@
+ ROOT = Path(__file__).resolve().parent
+ DATA_DEFAULT = ROOT / "data"
+ FIG_DEFAULT = ROOT / "figures"
+-sys.path.insert(0, str(ROOT / "code"))
++pass  # Package imports replace process-wide import-path mutation.
+ from statistics_analysis import analyze
+ 
+ MAPS = ["A", "B", "C"]

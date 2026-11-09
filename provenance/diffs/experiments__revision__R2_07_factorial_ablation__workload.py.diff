@@ -1,0 +1,11 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/workload.py
++++ experiments/revision/R2_07_factorial_ablation/workload.py
+@@ -5,7 +5,7 @@
+ import json
+ import os
+ from pathlib import Path
+-from reference_inputs.custom_benchmark_loader import CustomBenchmarkLoader
++from experiments.revision.R2_07_factorial_ablation.reference_inputs.custom_benchmark_loader import CustomBenchmarkLoader
+ 
+ ROOT=Path(__file__).resolve().parent
+ SIZES={'STANDARD':(16,11),'FRANSEN':(20,20),'RING':(20,20)}

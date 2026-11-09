@@ -1,0 +1,6962 @@
+[
+  {
+    "id": 9,
+    "release": 1,
+    "pickup": [
+      7,
+      0
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 0,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 1.0,
+    "completion": 16.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 15.0,
+    "waiting_time": 0.0,
+    "flow_time": 15.0,
+    "restricted_flow_time": 15.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 13,
+    "release": 1,
+    "pickup": [
+      12,
+      7
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 1,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 1.0,
+    "completion": 9.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 8.0,
+    "waiting_time": 0.0,
+    "flow_time": 8.0,
+    "restricted_flow_time": 8.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 16,
+    "release": 2,
+    "pickup": [
+      12,
+      9
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 2,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 2.0,
+    "completion": 11.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 9.0,
+    "waiting_time": 0.0,
+    "flow_time": 9.0,
+    "restricted_flow_time": 9.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 29,
+    "release": 6,
+    "pickup": [
+      2,
+      9
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 3,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 6.0,
+    "completion": 28.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 22.0,
+    "waiting_time": 0.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 46,
+    "release": 9,
+    "pickup": [
+      3,
+      5
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 4,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 9.0,
+    "completion": null,
+    "assignment_events": 98,
+    "requeues": 97,
+    "pickups": 0,
+    "queue_wait": 97.0,
+    "assigned_wait": 394.0,
+    "movement_time": 0.0,
+    "waiting_time": 491.0,
+    "flow_time": null,
+    "restricted_flow_time": 491.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 52,
+    "release": 10,
+    "pickup": [
+      7,
+      10
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 5,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 10.0,
+    "completion": 23.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 13.0,
+    "waiting_time": 0.0,
+    "flow_time": 13.0,
+    "restricted_flow_time": 13.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 81,
+    "release": 15,
+    "pickup": [
+      14,
+      9
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 6,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 15.0,
+    "completion": 24.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 9.0,
+    "waiting_time": 0.0,
+    "flow_time": 9.0,
+    "restricted_flow_time": 9.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 86,
+    "release": 17,
+    "pickup": [
+      0,
+      8
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 7,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 17.0,
+    "completion": 40.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 23.0,
+    "waiting_time": 0.0,
+    "flow_time": 23.0,
+    "restricted_flow_time": 23.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 91,
+    "release": 18,
+    "pickup": [
+      2,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 8,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 18.0,
+    "completion": null,
+    "assignment_events": 96,
+    "requeues": 96,
+    "pickups": 0,
+    "queue_wait": 96.0,
+    "assigned_wait": 386.0,
+    "movement_time": 0.0,
+    "waiting_time": 482.0,
+    "flow_time": null,
+    "restricted_flow_time": 482.0,
+    "right_censored": true,
+    "state": "queued"
+  },
+  {
+    "id": 99,
+    "release": 19,
+    "pickup": [
+      14,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 9,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 19.0,
+    "completion": 21.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 2.0,
+    "waiting_time": 0.0,
+    "flow_time": 2.0,
+    "restricted_flow_time": 2.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 118,
+    "release": 23,
+    "pickup": [
+      10,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 10,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 23.0,
+    "completion": 31.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 8.0,
+    "waiting_time": 0.0,
+    "flow_time": 8.0,
+    "restricted_flow_time": 8.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 121,
+    "release": 24,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 11,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 24.0,
+    "completion": 37.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 13.0,
+    "waiting_time": 0.0,
+    "flow_time": 13.0,
+    "restricted_flow_time": 13.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 136,
+    "release": 28,
+    "pickup": [
+      9,
+      10
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 12,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 28.0,
+    "completion": null,
+    "assignment_events": 95,
+    "requeues": 94,
+    "pickups": 0,
+    "queue_wait": 94.0,
+    "assigned_wait": 378.0,
+    "movement_time": 0.0,
+    "waiting_time": 472.0,
+    "flow_time": null,
+    "restricted_flow_time": 472.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 138,
+    "release": 29,
+    "pickup": [
+      11,
+      5
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 13,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 29.0,
+    "completion": 38.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 8.0,
+    "waiting_time": 1.0,
+    "flow_time": 9.0,
+    "restricted_flow_time": 9.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 142,
+    "release": 31,
+    "pickup": [
+      2,
+      9
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 14,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 31.0,
+    "completion": 51.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 147,
+    "release": 31,
+    "pickup": [
+      14,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 15,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 31.0,
+    "completion": 42.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 10.0,
+    "waiting_time": 1.0,
+    "flow_time": 11.0,
+    "restricted_flow_time": 11.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 148,
+    "release": 31,
+    "pickup": [
+      4,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 16,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 31.0,
+    "completion": 48.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 16.0,
+    "waiting_time": 1.0,
+    "flow_time": 17.0,
+    "restricted_flow_time": 17.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 151,
+    "release": 32,
+    "pickup": [
+      8,
+      2
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 17,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 32.0,
+    "completion": 51.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 18.0,
+    "waiting_time": 1.0,
+    "flow_time": 19.0,
+    "restricted_flow_time": 19.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 152,
+    "release": 32,
+    "pickup": [
+      12,
+      1
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 18,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 32.0,
+    "completion": 41.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 9.0,
+    "waiting_time": 0.0,
+    "flow_time": 9.0,
+    "restricted_flow_time": 9.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 162,
+    "release": 34,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 19,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 34.0,
+    "completion": 52.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 18.0,
+    "waiting_time": 0.0,
+    "flow_time": 18.0,
+    "restricted_flow_time": 18.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 175,
+    "release": 37,
+    "pickup": [
+      1,
+      10
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 20,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 37.0,
+    "completion": 64.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 27.0,
+    "waiting_time": 0.0,
+    "flow_time": 27.0,
+    "restricted_flow_time": 27.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 178,
+    "release": 37,
+    "pickup": [
+      10,
+      1
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 21,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 37.0,
+    "completion": 53.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 16.0,
+    "waiting_time": 0.0,
+    "flow_time": 16.0,
+    "restricted_flow_time": 16.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 181,
+    "release": 38,
+    "pickup": [
+      5,
+      0
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 22,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 38.0,
+    "completion": 57.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 19.0,
+    "waiting_time": 0.0,
+    "flow_time": 19.0,
+    "restricted_flow_time": 19.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 193,
+    "release": 40,
+    "pickup": [
+      12,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 23,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 40.0,
+    "completion": 55.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 14.0,
+    "waiting_time": 1.0,
+    "flow_time": 15.0,
+    "restricted_flow_time": 15.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 204,
+    "release": 42,
+    "pickup": [
+      14,
+      8
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 24,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 42.0,
+    "completion": 46.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 4.0,
+    "waiting_time": 0.0,
+    "flow_time": 4.0,
+    "restricted_flow_time": 4.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 205,
+    "release": 42,
+    "pickup": [
+      1,
+      10
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 25,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 42.0,
+    "completion": 71.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 29.0,
+    "waiting_time": 0.0,
+    "flow_time": 29.0,
+    "restricted_flow_time": 29.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 208,
+    "release": 42,
+    "pickup": [
+      5,
+      10
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 26,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 42.0,
+    "completion": 65.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 23.0,
+    "waiting_time": 0.0,
+    "flow_time": 23.0,
+    "restricted_flow_time": 23.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 213,
+    "release": 44,
+    "pickup": [
+      14,
+      7
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 27,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 44.0,
+    "completion": 49.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 5.0,
+    "waiting_time": 0.0,
+    "flow_time": 5.0,
+    "restricted_flow_time": 5.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 224,
+    "release": 46,
+    "pickup": [
+      3,
+      0
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 28,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 46.0,
+    "completion": 67.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 21.0,
+    "waiting_time": 0.0,
+    "flow_time": 21.0,
+    "restricted_flow_time": 21.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 237,
+    "release": 49,
+    "pickup": [
+      12,
+      7
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 29,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 49.0,
+    "completion": 66.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 16.0,
+    "waiting_time": 1.0,
+    "flow_time": 17.0,
+    "restricted_flow_time": 17.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 247,
+    "release": 52,
+    "pickup": [
+      4,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 30,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 52.0,
+    "completion": 72.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 18.0,
+    "waiting_time": 2.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 266,
+    "release": 55,
+    "pickup": [
+      14,
+      3
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 31,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 55.0,
+    "completion": 61.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 6.0,
+    "waiting_time": 0.0,
+    "flow_time": 6.0,
+    "restricted_flow_time": 6.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 276,
+    "release": 57,
+    "pickup": [
+      9,
+      5
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 32,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 57.0,
+    "completion": 65.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 8.0,
+    "waiting_time": 0.0,
+    "flow_time": 8.0,
+    "restricted_flow_time": 8.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 281,
+    "release": 58,
+    "pickup": [
+      2,
+      1
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 33,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 58.0,
+    "completion": 94.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 36.0,
+    "waiting_time": 0.0,
+    "flow_time": 36.0,
+    "restricted_flow_time": 36.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 286,
+    "release": 61,
+    "pickup": [
+      8,
+      1
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 34,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 61.0,
+    "completion": 86.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 25.0,
+    "waiting_time": 0.0,
+    "flow_time": 25.0,
+    "restricted_flow_time": 25.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 297,
+    "release": 64,
+    "pickup": [
+      8,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 35,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 64.0,
+    "completion": 88.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 22.0,
+    "waiting_time": 2.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 301,
+    "release": 64,
+    "pickup": [
+      0,
+      6
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 36,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 64.0,
+    "completion": 103.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 39.0,
+    "waiting_time": 0.0,
+    "flow_time": 39.0,
+    "restricted_flow_time": 39.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 319,
+    "release": 67,
+    "pickup": [
+      12,
+      8
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 37,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 67.0,
+    "completion": 78.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 11.0,
+    "waiting_time": 0.0,
+    "flow_time": 11.0,
+    "restricted_flow_time": 11.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 329,
+    "release": 69,
+    "pickup": [
+      12,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 38,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 69.0,
+    "completion": 87.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 3.0,
+    "movement_time": 15.0,
+    "waiting_time": 3.0,
+    "flow_time": 18.0,
+    "restricted_flow_time": 18.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 359,
+    "release": 74,
+    "pickup": [
+      10,
+      9
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 39,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 74.0,
+    "completion": 93.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 19.0,
+    "waiting_time": 0.0,
+    "flow_time": 19.0,
+    "restricted_flow_time": 19.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 361,
+    "release": 75,
+    "pickup": [
+      10,
+      7
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 40,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 75.0,
+    "completion": 95.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 366,
+    "release": 76,
+    "pickup": [
+      14,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 41,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 76.0,
+    "completion": 80.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 4.0,
+    "waiting_time": 0.0,
+    "flow_time": 4.0,
+    "restricted_flow_time": 4.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 373,
+    "release": 78,
+    "pickup": [
+      14,
+      4
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 42,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 78.0,
+    "completion": 81.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 3.0,
+    "waiting_time": 0.0,
+    "flow_time": 3.0,
+    "restricted_flow_time": 3.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 408,
+    "release": 86,
+    "pickup": [
+      0,
+      7
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 43,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 86.0,
+    "completion": 125.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 38.0,
+    "waiting_time": 1.0,
+    "flow_time": 39.0,
+    "restricted_flow_time": 39.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 412,
+    "release": 87,
+    "pickup": [
+      11,
+      0
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 44,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 87.0,
+    "completion": 109.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 22.0,
+    "waiting_time": 0.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 420,
+    "release": 89,
+    "pickup": [
+      12,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 45,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 89.0,
+    "completion": 110.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 4.0,
+    "movement_time": 17.0,
+    "waiting_time": 4.0,
+    "flow_time": 21.0,
+    "restricted_flow_time": 21.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 425,
+    "release": 90,
+    "pickup": [
+      5,
+      0
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 46,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 90.0,
+    "completion": 124.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 34.0,
+    "waiting_time": 0.0,
+    "flow_time": 34.0,
+    "restricted_flow_time": 34.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 435,
+    "release": 93,
+    "pickup": [
+      10,
+      6
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 47,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 93.0,
+    "completion": 115.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 22.0,
+    "waiting_time": 0.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 442,
+    "release": 94,
+    "pickup": [
+      5,
+      5
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 48,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 94.0,
+    "completion": 124.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 30.0,
+    "waiting_time": 0.0,
+    "flow_time": 30.0,
+    "restricted_flow_time": 30.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 443,
+    "release": 94,
+    "pickup": [
+      2,
+      2
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 49,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 94.0,
+    "completion": 129.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 35.0,
+    "waiting_time": 0.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 449,
+    "release": 95,
+    "pickup": [
+      2,
+      1
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 50,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 95.0,
+    "completion": 130.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 35.0,
+    "waiting_time": 0.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 455,
+    "release": 97,
+    "pickup": [
+      4,
+      2
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 51,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 97.0,
+    "completion": 132.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 34.0,
+    "waiting_time": 1.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 476,
+    "release": 101,
+    "pickup": [
+      7,
+      5
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 52,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 101.0,
+    "completion": 125.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 22.0,
+    "waiting_time": 2.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 481,
+    "release": 102,
+    "pickup": [
+      8,
+      9
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 53,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 102.0,
+    "completion": 125.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 22.0,
+    "waiting_time": 1.0,
+    "flow_time": 23.0,
+    "restricted_flow_time": 23.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 485,
+    "release": 103,
+    "pickup": [
+      10,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 54,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 103.0,
+    "completion": 127.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 510,
+    "release": 108,
+    "pickup": [
+      2,
+      1
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 55,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 108.0,
+    "completion": 146.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 36.0,
+    "waiting_time": 2.0,
+    "flow_time": 38.0,
+    "restricted_flow_time": 38.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 514,
+    "release": 109,
+    "pickup": [
+      1,
+      0
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 56,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 109.0,
+    "completion": 148.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 39.0,
+    "waiting_time": 0.0,
+    "flow_time": 39.0,
+    "restricted_flow_time": 39.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 533,
+    "release": 115,
+    "pickup": [
+      14,
+      1
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 57,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 115.0,
+    "completion": 127.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 11.0,
+    "waiting_time": 1.0,
+    "flow_time": 12.0,
+    "restricted_flow_time": 12.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 541,
+    "release": 117,
+    "pickup": [
+      12,
+      4
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 58,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 117.0,
+    "completion": 137.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 543,
+    "release": 118,
+    "pickup": [
+      2,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 59,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 118.0,
+    "completion": 155.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 37.0,
+    "waiting_time": 0.0,
+    "flow_time": 37.0,
+    "restricted_flow_time": 37.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 546,
+    "release": 119,
+    "pickup": [
+      12,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 60,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 119.0,
+    "completion": 139.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 557,
+    "release": 121,
+    "pickup": [
+      6,
+      6
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 61,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 121.0,
+    "completion": 149.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 28.0,
+    "waiting_time": 0.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 572,
+    "release": 124,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 62,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 124.0,
+    "completion": 152.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 26.0,
+    "waiting_time": 2.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 576,
+    "release": 126,
+    "pickup": [
+      8,
+      7
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 63,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 126.0,
+    "completion": 149.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 3.0,
+    "movement_time": 20.0,
+    "waiting_time": 3.0,
+    "flow_time": 23.0,
+    "restricted_flow_time": 23.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 582,
+    "release": 126,
+    "pickup": [
+      6,
+      7
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 64,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 126.0,
+    "completion": 153.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 26.0,
+    "waiting_time": 1.0,
+    "flow_time": 27.0,
+    "restricted_flow_time": 27.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 585,
+    "release": 128,
+    "pickup": [
+      2,
+      1
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 65,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 128.0,
+    "completion": 164.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 36.0,
+    "waiting_time": 0.0,
+    "flow_time": 36.0,
+    "restricted_flow_time": 36.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 596,
+    "release": 130,
+    "pickup": [
+      8,
+      7
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 66,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 130.0,
+    "completion": 152.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 22.0,
+    "waiting_time": 0.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 600,
+    "release": 130,
+    "pickup": [
+      4,
+      1
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 67,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 130.0,
+    "completion": 162.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 32.0,
+    "waiting_time": 0.0,
+    "flow_time": 32.0,
+    "restricted_flow_time": 32.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 616,
+    "release": 134,
+    "pickup": [
+      2,
+      3
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 68,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 134.0,
+    "completion": 171.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 37.0,
+    "waiting_time": 0.0,
+    "flow_time": 37.0,
+    "restricted_flow_time": 37.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 619,
+    "release": 134,
+    "pickup": [
+      0,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 69,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 134.0,
+    "completion": 178.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 44.0,
+    "waiting_time": 0.0,
+    "flow_time": 44.0,
+    "restricted_flow_time": 44.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 621,
+    "release": 135,
+    "pickup": [
+      7,
+      10
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 70,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 135.0,
+    "completion": 160.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 25.0,
+    "waiting_time": 0.0,
+    "flow_time": 25.0,
+    "restricted_flow_time": 25.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 643,
+    "release": 140,
+    "pickup": [
+      0,
+      9
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 71,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 140.0,
+    "completion": 179.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 39.0,
+    "waiting_time": 0.0,
+    "flow_time": 39.0,
+    "restricted_flow_time": 39.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 647,
+    "release": 141,
+    "pickup": [
+      8,
+      7
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 72,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 141.0,
+    "completion": 165.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 649,
+    "release": 142,
+    "pickup": [
+      8,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 73,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 142.0,
+    "completion": 166.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 656,
+    "release": 143,
+    "pickup": [
+      7,
+      5
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 74,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 143.0,
+    "completion": 170.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 27.0,
+    "waiting_time": 0.0,
+    "flow_time": 27.0,
+    "restricted_flow_time": 27.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 668,
+    "release": 146,
+    "pickup": [
+      8,
+      6
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 75,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 146.0,
+    "completion": 171.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 25.0,
+    "waiting_time": 0.0,
+    "flow_time": 25.0,
+    "restricted_flow_time": 25.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 669,
+    "release": 146,
+    "pickup": [
+      4,
+      6
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 76,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 146.0,
+    "completion": 180.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 32.0,
+    "waiting_time": 2.0,
+    "flow_time": 34.0,
+    "restricted_flow_time": 34.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 676,
+    "release": 149,
+    "pickup": [
+      7,
+      5
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 77,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 149.0,
+    "completion": 177.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 28.0,
+    "waiting_time": 0.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 693,
+    "release": 152,
+    "pickup": [
+      0,
+      2
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 78,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 152.0,
+    "completion": 192.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 40.0,
+    "waiting_time": 0.0,
+    "flow_time": 40.0,
+    "restricted_flow_time": 40.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 698,
+    "release": 153,
+    "pickup": [
+      5,
+      5
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 79,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 153.0,
+    "completion": 184.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 31.0,
+    "waiting_time": 0.0,
+    "flow_time": 31.0,
+    "restricted_flow_time": 31.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 719,
+    "release": 157,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 80,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 157.0,
+    "completion": 181.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 728,
+    "release": 158,
+    "pickup": [
+      10,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 81,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 158.0,
+    "completion": 180.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 20.0,
+    "waiting_time": 2.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 739,
+    "release": 161,
+    "pickup": [
+      8,
+      6
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 82,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 161.0,
+    "completion": 185.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 23.0,
+    "waiting_time": 1.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 741,
+    "release": 161,
+    "pickup": [
+      12,
+      6
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 83,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 161.0,
+    "completion": 179.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 17.0,
+    "waiting_time": 1.0,
+    "flow_time": 18.0,
+    "restricted_flow_time": 18.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 747,
+    "release": 163,
+    "pickup": [
+      13,
+      5
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 84,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 163.0,
+    "completion": 174.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 9.0,
+    "waiting_time": 2.0,
+    "flow_time": 11.0,
+    "restricted_flow_time": 11.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 754,
+    "release": 164,
+    "pickup": [
+      14,
+      8
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 85,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 164.0,
+    "completion": 172.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 6.0,
+    "waiting_time": 2.0,
+    "flow_time": 8.0,
+    "restricted_flow_time": 8.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 759,
+    "release": 165,
+    "pickup": [
+      0,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 86,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 165.0,
+    "completion": 206.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 40.0,
+    "waiting_time": 1.0,
+    "flow_time": 41.0,
+    "restricted_flow_time": 41.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 775,
+    "release": 168,
+    "pickup": [
+      0,
+      9
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 87,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 168.0,
+    "completion": 209.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 41.0,
+    "waiting_time": 0.0,
+    "flow_time": 41.0,
+    "restricted_flow_time": 41.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 785,
+    "release": 171,
+    "pickup": [
+      6,
+      8
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 88,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 171.0,
+    "completion": 205.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 33.0,
+    "waiting_time": 1.0,
+    "flow_time": 34.0,
+    "restricted_flow_time": 34.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 787,
+    "release": 171,
+    "pickup": [
+      0,
+      2
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 89,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 171.0,
+    "completion": 215.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 43.0,
+    "waiting_time": 1.0,
+    "flow_time": 44.0,
+    "restricted_flow_time": 44.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 788,
+    "release": 171,
+    "pickup": [
+      6,
+      8
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 90,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 171.0,
+    "completion": 210.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 37.0,
+    "waiting_time": 2.0,
+    "flow_time": 39.0,
+    "restricted_flow_time": 39.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 808,
+    "release": 174,
+    "pickup": [
+      12,
+      8
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 91,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 174.0,
+    "completion": 194.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 19.0,
+    "waiting_time": 1.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 810,
+    "release": 175,
+    "pickup": [
+      13,
+      5
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 92,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 175.0,
+    "completion": 196.0,
+    "assignment_events": 2,
+    "requeues": 1,
+    "pickups": 1,
+    "queue_wait": 1.0,
+    "assigned_wait": 5.0,
+    "movement_time": 15.0,
+    "waiting_time": 6.0,
+    "flow_time": 21.0,
+    "restricted_flow_time": 21.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 812,
+    "release": 175,
+    "pickup": [
+      8,
+      6
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 93,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 175.0,
+    "completion": 204.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 29.0,
+    "waiting_time": 0.0,
+    "flow_time": 29.0,
+    "restricted_flow_time": 29.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 815,
+    "release": 175,
+    "pickup": [
+      1,
+      10
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 94,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 175.0,
+    "completion": 218.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 4.0,
+    "movement_time": 39.0,
+    "waiting_time": 4.0,
+    "flow_time": 43.0,
+    "restricted_flow_time": 43.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 843,
+    "release": 180,
+    "pickup": [
+      5,
+      5
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 95,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 180.0,
+    "completion": 211.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 29.0,
+    "waiting_time": 2.0,
+    "flow_time": 31.0,
+    "restricted_flow_time": 31.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 864,
+    "release": 184,
+    "pickup": [
+      4,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 96,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 184.0,
+    "completion": 221.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 37.0,
+    "waiting_time": 0.0,
+    "flow_time": 37.0,
+    "restricted_flow_time": 37.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 873,
+    "release": 186,
+    "pickup": [
+      6,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 97,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 186.0,
+    "completion": 218.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 31.0,
+    "waiting_time": 1.0,
+    "flow_time": 32.0,
+    "restricted_flow_time": 32.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 882,
+    "release": 189,
+    "pickup": [
+      12,
+      8
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 98,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 189.0,
+    "completion": 208.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 19.0,
+    "waiting_time": 0.0,
+    "flow_time": 19.0,
+    "restricted_flow_time": 19.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 891,
+    "release": 190,
+    "pickup": [
+      4,
+      6
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 99,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 190.0,
+    "completion": 223.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 33.0,
+    "waiting_time": 0.0,
+    "flow_time": 33.0,
+    "restricted_flow_time": 33.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 901,
+    "release": 194,
+    "pickup": [
+      7,
+      0
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 0,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 194.0,
+    "completion": 222.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 28.0,
+    "waiting_time": 0.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 907,
+    "release": 196,
+    "pickup": [
+      12,
+      7
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 1,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 196.0,
+    "completion": 217.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 20.0,
+    "waiting_time": 1.0,
+    "flow_time": 21.0,
+    "restricted_flow_time": 21.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 913,
+    "release": 197,
+    "pickup": [
+      12,
+      9
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 2,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 197.0,
+    "completion": 214.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 17.0,
+    "waiting_time": 0.0,
+    "flow_time": 17.0,
+    "restricted_flow_time": 17.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 920,
+    "release": 199,
+    "pickup": [
+      2,
+      9
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 3,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 199.0,
+    "completion": 241.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 41.0,
+    "waiting_time": 1.0,
+    "flow_time": 42.0,
+    "restricted_flow_time": 42.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 933,
+    "release": 202,
+    "pickup": [
+      3,
+      5
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 4,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 202.0,
+    "completion": 238.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 36.0,
+    "waiting_time": 0.0,
+    "flow_time": 36.0,
+    "restricted_flow_time": 36.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 942,
+    "release": 205,
+    "pickup": [
+      7,
+      10
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 5,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 205.0,
+    "completion": 235.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 29.0,
+    "waiting_time": 1.0,
+    "flow_time": 30.0,
+    "restricted_flow_time": 30.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 954,
+    "release": 208,
+    "pickup": [
+      14,
+      9
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 6,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 208.0,
+    "completion": 222.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 14.0,
+    "waiting_time": 0.0,
+    "flow_time": 14.0,
+    "restricted_flow_time": 14.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 960,
+    "release": 209,
+    "pickup": [
+      0,
+      8
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 7,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 209.0,
+    "completion": 248.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 39.0,
+    "waiting_time": 0.0,
+    "flow_time": 39.0,
+    "restricted_flow_time": 39.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 967,
+    "release": 211,
+    "pickup": [
+      2,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 8,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 211.0,
+    "completion": 246.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 35.0,
+    "waiting_time": 0.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 969,
+    "release": 212,
+    "pickup": [
+      14,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 9,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 212.0,
+    "completion": 215.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 3.0,
+    "waiting_time": 0.0,
+    "flow_time": 3.0,
+    "restricted_flow_time": 3.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 975,
+    "release": 214,
+    "pickup": [
+      10,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 10,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 214.0,
+    "completion": 234.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 987,
+    "release": 217,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 11,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 217.0,
+    "completion": 241.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 994,
+    "release": 218,
+    "pickup": [
+      9,
+      10
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 12,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 218.0,
+    "completion": 238.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1000,
+    "release": 220,
+    "pickup": [
+      11,
+      5
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 13,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 220.0,
+    "completion": 233.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 12.0,
+    "waiting_time": 1.0,
+    "flow_time": 13.0,
+    "restricted_flow_time": 13.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1007,
+    "release": 221,
+    "pickup": [
+      2,
+      9
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 14,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 221.0,
+    "completion": 258.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 37.0,
+    "waiting_time": 0.0,
+    "flow_time": 37.0,
+    "restricted_flow_time": 37.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1015,
+    "release": 222,
+    "pickup": [
+      14,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 15,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 222.0,
+    "completion": 232.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 10.0,
+    "waiting_time": 0.0,
+    "flow_time": 10.0,
+    "restricted_flow_time": 10.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1018,
+    "release": 223,
+    "pickup": [
+      4,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 16,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 223.0,
+    "completion": 255.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 32.0,
+    "waiting_time": 0.0,
+    "flow_time": 32.0,
+    "restricted_flow_time": 32.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1036,
+    "release": 226,
+    "pickup": [
+      8,
+      2
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 17,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 226.0,
+    "completion": 248.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 22.0,
+    "waiting_time": 0.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1042,
+    "release": 228,
+    "pickup": [
+      12,
+      1
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 18,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 228.0,
+    "completion": 243.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 14.0,
+    "waiting_time": 1.0,
+    "flow_time": 15.0,
+    "restricted_flow_time": 15.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1052,
+    "release": 230,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 19,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 230.0,
+    "completion": 254.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1070,
+    "release": 235,
+    "pickup": [
+      1,
+      10
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 20,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 235.0,
+    "completion": 273.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 38.0,
+    "waiting_time": 0.0,
+    "flow_time": 38.0,
+    "restricted_flow_time": 38.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1072,
+    "release": 236,
+    "pickup": [
+      10,
+      1
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 21,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 236.0,
+    "completion": 258.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 21.0,
+    "waiting_time": 1.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1093,
+    "release": 240,
+    "pickup": [
+      5,
+      0
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 22,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 240.0,
+    "completion": 270.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 30.0,
+    "waiting_time": 0.0,
+    "flow_time": 30.0,
+    "restricted_flow_time": 30.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1098,
+    "release": 241,
+    "pickup": [
+      12,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 23,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 241.0,
+    "completion": 257.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 16.0,
+    "waiting_time": 0.0,
+    "flow_time": 16.0,
+    "restricted_flow_time": 16.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1109,
+    "release": 243,
+    "pickup": [
+      14,
+      8
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 24,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 243.0,
+    "completion": 247.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 4.0,
+    "waiting_time": 0.0,
+    "flow_time": 4.0,
+    "restricted_flow_time": 4.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1116,
+    "release": 245,
+    "pickup": [
+      1,
+      10
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 25,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 245.0,
+    "completion": 283.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 38.0,
+    "waiting_time": 0.0,
+    "flow_time": 38.0,
+    "restricted_flow_time": 38.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1128,
+    "release": 248,
+    "pickup": [
+      5,
+      10
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 26,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 248.0,
+    "completion": 278.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 30.0,
+    "waiting_time": 0.0,
+    "flow_time": 30.0,
+    "restricted_flow_time": 30.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1138,
+    "release": 251,
+    "pickup": [
+      14,
+      7
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 27,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 251.0,
+    "completion": 259.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 8.0,
+    "waiting_time": 0.0,
+    "flow_time": 8.0,
+    "restricted_flow_time": 8.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1142,
+    "release": 252,
+    "pickup": [
+      3,
+      0
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 28,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 252.0,
+    "completion": 285.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 33.0,
+    "waiting_time": 0.0,
+    "flow_time": 33.0,
+    "restricted_flow_time": 33.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1143,
+    "release": 252,
+    "pickup": [
+      12,
+      7
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 29,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 252.0,
+    "completion": 271.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 19.0,
+    "waiting_time": 0.0,
+    "flow_time": 19.0,
+    "restricted_flow_time": 19.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1166,
+    "release": 255,
+    "pickup": [
+      4,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 30,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 255.0,
+    "completion": 296.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 3.0,
+    "movement_time": 38.0,
+    "waiting_time": 3.0,
+    "flow_time": 41.0,
+    "restricted_flow_time": 41.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1194,
+    "release": 261,
+    "pickup": [
+      14,
+      3
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 31,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 261.0,
+    "completion": 267.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 6.0,
+    "waiting_time": 0.0,
+    "flow_time": 6.0,
+    "restricted_flow_time": 6.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1195,
+    "release": 261,
+    "pickup": [
+      9,
+      5
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 32,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 261.0,
+    "completion": 278.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 16.0,
+    "waiting_time": 1.0,
+    "flow_time": 17.0,
+    "restricted_flow_time": 17.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1209,
+    "release": 264,
+    "pickup": [
+      2,
+      1
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 33,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 264.0,
+    "completion": 302.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 38.0,
+    "waiting_time": 0.0,
+    "flow_time": 38.0,
+    "restricted_flow_time": 38.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1232,
+    "release": 270,
+    "pickup": [
+      8,
+      1
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 34,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 270.0,
+    "completion": 297.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 25.0,
+    "waiting_time": 2.0,
+    "flow_time": 27.0,
+    "restricted_flow_time": 27.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1250,
+    "release": 273,
+    "pickup": [
+      8,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 35,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 273.0,
+    "completion": 296.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 23.0,
+    "waiting_time": 0.0,
+    "flow_time": 23.0,
+    "restricted_flow_time": 23.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1272,
+    "release": 277,
+    "pickup": [
+      0,
+      6
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 36,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 277.0,
+    "completion": 314.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 37.0,
+    "waiting_time": 0.0,
+    "flow_time": 37.0,
+    "restricted_flow_time": 37.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1274,
+    "release": 278,
+    "pickup": [
+      12,
+      8
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 37,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 278.0,
+    "completion": 292.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 14.0,
+    "waiting_time": 0.0,
+    "flow_time": 14.0,
+    "restricted_flow_time": 14.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1292,
+    "release": 282,
+    "pickup": [
+      12,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 38,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 282.0,
+    "completion": 295.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 12.0,
+    "waiting_time": 1.0,
+    "flow_time": 13.0,
+    "restricted_flow_time": 13.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1300,
+    "release": 284,
+    "pickup": [
+      10,
+      9
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 39,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 284.0,
+    "completion": 303.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 19.0,
+    "waiting_time": 0.0,
+    "flow_time": 19.0,
+    "restricted_flow_time": 19.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1315,
+    "release": 288,
+    "pickup": [
+      10,
+      7
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 40,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 288.0,
+    "completion": 308.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1324,
+    "release": 289,
+    "pickup": [
+      14,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 41,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 289.0,
+    "completion": 294.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 5.0,
+    "waiting_time": 0.0,
+    "flow_time": 5.0,
+    "restricted_flow_time": 5.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1348,
+    "release": 296,
+    "pickup": [
+      14,
+      4
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 42,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 296.0,
+    "completion": 301.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 4.0,
+    "waiting_time": 1.0,
+    "flow_time": 5.0,
+    "restricted_flow_time": 5.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1358,
+    "release": 298,
+    "pickup": [
+      0,
+      7
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 43,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 298.0,
+    "completion": 336.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 38.0,
+    "waiting_time": 0.0,
+    "flow_time": 38.0,
+    "restricted_flow_time": 38.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1364,
+    "release": 300,
+    "pickup": [
+      11,
+      0
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 44,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 300.0,
+    "completion": 321.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 3.0,
+    "movement_time": 18.0,
+    "waiting_time": 3.0,
+    "flow_time": 21.0,
+    "restricted_flow_time": 21.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1373,
+    "release": 302,
+    "pickup": [
+      12,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 45,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 302.0,
+    "completion": 322.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 18.0,
+    "waiting_time": 2.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1384,
+    "release": 306,
+    "pickup": [
+      5,
+      0
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 46,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 306.0,
+    "completion": 334.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 28.0,
+    "waiting_time": 0.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1390,
+    "release": 307,
+    "pickup": [
+      10,
+      6
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 47,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 307.0,
+    "completion": 324.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 16.0,
+    "waiting_time": 1.0,
+    "flow_time": 17.0,
+    "restricted_flow_time": 17.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1396,
+    "release": 308,
+    "pickup": [
+      5,
+      5
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 48,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 308.0,
+    "completion": 334.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 26.0,
+    "waiting_time": 0.0,
+    "flow_time": 26.0,
+    "restricted_flow_time": 26.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1412,
+    "release": 311,
+    "pickup": [
+      2,
+      2
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 49,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 311.0,
+    "completion": 349.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 37.0,
+    "waiting_time": 1.0,
+    "flow_time": 38.0,
+    "restricted_flow_time": 38.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1451,
+    "release": 320,
+    "pickup": [
+      2,
+      1
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 50,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 320.0,
+    "completion": 363.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 41.0,
+    "waiting_time": 2.0,
+    "flow_time": 43.0,
+    "restricted_flow_time": 43.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1460,
+    "release": 323,
+    "pickup": [
+      4,
+      2
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 51,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 323.0,
+    "completion": 358.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 34.0,
+    "waiting_time": 1.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1468,
+    "release": 325,
+    "pickup": [
+      7,
+      5
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 52,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 325.0,
+    "completion": 349.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1477,
+    "release": 328,
+    "pickup": [
+      8,
+      9
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 53,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 328.0,
+    "completion": 350.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 22.0,
+    "waiting_time": 0.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1480,
+    "release": 328,
+    "pickup": [
+      10,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 54,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 328.0,
+    "completion": 354.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 25.0,
+    "waiting_time": 1.0,
+    "flow_time": 26.0,
+    "restricted_flow_time": 26.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1512,
+    "release": 335,
+    "pickup": [
+      2,
+      1
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 55,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 335.0,
+    "completion": 372.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 36.0,
+    "waiting_time": 1.0,
+    "flow_time": 37.0,
+    "restricted_flow_time": 37.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1520,
+    "release": 337,
+    "pickup": [
+      1,
+      0
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 56,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 337.0,
+    "completion": 384.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 4.0,
+    "movement_time": 43.0,
+    "waiting_time": 4.0,
+    "flow_time": 47.0,
+    "restricted_flow_time": 47.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1522,
+    "release": 337,
+    "pickup": [
+      14,
+      1
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 57,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 337.0,
+    "completion": 350.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 11.0,
+    "waiting_time": 2.0,
+    "flow_time": 13.0,
+    "restricted_flow_time": 13.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1525,
+    "release": 337,
+    "pickup": [
+      12,
+      4
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 58,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 337.0,
+    "completion": 346.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 9.0,
+    "waiting_time": 0.0,
+    "flow_time": 9.0,
+    "restricted_flow_time": 9.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1532,
+    "release": 338,
+    "pickup": [
+      2,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 59,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 338.0,
+    "completion": 372.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 33.0,
+    "waiting_time": 1.0,
+    "flow_time": 34.0,
+    "restricted_flow_time": 34.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1554,
+    "release": 345,
+    "pickup": [
+      12,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 60,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 345.0,
+    "completion": 367.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 20.0,
+    "waiting_time": 2.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1563,
+    "release": 348,
+    "pickup": [
+      6,
+      6
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 61,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 348.0,
+    "completion": 376.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 28.0,
+    "waiting_time": 0.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1564,
+    "release": 349,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 62,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 349.0,
+    "completion": 376.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 26.0,
+    "waiting_time": 1.0,
+    "flow_time": 27.0,
+    "restricted_flow_time": 27.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1597,
+    "release": 356,
+    "pickup": [
+      8,
+      7
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 63,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 356.0,
+    "completion": 378.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 22.0,
+    "waiting_time": 0.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1619,
+    "release": 361,
+    "pickup": [
+      6,
+      7
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 64,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 361.0,
+    "completion": 392.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 30.0,
+    "waiting_time": 1.0,
+    "flow_time": 31.0,
+    "restricted_flow_time": 31.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1651,
+    "release": 367,
+    "pickup": [
+      2,
+      1
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 65,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 367.0,
+    "completion": 408.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 40.0,
+    "waiting_time": 1.0,
+    "flow_time": 41.0,
+    "restricted_flow_time": 41.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1671,
+    "release": 373,
+    "pickup": [
+      8,
+      7
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 66,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 373.0,
+    "completion": 402.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 28.0,
+    "waiting_time": 1.0,
+    "flow_time": 29.0,
+    "restricted_flow_time": 29.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1672,
+    "release": 373,
+    "pickup": [
+      4,
+      1
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 67,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 373.0,
+    "completion": 405.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 32.0,
+    "waiting_time": 0.0,
+    "flow_time": 32.0,
+    "restricted_flow_time": 32.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1676,
+    "release": 374,
+    "pickup": [
+      2,
+      3
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 68,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 374.0,
+    "completion": 409.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 34.0,
+    "waiting_time": 1.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1679,
+    "release": 374,
+    "pickup": [
+      0,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 69,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 374.0,
+    "completion": 418.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 42.0,
+    "waiting_time": 2.0,
+    "flow_time": 44.0,
+    "restricted_flow_time": 44.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1692,
+    "release": 377,
+    "pickup": [
+      7,
+      10
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 70,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 377.0,
+    "completion": 404.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 27.0,
+    "waiting_time": 0.0,
+    "flow_time": 27.0,
+    "restricted_flow_time": 27.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1693,
+    "release": 377,
+    "pickup": [
+      0,
+      9
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 71,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 377.0,
+    "completion": 418.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 39.0,
+    "waiting_time": 2.0,
+    "flow_time": 41.0,
+    "restricted_flow_time": 41.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1698,
+    "release": 378,
+    "pickup": [
+      8,
+      7
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 72,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 378.0,
+    "completion": 409.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 30.0,
+    "waiting_time": 1.0,
+    "flow_time": 31.0,
+    "restricted_flow_time": 31.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1711,
+    "release": 380,
+    "pickup": [
+      8,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 73,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 380.0,
+    "completion": 406.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 25.0,
+    "waiting_time": 1.0,
+    "flow_time": 26.0,
+    "restricted_flow_time": 26.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1714,
+    "release": 381,
+    "pickup": [
+      7,
+      5
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 74,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 381.0,
+    "completion": 410.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 27.0,
+    "waiting_time": 2.0,
+    "flow_time": 29.0,
+    "restricted_flow_time": 29.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1723,
+    "release": 383,
+    "pickup": [
+      8,
+      6
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 75,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 383.0,
+    "completion": 410.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 6.0,
+    "movement_time": 21.0,
+    "waiting_time": 6.0,
+    "flow_time": 27.0,
+    "restricted_flow_time": 27.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1737,
+    "release": 386,
+    "pickup": [
+      4,
+      6
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 76,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 386.0,
+    "completion": 419.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 32.0,
+    "waiting_time": 1.0,
+    "flow_time": 33.0,
+    "restricted_flow_time": 33.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1743,
+    "release": 388,
+    "pickup": [
+      7,
+      5
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 77,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 388.0,
+    "completion": 416.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 28.0,
+    "waiting_time": 0.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1747,
+    "release": 388,
+    "pickup": [
+      0,
+      2
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 78,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 388.0,
+    "completion": 429.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 40.0,
+    "waiting_time": 1.0,
+    "flow_time": 41.0,
+    "restricted_flow_time": 41.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1756,
+    "release": 391,
+    "pickup": [
+      5,
+      5
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 79,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 391.0,
+    "completion": 424.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 31.0,
+    "waiting_time": 2.0,
+    "flow_time": 33.0,
+    "restricted_flow_time": 33.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1763,
+    "release": 391,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 80,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 391.0,
+    "completion": 415.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1780,
+    "release": 395,
+    "pickup": [
+      10,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 81,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 395.0,
+    "completion": 419.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 24.0,
+    "waiting_time": 0.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1791,
+    "release": 398,
+    "pickup": [
+      8,
+      6
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 82,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 398.0,
+    "completion": 424.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 25.0,
+    "waiting_time": 1.0,
+    "flow_time": 26.0,
+    "restricted_flow_time": 26.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1810,
+    "release": 403,
+    "pickup": [
+      12,
+      6
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 83,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 403.0,
+    "completion": 427.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 23.0,
+    "waiting_time": 1.0,
+    "flow_time": 24.0,
+    "restricted_flow_time": 24.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1811,
+    "release": 403,
+    "pickup": [
+      13,
+      5
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 84,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 403.0,
+    "completion": 422.0,
+    "assignment_events": 2,
+    "requeues": 1,
+    "pickups": 1,
+    "queue_wait": 1.0,
+    "assigned_wait": 6.0,
+    "movement_time": 12.0,
+    "waiting_time": 7.0,
+    "flow_time": 19.0,
+    "restricted_flow_time": 19.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1814,
+    "release": 404,
+    "pickup": [
+      14,
+      8
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 85,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 404.0,
+    "completion": 411.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 7.0,
+    "waiting_time": 0.0,
+    "flow_time": 7.0,
+    "restricted_flow_time": 7.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1817,
+    "release": 404,
+    "pickup": [
+      0,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 86,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 404.0,
+    "completion": 453.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 47.0,
+    "waiting_time": 2.0,
+    "flow_time": 49.0,
+    "restricted_flow_time": 49.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1840,
+    "release": 408,
+    "pickup": [
+      0,
+      9
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 87,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 408.0,
+    "completion": 450.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 41.0,
+    "waiting_time": 1.0,
+    "flow_time": 42.0,
+    "restricted_flow_time": 42.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1850,
+    "release": 411,
+    "pickup": [
+      6,
+      8
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 88,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 411.0,
+    "completion": 446.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 35.0,
+    "waiting_time": 0.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1856,
+    "release": 413,
+    "pickup": [
+      0,
+      2
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 89,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 413.0,
+    "completion": 456.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 43.0,
+    "waiting_time": 0.0,
+    "flow_time": 43.0,
+    "restricted_flow_time": 43.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1866,
+    "release": 414,
+    "pickup": [
+      6,
+      8
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 90,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 414.0,
+    "completion": 447.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 33.0,
+    "waiting_time": 0.0,
+    "flow_time": 33.0,
+    "restricted_flow_time": 33.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1877,
+    "release": 418,
+    "pickup": [
+      12,
+      8
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 91,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 418.0,
+    "completion": 435.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 16.0,
+    "waiting_time": 1.0,
+    "flow_time": 17.0,
+    "restricted_flow_time": 17.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1899,
+    "release": 423,
+    "pickup": [
+      13,
+      5
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 92,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 423.0,
+    "completion": 435.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 11.0,
+    "waiting_time": 1.0,
+    "flow_time": 12.0,
+    "restricted_flow_time": 12.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1900,
+    "release": 423,
+    "pickup": [
+      8,
+      6
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 93,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 423.0,
+    "completion": 451.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 27.0,
+    "waiting_time": 1.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1907,
+    "release": 425,
+    "pickup": [
+      1,
+      10
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 94,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 425.0,
+    "completion": 463.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 38.0,
+    "waiting_time": 0.0,
+    "flow_time": 38.0,
+    "restricted_flow_time": 38.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1908,
+    "release": 426,
+    "pickup": [
+      5,
+      5
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 95,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 426.0,
+    "completion": 458.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 31.0,
+    "waiting_time": 1.0,
+    "flow_time": 32.0,
+    "restricted_flow_time": 32.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1909,
+    "release": 426,
+    "pickup": [
+      4,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 96,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 426.0,
+    "completion": 460.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 33.0,
+    "waiting_time": 1.0,
+    "flow_time": 34.0,
+    "restricted_flow_time": 34.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1915,
+    "release": 428,
+    "pickup": [
+      6,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 97,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 428.0,
+    "completion": 456.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 26.0,
+    "waiting_time": 2.0,
+    "flow_time": 28.0,
+    "restricted_flow_time": 28.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1925,
+    "release": 430,
+    "pickup": [
+      12,
+      8
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 98,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 430.0,
+    "completion": 452.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 21.0,
+    "waiting_time": 1.0,
+    "flow_time": 22.0,
+    "restricted_flow_time": 22.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1929,
+    "release": 430,
+    "pickup": [
+      4,
+      6
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 99,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 430.0,
+    "completion": 465.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 35.0,
+    "waiting_time": 0.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1946,
+    "release": 434,
+    "pickup": [
+      7,
+      0
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 0,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 434.0,
+    "completion": 460.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 26.0,
+    "waiting_time": 0.0,
+    "flow_time": 26.0,
+    "restricted_flow_time": 26.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1957,
+    "release": 436,
+    "pickup": [
+      12,
+      7
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 1,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 436.0,
+    "completion": 456.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 19.0,
+    "waiting_time": 1.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1959,
+    "release": 437,
+    "pickup": [
+      12,
+      9
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 2,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 437.0,
+    "completion": 453.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 16.0,
+    "waiting_time": 0.0,
+    "flow_time": 16.0,
+    "restricted_flow_time": 16.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1964,
+    "release": 438,
+    "pickup": [
+      2,
+      9
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 3,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 438.0,
+    "completion": 477.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 39.0,
+    "waiting_time": 0.0,
+    "flow_time": 39.0,
+    "restricted_flow_time": 39.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1966,
+    "release": 438,
+    "pickup": [
+      3,
+      5
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 4,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 438.0,
+    "completion": 474.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 36.0,
+    "waiting_time": 0.0,
+    "flow_time": 36.0,
+    "restricted_flow_time": 36.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1979,
+    "release": 444,
+    "pickup": [
+      7,
+      10
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 5,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 444.0,
+    "completion": 475.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 30.0,
+    "waiting_time": 1.0,
+    "flow_time": 31.0,
+    "restricted_flow_time": 31.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 1997,
+    "release": 447,
+    "pickup": [
+      14,
+      9
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 6,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 447.0,
+    "completion": 462.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 14.0,
+    "waiting_time": 1.0,
+    "flow_time": 15.0,
+    "restricted_flow_time": 15.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2002,
+    "release": 448,
+    "pickup": [
+      0,
+      8
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 7,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 448.0,
+    "completion": 488.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 39.0,
+    "waiting_time": 1.0,
+    "flow_time": 40.0,
+    "restricted_flow_time": 40.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2018,
+    "release": 451,
+    "pickup": [
+      2,
+      3
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 8,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 451.0,
+    "completion": 486.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 35.0,
+    "waiting_time": 0.0,
+    "flow_time": 35.0,
+    "restricted_flow_time": 35.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2029,
+    "release": 454,
+    "pickup": [
+      14,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 9,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 454.0,
+    "completion": 457.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 3.0,
+    "waiting_time": 0.0,
+    "flow_time": 3.0,
+    "restricted_flow_time": 3.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2040,
+    "release": 457,
+    "pickup": [
+      10,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 10,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 457.0,
+    "completion": 477.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": 20.0,
+    "restricted_flow_time": 20.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2042,
+    "release": 457,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 11,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 457.0,
+    "completion": 483.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 26.0,
+    "waiting_time": 0.0,
+    "flow_time": 26.0,
+    "restricted_flow_time": 26.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2051,
+    "release": 458,
+    "pickup": [
+      9,
+      10
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 12,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 458.0,
+    "completion": 481.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 22.0,
+    "waiting_time": 1.0,
+    "flow_time": 23.0,
+    "restricted_flow_time": 23.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2066,
+    "release": 461,
+    "pickup": [
+      11,
+      5
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 13,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 461.0,
+    "completion": 482.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 20.0,
+    "waiting_time": 1.0,
+    "flow_time": 21.0,
+    "restricted_flow_time": 21.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2079,
+    "release": 464,
+    "pickup": [
+      2,
+      9
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 14,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 464.0,
+    "completion": 500.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 36.0,
+    "waiting_time": 0.0,
+    "flow_time": 36.0,
+    "restricted_flow_time": 36.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2101,
+    "release": 470,
+    "pickup": [
+      14,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 15,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 470.0,
+    "completion": 480.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 10.0,
+    "waiting_time": 0.0,
+    "flow_time": 10.0,
+    "restricted_flow_time": 10.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2124,
+    "release": 473,
+    "pickup": [
+      4,
+      4
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 16,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 473.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 26.0,
+    "waiting_time": 1.0,
+    "flow_time": null,
+    "restricted_flow_time": 27.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2125,
+    "release": 473,
+    "pickup": [
+      8,
+      2
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 17,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 473.0,
+    "completion": 499.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 2.0,
+    "movement_time": 24.0,
+    "waiting_time": 2.0,
+    "flow_time": 26.0,
+    "restricted_flow_time": 26.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2142,
+    "release": 477,
+    "pickup": [
+      12,
+      1
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 18,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 477.0,
+    "completion": 492.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 14.0,
+    "waiting_time": 1.0,
+    "flow_time": 15.0,
+    "restricted_flow_time": 15.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2161,
+    "release": 480,
+    "pickup": [
+      8,
+      3
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 19,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 480.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 20.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 20.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2163,
+    "release": 481,
+    "pickup": [
+      1,
+      10
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 20,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 481.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 19.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 19.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2165,
+    "release": 482,
+    "pickup": [
+      10,
+      1
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 21,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 482.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 18.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 18.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2181,
+    "release": 485,
+    "pickup": [
+      5,
+      0
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 22,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 485.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 15.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 15.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2194,
+    "release": 488,
+    "pickup": [
+      12,
+      1
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 23,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 488.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 12.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 12.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2200,
+    "release": 489,
+    "pickup": [
+      14,
+      8
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 24,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 489.0,
+    "completion": 493.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 4.0,
+    "waiting_time": 0.0,
+    "flow_time": 4.0,
+    "restricted_flow_time": 4.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2211,
+    "release": 492,
+    "pickup": [
+      1,
+      10
+    ],
+    "dropoff": [
+      15,
+      4
+    ],
+    "base_index": 25,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 492.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 0,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 8.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 8.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2214,
+    "release": 493,
+    "pickup": [
+      5,
+      10
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 26,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 493.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 0,
+    "queue_wait": 0.0,
+    "assigned_wait": 1.0,
+    "movement_time": 6.0,
+    "waiting_time": 1.0,
+    "flow_time": null,
+    "restricted_flow_time": 7.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2222,
+    "release": 494,
+    "pickup": [
+      14,
+      7
+    ],
+    "dropoff": [
+      15,
+      6
+    ],
+    "base_index": 27,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 494.0,
+    "completion": 498.0,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 1,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 4.0,
+    "waiting_time": 0.0,
+    "flow_time": 4.0,
+    "restricted_flow_time": 4.0,
+    "right_censored": false,
+    "state": "completed"
+  },
+  {
+    "id": 2224,
+    "release": 495,
+    "pickup": [
+      3,
+      0
+    ],
+    "dropoff": [
+      15,
+      5
+    ],
+    "base_index": 28,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 495.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 0,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 5.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 5.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2227,
+    "release": 495,
+    "pickup": [
+      12,
+      7
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 29,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 495.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 0,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 5.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 5.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2236,
+    "release": 497,
+    "pickup": [
+      4,
+      4
+    ],
+    "dropoff": [
+      15,
+      3
+    ],
+    "base_index": 30,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 497.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 0,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 3.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 3.0,
+    "right_censored": true,
+    "state": "active"
+  },
+  {
+    "id": 2241,
+    "release": 499,
+    "pickup": [
+      14,
+      3
+    ],
+    "dropoff": [
+      15,
+      7
+    ],
+    "base_index": 31,
+    "tile": [
+      0,
+      0
+    ],
+    "first_assignment": 499.0,
+    "completion": null,
+    "assignment_events": 1,
+    "requeues": 0,
+    "pickups": 0,
+    "queue_wait": 0.0,
+    "assigned_wait": 0.0,
+    "movement_time": 1.0,
+    "waiting_time": 0.0,
+    "flow_time": null,
+    "restricted_flow_time": 1.0,
+    "right_censored": true,
+    "state": "active"
+  }
+]

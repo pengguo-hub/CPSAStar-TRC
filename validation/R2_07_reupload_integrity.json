@@ -1,0 +1,1261 @@
+{
+  "latest_upload": "21-R2_7_results_merged_seed42_46.zip",
+  "canonical_path": "provenance/data_archives/19-R2_7_results_merged_seed42_46.zip",
+  "identical_to_previous": true,
+  "sha256": "a621cd6dd453d60c5d6af5dc684500ef104e417181950ed8d7179d0329c0f6f3",
+  "size_bytes": 172442201,
+  "total_entries": 1015,
+  "unreadable_entries": 250,
+  "bad": [
+    {
+      "member": "results_merged_seed42_46/runs/RING_N120_backlog_46_S1_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad CRC-32 for file 'results_merged_seed42_46/runs/RING_N120_backlog_46_S1_L0_P1_R1.json'"
+    },
+    {
+      "member": "results_merged_seed42_46/runs/RING_N120_backlog_46_S1_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/runs/RING_N120_backlog_46_S1_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S1_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad CRC-32 for file 'results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S1_L0_P0_R0.json'"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S0_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S0_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S0_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S1_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S1_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S0_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_43_S1_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_43_S0_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_43_S1_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_43_S0_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_43_S0_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S1_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S0_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S1_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S1_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S0_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S0_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S1_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S0_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S1_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S1_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S0_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S1_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S1_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S0_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S1_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S0_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S0_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S1_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S0_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S0_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S0_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S0_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S0_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S1_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S1_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S1_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S0_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_44_S1_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S1_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S0_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S0_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S1_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S1_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S1_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S0_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S0_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S1_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S1_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S0_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S1_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S0_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S0_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S0_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/FRANSEN_N150_backlog_44_S1_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S1_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S0_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S1_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_44_S0_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S0_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S1_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S0_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S0_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S0_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S0_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S0_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S1_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S0_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S1_L0_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S0_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S0_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S1_L0_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S1_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S1_L0_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S1_L0_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S1_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S1_L1_P0_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S0_L1_P0_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S0_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/STANDARD_N50_backlog_45_S1_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_45_S1_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_46_S1_L1_P1_R1.json",
+      "is_directory": false,
+      "error": "Bad CRC-32 for file 'results_merged_seed42_46/checkpoints/RING_N120_backlog_46_S1_L1_P1_R1.json'"
+    },
+    {
+      "member": "results_merged_seed42_46/checkpoints/RING_N120_backlog_46_S1_L1_P1_R0.json",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/",
+      "is_directory": true,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_42_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_42_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_42_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_43_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_43_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_43_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_44_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_44_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/RING_N120_backlog_44_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S1_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S0_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S0_L1_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S0_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S0_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S0_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S1_L0_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S1_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S0_L1_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S1_L1_P1_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S0_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S1_L0_P1_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S0_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/STANDARD_N50_backlog_45_S1_L0_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_45_S1_L0_P0_R1.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    },
+    {
+      "member": "results_merged_seed42_46/logs/FRANSEN_N150_backlog_45_S1_L1_P0_R0.log",
+      "is_directory": false,
+      "error": "Bad magic number for file header"
+    }
+  ]
+}

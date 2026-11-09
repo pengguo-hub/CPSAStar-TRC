@@ -1,0 +1,14 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/integration/path_planner_lifelong.py
++++ experiments/revision/R2_04_operational_metrics/integration/path_planner_lifelong.py
+@@ -1,8 +1,8 @@
+ #在任务分配增加冲突场
+ from collections import deque
+-from Conflict_Field_Updater import ConflictFieldUpdater
+-from Segment_Planner import SegmentPlanner
+-from Ticket_Manager import TicketManager
++from experiments.revision.R2_04_operational_metrics.vendor.portable_vendor.experiment.Lifelong.CPS_A_lifelong.Conflict_Field_Updater import ConflictFieldUpdater
++from experiments.revision.R2_04_operational_metrics.vendor.portable_vendor.experiment.Lifelong.CPS_A_lifelong.Segment_Planner import SegmentPlanner
++from experiments.revision.R2_04_operational_metrics.vendor.portable_vendor.experiment.Lifelong.CPS_A_lifelong.Ticket_Manager import TicketManager
+ import time
+ 
+ class LifelongPlanner:

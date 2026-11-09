@@ -1,0 +1,213 @@
+from pathlib import Path
+import io
+import zipfile
+import shutil
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# ==========================================================
+# Reviewer 1: delta sensitivity (R1.7 / R1.8)
+# 1 x 3 response-letter figure
+#
+# Input:
+#   r1_delta_results.zip
+#
+# Output:
+#   R1_delta_figures_1x3_response/
+#       Figure_R1_delta_sensitivity_1x3.png
+#       Figure_R1_delta_sensitivity_1x3.pdf
+#
+# Notes:
+#   - merges all summary_results.csv files inside the ZIP
+#   - plots delta = 1..7
+#   - common legend at top
+#   - Map A/B/C colors fixed as requested
+# ==========================================================
+
+_REPO_ROOT = Path(__file__).resolve().parents[5]
+ZIP_PATH = _REPO_ROOT / 'provenance/source_archives/05-r1_delta_results.zip'
+WORK_DIR = _REPO_ROOT / 'outputs/plotting_tmp/R1_07_08_delta'
+OUT_DIR = _REPO_ROOT / 'figures/revision/R1_07_08_delta'
+
+# ---------- Visual settings ----------
+COLORS = {
+    "A": "#D62728",
+    "B": "#4C72B0",
+    "C": "#55A868",
+}
+MARKERS = {"A": "o", "B": "s", "C": "^"}
+LINESTYLES = {"A": "-", "B": "--", "C": "-."}
+
+# map_name in CSV -> paper map label
+MAP_NAME_TO_LABEL = {
+    "STANDARD": "A",
+    "FRANSEN": "B",
+    "RING": "C",
+}
+
+# keep plotting order consistent with the paper
+MAP_ORDER = ["A", "B", "C"]
+
+plt.rcParams.update({
+    "font.family": "Times New Roman",
+    "mathtext.fontset": "stix",
+    "font.size": 10,
+    "axes.labelsize": 10,
+    "axes.titlesize": 11,
+    "legend.fontsize": 9,
+    "xtick.labelsize": 9,
+    "ytick.labelsize": 9,
+})
+
+# ---------- Prepare folders ----------
+if WORK_DIR.exists():
+    shutil.rmtree(WORK_DIR)
+if OUT_DIR.exists():
+    shutil.rmtree(OUT_DIR)
+
+WORK_DIR.mkdir(parents=True)
+OUT_DIR.mkdir(parents=True)
+
+# ---------- Extract ZIP ----------
+with zipfile.ZipFile(ZIP_PATH, "r") as zf:
+    zf.extractall(WORK_DIR)
+
+summary_files = sorted(WORK_DIR.rglob("summary_results.csv"))
+if not summary_files:
+    raise FileNotFoundError("No summary_results.csv found in r1_delta_results.zip")
+
+# ---------- Merge summary files ----------
+dfs = []
+for f in summary_files:
+    df = pd.read_csv(f)
+    dfs.append(df)
+
+df = pd.concat(dfs, ignore_index=True)
+
+# map_name -> A/B/C
+df["map_label"] = df["map_name"].map(MAP_NAME_TO_LABEL)
+df = df[df["map_label"].notna()].copy()
+
+# if multiple files contain different delta ranges, keep unique rows
+df = (
+    df.sort_values(["map_name", "delta"])
+      .drop_duplicates(subset=["map_name", "num_agvs", "delta"], keep="last")
+      .copy()
+)
+
+# 95% CI from std and n_runs
+# mean ± 1.96 * std / sqrt(n)
+df["throughput_ci95"] = 1.96 * df["throughput_std"] / np.sqrt(df["n_runs"])
+df["success_ci95"] = 1.96 * df["success_std"] / np.sqrt(df["n_runs"])
+df["planning_time_ci95"] = 1.96 * df["planning_time_std"] / np.sqrt(df["n_runs"])
+
+# sort
+df = df.sort_values(["map_label", "delta"]).reset_index(drop=True)
+
+# ---------- Helper to draw one panel ----------
+def draw_panel(ax, mean_col, ci_col, ylabel, title, percent=False):
+    for m in MAP_ORDER:
+        sub = df[df["map_label"] == m].sort_values("delta")
+
+        x = sub["delta"].to_numpy(dtype=float)
+        y = sub[mean_col].to_numpy(dtype=float)
+        err = sub[ci_col].to_numpy(dtype=float)
+
+        if percent:
+            y = y
+            err = err
+
+        ax.errorbar(
+            x,
+            y,
+            yerr=err,
+            marker=MARKERS[m],
+            linestyle=LINESTYLES[m],
+            color=COLORS[m],
+            linewidth=1.6,
+            markersize=5,
+            capsize=2.5,
+            label=f"Map {m}",
+        )
+
+    # ax.set_title(title, pad=7)
+    ax.set_xlabel(r"$\delta$")
+    ax.set_ylabel(ylabel)
+    ax.set_xticks(sorted(df["delta"].unique()))
+    ax.grid(True, alpha=0.25)
+    ax.tick_params(direction="in")
+
+# ---------- Create 1x3 figure ----------
+# roughly keep each panel around 4 x 3 inches, similar to your previous style
+fig, axes = plt.subplots(1, 3, figsize=(12.0, 3.4))
+
+draw_panel(
+    axes[0],
+    mean_col="throughput_mean",
+    ci_col="throughput_ci95",
+    ylabel="Throughput",
+    title="Throughput",
+    percent=False,
+)
+
+draw_panel(
+    axes[1],
+    mean_col="success_mean",
+    ci_col="success_ci95",
+    ylabel="Success Rate (%)",
+    title="Task completion success rate",
+    percent=True,
+)
+
+draw_panel(
+    axes[2],
+    mean_col="planning_time_mean",
+    ci_col="planning_time_ci95",
+    ylabel="Pure Time (s)",
+    title="Planning time",
+    percent=False,
+)
+
+# optional: make x-range a little cleaner
+for ax in axes:
+    ax.set_xlim(min(df["delta"]) - 0.2, max(df["delta"]) + 0.2)
+
+# ---------- Common legend at top ----------
+handles, labels = axes[0].get_legend_handles_labels()
+fig.legend(
+    handles,
+    labels,
+    loc="upper center",
+    bbox_to_anchor=(0.5, 1.00),
+    ncol=3,
+    frameon=False,
+    fontsize=10
+)
+
+# leave room for legend
+fig.tight_layout(rect=[0.0, 0.0, 1.0, 0.90], w_pad=1.3)
+
+# ---------- Save ----------
+png_path = OUT_DIR / "Figure_R1_delta_sensitivity_1x3.png"
+pdf_path = OUT_DIR / "Figure_R1_delta_sensitivity_1x3.pdf"
+
+fig.savefig(
+    png_path,
+    dpi=400,
+    bbox_inches="tight",
+)
+fig.savefig(
+    pdf_path,
+    dpi=400,
+    bbox_inches="tight",
+)
+plt.close(fig)
+
+print("Done.")
+print("PNG:", png_path)
+print("PDF:", pdf_path)
+
+# ---------- Cleanup ----------
+if WORK_DIR.exists():
+    shutil.rmtree(WORK_DIR)

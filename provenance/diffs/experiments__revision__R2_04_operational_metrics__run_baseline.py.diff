@@ -1,0 +1,20 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/run_baseline.py
++++ experiments/revision/R2_04_operational_metrics/run_baseline.py
+@@ -16,7 +16,7 @@
+ import time
+ import traceback
+ 
+-from original_runtime import ROOT, build_original_inputs, source_audit
++from experiments.revision.R2_04_operational_metrics.original_runtime import ROOT, build_original_inputs, source_audit
+ 
+ 
+ def write_json(path, data):
+@@ -147,7 +147,7 @@
+     print('Progress log:', args.output / 'native.log', flush=True)
+     with (args.output / 'native.log').open('w', encoding='utf-8', buffering=1) as log:
+         env = dict(os.environ, PYTHONIOENCODING='utf-8', PYTHONDONTWRITEBYTECODE='1')
+-        process = subprocess.Popen(cmd, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, env=env)
++        process = subprocess.Popen(cmd, cwd=ROOT.parents[2], stdout=log, stderr=subprocess.STDOUT, env=env)
+         status['child_pid'] = process.pid
+         write_json(args.output / 'status.json', status)
+         try:

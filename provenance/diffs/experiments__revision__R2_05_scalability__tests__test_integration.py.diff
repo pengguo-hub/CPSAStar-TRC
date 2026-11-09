@@ -1,0 +1,22 @@
+--- 11-R2-05.zip::R2-05/tests/test_integration.py
++++ experiments/revision/R2_05_scalability/tests/test_integration.py
+@@ -2,13 +2,13 @@
+ from pathlib import Path
+ from collections import Counter
+ import numpy as np
+-from common import ROOT,read_json,digest,execution_hash,write_json
+-from original_runtime import load_original,build_original_inputs
+-from protocol import build_workload,cases,make_loader
+-from recorder import Recorder
++from experiments.revision.R2_05_scalability.common import ROOT, read_json, digest, execution_hash, write_json
++from experiments.revision.R2_05_scalability.original_runtime import load_original, build_original_inputs
++from experiments.revision.R2_05_scalability.protocol import build_workload, cases, make_loader
++from experiments.revision.R2_05_scalability.recorder import Recorder
+ load_original()
+-from integration.path_planner_lifelong import LifelongPlanner
+-from benchmark_loader import GridMap
++from experiments.revision.R2_05_scalability.integration.path_planner_lifelong import LifelongPlanner
++from experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.benchmark_loader import GridMap
+ 
+ class IntegrationTests(unittest.TestCase):
+     def test_exact_baseline_inputs(self):

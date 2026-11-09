@@ -1,0 +1,25 @@
+--- 20-experiment.zip::experiment/Lifelong/multi_algo_benchmark.py
++++ src/original_paper/experiment/Lifelong/multi_algo_benchmark.py
+@@ -16,14 +16,14 @@
+ from datetime import datetime
+ 
+ # 确保当前目录在 import 路径里（与现有脚本一致）
+-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+-
+-from benchmark_loader import BenchmarkLoader
+-from CPS_A_lifelong.path_planner_lifelong import LifelongPlanner as CPS_A
+-from RHCR.rhcr_lifelong import RHCRPlanner
+-from Guide_Paths.guided_pibt.lifelong_runner import GuidedPIBTRunner
+-from CMPP.lifelong_cmpp_planner import LifelongPlanner as CMPPPlanner
+-from PIBT.plain_pibt_lifelong import PIBTLifelongPlanner
++pass  # Package imports replace process-wide import-path mutation.
++
++from src.original_paper.experiment.Lifelong.benchmark_loader import BenchmarkLoader
++from src.original_paper.experiment.Lifelong.CPS_A_lifelong.path_planner_lifelong import LifelongPlanner as CPS_A
++from src.original_paper.experiment.Lifelong.RHCR.rhcr_lifelong import RHCRPlanner
++from src.original_paper.experiment.Lifelong.Guide_Paths.guided_pibt.lifelong_runner import GuidedPIBTRunner
++from src.original_paper.experiment.Lifelong.CMPP.lifelong_cmpp_planner import LifelongPlanner as CMPPPlanner
++from src.original_paper.experiment.Lifelong.PIBT.plain_pibt_lifelong import PIBTLifelongPlanner
+ 
+ # =============================
+ # 全局配置（按需修改）

@@ -1,0 +1,78 @@
+{
+  "revision": "R2-07",
+  "baseline": "S1_L0_P1_R1",
+  "seeds": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68
+  ],
+  "factors": [
+    "S",
+    "L",
+    "P",
+    "R"
+  ],
+  "expected_trials": 1440,
+  "warmup": 0,
+  "wall_timeout": null,
+  "bootstrap": 10000,
+  "cases": [
+    {
+      "name": "STANDARD_N50_backlog",
+      "map": "STANDARD",
+      "fleet": 50,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "backlog",
+      "backlog": 3000,
+      "tiles": 1
+    },
+    {
+      "name": "FRANSEN_N150_backlog",
+      "map": "FRANSEN",
+      "fleet": 150,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "backlog",
+      "backlog": 3000,
+      "tiles": 1
+    },
+    {
+      "name": "RING_N120_backlog",
+      "map": "RING",
+      "fleet": 120,
+      "horizon": 500,
+      "warmup": 0,
+      "mode": "backlog",
+      "backlog": 3000,
+      "tiles": 1
+    }
+  ]
+}

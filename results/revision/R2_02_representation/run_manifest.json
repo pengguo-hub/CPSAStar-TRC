@@ -1,0 +1,101 @@
+{
+  "plan": {
+    "config": {
+      "alpha": 1.0,
+      "gamma": 5.0,
+      "omega": 50.0,
+      "L": 1,
+      "T": 1,
+      "sigma_l": 2.0,
+      "sigma_t": 2.0,
+      "delta": 1,
+      "speed": 1.0,
+      "max_wait": 2,
+      "lookahead_radius": 1,
+      "lookahead_slots": 2,
+      "update_interval": 20,
+      "retry_limit": 5,
+      "timeout": 60.0,
+      "neutral_radius": 1,
+      "neutral_time_radius": 1,
+      "bootstrap_replicates": 10000,
+      "statistics_seed": 20261017,
+      "test_seed_start": 42,
+      "time_shift_fraction": 0.5,
+      "reference_horizon": 256,
+      "source_profile": "direct_R1_aligned_controlled_representation_fixed_turn0.5"
+    },
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "maps": [
+      "A",
+      "B",
+      "C"
+    ],
+    "loads": {
+      "A": [
+        50,
+        70
+      ],
+      "B": [
+        250,
+        280
+      ],
+      "C": [
+        150,
+        200
+      ]
+    },
+    "representations": [
+      "no_field",
+      "raw",
+      "gaussian",
+      "exponential",
+      "linear",
+      "uniform",
+      "historical_gaussian",
+      "learned_gaussian"
+    ],
+    "modes": [
+      "off"
+    ],
+    "protocol": "direct",
+    "smoke": false,
+    "source_digest": "6659acdcb9520766a94f5100c9da861ccfbedf5b77cada1a1d46a2eabbef3a9a",
+    "reference_dir": "E:\\大学\\A科研\\4-路径规划 (srtp2.0)\\论文（hj）\\论文返修10.9\\R2-02\\reference_artifacts",
+    "isolation_design": {
+      "kernel_family": [
+        "raw",
+        "gaussian",
+        "exponential",
+        "linear",
+        "uniform"
+      ],
+      "source_family": [
+        "gaussian",
+        "historical_gaussian",
+        "learned_gaussian"
+      ],
+      "source_family_kernel": "identical Gaussian",
+      "kernel_family_source": "identical exact committed reservations"
+    }
+  },
+  "created_utc": "2026-10-22T11:48:29Z",
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "pandas": "2.2.2",
+      "matplotlib": "3.9.2",
+      "torch": "2.9.1"
+    }
+  },
+  "statistics_unit": "independent map/seed direct task draw; paired across representations"
+}

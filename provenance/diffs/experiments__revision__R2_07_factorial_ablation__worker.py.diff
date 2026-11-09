@@ -1,0 +1,17 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/worker.py
++++ experiments/revision/R2_07_factorial_ablation/worker.py
+@@ -4,10 +4,10 @@
+ import time
+ import traceback
+ from pathlib import Path
+-from CPS_A_lifelong.path_planner_lifelong import LifelongPlanner
+-from workload import grid_for,write_json,digest
+-from observations import Recorder
+-from verify_sources import verify
++from experiments.revision.R2_07_factorial_ablation.CPS_A_lifelong.path_planner_lifelong import LifelongPlanner
++from experiments.revision.R2_07_factorial_ablation.workload import grid_for, write_json, digest
++from experiments.revision.R2_07_factorial_ablation.observations import Recorder
++from experiments.revision.R2_07_factorial_ablation.verify_sources import verify
+ 
+ def execute(job,output_root):
+     root=Path(output_root);w=json.loads((root/job['workload']).read_text(encoding='utf-8'));v=job['variant']

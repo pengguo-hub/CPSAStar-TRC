@@ -1,0 +1,53 @@
+--- 20-experiment.zip::experiment/test_new.py
++++ src/original_paper/experiment/test_new.py
+@@ -1,17 +1,19 @@
++from pathlib import Path as _RepositoryPath
++_REPO_ROOT = _RepositoryPath(__file__).resolve().parents[2]
+ from Astar_congestion.path_planner import GridMap
+-from Astar_base.path_planner import IntegratedAGVPlanner as Astar_base
+-from CA import IntegratedAGVPlanner as CA
++from src.original_paper.experiment.Astar_base.path_planner import IntegratedAGVPlanner as Astar_base
++from src.original_paper.experiment.CA import IntegratedAGVPlanner as CA
+ from Astar_congestion.path_planner import IntegratedAGVPlanner as astar_congestion
+-from CPS_A.path_planner import IntegratedAGVPlanner as CPS_PBS
++from src.original_paper.experiment.CPS_A.path_planner import IntegratedAGVPlanner as CPS_PBS
+ from Fransen import FransenPathPlanner, GridGraph
+-from PBS_planner import PBSPlanner
+-from CBS_planner import CBSPlanner
+-from SRTP.experiment.Qlearning.zhang_multi_agv_planner import ZhangMultiAGVPlanner
+-from lacam2_python.warehouse_adapter import make_lacam2_planner
+-from MCCP.integrated_planner import IntegratedAGVPlanner as AGVPlanner_MCCP
++from src.original_paper.experiment.PBS_planner import PBSPlanner
++from src.original_paper.experiment.CBS_planner import CBSPlanner
++from src.original_paper.experiment.Qlearning.zhang_multi_agv_planner import ZhangMultiAGVPlanner
++from src.original_paper.experiment.lacam2_python.warehouse_adapter import make_lacam2_planner
++from src.original_paper.experiment.MCCP.integrated_planner import IntegratedAGVPlanner as AGVPlanner_MCCP
+ # from SRTP.deployer.api_deployer import API_ModelDeployer
+-from map_config import ALL_MAPS
+-from task_generator import generate_test_tasks
++from src.original_paper.experiment.map_config import ALL_MAPS
++from src.original_paper.experiment.task_generator import generate_test_tasks
+ import numpy as np
+ import matplotlib.pyplot as plt
+ import os
+@@ -20,9 +22,9 @@
+ import json
+ import time
+ 
+-AGV_FILEPATH = "F:/PythonFiles/pythonProject/SRTP/planner/agv_info"
++AGV_FILEPATH = str(_REPO_ROOT / 'data/original_paper/planner/agv_info')
+ API_URL = "https://api.deepseek.com"
+-API_KEY = "[REDACTED_SOURCE_CREDENTIAL]"
++API_KEY = __import__("os").environ.get("DEEPSEEK_API_KEY", "")
+ TIMESTAMP = datetime.now().strftime('%Y%m%d_%H%M%S')
+ timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+ print(timestamp)
+@@ -38,7 +40,7 @@
+ WIDTH          = 20
+ HEIGHT         = 20
+ PICKUP_REGION  = None  # (min_x, max_x, min_y, max_y) 或 None
+-LOG_DIR        = "F:/PythonFiles/pythonProject/SRTP/experiment/logs_multi_seed_55test"
++LOG_DIR        = str(_REPO_ROOT / 'outputs/original_paper/logs_multi_seed_55test')
+ # ============================================================
+ 
+ 

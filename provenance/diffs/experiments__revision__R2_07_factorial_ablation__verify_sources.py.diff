@@ -1,0 +1,22 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/verify_sources.py
++++ experiments/revision/R2_07_factorial_ablation/verify_sources.py
+@@ -19,15 +19,15 @@
+         assert sha(ROOT/row['path'])==row['sha256'],('Hash mismatch',row['path'])
+     for row in manifest['authority_files']:
+         assert sha(ROOT/row['path'])==row['sha256'],('Source snapshot mismatch',row['path'])
+-    search=ROOT/'CPS_A_lifelong/Segment_Planner.py';orig=ROOT/'original/CPS_A_lifelong/Segment_Planner.py'
++    search=ROOT/'CPS_A_lifelong/Segment_Planner.py';orig=ROOT.parents[2]/'provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/Segment_Planner.py'
+     for name in ['plan_agv','_plan_segment','_reserve_tickets','_has_node_conflict','_has_edge_conflict','_calculate_turn_penalty','_is_valid_neighbor']:
+         assert method(search,name)==method(orig,name),('Original search changed',name)
+-    assert sha(ROOT/'CPS_A_lifelong/Ticket_Manager.py')==sha(ROOT/'original/CPS_A_lifelong/Ticket_Manager.py')
++    assert sha(ROOT/'CPS_A_lifelong/Ticket_Manager.py')==sha(ROOT.parents[2]/'provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/Ticket_Manager.py')
+     for name in ['_simulate_one_step','_release_start_reservation_if_unused','_rollback_agv','_find_blocker','_commit_pending_paths','get_throughput']:
+-        assert method(ROOT/'CPS_A_lifelong/path_planner_lifelong.py',name)==method(ROOT/'original/CPS_A_lifelong/path_planner_lifelong.py',name)
++        assert method(ROOT/'CPS_A_lifelong/path_planner_lifelong.py',name)==method(ROOT.parents[2]/'provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/path_planner_lifelong.py',name)
+     imports={}
+     for name in ['path_planner_lifelong','Segment_Planner','Ticket_Manager','Conflict_Field_Updater']:
+-        module=importlib.import_module('CPS_A_lifelong.'+name)
++        module=importlib.import_module(__package__+'.CPS_A_lifelong.'+name)
+         actual=Path(module.__file__).resolve();assert actual==ROOT/'CPS_A_lifelong'/f'{name}.py'
+         imports[name]=str(actual.relative_to(ROOT))
+     # Inspect executable AST; dormant original comments/constants are preserved.

@@ -1,0 +1,95 @@
+# R2-05：原始 Lifelong 重建版 · 正式运行包
+
+**程序、输入、审计、统计、绘图与回复生成流程已完成；正式实验由用户运行，本包正式执行数为0。** 这不再是仅准备阶段包，但也不能称论文正式结果已经完成。
+
+车队为 **10/30/50**。14个条件×5个正式seed(1001–1005)=70条；每条 **500步总长、无预热、无单trial墙钟上限、无启用MAX_EXPAND**。不引入静态可达性预检查、pending持续预约修复或物理碰撞检查。
+
+## 已完成的核验
+
+- vendor内14个原始源码文件与experiment.zip逐字节一致；最小接入差异独立记录，没有使用旧修改版planner。
+- 原始入口seed39：10/30/50辆吞吐量.376/.926/1.082；30辆463完成、29活动、2508排队。接入版三车队完整原状态均与原生相等。
+- 最终版本14/14个smoke全部500步，含270辆条件；逐请求、日志、轨迹和时间记录审计通过。smoke仅seed901，不进入论文数据。
+- 70个正式输入已dry-run生成，0条模拟执行；9项集成/统计测试通过；综合PNG/PDF已用smoke检查排版。
+
+单seed行为与Figure 9近似曲线接近，**不是其五次均值或原硬件时间的完整复现**。本次30辆原pure初次17.395秒、重复诊断2.049/1.939秒，均保留。Figure 9对应CPS-A红线目视约3秒，不是几十秒。交通smoke未建立递增实际交互梯度，不能预标低/中/高拥堵。
+
+## 本次重新打包与独立解压自检
+
+本包从完整项目文件重新生成，未复用或修补先前损坏 ZIP。运行源码、原始 vendor、实验配置及已有验证数据保持不变；新增包完整性检查工具，并重新生成 PACKAGE_MANIFEST.json。请完整解压目录，不要只复制入口脚本。
+
+解压后进入包含本 README、run.py 和 vendor/ 的工程根目录，先执行：
+
+```bash
+python -m pip install -r requirements-tested.txt
+python tools/verify_package.py
+python verify_sources.py
+python run_baseline.py --fleet 30 --seed 39 --prepare-only --output local_validation/native30_prepare
+python run.py --smoke --cases A_fleet30 --dry-run --output local_validation/fleet30_plan
+```
+
+前两项检查包文件及原始源码；后两项只生成基线输入和 smoke 计划，均不运行仿真。接着可以执行独立原生基线与一条完整 smoke（每条500步），验证实际 worker 启动链：
+
+```bash
+python run_baseline.py --fleet 30 --seed 39 --output local_validation/native30
+python run.py --smoke --cases A_fleet30 --output local_validation/fleet30_smoke
+```
+
+以上均为诊断验证，不是正式 seeds 1001–1005 的论文实验。已有目录不会被覆盖；再次执行时请为 --output 换一个新目录名。需要检验 ZIP 容器时，在解压前运行 `unzip -t R2-05_original_Lifelong_verified_repacked.zip`，必须返回0。
+
+全部项目依赖随包提供，包括 vendor/、worker.py、verify_sources.py、PACKAGE_MANIFEST.json、run.py、configs/、original_runtime.py、integration/、任务记录与后处理源码。第三方 Python 库仍按 requirements-tested.txt 安装（NumPy、SciPy、Matplotlib）；ZIP 不包含 Python 解释器或跨平台离线安装包。推荐 Python 3.12。本包不依赖旧项目目录、外部 SRTP 安装或原始 experiment.zip；历史日志中的绝对路径只是当时记录，运行时按当前解压位置重新定位。
+
+## 运行顺序
+
+在工程根目录：
+
+```bash
+python -m pip install -r requirements-tested.txt
+python verify_sources.py
+python run_baseline.py --fleet 30 --seed 39 --output local_validation/native30
+```
+
+查看本机原生30辆与reports/04_baseline_gate.md的计数/公式/时间范围，明显异常先定位。然后按以下顺序运行正式矩阵：
+
+```bash
+python run.py --formal --output results_formal --stop-after 1
+```
+
+首个正式30辆seed1001完整结束后暂停。核查结果后完成剩余14条车队试验：
+
+```bash
+python run.py --formal --output results_formal --resume --stop-after 14
+```
+
+车队组核验后运行55条扩展，再生成论文数据、图和英文数值回复草稿：
+
+```bash
+python run.py --formal --output results_formal --resume
+python postprocess.py --input results_formal
+```
+
+`--stop-after`只在完整trial之间暂停，绝不限制单trial时间或搜索。以上正式命令在本交付中**未执行**。长时间未返回请保留日志/PID/已用时间自行决定；无自动超时或kill。详细中断、追加重试、子集、审计与单独绘图说明见[运行手册](reports/10_runbook.md)。
+
+## 阅读与目录
+
+| 路径 | 内容 |
+|---|---|
+| reports/01_source_audit.md | 论文/源码入口、地图、原生命周期、旧差异 |
+| reports/02_metrics.md | 分子分母、500步、等待/删失、全部时间边界、统计方法 |
+| reports/03_old_results_diagnosis.md | 旧低吞吐/高耗时、10次timeout和1次aborted的证据 |
+| reports/04_baseline_gate.md、baseline_comparison.csv | 原生实际计数及Figure9近似定量对照、时间局限 |
+| reports/05_extension_design.md | 14条件、地图平铺、释放机制、交通配对控制 |
+| reports/06_provenance_and_execution.md | 文件、哈希、环境、证据范围 |
+| reports/07_integration_necessity.md | 修改原主循环副本的必要性与行为边界 |
+| reports/08_validation_results.md | 当前14条smoke汇总、实际交通验证、旧修订分离 |
+| reports/09_Reviewer_2_5_response_template.md | 无正式数值的英文草稿模板 |
+| configs/formal.json、smoke.json | 冻结正式/验证矩阵；runner校验其与protocol一致 |
+| vendor/ | 未改动原始源码 |
+| integration/ | 原主planner的最小接口副本；完整diff在provenance |
+| validation/smoke_final/ | 当前原始记录、逐条件CSV和带水印PNG/PDF |
+| validation/native_baseline/、integration_parity_final/ | 三车队原生验证及接口等价记录 |
+| validation/formal_plan/ | 正式输入和计划，全部尚未执行 |
+| provenance/old_results/、stage1_snapshot/ | 历史证据，不属于新正式统计 |
+
+完成正式运行后，主要交付物在results_formal/analysis和results_formal/figures。postprocess会在未完成/无效trial时停下，避免假装完整矩阵；若要查看部分数据，运行手册提供单独命令。缺测不填0，n=1不造置信区间，失败/中断不静默删除，smoke不能生成数值版正式回复。
+
+原有pending状态语义按要求保留。本包不将这些试验称为物理正确性验证，也不预先承诺大规模实时性能或严格拥堵梯度。正式结果应决定最终结论；回复生成后仍需作者核对科学解释、图号和论文行号。

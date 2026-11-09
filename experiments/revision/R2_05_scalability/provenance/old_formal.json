@@ -1,0 +1,255 @@
+{
+  "schema": 4,
+  "seed_start": 1001,
+  "seeds": 5,
+  "cases": [
+    {
+      "name": "A_base",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": 0.5,
+      "tiles": 1,
+      "axes": [
+        "fleet",
+        "map_fixed_fleet",
+        "map_fixed_density",
+        "arrival_rate"
+      ]
+    },
+    {
+      "name": "A_fleet12",
+      "map": "STANDARD",
+      "fleet": 12,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": 0.5,
+      "tiles": 1,
+      "axes": [
+        "fleet"
+      ]
+    },
+    {
+      "name": "A_fleet48",
+      "map": "STANDARD",
+      "fleet": 48,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": 0.5,
+      "tiles": 1,
+      "axes": [
+        "fleet"
+      ]
+    },
+    {
+      "name": "A_map2_fixed",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": 0.5,
+      "tiles": 2,
+      "axes": [
+        "map_fixed_fleet"
+      ]
+    },
+    {
+      "name": "A_map2_density",
+      "map": "STANDARD",
+      "fleet": 120,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 2.0,
+      "hotspot_probability": 0.5,
+      "tiles": 2,
+      "axes": [
+        "map_fixed_density"
+      ]
+    },
+    {
+      "name": "A_map3_fixed",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": 0.5,
+      "tiles": 3,
+      "axes": [
+        "map_fixed_fleet"
+      ]
+    },
+    {
+      "name": "A_map3_density",
+      "map": "STANDARD",
+      "fleet": 270,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 4.5,
+      "hotspot_probability": 0.5,
+      "tiles": 3,
+      "axes": [
+        "map_fixed_density"
+      ]
+    },
+    {
+      "name": "A_rate0.25",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.25,
+      "hotspot_probability": 0.5,
+      "tiles": 1,
+      "axes": [
+        "arrival_rate"
+      ]
+    },
+    {
+      "name": "A_rate1",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 1.0,
+      "hotspot_probability": 0.5,
+      "tiles": 1,
+      "axes": [
+        "arrival_rate"
+      ]
+    },
+    {
+      "name": "A_rate2",
+      "map": "STANDARD",
+      "fleet": 30,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 2.0,
+      "hotspot_probability": 0.5,
+      "tiles": 1,
+      "axes": [
+        "arrival_rate"
+      ]
+    },
+    {
+      "name": "B_traffic_dispersed",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": null,
+      "tiles": 1,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "od_protocol": "matched_couplings_v1",
+      "traffic_coupling": "dispersed"
+    },
+    {
+      "name": "B_traffic_intermediate",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": null,
+      "tiles": 1,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "od_protocol": "matched_couplings_v1",
+      "traffic_coupling": "intermediate"
+    },
+    {
+      "name": "B_traffic_shared",
+      "map": "FRANSEN",
+      "fleet": 8,
+      "horizon": 600,
+      "warmup": 100,
+      "mode": "poisson",
+      "arrival_rate": 0.5,
+      "hotspot_probability": null,
+      "tiles": 1,
+      "axes": [
+        "traffic_coupling"
+      ],
+      "od_protocol": "matched_couplings_v1",
+      "traffic_coupling": "shared"
+    }
+  ],
+  "contrasts": [
+    {
+      "family": "fleet",
+      "baseline": "A_base",
+      "other": "A_fleet12"
+    },
+    {
+      "family": "fleet",
+      "baseline": "A_base",
+      "other": "A_fleet48"
+    },
+    {
+      "family": "map_fixed_fleet",
+      "baseline": "A_base",
+      "other": "A_map2_fixed"
+    },
+    {
+      "family": "map_fixed_fleet",
+      "baseline": "A_base",
+      "other": "A_map3_fixed"
+    },
+    {
+      "family": "map_fixed_density",
+      "baseline": "A_base",
+      "other": "A_map2_density"
+    },
+    {
+      "family": "map_fixed_density",
+      "baseline": "A_base",
+      "other": "A_map3_density"
+    },
+    {
+      "family": "arrival_rate",
+      "baseline": "A_base",
+      "other": "A_rate0.25"
+    },
+    {
+      "family": "arrival_rate",
+      "baseline": "A_base",
+      "other": "A_rate1"
+    },
+    {
+      "family": "arrival_rate",
+      "baseline": "A_base",
+      "other": "A_rate2"
+    },
+    {
+      "family": "traffic_coupling",
+      "baseline": "B_traffic_dispersed",
+      "other": "B_traffic_intermediate"
+    },
+    {
+      "family": "traffic_coupling",
+      "baseline": "B_traffic_dispersed",
+      "other": "B_traffic_shared"
+    }
+  ]
+}

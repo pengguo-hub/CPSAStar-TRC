@@ -1,0 +1,51 @@
+{
+  "formal_run": true,
+  "d_min_values": [
+    1,
+    2,
+    3
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "task_counts": {
+    "A": [
+      30,
+      70
+    ],
+    "B": [
+      150,
+      280
+    ],
+    "C": [
+      100,
+      200
+    ]
+  },
+  "high_load_for_plot": {
+    "A": 70,
+    "B": 280,
+    "C": 200
+  },
+  "heuristic": {
+    "A": "Manhattan + look-ahead congestion",
+    "B": "Manhattan only",
+    "C": "Manhattan only"
+  },
+  "d_min_rule": "candidate rejected when Manhattan distance to another same-time reservation is < d_min",
+  "unchanged_CPS_A_settings": {
+    "gamma_current_congestion_in_g": 5.0,
+    "omega_lookahead": 50.0,
+    "L": 1,
+    "T": 1,
+    "sigma_l": 2.0,
+    "sigma_t": 2.0,
+    "delta": 1,
+    "field_update_interval": 20,
+    "rollback_R": 5
+  }
+}

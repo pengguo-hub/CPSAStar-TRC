@@ -1,0 +1,13 @@
+--- 20-experiment.zip::experiment/Lifelong/PIBT/plain_pibt_lifelong.py
++++ src/original_paper/experiment/Lifelong/PIBT/plain_pibt_lifelong.py
+@@ -3,8 +3,8 @@
+ from typing import Deque, Dict, List, Tuple
+ import numpy as np
+ import time
+-from pypibt.dist_table import DistTable
+-from pypibt.pibt import PIBT
++from src.original_paper.experiment.Lifelong.PIBT.pypibt.dist_table import DistTable
++from src.original_paper.experiment.Lifelong.PIBT.pypibt.pibt import PIBT
+ from collections import deque
+ 
+ CoordXY = Tuple[int, int]

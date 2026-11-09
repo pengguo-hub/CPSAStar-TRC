@@ -1,0 +1,29 @@
+--- 20-experiment.zip::experiment/Ablation_experiment/test_ablation_oneshot.py
++++ src/original_paper/experiment/Ablation_experiment/test_ablation_oneshot.py
+@@ -6,16 +6,16 @@
+ from datetime import datetime
+ from typing import Dict, Any, List, Tuple
+ 
+-from map_config import ALL_MAPS
+-from task_generator import generate_test_tasks
+-from CPS_A.path_planner import GridMap, IntegratedAGVPlanner as CPS_A
+-from CPS_A_NC.path_planner import IntegratedAGVPlanner as CPS_A_NC
+-from CPS_A_NS.path_planner import IntegratedAGVPlanner as CPS_A_NS
+-from CPS_A_NG.path_planner import IntegratedAGVPlanner as CPS_A_NG
+-from CPS_A_NL.path_planner import IntegratedAGVPlanner as CPS_A_NL
+-from CPS_A_NR.path_planner import IntegratedAGVPlanner as CPS_A_NR
+-from CPS_A_NU.path_planner import IntegratedAGVPlanner as CPS_A_NU
+-from CPS_A_NSNL.path_planner import IntegratedAGVPlanner as CPS_A_NSNL
++from src.original_paper.experiment.Ablation_experiment.map_config import ALL_MAPS
++from src.original_paper.experiment.Ablation_experiment.task_generator import generate_test_tasks
++from src.original_paper.experiment.Ablation_experiment.CPS_A.path_planner import GridMap, IntegratedAGVPlanner as CPS_A
++from src.original_paper.experiment.Ablation_experiment.CPS_A_NC.path_planner import IntegratedAGVPlanner as CPS_A_NC
++from src.original_paper.experiment.Ablation_experiment.CPS_A_NS.path_planner import IntegratedAGVPlanner as CPS_A_NS
++from src.original_paper.experiment.Ablation_experiment.CPS_A_NG.path_planner import IntegratedAGVPlanner as CPS_A_NG
++from src.original_paper.experiment.Ablation_experiment.CPS_A_NL.path_planner import IntegratedAGVPlanner as CPS_A_NL
++from src.original_paper.experiment.Ablation_experiment.CPS_A_NR.path_planner import IntegratedAGVPlanner as CPS_A_NR
++from src.original_paper.experiment.Ablation_experiment.CPS_A_NU.path_planner import IntegratedAGVPlanner as CPS_A_NU
++from src.original_paper.experiment.Ablation_experiment.CPS_A_NSNL.path_planner import IntegratedAGVPlanner as CPS_A_NSNL
+ # ============================================================
+ # 用户配置区
+ # ============================================================

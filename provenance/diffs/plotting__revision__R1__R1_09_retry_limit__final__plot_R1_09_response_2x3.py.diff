@@ -1,0 +1,14 @@
+--- 21-R1.zip::R1/R1.9/plot_R1.9_response_2x3.py
++++ plotting/revision/R1/R1_09_retry_limit/final/plot_R1_09_response_2x3.py
+@@ -4,8 +4,9 @@
+ import numpy as np
+ import matplotlib.pyplot as plt
+ 
+-ZIP_PATH = Path("result_R1_9_R_sensitivity.zip")
+-OUT_DIR = Path("R1_9_new_load_analysis")
++_REPO_ROOT = Path(__file__).resolve().parents[5]
++ZIP_PATH = _REPO_ROOT / 'provenance/source_archives/06-result_R1_9_R_sensitivity.zip'
++OUT_DIR = _REPO_ROOT / 'figures/revision/R1_09_retry_limit'
+ OUT_DIR.mkdir(parents=True, exist_ok=True)
+ 
+ with zipfile.ZipFile(ZIP_PATH, "r") as zf:

@@ -1,0 +1,11 @@
+--- 20-experiment.zip::experiment/Lifelong/Guide_Paths/guided_pibt/lifelong_runner.py
++++ src/original_paper/experiment/Lifelong/Guide_Paths/guided_pibt/lifelong_runner.py
+@@ -34,7 +34,7 @@
+ # 确保 workspace 根目录在 sys.path（让 traffic_mapf 包可以被 import）
+ _WORKSPACE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ if _WORKSPACE not in sys.path:
+-    sys.path.insert(0, _WORKSPACE)
++    pass  # Package imports replace process-wide import-path mutation.
+ 
+ # 需要先把 flow/traj_lns 等文件放在 traffic_mapf/ 包下，或者用以下 shim
+ # （见文末 _setup_traffic_mapf_package()）

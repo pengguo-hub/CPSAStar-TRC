@@ -1,0 +1,20 @@
+--- 20-experiment.zip::experiment/Lifelong/PIBT/test_plain_pibt.py
++++ src/original_paper/experiment/Lifelong/PIBT/test_plain_pibt.py
+@@ -3,7 +3,7 @@
+ import os
+ from datetime import datetime
+ 
+-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++pass  # Package imports replace process-wide import-path mutation.
+ 
+ import importlib.util, sys, os
+ 
+@@ -19,7 +19,7 @@
+     return module
+ 
+ BenchmarkLoader = _load_module("benchmark_loader", "benchmark_loader.py").BenchmarkLoader
+-from plain_pibt_lifelong import PIBTLifelongPlanner
++from src.original_paper.experiment.Lifelong.PIBT.plain_pibt_lifelong import PIBTLifelongPlanner
+ 
+ MAP_FILE = "random-64-10/random-64-64-10.map"
+ SCEN_FILE = "random-64-10/scen-random/random-64-64-10-random-1.scen"

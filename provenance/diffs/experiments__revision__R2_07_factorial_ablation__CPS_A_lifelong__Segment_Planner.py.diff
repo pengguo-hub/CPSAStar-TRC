@@ -1,0 +1,11 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/CPS_A_lifelong/Segment_Planner.py
++++ experiments/revision/R2_07_factorial_ablation/CPS_A_lifelong/Segment_Planner.py
+@@ -189,7 +189,7 @@
+                     reservations.append(('edge', node[0], node[1], next_node[0], next_node[1], t))
+ 
+         # # 2. 🔥 将原始预约转换为可读格式并保存到文件（追加模式）
+-        # raw_log_file = 'F:/PythonFiles/pythonProject/SRTP/experiment/raw_reservations_per_agv.jsonl'  # .jsonl 表示每行一个JSON对象
++        # Historical local debug path omitted in the public copy.
+         # try:
+         #     with open(raw_log_file, 'a', encoding='utf-8') as f:  # 'a' 是追加模式
+         #         # 构建本次预约的记录

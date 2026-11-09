@@ -1,0 +1,127 @@
+{
+  "code_hash": "fbfd4c06bf5e5fed9467d6e4ab4b1cf3ed7149ab066e314b90808495422d4a43",
+  "combined_rows": 240,
+  "copied_artifact_counts": {
+    "checkpoints": 240,
+    "jobs": 240,
+    "logs": 240,
+    "runs": 240,
+    "workloads": 15
+  },
+  "expected_rows": 240,
+  "expected_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "input_runs": [
+    {
+      "completion_status": {
+        "console_missing": 0,
+        "eligible_trials": 48,
+        "expected_trials": 48,
+        "input_fingerprint": "1ca9b0feac25db3f2f43180fa28523f3799c3f7dbff317e80c423255156407e2",
+        "recorded_trials": 48,
+        "smoke": false,
+        "status_counts": {
+          "completed": 48
+        }
+      },
+      "directory": "/root/autodl-tmp/R2-07_original_Lifelong_verified/results_seed42",
+      "planned_trials": 48,
+      "recorded_result_files": 48,
+      "run_manifest_sha256": "68dabc661877ae01075aba7182cc7a2a539b1b2af97470d22876bab3085ea4c0",
+      "seed": 42,
+      "trial_plan_sha256": "02b4f7f452696ef2f0217d7e3f51bd80573261c3c6900bd240a2c83e031619e9"
+    },
+    {
+      "completion_status": {
+        "console_missing": 0,
+        "eligible_trials": 48,
+        "expected_trials": 48,
+        "input_fingerprint": "086d034c6deddbea8b49e27977b0deffd1836c061e16dd26c33cc63fcbdb2204",
+        "recorded_trials": 48,
+        "smoke": false,
+        "status_counts": {
+          "completed": 48
+        }
+      },
+      "directory": "/root/autodl-tmp/R2-07_original_Lifelong_verified/results_seed43",
+      "planned_trials": 48,
+      "recorded_result_files": 48,
+      "run_manifest_sha256": "b521b8250d0c96952cb238ab5f603ebf3980f5057dc0ac9782c0bffa4dde54e7",
+      "seed": 43,
+      "trial_plan_sha256": "c1e43e02f803781c4d362c1a3d0e186e0c01070e4e4cc8cf8dff37516c3086ce"
+    },
+    {
+      "completion_status": {
+        "console_missing": 0,
+        "eligible_trials": 48,
+        "expected_trials": 48,
+        "input_fingerprint": "bcefe0babbded740d96ce91439159864b6e5f5d2cdebcde6fc3dc7d4697d4e73",
+        "recorded_trials": 48,
+        "smoke": false,
+        "status_counts": {
+          "completed": 48
+        }
+      },
+      "directory": "/root/autodl-tmp/R2-07_original_Lifelong_verified/results_seed44",
+      "planned_trials": 48,
+      "recorded_result_files": 48,
+      "run_manifest_sha256": "3c786610995edb256244c7afe68be4b656b64a409afa389b641e6fb02880516e",
+      "seed": 44,
+      "trial_plan_sha256": "1cc74a756ab7c2d9ec7af166360e248a7a47b664cac1975c4b2aefdfe08e9396"
+    },
+    {
+      "completion_status": {
+        "console_missing": 0,
+        "eligible_trials": 48,
+        "expected_trials": 48,
+        "input_fingerprint": "d5a42ad0d1178b22e98bdfe7f3f04e6079e26b157ca1571b7912ab929c62d628",
+        "recorded_trials": 48,
+        "smoke": false,
+        "status_counts": {
+          "completed": 48
+        }
+      },
+      "directory": "/root/autodl-tmp/R2-07_original_Lifelong_verified/results_seed45",
+      "planned_trials": 48,
+      "recorded_result_files": 48,
+      "run_manifest_sha256": "64cd89d4229c403058070719cd71267aa1cdd8b6c3b0789dd9600df13e33da5f",
+      "seed": 45,
+      "trial_plan_sha256": "b77ae82b9a8f22c366525384572ea77fe78c253b9f2982cdf6aa1dc4b0fbcaac"
+    },
+    {
+      "completion_status": {
+        "console_missing": 0,
+        "eligible_trials": 48,
+        "expected_trials": 48,
+        "input_fingerprint": "79935c1e9baf3e9931a2b118187b0d145ff4668697c9ff9e402da0e26bd7c777",
+        "recorded_trials": 48,
+        "smoke": false,
+        "status_counts": {
+          "completed": 48
+        }
+      },
+      "directory": "/root/autodl-tmp/R2-07_original_Lifelong_verified/results_seed46",
+      "planned_trials": 48,
+      "recorded_result_files": 48,
+      "run_manifest_sha256": "99eceb0388e65697e4bdd4c8456f115107c2e173844329f129d76a90f2fc54ac",
+      "seed": 46,
+      "trial_plan_sha256": "e990dd1746ed88b6b02472ceec48df8732c90b3d0e74cd22470335a1902fc4ca"
+    }
+  ],
+  "merged_from_independent_seed_runs": true,
+  "output_directory": "/root/autodl-tmp/R2-07_original_Lifelong_verified/results_merged_seed42_46",
+  "postprocess_command": "python postprocess.py /root/autodl-tmp/R2-07_original_Lifelong_verified/results_merged_seed42_46",
+  "revision": "R2-07",
+  "rows_per_seed": {
+    "42": 48,
+    "43": 48,
+    "44": 48,
+    "45": 48,
+    "46": 48
+  }
+}

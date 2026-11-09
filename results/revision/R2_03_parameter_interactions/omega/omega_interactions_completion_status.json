@@ -1,0 +1,23 @@
+{
+  "actual_executions": 330,
+  "expected_actual_executions": 330,
+  "newly_executed_this_invocation": 251,
+  "logical_rows": 390,
+  "expected_logical_rows": 390,
+  "unique_task_hashes_per_map_load_seed": 1,
+  "all_runs_use_map_a_lookahead": true,
+  "smoke": false,
+  "seeds": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004
+  ],
+  "task_counts": [
+    50,
+    70
+  ],
+  "reused_completed_run_records_from_prior_invocation": 79,
+  "formal_experiment_complete": true
+}

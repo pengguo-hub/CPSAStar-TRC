@@ -1,0 +1,11 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/plot_results.py
++++ experiments/revision/R2_04_operational_metrics/plot_results.py
+@@ -8,7 +8,7 @@
+ import matplotlib.pyplot as plt
+ from matplotlib.lines import Line2D
+ from matplotlib.ticker import MaxNLocator
+-from workload import FLEETS,LEVELS,specs
++from experiments.revision.R2_04_operational_metrics.workload import FLEETS, LEVELS, specs
+ def main():
+     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('results',type=Path);a=ap.parse_args();out=a.results
+     d=pd.read_csv(out/'summary_results.csv');raw=pd.read_csv(out/'audited_metrics.csv');smoke=raw.purpose.eq('smoke').any()

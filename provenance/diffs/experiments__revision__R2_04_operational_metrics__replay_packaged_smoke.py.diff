@@ -1,0 +1,15 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/replay_packaged_smoke.py
++++ experiments/revision/R2_04_operational_metrics/replay_packaged_smoke.py
+@@ -1,9 +1,9 @@
+ """Independently replay all packaged smoke evidence; launches no simulation."""
+ from pathlib import Path
+ import argparse,gzip,json,hashlib
+-from analyze import audit_one,summarize_records
+-from workload import ROOT,build_workload,plan_cases,validate_workload,digest
+-from provenance import execution_sources,execution_hash,file_hash
++from experiments.revision.R2_04_operational_metrics.analyze import audit_one, summarize_records
++from experiments.revision.R2_04_operational_metrics.workload import ROOT, build_workload, plan_cases, validate_workload, digest
++from experiments.revision.R2_04_operational_metrics.provenance import execution_sources, execution_hash, file_hash
+ def main():
+     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
+     out=a.output;out.mkdir(parents=True,exist_ok=True)

@@ -1,0 +1,21 @@
+{
+  "trial_id": "FRANSEN_N150_backlog_46_S0_L1_P0_R1",
+  "case": "FRANSEN_N150_backlog",
+  "map": "FRANSEN",
+  "seed": 46,
+  "variant": {
+    "name": "S0_L1_P0_R1",
+    "S": 0,
+    "L": 1,
+    "P": 0,
+    "R": 1
+  },
+  "workload": "workloads/FRANSEN_N150_backlog_46.json",
+  "result": "runs/FRANSEN_N150_backlog_46_S0_L1_P0_R1.json",
+  "checkpoint": "checkpoints/FRANSEN_N150_backlog_46_S0_L1_P0_R1.json",
+  "log": "logs/FRANSEN_N150_backlog_46_S0_L1_P0_R1.log",
+  "workload_hash": "1ecbf4ad28c2aa76f44263231a1f7036ad9a18ba97b0d8e2afd2a4300b228193",
+  "code_hash": "fbfd4c06bf5e5fed9467d6e4ab4b1cf3ed7149ab066e314b90808495422d4a43",
+  "horizon": 500,
+  "warmup": 0
+}

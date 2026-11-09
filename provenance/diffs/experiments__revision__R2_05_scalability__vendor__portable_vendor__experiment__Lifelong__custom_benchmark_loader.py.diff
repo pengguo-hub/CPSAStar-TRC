@@ -1,0 +1,15 @@
+--- 11-R2-05.zip::R2-05/vendor/SRTP/experiment/Lifelong/custom_benchmark_loader.py
++++ experiments/revision/R2_05_scalability/vendor/portable_vendor/experiment/Lifelong/custom_benchmark_loader.py
+@@ -1,9 +1,9 @@
+ from collections import deque
+ import random
+ 
+-from benchmark_loader import GridMap
+-from map_config import ALL_MAPS
+-from task_generator import generate_test_tasks
++from experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.benchmark_loader import GridMap
++from experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.map_config import ALL_MAPS
++from experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.task_generator import generate_test_tasks
+ 
+ 
+ MANUAL_MAP_SIZES = {

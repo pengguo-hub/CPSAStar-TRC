@@ -1,0 +1,8 @@
+{
+  "compileall_passed": true,
+  "imports_passed": 20,
+  "import_modules": 20,
+  "source_verifiers_passed": 3,
+  "portability_issues": 0,
+  "experiment_main_invocations": 0
+}

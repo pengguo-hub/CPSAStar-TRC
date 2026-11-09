@@ -1,0 +1,11 @@
+--- 11-R2-05.zip::R2-05/postprocess.py
++++ experiments/revision/R2_05_scalability/postprocess.py
+@@ -1,7 +1,7 @@
+ """Audit, plot and draft the response after the user finishes formal trials."""
+ import argparse,subprocess,sys
+ from pathlib import Path
+-from common import ROOT,read_json
++from experiments.revision.R2_05_scalability.common import ROOT, read_json
+ 
+ def main():
+     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--input',type=Path,required=True)

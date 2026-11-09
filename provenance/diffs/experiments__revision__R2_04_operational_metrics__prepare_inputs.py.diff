@@ -1,0 +1,13 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/prepare_inputs.py
++++ experiments/revision/R2_04_operational_metrics/prepare_inputs.py
+@@ -1,8 +1,8 @@
+ """Prepare all frozen task lists and initial states. Executes zero simulations."""
+ from pathlib import Path
+ import gzip,json
+-from workload import ROOT,plan_cases,build_workload,validate_workload,write_json
+-from provenance import file_hash,execution_hash
++from experiments.revision.R2_04_operational_metrics.workload import ROOT, plan_cases, build_workload, validate_workload, write_json
++from experiments.revision.R2_04_operational_metrics.provenance import file_hash, execution_hash
+ def main():
+     out=ROOT/'prepared_inputs';out.mkdir(exist_ok=True);rows=[]
+     for c in plan_cases():

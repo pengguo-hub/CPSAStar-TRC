@@ -1,0 +1,11 @@
+--- 11-R2-05.zip::R2-05/analyze.py
++++ experiments/revision/R2_05_scalability/analyze.py
+@@ -4,7 +4,7 @@
+ from pathlib import Path
+ import numpy as np
+ from scipy.stats import t as student_t
+-from common import read_json,write_json,digest
++from experiments.revision.R2_05_scalability.common import read_json, write_json, digest
+ 
+ METRICS=['throughput','completion_fraction','planning_seconds','source_success_percent','original_formula_pure_seconds',
+          'observer_adjusted_pure_seconds','native_loop_wall_seconds','trial_wall_seconds','worker_wall_seconds',

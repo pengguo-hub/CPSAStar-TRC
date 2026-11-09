@@ -1,0 +1,176 @@
+{
+  "project": "R2-03 Gaussian spatiotemporal parameter sensitivity",
+  "protocol": "full-batch one-shot CPS-A; no Astar_base; no frozen background; same task list within map/task_count/seed across cells",
+  "r1_task_counts": {
+    "A": [
+      50,
+      70
+    ],
+    "B": [
+      250,
+      280
+    ],
+    "C": [
+      150,
+      200
+    ]
+  },
+  "r1_heuristic_switch": {
+    "A": "Manhattan + look-ahead congestion",
+    "B": "Manhattan only",
+    "C": "Manhattan only"
+  },
+  "baseline": {
+    "alpha": 1.0,
+    "beta": 0.5,
+    "gamma": 5.0,
+    "omega": 50.0,
+    "L": 1,
+    "T": 1,
+    "sigma_l": 2.0,
+    "sigma_t": 2.0,
+    "K": 20
+  },
+  "new_experiments": {
+    "sigma_l_x_sigma_t": {
+      "values": [
+        0.5,
+        1.0,
+        2.0,
+        4.0
+      ],
+      "fixed": {
+        "L": 1,
+        "T": 1
+      }
+    },
+    "L_x_T": {
+      "values": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fixed": {
+        "sigma_l": 2.0,
+        "sigma_t": 2.0
+      }
+    },
+    "gamma_x_sigma_l": {
+      "gamma": [
+        2.5,
+        5.0,
+        7.5
+      ],
+      "sigma_l": [
+        0.5,
+        1.0,
+        2.0,
+        4.0
+      ]
+    },
+    "gamma_x_sigma_t": {
+      "gamma": [
+        2.5,
+        5.0,
+        7.5
+      ],
+      "sigma_t": [
+        0.5,
+        1.0,
+        2.0,
+        4.0
+      ]
+    },
+    "gamma_x_K": {
+      "gamma": [
+        2.5,
+        5.0,
+        7.5
+      ],
+      "K": [
+        1,
+        10,
+        20,
+        30,
+        40
+      ]
+    }
+  },
+  "formal_counts": {
+    "map_load_combinations": 6,
+    "seeds": 5,
+    "joint_unique_configs": 31,
+    "joint_actual_executions": 930,
+    "cross_unique_configs": 33,
+    "cross_actual_executions": 990,
+    "total_actual_executions": 1920,
+    "logical_study_rows": 2130
+  },
+  "upstream_files": {
+    "CPS_A/Conflict_Field_Updater.py": {
+      "vendor_sha256": "8df3feaa71b30fb19e1be8f82ca4baede7ea8e287c86a57bc1c738a30628978e",
+      "experiment_zip_sha256": "8df3feaa71b30fb19e1be8f82ca4baede7ea8e287c86a57bc1c738a30628978e",
+      "byte_identical": true
+    },
+    "CPS_A/Segment_Planner.py": {
+      "vendor_sha256": "5903e164e941e80d4ae08fe97226b1932407fe7f850cfd247411ac0f844e798f",
+      "experiment_zip_sha256": "5903e164e941e80d4ae08fe97226b1932407fe7f850cfd247411ac0f844e798f",
+      "byte_identical": true
+    },
+    "CPS_A/Ticket_Manager.py": {
+      "vendor_sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+      "experiment_zip_sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+      "byte_identical": true
+    },
+    "CPS_A/path_planner.py": {
+      "vendor_sha256": "ebb24ecba771a2e6478ebad57ee7648d79ffaa96601ae57243713c5b48e937f5",
+      "experiment_zip_sha256": "ebb24ecba771a2e6478ebad57ee7648d79ffaa96601ae57243713c5b48e937f5",
+      "byte_identical": true
+    },
+    "map_config.py": {
+      "vendor_sha256": "ab660fed08a6bae60e0e49b0c5fa5562b7b3b698f59f8edd8900c876d0028255",
+      "experiment_zip_sha256": "ab660fed08a6bae60e0e49b0c5fa5562b7b3b698f59f8edd8900c876d0028255",
+      "byte_identical": true
+    },
+    "task_generator.py": {
+      "vendor_sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13",
+      "experiment_zip_sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13",
+      "byte_identical": true
+    }
+  },
+  "controlled_changes": [
+    "Expose alpha/beta/gamma/omega and Gaussian L/T/sigma_l/sigma_t/K as configuration values.",
+    "Use R1 map-specific heuristic switch: A look-ahead on, B/C off; Manhattan base heuristic.",
+    "Preserve full-batch one-shot reservation/congestion evolution and local rollback; add a pending-only fallback guard if upstream blocker selection names an unplanned AGV."
+  ],
+  "package_files_sha256": {
+    "README.md": "d80b096470e84e2d4ae640a550d56269717c4974cacb46d3b4ffa6a6cf9f74f2",
+    "compat.py": "e7f41332ce7c2e4cab1f4fa2bb9580db6ec559e9ff9fdbefa893bf91c1ef872d",
+    "config.py": "8a44d8a03d3da883ce76326e357d7b039f9493d92875536a2855f8ca82549728",
+    "controlled_planner.py": "1544f4c71555e5a84bdde147d8844ea9990691992c7ff008a28649e0b6bceb8c",
+    "controlled_search.py": "def835bf28ce0f6855c227af64bd80480e8abe4ad69aad1ada934d3d443ed6db",
+    "evaluation.py": "88560b22f5ec173127a86109106eb8fa9872598873a3c52ec8a0d0c991aa8d8c",
+    "existing_R1_evidence/README.md": "b0ccab6847399fa02260c1deeb118e3ddc33cfd9d03f7cc945c573351fb747ef",
+    "existing_R1_evidence/result_R1_gaussian_sensitivity/config.json": "8a42cb0b09a4adf3386546c4ecc6f1c348ea281766281bc03c42595efe95dcb8",
+    "existing_R1_evidence/result_R1_gaussian_sensitivity/seed_results.csv": "d7b51f4d9780dfac8968ba933afe76321a4109756500219e3c47a1352648c767",
+    "existing_R1_evidence/result_R1_gaussian_sensitivity/summary_results.csv": "045aef7ed203987b3841535fa8eba4c78b4d5d6dd6bdadc768dfe7da4022af5b",
+    "experiment_core.py": "96ae36d5bb91d1b6a906cb98863f46445d452e81c2a355e17ea841b665495aa0",
+    "field_strategies.py": "6ce85897211acc3317aaf97e524c962c125a89cb01eecd3423d30534790d6906",
+    "instances.py": "2c3eef8cdec49e07a991449cab90cd2f38c1454775f583e3fd448a50af83b8df",
+    "requirements.txt": "5b838bf2f0f241130d094fd5fff6eecb6ffe97ad1f4392df7e779d2a69505dcd",
+    "run.py": "dad23b33002890c4cfad0cfd80ce69897316b1dd4f1f23d94df06b14c62cdaa9",
+    "run_all_experiments.py": "f7ea84ecff4bcd3378841253ee4420468fe761d79d4b2ed9e2f1006db58330b7",
+    "run_parameter_interactions.py": "d889cf8963eccbbbca84866c5de3ed17902cd268ee8dab866d3cb0223096b82d",
+    "statistics_analysis.py": "421302e7537adf611bd18e729c48dd46a4d5c8c6cd32030f77e2b85a6f11aa42",
+    "tests/test_protocol.py": "e0fa07fc7ee89b97c2beeb76780ca6d90162f39bc0549b8f6f7b7c81c1440db8",
+    "vendor/CPS_A/Conflict_Field_Updater.py": "8df3feaa71b30fb19e1be8f82ca4baede7ea8e287c86a57bc1c738a30628978e",
+    "vendor/CPS_A/Segment_Planner.py": "5903e164e941e80d4ae08fe97226b1932407fe7f850cfd247411ac0f844e798f",
+    "vendor/CPS_A/Ticket_Manager.py": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+    "vendor/CPS_A/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vendor/CPS_A/path_planner.py": "ebb24ecba771a2e6478ebad57ee7648d79ffaa96601ae57243713c5b48e937f5",
+    "vendor/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vendor/map_config.py": "ab660fed08a6bae60e0e49b0c5fa5562b7b3b698f59f8edd8900c876d0028255",
+    "vendor/task_generator.py": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13"
+  }
+}

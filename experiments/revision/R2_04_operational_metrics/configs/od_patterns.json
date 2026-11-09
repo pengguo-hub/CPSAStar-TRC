@@ -1,0 +1,397 @@
+{
+  "schema": 1,
+  "maps": {
+    "STANDARD": {
+      "map": "STANDARD",
+      "match": "origin",
+      "origins": [
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          12,
+          8
+        ]
+      ],
+      "destinations": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          14,
+          10
+        ]
+      ],
+      "free_cells": 120,
+      "interior_cells": 70,
+      "feasible_permutations": 8,
+      "normalized_span": 0.09090909090909091,
+      "overlap_span": 1.0,
+      "levels": {
+        "dispersed": {
+          "reference_overlap": 0.42857142857142855,
+          "permutation": [
+            3,
+            5,
+            0,
+            6,
+            1,
+            7,
+            2,
+            4
+          ]
+        },
+        "intermediate": {
+          "reference_overlap": 0.7857142857142857,
+          "permutation": [
+            3,
+            2,
+            0,
+            6,
+            1,
+            7,
+            5,
+            4
+          ]
+        },
+        "shared": {
+          "reference_overlap": 1.4285714285714286,
+          "permutation": [
+            3,
+            2,
+            0,
+            1,
+            6,
+            7,
+            5,
+            4
+          ]
+        }
+      },
+      "set": 0,
+      "distance_by_origin": [
+        14,
+        8,
+        12,
+        10,
+        10,
+        12,
+        8,
+        14
+      ],
+      "selection": "Geometry only: fixed per-origin shortest distance, bijective destinations, minimum / nearest midpoint / maximum expected interior overlap.",
+      "endpoint_buffer_radius": 1
+    },
+    "RING": {
+      "map": "RING",
+      "match": "origin",
+      "origins": [
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          14
+        ],
+        [
+          16,
+          5
+        ],
+        [
+          16,
+          14
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          5,
+          16
+        ],
+        [
+          14,
+          16
+        ]
+      ],
+      "destinations": [
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          18,
+          9
+        ],
+        [
+          18,
+          10
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          10,
+          18
+        ]
+      ],
+      "free_cells": 320,
+      "interior_cells": 256,
+      "feasible_permutations": 16,
+      "normalized_span": 0.06294860591581027,
+      "overlap_span": 1.2589721183162053,
+      "levels": {
+        "dispersed": {
+          "reference_overlap": 2.2229728757479017,
+          "permutation": [
+            7,
+            5,
+            6,
+            4,
+            3,
+            1,
+            2,
+            0
+          ]
+        },
+        "intermediate": {
+          "reference_overlap": 2.9123425397484515,
+          "permutation": [
+            7,
+            2,
+            1,
+            0,
+            3,
+            6,
+            5,
+            4
+          ]
+        },
+        "shared": {
+          "reference_overlap": 3.481944994064107,
+          "permutation": [
+            3,
+            2,
+            1,
+            0,
+            7,
+            6,
+            5,
+            4
+          ]
+        }
+      },
+      "set": 2,
+      "distance_by_origin": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "selection": "Geometry only: fixed per-origin shortest distance, bijective destinations, minimum / nearest midpoint / maximum expected interior overlap.",
+      "endpoint_buffer_radius": 1
+    },
+    "FRANSEN": {
+      "schema": 1,
+      "map": "FRANSEN",
+      "origins": [
+        [
+          5,
+          7
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          14,
+          12
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          7,
+          14
+        ],
+        [
+          12,
+          14
+        ]
+      ],
+      "destinations": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          14
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          19
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          14,
+          19
+        ],
+        [
+          19,
+          5
+        ],
+        [
+          19,
+          14
+        ]
+      ],
+      "distance_by_origin": [
+        16,
+        16,
+        16,
+        16,
+        21,
+        21,
+        21,
+        21
+      ],
+      "endpoint_buffer_radius": 1,
+      "headway_radius": 2,
+      "selection": "geometry-only enumeration; fixed origin-specific distances and bijective destinations; choose minimum, nearest score midpoint, maximum reference overlap; no trial outcomes used",
+      "feasible_permutations": 16,
+      "score_definition": "mean pair overlap of all-shortest-path interior visit probabilities, excluding all origin/destination graph-radius-1 neighborhoods",
+      "levels": {
+        "dispersed": {
+          "permutation": [
+            4,
+            2,
+            5,
+            3,
+            7,
+            1,
+            6,
+            0
+          ],
+          "reference_overlap": 0.7259398623331281
+        },
+        "intermediate": {
+          "permutation": [
+            6,
+            2,
+            7,
+            3,
+            5,
+            1,
+            4,
+            0
+          ],
+          "reference_overlap": 1.1531589307292283
+        },
+        "shared": {
+          "permutation": [
+            6,
+            0,
+            7,
+            1,
+            5,
+            3,
+            4,
+            2
+          ],
+          "reference_overlap": 1.6596970202372197
+        }
+      }
+    }
+  },
+  "frozen_before_smoke": true,
+  "outcome_data_used_in_selection": false
+}

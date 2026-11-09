@@ -1,0 +1,167 @@
+{
+  "plan": {
+    "revision": "R2-07",
+    "baseline": "S1_L0_P1_R1",
+    "cases": [
+      {
+        "name": "STANDARD_N50_backlog",
+        "map": "STANDARD",
+        "fleet": 50,
+        "horizon": 500,
+        "warmup": 0,
+        "mode": "backlog",
+        "backlog": 3000,
+        "tiles": 1
+      },
+      {
+        "name": "FRANSEN_N150_backlog",
+        "map": "FRANSEN",
+        "fleet": 150,
+        "horizon": 500,
+        "warmup": 0,
+        "mode": "backlog",
+        "backlog": 3000,
+        "tiles": 1
+      },
+      {
+        "name": "RING_N120_backlog",
+        "map": "RING",
+        "fleet": 120,
+        "horizon": 500,
+        "warmup": 0,
+        "mode": "backlog",
+        "backlog": 3000,
+        "tiles": 1
+      }
+    ],
+    "variants": [
+      {
+        "name": "S0_L0_P0_R0",
+        "S": 0,
+        "L": 0,
+        "P": 0,
+        "R": 0
+      },
+      {
+        "name": "S0_L0_P0_R1",
+        "S": 0,
+        "L": 0,
+        "P": 0,
+        "R": 1
+      },
+      {
+        "name": "S0_L0_P1_R0",
+        "S": 0,
+        "L": 0,
+        "P": 1,
+        "R": 0
+      },
+      {
+        "name": "S0_L0_P1_R1",
+        "S": 0,
+        "L": 0,
+        "P": 1,
+        "R": 1
+      },
+      {
+        "name": "S0_L1_P0_R0",
+        "S": 0,
+        "L": 1,
+        "P": 0,
+        "R": 0
+      },
+      {
+        "name": "S0_L1_P0_R1",
+        "S": 0,
+        "L": 1,
+        "P": 0,
+        "R": 1
+      },
+      {
+        "name": "S0_L1_P1_R0",
+        "S": 0,
+        "L": 1,
+        "P": 1,
+        "R": 0
+      },
+      {
+        "name": "S0_L1_P1_R1",
+        "S": 0,
+        "L": 1,
+        "P": 1,
+        "R": 1
+      },
+      {
+        "name": "S1_L0_P0_R0",
+        "S": 1,
+        "L": 0,
+        "P": 0,
+        "R": 0
+      },
+      {
+        "name": "S1_L0_P0_R1",
+        "S": 1,
+        "L": 0,
+        "P": 0,
+        "R": 1
+      },
+      {
+        "name": "S1_L0_P1_R0",
+        "S": 1,
+        "L": 0,
+        "P": 1,
+        "R": 0
+      },
+      {
+        "name": "S1_L0_P1_R1",
+        "S": 1,
+        "L": 0,
+        "P": 1,
+        "R": 1
+      },
+      {
+        "name": "S1_L1_P0_R0",
+        "S": 1,
+        "L": 1,
+        "P": 0,
+        "R": 0
+      },
+      {
+        "name": "S1_L1_P0_R1",
+        "S": 1,
+        "L": 1,
+        "P": 0,
+        "R": 1
+      },
+      {
+        "name": "S1_L1_P1_R0",
+        "S": 1,
+        "L": 1,
+        "P": 1,
+        "R": 0
+      },
+      {
+        "name": "S1_L1_P1_R1",
+        "S": 1,
+        "L": 1,
+        "P": 1,
+        "R": 1
+      }
+    ],
+    "seeds": [
+      45
+    ],
+    "smoke": false,
+    "horizon": 500,
+    "warmup": 0,
+    "wall_timeout": null,
+    "bootstrap": 10000,
+    "code_hash": "fbfd4c06bf5e5fed9467d6e4ab4b1cf3ed7149ab066e314b90808495422d4a43",
+    "expected_trials": 48
+  },
+  "environment": {
+    "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]",
+    "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35"
+  },
+  "unit": "independent seed"
+}

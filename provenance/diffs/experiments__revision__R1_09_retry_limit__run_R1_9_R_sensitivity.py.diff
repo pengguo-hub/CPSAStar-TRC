@@ -1,0 +1,17 @@
+--- 21-R1.zip::R1/R1.9/run_R1_9_R_sensitivity.py
++++ experiments/revision/R1_09_retry_limit/run_R1_9_R_sensitivity.py
+@@ -13,10 +13,10 @@
+ # Make imports independent of the current working directory.
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ if BASE_DIR not in sys.path:
+-    sys.path.insert(0, BASE_DIR)
+-
+-from map_config import ALL_MAPS
+-from CPS_A.path_planner import GridMap, IntegratedAGVPlanner
++    pass  # Package imports replace process-wide import-path mutation.
++
++from experiments.revision.R1_09_retry_limit.map_config import ALL_MAPS
++from experiments.revision.R1_09_retry_limit.CPS_A.path_planner import GridMap, IntegratedAGVPlanner
+ 
+ 
+ 

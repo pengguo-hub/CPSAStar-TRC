@@ -1,0 +1,317 @@
+{
+  "revision": "R2-07",
+  "baseline": "S1_L0_P1_R1",
+  "authority_archive": {
+    "path": "project_sources/01-experiment.zip",
+    "sha256": "e184d8cb5aced3e9189e634a5581a60f6e945c3cd85dacdbf564502892571357",
+    "files": 255
+  },
+  "authority_files": [
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/benchmark_loader.py",
+      "entry": "experiment/Lifelong/benchmark_loader.py",
+      "sha256": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/benchmark_loader.py",
+      "entry": "experiment/Lifelong/CPS_A_lifelong/benchmark_loader.py",
+      "sha256": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/Conflict_Field_Updater.py",
+      "entry": "experiment/Lifelong/CPS_A_lifelong/Conflict_Field_Updater.py",
+      "sha256": "0487443c0b4e572d873bbe4dbdc956cd13af975ec23e7f061c61f9b7f67cb2f1",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "0487443c0b4e572d873bbe4dbdc956cd13af975ec23e7f061c61f9b7f67cb2f1"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/path_planner_lifelong.py",
+      "entry": "experiment/Lifelong/CPS_A_lifelong/path_planner_lifelong.py",
+      "sha256": "2fe8a3302e8a69bd10ac5ad982c2b87d2c0ca3f03bde403b6dc2ceff56bda8da",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "2fe8a3302e8a69bd10ac5ad982c2b87d2c0ca3f03bde403b6dc2ceff56bda8da"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/Segment_Planner.py",
+      "entry": "experiment/Lifelong/CPS_A_lifelong/Segment_Planner.py",
+      "sha256": "ef9085c90759572c963bba8058a5c0a58f653f3f9ef99eb812e5506635b2e798",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "ef9085c90759572c963bba8058a5c0a58f653f3f9ef99eb812e5506635b2e798"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/test_lifelong.py",
+      "entry": "experiment/Lifelong/CPS_A_lifelong/test_lifelong.py",
+      "sha256": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/Ticket_Manager.py",
+      "entry": "experiment/Lifelong/CPS_A_lifelong/Ticket_Manager.py",
+      "sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/__init__.py",
+      "entry": "experiment/Lifelong/CPS_A_lifelong/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/custom_benchmark_loader.py",
+      "entry": "experiment/Lifelong/custom_benchmark_loader.py",
+      "sha256": "83e0c2dad1df6b9afe7857fc8d18137709e4ecd1316a578a4365215f9fd2af41",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "83e0c2dad1df6b9afe7857fc8d18137709e4ecd1316a578a4365215f9fd2af41"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/map_config.py",
+      "entry": "experiment/Lifelong/map_config.py",
+      "sha256": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/multi_algo_benchmark.py",
+      "entry": "experiment/Lifelong/multi_algo_benchmark.py",
+      "sha256": "6881f37c236980e1b54c78816461221497ec5925c11522054a4066f7252d370d",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "6881f37c236980e1b54c78816461221497ec5925c11522054a4066f7252d370d"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/task_generator.py",
+      "entry": "experiment/Lifelong/task_generator.py",
+      "sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/test_ourmap.py",
+      "entry": "experiment/Lifelong/test_ourmap.py",
+      "sha256": "b4d8c2f35d7443205338c44f6c5416309aa18decb66c0cb311605592e8217b6f",
+      "old_snapshot_matches": true,
+      "supplied_source_sha256": "b4d8c2f35d7443205338c44f6c5416309aa18decb66c0cb311605592e8217b6f"
+    }
+  ],
+  "files": [
+    {
+      "path": "CPS_A_lifelong/Conflict_Field_Updater.py",
+      "sha256": "0e97f23849f71ce24d0667f2c4fb01d97397585e0ef74cc36a5ea78e41eb8a70",
+      "supplied_source_sha256": "0e97f23849f71ce24d0667f2c4fb01d97397585e0ef74cc36a5ea78e41eb8a70"
+    },
+    {
+      "path": "CPS_A_lifelong/Segment_Planner.py",
+      "sha256": "30a5af01384919169ffc6288a150e8c9ecab6ec50296a62501749386ea25c5ec",
+      "supplied_source_sha256": "5dab7c448f50f8c59cab3b4e852400fd42cda5f7ad2db09b49e3936e7bda44a6"
+    },
+    {
+      "path": "CPS_A_lifelong/Ticket_Manager.py",
+      "sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+      "supplied_source_sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2"
+    },
+    {
+      "path": "CPS_A_lifelong/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supplied_source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "CPS_A_lifelong/benchmark_loader.py",
+      "sha256": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440",
+      "supplied_source_sha256": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440"
+    },
+    {
+      "path": "CPS_A_lifelong/path_planner_lifelong.py",
+      "sha256": "9e2ab3862e2f180db52a8369052b2a37571d7b6961ecfd045b6829ebf3f475a1",
+      "supplied_source_sha256": "9e2ab3862e2f180db52a8369052b2a37571d7b6961ecfd045b6829ebf3f475a1"
+    },
+    {
+      "path": "CPS_A_lifelong/test_lifelong.py",
+      "sha256": "9afa934706431c45b5e677c4e33dea9566a2963290d57e0e319cc4b17f4408a8",
+      "supplied_source_sha256": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a"
+    },
+    {
+      "path": "REVISION_ID",
+      "sha256": "79d7280a8eb109a0574be0d1d5ba1b611c3e4d41903a5c3d10b013c736cdbbfc",
+      "supplied_source_sha256": "79d7280a8eb109a0574be0d1d5ba1b611c3e4d41903a5c3d10b013c736cdbbfc"
+    },
+    {
+      "path": "analysis.py",
+      "sha256": "e2a17a318a04159ce1c7fffb6b94c9259af82ae2088976ef33b867701f44f837",
+      "supplied_source_sha256": "ea6347a49a0abf4b7eb8f5e4a1028fc599887b5c20c343a6b4331c27abe88c89"
+    },
+    {
+      "path": "audit_results.py",
+      "sha256": "5d530cbee4ba63b43addf5c7330a7ed7169572a1eddc05d2f9a3f0f6f20f8888",
+      "supplied_source_sha256": "af737f5151bac0b40eba76dd72056a8bec7c5dc8b75120295b66548ba7016c33"
+    },
+    {
+      "path": "configs/experiment.json",
+      "sha256": "ad9c674e6c67cf4bfd19ee32e3e0ba01d7cab7dbe7baf35f4c2f95a695e4b804",
+      "supplied_source_sha256": "ad9c674e6c67cf4bfd19ee32e3e0ba01d7cab7dbe7baf35f4c2f95a695e4b804"
+    },
+    {
+      "path": "make_response.py",
+      "sha256": "1e3baf3a66a51e1e40bba90dcd6f354cdbc56a94bcf189e14b49660b267ef61e",
+      "supplied_source_sha256": "1e3baf3a66a51e1e40bba90dcd6f354cdbc56a94bcf189e14b49660b267ef61e"
+    },
+    {
+      "path": "observations.py",
+      "sha256": "9d58f820a75ef0ad14d70a8b72d207b589e081d75c789b3710d62a7dcf65d079",
+      "supplied_source_sha256": "ad669a9bed2d6721e335c8bffa7cc31be6eaca82892770ea6692849dd4dffe8f"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/Conflict_Field_Updater.py",
+      "sha256": "0487443c0b4e572d873bbe4dbdc956cd13af975ec23e7f061c61f9b7f67cb2f1",
+      "supplied_source_sha256": "0487443c0b4e572d873bbe4dbdc956cd13af975ec23e7f061c61f9b7f67cb2f1"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/Segment_Planner.py",
+      "sha256": "ef9085c90759572c963bba8058a5c0a58f653f3f9ef99eb812e5506635b2e798",
+      "supplied_source_sha256": "ef9085c90759572c963bba8058a5c0a58f653f3f9ef99eb812e5506635b2e798"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/Ticket_Manager.py",
+      "sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+      "supplied_source_sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supplied_source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/benchmark_loader.py",
+      "sha256": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440",
+      "supplied_source_sha256": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/path_planner_lifelong.py",
+      "sha256": "2fe8a3302e8a69bd10ac5ad982c2b87d2c0ca3f03bde403b6dc2ceff56bda8da",
+      "supplied_source_sha256": "2fe8a3302e8a69bd10ac5ad982c2b87d2c0ca3f03bde403b6dc2ceff56bda8da"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/CPS_A_lifelong/test_lifelong.py",
+      "sha256": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a",
+      "supplied_source_sha256": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/benchmark_loader.py",
+      "sha256": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e",
+      "supplied_source_sha256": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/custom_benchmark_loader.py",
+      "sha256": "83e0c2dad1df6b9afe7857fc8d18137709e4ecd1316a578a4365215f9fd2af41",
+      "supplied_source_sha256": "83e0c2dad1df6b9afe7857fc8d18137709e4ecd1316a578a4365215f9fd2af41"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/map_config.py",
+      "sha256": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b",
+      "supplied_source_sha256": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/multi_algo_benchmark.py",
+      "sha256": "6881f37c236980e1b54c78816461221497ec5925c11522054a4066f7252d370d",
+      "supplied_source_sha256": "6881f37c236980e1b54c78816461221497ec5925c11522054a4066f7252d370d"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/task_generator.py",
+      "sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13",
+      "supplied_source_sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13"
+    },
+    {
+      "path": "../../../provenance/experiment_records/R2_07_factorial_ablation/original/Lifelong_inputs/test_ourmap.py",
+      "sha256": "b4d8c2f35d7443205338c44f6c5416309aa18decb66c0cb311605592e8217b6f",
+      "supplied_source_sha256": "b4d8c2f35d7443205338c44f6c5416309aa18decb66c0cb311605592e8217b6f"
+    },
+    {
+      "path": "plot_results.py",
+      "sha256": "48281a1f78ba8abc9f36ab1e700421b3450f0ccc78b82a8cfcd59a4ddf15b585",
+      "supplied_source_sha256": "208746e08646dcddcffb39352980730336e98ba1ae3bba4b19a18d2e0f899f7d"
+    },
+    {
+      "path": "postprocess.py",
+      "sha256": "8913d5b7c7322e127511b3aa4ea4054b5648a07d9092a0e8e9cc92bbc838960f",
+      "supplied_source_sha256": "9d6463767b23f6efde1621e3159e22ab5c585c66e7619063a95a7db83d6c7331"
+    },
+    {
+      "path": "reference_inputs/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supplied_source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reference_inputs/benchmark_loader.py",
+      "sha256": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e",
+      "supplied_source_sha256": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e"
+    },
+    {
+      "path": "reference_inputs/custom_benchmark_loader.py",
+      "sha256": "015391d600c159bb54b5ae81546836fc1e62e73324a36c7790827371d5f01055",
+      "supplied_source_sha256": "015391d600c159bb54b5ae81546836fc1e62e73324a36c7790827371d5f01055"
+    },
+    {
+      "path": "reference_inputs/map_config.py",
+      "sha256": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b",
+      "supplied_source_sha256": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b"
+    },
+    {
+      "path": "reference_inputs/task_generator.py",
+      "sha256": "b5e8ca6f86feeb6f3f6b9524b28a00853bdf5a0deafeef12731b93c1a6fb9075",
+      "supplied_source_sha256": "b5e8ca6f86feeb6f3f6b9524b28a00853bdf5a0deafeef12731b93c1a6fb9075"
+    },
+    {
+      "path": "requirements-tested.txt",
+      "sha256": "d0066322d3ef6a963dfc3d2534ab36e16274c51b251f0aa9d5e6e4cdfab4504c",
+      "supplied_source_sha256": "d0066322d3ef6a963dfc3d2534ab36e16274c51b251f0aa9d5e6e4cdfab4504c"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "2bb0bf356036acc8420eb84c77a633318a99a6e6aadfda981931220246e49a63",
+      "supplied_source_sha256": "2bb0bf356036acc8420eb84c77a633318a99a6e6aadfda981931220246e49a63"
+    },
+    {
+      "path": "run.py",
+      "sha256": "ddec0abe875ac1f2abb7195795e66c1c52401d166eb683167c87525b78a07451",
+      "supplied_source_sha256": "9d720b1c8bed7f19e523156ec3dc7210697582987d55a019ba980d15c96ae6ec"
+    },
+    {
+      "path": "tests/test_incremental.py",
+      "sha256": "8a2c595a91d515b63f39b993950aae1b68884f36498d0f35d7f64f617dfcef76",
+      "supplied_source_sha256": "9223316b73d6f0735b2e0f4056b10e3853fa3583723308755c1c762244b8d7ab"
+    },
+    {
+      "path": "tools/update_source_manifest.py",
+      "sha256": "6266ede51f6339e5bbb4cc04fa96f27a49511cef558895d78fc3495542887932",
+      "supplied_source_sha256": "6266ede51f6339e5bbb4cc04fa96f27a49511cef558895d78fc3495542887932"
+    },
+    {
+      "path": "tools/verify_package.py",
+      "sha256": "7f921173c58af668f8bb3d236b754a74d69adacfae07265bf5b6addee3a8c102",
+      "supplied_source_sha256": "7f921173c58af668f8bb3d236b754a74d69adacfae07265bf5b6addee3a8c102"
+    },
+    {
+      "path": "verify_sources.py",
+      "sha256": "92e64f6c065c00c577460dd077da276f114cd3bfcf9880df311044f36f8b3c3b",
+      "supplied_source_sha256": "6fcd796c113d39298ad74e685e8e075571d5f375ada8277e8a9eeb3b64efaf4e"
+    },
+    {
+      "path": "worker.py",
+      "sha256": "51eb9dd1464c8a15ab7a6b5d5b757ffc795bbfe122c648c54734dfad50429288",
+      "supplied_source_sha256": "559de22f7a7b9ed1b5cc97edc4d7f50d51837e795aab7e2c7d9d3fe9d47cec20"
+    },
+    {
+      "path": "workload.py",
+      "sha256": "b3a8e0c40930bff5541430630d648162bc73e6052f351d437ae8531f9d8d0995",
+      "supplied_source_sha256": "675178a78132f69891dd0faa7eac148ff4d862264d637eac2d52195a417c635b"
+    }
+  ],
+  "execution_hash": "cd1f6f6edeb512b85ce8acd71b22d0d50adff37fee6cc8e85e8a5fff24b6bc0c",
+  "historical_execution_hash": "fbfd4c06bf5e5fed9467d6e4ab4b1cf3ed7149ab066e314b90808495422d4a43",
+  "public_repackaging_hash_not_historical_run": true
+}

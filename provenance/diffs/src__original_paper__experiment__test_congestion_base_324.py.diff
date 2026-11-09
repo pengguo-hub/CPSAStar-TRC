@@ -1,0 +1,2402 @@
+--- 20-experiment.zip::experiment/test_congestion_base_324.py
++++ src/original_paper/experiment/test_congestion_base_324.py
+@@ -1,1200 +1,1200 @@
+-import sys
+-import os
+-from copy import deepcopy
+-
+-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+-import copy
+-import random
+-import numpy as np
+-import matplotlib.pyplot as plt
+-import json
+-import os
+-from datetime import datetime
+-from typing import Dict, List, Tuple
+-from CPS_A.path_planner import GridMap
+-from Astar_base.path_planner import IntegratedAGVPlanner as BaseAGVPlanner
+-# from Astar_congestion.path_planner import IntegratedAGVPlanner as ConflictAGVPlanner
+-from CPS_A.path_planner import IntegratedAGVPlanner as ConflictAGVPlanner
+-# from deployer.api_deployer import API_ModelDeployer
+-from map_config import ALL_MAPS
+-from task_generator import generate_test_tasks
+-
+-# 配置参数
+-API_URL = "https://api.deepseek.com"
+-API_KEY = "[REDACTED_SOURCE_CREDENTIAL]"
+-AGV_FILEPATH = "Astar_base/agv_info"
+-DELTA = 1
+-CONFLICT_THRESHOLD=0.3
+-plt.rcParams['font.family'] = 'Times New Roman'
+-timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+-print(timestamp)
+-
+-
+-class MockWaypointGen:
+-    """Mock waypoint生成器（用预置数据替代LLM）"""
+-
+-    def __init__(self, waypoints_map):
+-        self.waypoints_map = waypoints_map
+-
+-    def llm_generate_waypoints(self, parsed_tasks):
+-        return self.waypoints_map
+-
+-
+-
+-class CongestionAvoidanceExperiment:
+-    """前瞻避障实验框架"""
+-
+-    def __init__(self, grid_map, base_planner_class, conflict_planner_class,
+-                 agv_info, api_deployer=None, save_dir="./experiment_results"):
+-        """初始化实验"""
+-        self.grid = grid_map
+-        self.base_planner_class = base_planner_class
+-        self.conflict_planner_class = conflict_planner_class
+-        self.agv_info = agv_info
+-        self.api_deployer = api_deployer
+-
+-        self.save_dir = save_dir
+-        os.makedirs(save_dir, exist_ok=True)
+-
+-        # 状态记录
+-        self.initial_tasks = []
+-        self.initial_paths = {}
+-        self.initial_times = {}
+-        self.test_tasks = []
+-        self.conflict_field_data = {}
+-        self.congestion_zones = []
+-
+-        # 测试结果
+-        self.test_results = {
+-            'base': {},
+-            'conflict': {}
+-        }
+-
+-        self.shelf_cells = set()
+-        self.outbound_cells = set()
+-        self._setup_grid_from_maps() # 初始化货架和出库区
+-
+-
+-    def _create_mock_waypoints(self, tasks: List[Dict]) -> Dict:
+-        # 将任务列表转换为规划器需要的waypoints格式
+-        waypoints_map = {}
+-
+-        for task in tasks:
+-            agv_id = task["agv_id"]
+-
+-            waypoints = [
+-                task["agv_position"],
+-                task["source"],
+-                task["destination"]
+-            ]
+-
+-            waypoints_map[agv_id] = {
+-                "task_id": task["task_id"],
+-                "agv_id": agv_id,
+-                "agv_position": task["agv_position"],
+-                "source": task["source"],
+-                "destination": task["destination"],
+-                "waypoints": waypoints,
+-                "constraints": task.get("constraints", {})
+-            }
+-
+-        return waypoints_map
+-
+-    def stage1_initial_planning(self, initial_tasks):
+-        """
+-        阶段1：用Conflict版本规划初始任务,并返回规划器实例供后续使用
+-        """
+-        print("\n" + "=" * 60)
+-        print("【阶段1】初始规划：Base 版本")
+-        print("=" * 60)
+-
+-        self.initial_tasks = initial_tasks
+-
+-        # 将任务转换为waypoints格式
+-        mock_waypoints = self._create_mock_waypoints(initial_tasks)
+-
+-        # 创建conflict规划器
+-        planner = self.base_planner_class(
+-            grid=self.grid,
+-            # llm_deployer=None,
+-            # api_deployer=self.api_deployer,
+-            agv_info=self.agv_info
+-        )
+-
+-        # 用MockWaypointGen替代真实LLM
+-        planner.waypoint_generator = MockWaypointGen(mock_waypoints)
+-
+-        # 执行规划
+-        self.initial_paths = planner.batch_plan(parsed_tasks=mock_waypoints)
+-
+-        path_lengths = [len(path) for path in self.initial_paths.values() if path]
+-        avg_path_length = sum(path_lengths) / len(path_lengths) if path_lengths else 0
+-        # 提取时间信息
+-        for agv_id, task_info in planner.agv_tasks.items():
+-            if 'times' in task_info:
+-                self.initial_times[agv_id] = task_info['times']
+-
+-        success_count = sum(1 for p in self.initial_paths.values() if p)
+-        print(f"✅ 初始规划(成功/总数)：{success_count}/{len(initial_tasks)}  ")
+-        # print(f"✅ 平均路径长度：{avg_path_length:.2f}")
+-
+-        # 返回规划器实例
+-        return self.initial_paths, self.initial_times, planner
+-
+-
+-    def stage2_analyze_conflict_field(self, base_planner):
+-        """
+-        阶段2：从规划结果中提取冲突场并识别拥堵区域
+-        """
+-        print("\n" + "=" * 60)
+-        print("【阶段2】冲突场分析：识别拥堵区域")
+-        print("=" * 60)
+-
+-        base_reservations = base_planner.ticket_manager.get_all_reservations()
+-        # print(f" - 节点预约: {len(base_reservations.get('node_reservations', {}))} 个")
+-        # print(f" - 边预约: {len(base_reservations.get('edge_reservations', {}))} 个")
+-
+-        conflict_field_planner = self.conflict_planner_class(
+-            grid=self.grid,
+-            # llm_deployer=None,
+-            # api_deployer=self.api_deployer,
+-            agv_info=self.agv_info
+-        )
+-        conflict_field_planner.ticket_manager = copy.deepcopy(base_planner.ticket_manager)
+-        conflict_field_planner.conflict_updater.ticket_manager = conflict_field_planner.ticket_manager
+-
+-        # print(f"conflict_planner节点预约有：{len(conflict_field_planner.ticket_manager.node_reservations)}")
+-
+-        count = 0
+-        for agv_id, info in base_planner.agv_tasks.items():
+-            if 'path' in info and 'times' in info:
+-                count += 1
+-                path = info['path']
+-                times = info['times']
+-                conflict_field_planner.conflict_updater.accumulate_path(path, times, agv_id)
+-
+-        conflict_field_planner.conflict_updater.batch_update_from_paths()
+-        conflict_field_planner.conflict_updater.finalize_batch_update()
+-        conflict_field_planner.segment_planner.congestion_dict = conflict_field_planner.conflict_updater.smoothed_dict
+-
+-        # 获取平滑后的冲突场
+-        self.conflict_field_data = conflict_field_planner.conflict_updater.smoothed_dict or {}
+-        # print(f"✅ 平滑冲突场生成成功，共 {len(self.conflict_field_data)} 个冲突点")
+-
+-        # 识别高冲突区域并保存到self.congestion_zones
+-        self.congestion_zones = [
+-            (pos, val) for pos, val in self.conflict_field_data.items()
+-            if val > CONFLICT_THRESHOLD
+-        ]
+-        self.congestion_zones.sort(key=lambda x: x[1], reverse=True)
+-
+-        print(f"🔴 识别到 {len(self.congestion_zones)} 个拥堵区域（阈值>{CONFLICT_THRESHOLD}）")
+-
+-        # if self.congestion_zones:
+-        #     print("\n TOP 10 拥堵点：")
+-        #     for i, ((x, y, slot), val) in enumerate(self.congestion_zones[:10]):
+-        #         print(f" {i + 1}. ({x:2d}, {y:2d}, t={slot:3d}): 冲突值={val:.2f}")
+-
+-        return conflict_field_planner
+-
+-    def stage3_test_task_planning(self, test_tasks, initial_base_planner, initial_conflict_planner):
+-        """
+-        阶段3：在相同初始路径信息上，分别用 Base 和 Conflict 规划测试任务
+-        """
+-        # print("\n" + "=" * 60)
+-        # print("【阶段3】测试任务规划对比")
+-        # print("【背景】基于初始任务占据的时空进行规划")
+-        # print("=" * 60)
+-        print("\n" + "=" * 60)
+-        print(f"【测试任务数量】：{len(test_tasks)}")
+-        print("\n" + "=" * 60)
+-        #保存测试任务，供后续分析使用
+-        self.test_tasks = test_tasks
+-
+-        # print(f"📌 生成了 {len(test_tasks)} 个测试任务（设计通过拥堵区域）")
+-
+-        # 创建Mock waypoints
+-        test_waypoints = self._create_mock_waypoints(test_tasks)
+-
+-        #复制初始任务的规划信息
+-        if initial_base_planner is None:
+-            print("⚠️  警告：initial_base_planner 未传入初始规划器")
+-            print("   阶段3将在空白背景下规划，无法真实验证前瞻避障效果！")
+-        else:
+-            # print(f"\n✅ 获取初始任务的时空占用信息...")
+-            initial_reservations = initial_base_planner.ticket_manager.get_all_reservations()
+-            # print(f"   - 初始任务占用的节点预约: {len(initial_reservations.get('node_reservations', {}))} 个")
+-            # print(f"   - 初始任务占用的边预约: {len(initial_reservations.get('edge_reservations', {}))} 个")
+-
+-        # ============================================
+-        # 方案A：Base 版本规划（在初始任务背景下）
+-        # ============================================
+-
+-        # print("\n🔵 方案A：Base 版本规划（基于初始任务背景）...")
+-        base_planner = self.base_planner_class(
+-            grid=self.grid,
+-            # llm_deployer=None,
+-            # api_deployer=self.api_deployer,
+-            agv_info=self.agv_info
+-        )
+-        base_planner.waypoint_generator = MockWaypointGen(test_waypoints)
+-
+-        # 复制初始任务的预约信息
+-        if initial_base_planner is not None:
+-            base_planner.ticket_manager = copy.deepcopy(initial_base_planner.ticket_manager)
+-            base_planner.segment_planner.ticket_manager = base_planner.ticket_manager
+-            # print("   ✅ 已载入初始任务的时空占用信息")
+-
+-        # 执行规划
+-        # print("进入stage3规划")
+-        base_result = base_planner.batch_plan(parsed_tasks=test_waypoints)
+-        initial_reservations = base_planner.ticket_manager.get_all_reservations()
+-        # print(f"   - base_planner任务占用的节点预约: {len(initial_reservations.get('node_reservations', {}))} 个")
+-        # print(f"   - base_plannner任务占用的边预约: {len(initial_reservations.get('edge_reservations', {}))} 个")
+-        self.test_results['base']['paths'] = base_result
+-
+-        # 提取Base的时间信息
+-        base_times = {}
+-        for agv_id, task_info in base_planner.agv_tasks.items():
+-            if 'times' in task_info:
+-                base_times[agv_id] = task_info['times']
+-        self.test_results['base']['times'] = base_times
+-
+-        base_success = sum(1 for p in base_result.values() if p)
+-        print(f"   ✅ Base规划完成：{base_success}/{len(test_tasks)} 成功")
+-
+-        # ============================================
+-        # 方案B：Conflict 版本规划（在初始任务背景下）
+-        # ============================================
+-
+-        # print("\n🟠 方案B：Conflict 版本规划（基于初始任务背景）...")
+-        conflict_planner = self.conflict_planner_class(
+-            grid=self.grid,
+-            # llm_deployer=None,
+-            # api_deployer=self.api_deployer,
+-            agv_info=self.agv_info
+-        )
+-
+-        #复制初始任务的预约信息和冲突场
+-        if initial_conflict_planner is not None:
+-            conflict_planner = copy.deepcopy(initial_conflict_planner)
+-            conflict_planner.waypoint_generator = MockWaypointGen(test_waypoints)
+-            conflict_planner.segment_planner.ticket_manager = conflict_planner.conflict_updater.ticket_manager
+-            # conflict_planner = copy.deepcopy(initial_conflict_planner)
+-            # if hasattr(initial_conflict_planner, 'conflict_updater'):
+-            #     conflict_planner.conflict_updater = initial_conflict_planner.conflict_updater
+-            #     if hasattr(conflict_planner, 'segment_planner'):
+-            #         conflict_planner.conflict_updater.smoothed_dict = initial_conflict_planner.conflict_updater.smoothed_dict
+-            #         # print(f"conflict_planner共{len(conflict_planner.segment_planner.congestion_dict)}个冲突点")
+-
+-            # conflict_planner.ticket_manager = copy.deepcopy(initial_conflict_planner.ticket_manager)
+-            # conflict_planner.conflict_updater.ticket_manager = conflict_planner.ticket_manager
+-            # conflict_planner.segment_planner.ticket_manager = conflict_planner.ticket_manager
+-            # conflict_planner.segment_planner.congestion_dict = conflict_planner.conflict_updater.smoothed_dict
+-
+-            # reservations = conflict_planner.conflict_updater.ticket_manager.get_all_reservations()
+-            # print(f"conflict_planner的预约长度：{len(reservations.get('node_reservations', {}))}")
+-            # print(f"conflict_planner的smoothed_dict有{len(conflict_planner.conflict_updater.smoothed_dict)}")
+-            # print("   ✅ 已载入初始任务的时空占用信息")
+-        # 执行规划
+-        conflict_result = conflict_planner.batch_plan(parsed_tasks=test_waypoints)
+-        self.test_results['conflict']['paths'] = conflict_result
+-
+-        # 提取Conflict的时间信息
+-        conflict_times = {}
+-        for agv_id, task_info in conflict_planner.agv_tasks.items():
+-            if 'times' in task_info:
+-                conflict_times[agv_id] = task_info['times']
+-        self.test_results['conflict']['times'] = conflict_times
+-
+-        conflict_success = sum(1 for p in conflict_result.values() if p)
+-        print(f"   ✅ Conflict规划完成：{conflict_success}/{len(test_tasks)} 成功")
+-
+-        return self.test_results
+-
+-
+-    # ========================================
+-    # 阶段4：结果对比分析
+-    # ========================================
+-
+-    def stage4_compare_results(self) -> Dict:
+-        # 阶段4：对比 Base 和 Conflict 的规划结果
+-
+-        # print("\n" + "=" * 60)
+-        # print("【阶段4】结果对比分析")
+-        # print("=" * 60)
+-
+-        analysis = {'base': {}, 'conflict': {}}
+-
+-        for method in ['base', 'conflict']:
+-            paths = self.test_results[method].get('paths', {})
+-            times_dict = self.test_results[method].get('times', {})
+-
+-            success_count = len(paths)
+-            total_tasks = len(self.test_tasks)
+-            success_rate = success_count / total_tasks if total_tasks > 0 else 0
+-
+-            # print(f"\n【{method.upper()}版本】")
+-            # print(f"  成功率: {success_count}/{total_tasks} = {100 * success_rate:.1f}%")
+-
+-            # 逐任务详细分析
+-            task_analysis = []
+-            for agv_id, path in paths.items():
+-                if not path or len(path) < 2:
+-                    continue
+-
+-                path_len = len(path)
+-
+-                # 拥堵覆盖率
+-                congestion_info = self._calculate_congestion_coverage(path, times_dict.get(agv_id, []))
+-
+-                # 计算转弯次数
+-                turns = self._count_turns(path)
+-
+-                # 绕路系数计算
+-                detour_ratio = self._calculate_detour_ratio(path)
+-
+-                task_analysis.append({
+-                    'agv_id': agv_id,
+-                    'path_length': path_len,
+-                    'turns': turns,
+-                    'congestion_coverage_ratio':congestion_info['congestion_coverage_ratio'],
+-                    'congestion_coverage_path': congestion_info['congestion_coverage_path'],
+-                    'congestion_coverage_area': congestion_info['congestion_coverage_area'],
+-                    'detour_ratio': detour_ratio
+-                })
+-
+-            # 统计汇总
+-            if task_analysis:
+-                # print("task_analysis存在")
+-                avg_path_len = np.mean([t['path_length'] for t in task_analysis])
+-                avg_turns = np.mean([t['turns'] for t in task_analysis])
+-                avg_detour = np.mean([t['detour_ratio'] for t in task_analysis])
+-
+-                # ✅ 关键指标：平均拥堵覆盖率（每条路径：经过的高冲突点/该路径总数）
+-                avg_congestion_coverage = np.mean([t['congestion_coverage_ratio'] for t in task_analysis])
+-                total_congestion_points = sum(
+-                    int(t['congestion_coverage_ratio'] * t['path_length'])
+-                    for t in task_analysis
+-                )
+-                total_path_points = sum(t['path_length'] for t in task_analysis)
+-
+-                analysis[method] = {
+-                    'success_count': success_count,
+-                    'total_tasks': total_tasks,
+-                    'success_rate': success_rate,
+-                    'avg_path_length': avg_path_len,
+-                    'avg_turns': avg_turns,
+-                    'avg_detour_ratio': avg_detour,
+-                    'avg_congestion_coverage': avg_congestion_coverage,
+-                    'tasks': task_analysis
+-                }
+-
+-                # print(f"  平均路径长度: {avg_path_len:.1f} 格")
+-                # print(f"  平均转弯次数: {avg_turns:.1f}")
+-                # print(f"  平均绕路系数: {avg_detour:.2f}")
+-                # print(f"\n  🔴 拥堵区域覆盖分析：")
+-                # print(f"     - 平均拥堵覆盖率: {100 * avg_congestion_coverage:.1f}%")
+-                # print(f"     - 总共跨越拥堵点(跨越点数/路径长度): {total_congestion_points}/{total_path_points}")
+-                # print(f"       (越低说明避障效果越好)")
+-
+-        # ============================================
+-        # 对比总结
+-        # ============================================
+-
+-        # print("\n" + "=" * 60)
+-        # print("【对比总结】")
+-        # print("=" * 60)
+-        if 'base' in analysis and 'conflict' in analysis:
+-            base_cov = analysis['base']['avg_congestion_coverage']
+-            conflict_cov = analysis['conflict']['avg_congestion_coverage']
+-            diff = base_cov - conflict_cov
+-
+-            print(f"Base平均拥堵覆盖率:     {100 * base_cov:.1f}%")
+-            print(f"Conflict平均拥堵覆盖率: {100 * conflict_cov:.1f}%")
+-            print(f"改善程度:              {100 * diff:.1f}% {'✅' if diff > 0 else '❌'}")
+-
+-            if diff > 0:
+-                print(f"\n✅ Conflict 成功避开了 {100 * diff:.1f}% 的拥堵区域！")
+-                print(f"   这验证了其前瞻避障的能力。")
+-            else:
+-                print(f"\n⚠️  Conflict 没有表现出更好的避障效果")
+-
+-        self.analysis_results = analysis
+-        return analysis
+-
+-    def _calculate_congestion_coverage(self, path, times=None) -> dict:
+-        """
+-        计算路径与拥堵区域的详细覆盖情况，返回拥堵覆盖率
+-        """
+-        if not self.congestion_zones or not path:
+-            print("congestion_zones不存在")
+-            return {
+-                'passes_congestion': False,
+-                'congestion_point_count': 0,
+-                'total_path_points': len(path) if path else 0,
+-                'congestion_coverage_ratio': 0.0,
+-                'congestion_coverage_path': 0.0,
+-                'congestion_coverage_area':0.0,
+-            }
+-
+-        congestion_positions = set((x, y, slot) for (x, y, slot), _ in self.congestion_zones)
+-
+-        congestion_point_count = 0
+-        total_path_points = len(path)
+-
+-        for i, (x, y) in enumerate(path):
+-            if times is None or i >= len(times):
+-                slot = 0
+-            else:
+-                slot = int(times[i] // DELTA)
+-
+-            if (x, y, slot) in congestion_positions:
+-                congestion_point_count += 1
+-
+-        congestion_coverage_ratio = congestion_point_count / max(total_path_points, 1)
+-        congestion_coverage_percentage_path = f"{100 * congestion_coverage_ratio:.1f}%"
+-        congestion_coverage_percentage_area = f"{100 * (congestion_point_count / max(len(congestion_positions), 1)):.1f}%"
+-        passes_congestion = congestion_point_count > 0
+-
+-        return {
+-            'passes_congestion': passes_congestion,
+-            'congestion_point_count': congestion_point_count,
+-            'total_path_points': total_path_points,
+-            'congestion_coverage_ratio':congestion_coverage_ratio,
+-            'congestion_coverage_path': congestion_coverage_percentage_path, #路径中多少进入congestion
+-            'congestion_coverage_area': congestion_coverage_percentage_area  # 占冲突区域的百分比
+-        }
+-
+-    def _calculate_detour_ratio(self, path: List[Tuple]) -> float:
+-        """
+-        计算绕路系数
+-        绮路系数 = 实际路径长 / 欧式距离
+-        """
+-        if len(path) < 2:
+-            return 1.0
+-
+-        actual_length = len(path) - 1
+-        euclidean_distance = np.sqrt((path[0][0] - path[-1][0]) ** 2 + (path[0][1] - path[-1][1]) ** 2)
+-
+-        return actual_length / max(euclidean_distance, 1.0)
+-
+-    def _count_turns(self, path: List[Tuple]) -> int:
+-        """计算路径的转弯次数"""
+-        if len(path) < 3:
+-            return 0
+-
+-        turns = 0
+-        prev_dx = path[1][0] - path[0][0]
+-        prev_dy = path[1][1] - path[0][1]
+-
+-        for i in range(2, len(path)):
+-            curr_dx = path[i][0] - path[i - 1][0]
+-            curr_dy = path[i][1] - path[i - 1][1]
+-
+-            if (curr_dx, curr_dy) != (prev_dx, prev_dy):
+-                turns += 1
+-
+-            prev_dx, prev_dy = curr_dx, curr_dy
+-
+-        return turns
+-
+-    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+-    def multi_round_test(
+-            self,
+-            initial_base_planner,
+-            initial_conflict_planner,
+-            initial_task_count,
+-            shelf_map,
+-            outbound_map,
+-            test_sizes=(10, 20, 50, 100),
+-            num_rounds=10,
+-            seed_base=1000
+-    ):
+-        """
+-        在固定 700 背景任务基础上，对不同任务数量和多轮随机任务做对比测试。
+-        test_sizes: 不同测试任务数量，比如 (10, 20, 50, 100)
+-        num_rounds: 每种数量跑多少轮
+-        """
+-        results = {}  # {N: {'base': [...], 'conflict': [...]}}
+-        offset_count = initial_task_count
+-        for N in test_sizes:
+-            base_cov_list = []
+-            conflict_cov_list = []
+-
+-            # [新增] 初始化成功率列表
+-            base_success_list = []
+-            conflict_success_list = []
+-            # === 新增：从 self.initial_paths 中提取所有成功规划的 AGV 起点 ===
+-            occupied_initial_positions = set()
+-            for agv_id, path in self.initial_paths.items():
+-                if path:  # 确保路径存在且不为空（即规划成功）
+-                    start_point = tuple(path[0])  # 路径的第一个点就是起点
+-                    occupied_initial_positions.add(start_point)
+-
+-            for r in range(num_rounds):
+-                seed = seed_base + N * 100 + r
+-                # 生成 N 个随机测试任务（保持背景图一致）
+-                test_tasks = generate_test_tasks(
+-                    n_tasks=N,
+-                    shelf_map=shelf_map,
+-                    outbound_zones=outbound_map,
+-                    grid_width=self.grid.width,
+-                    grid_height=self.grid.height,
+-                    seed=seed,
+-                    occupied_positions=occupied_initial_positions
+-                )
+-                #更改测试任务AGV_ID
+-                for i, task in enumerate(test_tasks):
+-                    new_id_num = offset_count + i + 1
+-                    task['agv_id'] = f"AGV-{new_id_num:03d}"
+-
+-                # 在相同背景下跑一次 Base vs Conflict
+-                test_results = self.stage3_test_task_planning(
+-                    test_tasks=test_tasks,
+-                    initial_base_planner=initial_base_planner,
+-                    initial_conflict_planner=initial_conflict_planner
+-                )
+-
+-                # 计算这一轮的平均拥堵覆盖率（stage4_compare_results 已经有逻辑）
+-                analysis = self.stage4_compare_results()
+-
+-                base_cov = analysis['base']['avg_congestion_coverage']
+-                conflict_cov = analysis['conflict']['avg_congestion_coverage']
+-                base_cov_list.append(base_cov)
+-                conflict_cov_list.append(conflict_cov)
+-
+-                # [新增] 获取成功率 (success_rate 是 0.0 到 1.0 之间的小数)
+-                base_success = analysis['base']['success_rate']
+-                conflict_success = analysis['conflict']['success_rate']
+-                base_success_list.append(base_success)
+-                conflict_success_list.append(conflict_success)
+-
+-                print(f"[N={N}] round {r + 1}/{num_rounds}:拥堵覆盖率： base={base_cov*100:.3f}%, conflict={conflict_cov*100:.3f}%")
+-
+-            # 多轮统计
+-            results[N] = {
+-                'base_mean': float(np.mean(base_cov_list)),
+-                'base_std': float(np.std(base_cov_list, ddof=1)),
+-                'conflict_mean': float(np.mean(conflict_cov_list)),
+-                'conflict_std': float(np.std(conflict_cov_list, ddof=1)),
+-                # [新增] 成功率统计
+-                'base_success_mean': float(np.mean(base_success_list)),
+-                'base_success_std': float(np.std(base_success_list, ddof=1)),
+-                'conflict_success_mean': float(np.mean(conflict_success_list)),
+-                'conflict_success_std': float(np.std(conflict_success_list, ddof=1)),
+-                'base_list': base_cov_list,
+-                'conflict_list': conflict_cov_list,
+-                # 保留原始列表以便后续分析（可选）
+-                'base_cov_list': base_cov_list,
+-                'conflict_cov_list': conflict_cov_list,
+-                'base_success_list': base_success_list,
+-                'conflict_success_list': conflict_success_list,
+-            }
+-
+-        self.multi_round_results = results
+-
+-        # 保存为日志文件
+-        log_path = os.path.join(self.save_dir, f'{MAP_KEY}_multi_round_results.log')
+-        with open(log_path, 'w', encoding='utf-8') as f:
+-            f.write("=== 多轮测试结果 ===\n\n")
+-            f.write(f"测试时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+-            f.write(f"轮数: {num_rounds}\n\n")
+-
+-            for N in sorted(results.keys()):
+-                data = results[N]
+-                # f.write(f"Test_Size = {N}\n")
+-                # f.write(f"Base: {100 * data['base_mean']:.2f}% ± {100 * data['base_std']:.2f}%\n")
+-                # f.write(f"Conflict: {100 * data['conflict_mean']:.2f}% ± {100 * data['conflict_std']:.2f}%\n")
+-                # f.write(f"绝对改善：{100*(data['base_mean']-data['conflict_mean'])}\n")
+-                # f.write(f"相对减少：{100*(data['base_mean']-data['conflict_mean'])/data['base_mean']}\n")
+-                # # [新增] 成功率部分
+-                # f.write(f"[成功率]\n")
+-                # f.write(f"  Base:     {100 * data['base_success_mean']:.2f}% ± {100 * data['base_success_std']:.2f}%\n")
+-                # f.write(f"  Conflict: {100 * data['conflict_success_mean']:.2f}% ± {100 * data['conflict_success_std']:.2f}%\n")
+-                # f.write(f"  绝对提升：{100 * (data['conflict_success_mean'] - data['base_success_mean']):.2f}%\n")
+-                # f.write("-" * 50 + "\n")
+-                data = results[N]
+-                f.write(f"Test_Size = {N}\n")
+-                f.write(f"Base Planner\n")
+-                f.write(f"平均路径拥堵覆盖率: {100 * data['base_mean']:.2f}% ± {100 * data['base_std']:.2f}%\n")
+-                f.write(f"Conflict Planner\n")
+-                f.write(f"平均路径拥堵覆盖率: {100 * data['conflict_mean']:.2f}% ± {100 * data['conflict_std']:.2f}%\n")
+-                f.write(f"绝对改善：{100 * (data['base_mean'] - data['conflict_mean'])}\n")
+-                f.write(f"相对减少：{100 * (data['base_mean'] - data['conflict_mean']) / data['base_mean']}\n")
+-                # [新增] 成功率部分
+-                f.write(f"[成功率]\n")
+-                f.write(f"  Base:     {100 * data['base_success_mean']:.2f}% ± {100 * data['base_success_std']:.2f}%\n")
+-                f.write(
+-                    f"  Conflict: {100 * data['conflict_success_mean']:.2f}% ± {100 * data['conflict_success_std']:.2f}%\n")
+-                f.write(f"  绝对提升：{100 * (data['conflict_success_mean'] - data['base_success_mean']):.2f}%\n")
+-                f.write("-" * 50 + "\n")
+-
+-        print(f"✅ 日志文件已保存: {log_path}")
+-        return results
+-    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+-
+-    # ========================================
+-    # 可视化与保存
+-    # ========================================
+-
+-    def visualize_results(self):
+-        """可视化实验结果"""
+-        print("\n生成可视化图表...")
+-        self._plot_initial_paths_with_congestion()
+-        self._plot_test_paths_comparison()
+-        self._plot_metrics_comparison()
+-        self._plot_test_paths_3d_temporal()
+-
+-    def _setup_grid_from_maps(self):
+-        """根据 ALL_MAPS 设置货架和出库区坐标"""
+-        shelf_map, outbound_map, region_values = ALL_MAPS[MAP_KEY]
+-
+-        self.shelf_cells.clear()
+-        self.outbound_cells.clear()
+-
+-        # 设置货架区域
+-        for region_name, coords in shelf_map.items():
+-            if isinstance(coords, list):
+-                for x, y in coords:
+-                    self.shelf_cells.add((x, y))
+-            elif isinstance(coords, tuple):
+-                x, y = coords
+-                self.shelf_cells.add((x, y))
+-
+-        # 设置出库区域
+-        for region_name, coords in outbound_map.items():
+-            if isinstance(coords, list):
+-                for x, y in coords:
+-                    self.outbound_cells.add((x, y))
+-            elif isinstance(coords, tuple):
+-                x, y = coords
+-                self.outbound_cells.add((x, y))
+-
+-    def _draw_grid_background(self, ax):
+-        """绘制网格地图背景（仿照 path_simulation.py）"""
+-        import matplotlib.colors as mcolors
+-        # 创建网格矩阵
+-        grid = np.zeros((self.grid.height, self.grid.width), dtype=int)
+-
+-        # 标记货架和出库区
+-        for x, y in self.shelf_cells:
+-            if 0 <= x < self.grid.width and 0 <= y < self.grid.height:
+-                grid[y, x] = 1
+-
+-        for x, y in self.outbound_cells:
+-            if 0 <= x < self.grid.width and 0 <= y < self.grid.height:
+-                grid[y, x] = 2
+-
+-        # 自定义颜色
+-        colors = ['white', 'gray', 'lightblue']
+-        custom_cmap = mcolors.ListedColormap(colors)
+-        bounds = [0, 1, 2, 3]
+-        norm = mcolors.BoundaryNorm(bounds, custom_cmap.N)
+-
+-        im = ax.imshow(grid, cmap=custom_cmap, norm=norm, alpha=0.6,
+-                       origin='lower', extent=(0, self.grid.width, 0, self.grid.height),
+-                       zorder=0)
+-        return im
+-
+-    def _draw_region_boundaries(self, ax):
+-        """绘制货架和出库区的边框"""
+-        from matplotlib.patches import Rectangle
+-
+-        for x, y in self.shelf_cells:
+-            rect = Rectangle((x, y), 1, 1, linewidth=2, edgecolor='blue',
+-                             facecolor='none', linestyle='-', zorder=5)
+-            ax.add_patch(rect)
+-
+-        for x, y in self.outbound_cells:
+-            rect = Rectangle((x, y), 1, 1, linewidth=2, edgecolor='darkblue',
+-                             facecolor='none', linestyle='-', zorder=5)
+-            ax.add_patch(rect)
+-
+-    def _plot_initial_paths_with_congestion(self):
+-        """绘制冲突场热力图"""
+-        fig, ax = plt.subplots(figsize=(14, 12))
+-
+-        self._draw_grid_background(ax)
+-        self._draw_region_boundaries(ax)
+-
+-
+-        # 绘制完整的冲突场热力图（用矩形填充整个格子）
+-        if self.conflict_field_data:
+-            position_conflicts = {}
+-
+-            for (x, y, slot), val in self.conflict_field_data.items():
+-                pos = (x, y)
+-                if pos not in position_conflicts:
+-                    position_conflicts[pos] = val
+-                else:
+-                    position_conflicts[pos] = max(position_conflicts[pos], val)
+-
+-            # 找出最大和最小冲突值用于归一化
+-            values = list(position_conflicts.values())
+-            min_val = min(values)
+-            max_val = max(values)
+-
+-            # 用矩形绘制每个格子
+-            from matplotlib.colors import Normalize
+-            from matplotlib.cm import ScalarMappable
+-
+-            norm = Normalize(vmin=min_val, vmax=max_val)
+-            cmap = plt.get_cmap('YlOrRd')
+-            sm = ScalarMappable(norm=norm, cmap=cmap)
+-
+-            for (x, y), val in position_conflicts.items():
+-                color = cmap(norm(val))
+-                rect = plt.Rectangle((x, y), 1, 1, facecolor=color, edgecolor='gray', linewidth=0.5)
+-                ax.add_patch(rect)
+-
+-            # 添加colorbar
+-            cbar = plt.colorbar(sm, ax=ax, label='Conflict Value')
+-            cbar.ax.tick_params(labelsize=12)  # 设置colorbar刻度字号
+-            cbar.set_label('Conflict Value', fontsize=16)  # 设置label字号
+-
+-            print(f"✅ 绘制冲突场：{len(position_conflicts)} 个格子，冲突值 {min_val:.2f} ~ {max_val:.2f}")
+-        else:
+-            print("⚠️ 警告：冲突场数据为空")
+-
+-        # 坐标轴设置
+-        ax.set_xlim(0, self.grid.width)
+-        ax.set_ylim(0, self.grid.height)
+-        ax.set_xticks(range(0, self.grid.width + 1))
+-        ax.set_yticks(range(0, self.grid.height + 1))
+-        ax.grid(True, linestyle='--', linewidth=1, alpha=0.5,zorder=1)
+-        ax.set_xlabel('X Coordinate', fontsize=16)
+-        ax.set_ylabel('Y Coordinate', fontsize=16)
+-        ax.set_title('Congestion Field Heatmap', fontsize=18)
+-
+-        save_path = os.path.join(self.save_dir, 'stage1_congestion_field.png')
+-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
+-        plt.close()
+-        print(f"✅ 保存图表: {save_path}")
+-
+-    def _plot_test_paths_comparison(self):
+-        """绘制测试任务的Base vs Conflict对比"""
+-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
+-
+-        for ax, method in zip([ax1, ax2], ['base', 'conflict']):
+-            paths = self.test_results[method].get('paths', {})
+-
+-            self._draw_grid_background(ax)
+-            self._draw_region_boundaries(ax)
+-
+-            # 绘制冲突值 > CONFLICT_THRESHOLD 的冲突场热力图
+-            if self.conflict_field_data:
+-                position_conflicts = {}
+-
+-                for (x, y, slot), val in self.conflict_field_data.items():
+-                    if val > CONFLICT_THRESHOLD:  # ← 用原始值判断
+-                        pos = (x, y)
+-                        if pos not in position_conflicts:
+-                            position_conflicts[pos] = val
+-                        else:
+-                            position_conflicts[pos] = max(position_conflicts[pos], val)
+-
+-                values = list(position_conflicts.values())
+-                if values:
+-                    min_val = min(values)
+-                    max_val = max(values)
+-
+-                    from matplotlib.colors import Normalize
+-                    from matplotlib.cm import ScalarMappable
+-
+-                    norm = Normalize(vmin=min_val, vmax=max_val)
+-                    cmap = plt.get_cmap('YlOrRd')
+-                    sm = ScalarMappable(norm=norm, cmap=cmap)
+-
+-                    # 用矩形绘制冲突值 > CONFLICT_THRESHOLD 的区域
+-                    for (x, y), val in position_conflicts.items():
+-                        color = cmap(norm(val))
+-                        rect = plt.Rectangle((x, y), 1, 1, facecolor=color, edgecolor='gray', linewidth=0.5)
+-                        ax.add_patch(rect)
+-
+-                    cbar=plt.colorbar(sm, ax=ax, label='Conflict Value')
+-                    cbar.ax.tick_params(labelsize=12)  # colorbar刻度字号
+-                    cbar.set_label('Conflict Value', fontsize=16)  # label字号
+-
+-
+-            # 绘制路径（在冲突场上叠加）
+-            colors = plt.cm.Set3(np.linspace(0, 1, len(paths)))
+-            for (agv_id, path), color in zip(paths.items(), colors):
+-                if path:
+-                    path_array = np.array(path)
+-                    x_coords = path_array[:, 0] + 0.5
+-                    y_coords = path_array[:, 1] + 0.5
+-                    ax.plot(x_coords, y_coords, color=color, linewidth=2.5,
+-                            alpha=0.9, label=agv_id, zorder=10)
+-
+-                    # 起点和终点
+-                    ax.scatter(x_coords[0], y_coords[0], color='green', s=100,
+-                               marker='o', edgecolors='black', linewidth=2, zorder=11)
+-                    ax.scatter(x_coords[-1], y_coords[-1], color='red', s=200,
+-                               marker='*', edgecolors='black', linewidth=1, zorder=11)
+-            # 坐标轴设置
+-            ax.set_xlim(0, self.grid.width)
+-            ax.set_ylim(0, self.grid.height)
+-            ax.set_xticks(range(0, self.grid.width + 1))
+-            ax.set_yticks(range(0, self.grid.height + 1))
+-            ax.grid(True, linestyle='--', linewidth=1, alpha=0.5,zorder=1)
+-            ax.set_xlabel('X Coordinate', fontsize=16)
+-            ax.set_ylabel('Y Coordinate', fontsize=16)
+-            ax.set_title(f'Test Task Planning - {method.upper()} Method', fontsize=18)
+-            if len(paths) <= 5:
+-                ax.legend(fontsize=9, loc='upper left')
+-
+-        plt.tight_layout()
+-        save_path = os.path.join(self.save_dir, 'stage3_test_paths_comparison.png')
+-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
+-        plt.close()
+-        print(f"✅ 保存图表: {save_path}")
+-
+-    def _plot_metrics_comparison(self):
+-        """绘制Base vs Conflict指标对比"""
+-        if not hasattr(self, 'analysis_results'):
+-            return
+-
+-        fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+-
+-        methods = ['base', 'conflict']
+-        results = self.analysis_results
+-
+-        # 指标1：成功率
+-        success_rates = [results[m]['success_rate'] for m in methods]
+-        axes[0, 0].bar(methods, success_rates, color=['steelblue', 'orange'])
+-        axes[0, 0].set_ylabel('Success Rate')
+-        axes[0, 0].set_title('Planning Success Rate')
+-        axes[0, 0].set_ylim(0, 1)
+-        for i, v in enumerate(success_rates):
+-            axes[0, 0].text(i, v + 0.02, f'{100 * v:.1f}%', ha='center')
+-
+-        # 指标2：平均路径长度
+-        avg_lengths = [results[m]['avg_path_length'] for m in methods]
+-        axes[0, 1].bar(methods, avg_lengths, color=['steelblue', 'orange'])
+-        axes[0, 1].set_ylabel('Path Length (cells)')
+-        axes[0, 1].set_title('Average Path Length')
+-        for i, v in enumerate(avg_lengths):
+-            axes[0, 1].text(i, v + 0.5, f'{v:.1f}', ha='center')
+-
+-        # 指标3：拥堵覆盖率
+-        congestion_rates = [results[m]['avg_congestion_coverage'] for m in methods]
+-        axes[1, 0].bar(methods, congestion_rates, color=['red' if c > 0.5 else 'green'
+-                                                         for c in congestion_rates])
+-        axes[1, 0].set_ylabel('Congestion Coverage Ratio')
+-        axes[1, 0].set_title('Congestion Zone Coverage (Lower is Better)')
+-        axes[1, 0].set_ylim(0, 1)
+-        for i, v in enumerate(congestion_rates):
+-            axes[1, 0].text(i, v + 0.02, f'{100 * v:.1f}%', ha='center')
+-
+-        # 指标4：绕路系数
+-        detour_ratios = [results[m]['avg_detour_ratio'] for m in methods]
+-        axes[1, 1].bar(methods, detour_ratios, color=['steelblue', 'orange'])
+-        axes[1, 1].set_ylabel('Detour Ratio')
+-        axes[1, 1].set_title('Path Efficiency (Lower is Better)')
+-        for i, v in enumerate(detour_ratios):
+-            axes[1, 1].text(i, v + 0.02, f'{v:.2f}', ha='center')
+-
+-        plt.suptitle('Base vs Conflict Planning Comparison', fontsize=18, y=1.00)
+-        plt.tight_layout()
+-
+-        save_path = os.path.join(self.save_dir, 'stage4_metrics_comparison.png')
+-        plt.savefig(save_path, dpi=150, bbox_inches='tight')
+-        plt.close()
+-        print(f"✅ 保存图表: {save_path}")
+-
+-    def _plot_test_paths_3d_temporal(self):
+-        """绘制三维时空图：Base vs Conflict 路径在冲突场中的表现"""
+-        from mpl_toolkits.mplot3d import Axes3D
+-
+-        # 1. 增大画布，给左右留足空间
+-        fig = plt.figure(figsize=(24, 10))
+-        points_count = {}
+-
+-        for idx, method in enumerate(['base', 'conflict'], 1):
+-            # 2. 调整 subplot 的位置参数，手动预留更多空间给 Z 轴标签
+-            # left=0.05, right=0.95 确保左右不贴边
+-            ax = fig.add_subplot(1, 2, idx, projection='3d')
+-
+-            paths = self.test_results[method].get('paths', {})
+-            times_dict = self.test_results[method].get('times', {})
+-
+-            points_count[method] = 0
+-
+-            # --- 绘图逻辑保持不变 ---
+-            colors = plt.cm.Set3(np.linspace(0, 1, len(paths)))
+-            for (agv_id, path), color in zip(paths.items(), colors):
+-                if path and agv_id in times_dict:
+-                    times = times_dict[agv_id]
+-                    x_p = [pt[0] for pt in path]
+-                    y_p = [pt[1] for pt in path]
+-                    t_p = times
+-
+-                    ax.plot(x_p, y_p, t_p, color=color, linewidth=3.5,
+-                            marker='o', markersize=6, label=agv_id, alpha=0.9, zorder=10)
+-
+-            # --- 冲突点高亮逻辑保持不变 ---
+-            if self.conflict_field_data:
+-                intersection_points = []
+-                for (agv_id, path), color in zip(paths.items(), colors):
+-                    if path and agv_id in times_dict:
+-                        times = times_dict[agv_id]
+-                        for i, (x, y) in enumerate(path):
+-                            if i < len(times):
+-                                t = times[i]
+-                                slot = int(t // DELTA)
+-                                if (x, y, slot) in self.conflict_field_data:
+-                                    val = self.conflict_field_data[(x, y, slot)]
+-                                    if val > CONFLICT_THRESHOLD:
+-                                        intersection_points.append({
+-                                            'x': x, 'y': y, 't': t,
+-                                            'color': color, 'val': val,
+-                                            'method': method
+-                                        })
+-
+-                if intersection_points:
+-                    for pt in intersection_points:
+-                        ax.scatter([pt['x']], [pt['y']], [pt['t']],
+-                                   color='red', s=200, marker='o',
+-                                   edgecolors='darkred', linewidth=2, alpha=0.9, zorder=20)
+-                    print(f"  [{method}] 路径与冲突场交集点数: {len(intersection_points)}")
+-                    points_count[method] = len(intersection_points)
+-
+-            # --- 冲突场投影逻辑保持不变 ---
+-            if self.conflict_field_data:
+-                position_conflicts = {}
+-                for (x, y, slot), val in self.conflict_field_data.items():
+-                    if val > CONFLICT_THRESHOLD:
+-                        pos = (x, y)
+-                        position_conflicts[pos] = max(position_conflicts.get(pos, 0), val)
+-                if position_conflicts:
+-                    min_t = ax.get_zlim()[0]
+-                    for (x, y), val in position_conflicts.items():
+-                        ax.scatter([x], [y], [min_t], color='none', s=50,
+-                                   alpha=0.2, marker='s', zorder=1)
+-
+-            # ================= 修改重点开始 =================
+-
+-            # 3. 标签与标题调整
+-            # labelpad 增加间距，防止标签和刻度重叠
+-            ax.set_xlabel('X', fontsize=22, labelpad=20)
+-            ax.set_ylabel('Y', fontsize=22, labelpad=20)
+-            ax.set_zlabel('T', fontsize=22, labelpad=20)  # 增加 labelpad 确保 Z 轴标签显示
+-
+-            # 4. 字体大小调整
+-            # 26号字体对于默认画布太大，会导致坐标轴被挤出，建议降至 14-18
+-            ax.tick_params(axis='both', labelsize=16)
+-
+-            name_map = {'base': 'CA*', 'conflict': 'CPS-A*'}
+-            display_name = name_map.get(method, method.upper())
+-
+-            # 5. 标题位置调整
+-            # pad 从 5 增加到 30，让标题远离坐标轴，靠近图片顶部
+-            ax.set_title(f'{display_name}', fontsize=24, pad=30)
+-
+-            ax.view_init(elev=20, azim=45)
+-
+-            # ================= 修改重点结束 =================
+-
+-        # 6. 布局调整
+-        diff = points_count['base'] - points_count['conflict']
+-        if points_count['base'] > 0:  # 防止除以0
+-            ratio = round(diff / points_count['base'], 4)
+-            print(f"路径冲突点数减少{diff}个，减少了{ratio * 100}%")
+-
+-        # 7. 优化子图间距
+-        # wspace=0.15 给两个图中间留出呼吸空间（之前 0.02 太挤了）
+-        # left=0.04, right=0.96 确保左右边缘不切掉 Z 轴标签
+-        plt.subplots_adjust(left=0.04, right=0.96, wspace=0.15, bottom=0.08, top=0.92)
+-
+-        save_path = os.path.join(self.save_dir, 'stage3_3d_temporal_comparison.png')
+-        plt.savefig(save_path, dpi=600, bbox_inches='tight')
+-        plt.close()
+-        print(f"✅ 保存3D时空图表: {save_path}")
+-
+-    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+-    def plot_multi_round_congestion(self, save_path="./experiment_results/multi_round_congestion.png"):
+-        """
+-        横轴：不同测试任务数量
+-        纵轴：平均拥堵覆盖率（可加标准差误差棒）
+-        一图两线：Base vs Conflict
+-        """
+-        if not hasattr(self, 'multi_round_results'):
+-            raise ValueError("multi_round_results 尚未生成，请先调用 multi_round_test")
+-
+-        Ns = sorted(self.multi_round_results.keys())
+-        base_means = [100 * self.multi_round_results[N]['base_mean'] for N in Ns]
+-        base_stds = [100 * self.multi_round_results[N]['base_std'] for N in Ns]
+-        conf_means = [100 * self.multi_round_results[N]['conflict_mean'] for N in Ns]
+-        conf_stds = [100 * self.multi_round_results[N]['conflict_std'] for N in Ns]
+-
+-        plt.figure(figsize=(12, 7))
+-        plt.errorbar(Ns, base_means, yerr=base_stds, fmt='o-', capsize=4,
+-                     label="Base Planner", color="steelblue")
+-        plt.errorbar(Ns, conf_means, yerr=conf_stds, fmt='s-', capsize=4,
+-                     label="Conflict Planner", color="orange")
+-
+-        offset_y = 0.3
+-        # 标注标准差值（在误差棒旁边）
+-        for i, n in enumerate(Ns):
+-            plt.text(n, base_means[i] + base_stds[i] + 0.35,
+-                     f'σ={base_stds[i]:.1f}%',
+-                     ha='center', fontsize=9, color='steelblue', fontweight='bold',
+-                     bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7, edgecolor='steelblue'))
+-
+-            plt.text(n, conf_means[i] - conf_stds[i] - 0.45,
+-                     f'σ={conf_stds[i]:.1f}%',
+-                     ha='center', fontsize=9, color='orange', fontweight='bold',
+-                     bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7, edgecolor='orange'))
+-
+-        plt.xlabel("Number of test tasks")
+-        plt.ylabel("Average congestion coverage (%)")
+-        plt.title(
+-            "Average congestion coverage vs. number of test tasks\n(700 fixed background tasks, multi-round average)")
+-        plt.grid(True, linestyle='--', alpha=0.4)
+-        plt.legend()
+-        plt.xticks(Ns, fontsize=11)
+-        # 自动调整图表范围，确保标注不超出框外
+-        y_min = min(conf_means) - max(conf_stds) - 2
+-        y_max = max(base_means) + max(base_stds) + 2
+-        plt.ylim(y_min, y_max)
+-        plt.tight_layout()
+-        plt.savefig(save_path, dpi=300)
+-        plt.close()
+-        print(f"✅ multi-round congestion figure saved to: {save_path}")
+-    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+-
+-    def save_results_to_json(self):
+-        """将实验结果保存为JSON"""
+-        results_json = {
+-            'experiment_name': 'Congestion Avoidance Test',
+-            'timestamp': datetime.now().isoformat(),
+-            'initial_tasks_count': len(self.initial_tasks),
+-            'congestion_zones_count': len(self.congestion_zones),
+-            'analysis': self.analysis_results if hasattr(self, 'analysis_results') else {}
+-        }
+-
+-        save_path = os.path.join(self.save_dir, 'experiment_results.json')
+-        with open(save_path, 'w', encoding='utf-8') as f:
+-            json.dump(results_json, f, ensure_ascii=False, indent=2)
+-
+-        print(f"✅ 结果已保存: {save_path}")
+-
+-    # ========================================
+-    # 完整实验流程
+-    # ========================================
+-
+-    def run_full_experiment(self, initial_tasks, test_tasks, n_initial=15, n_test=3):
+-        """
+-        执行完整前瞻避障实验
+-        正确传递规划器实例给各个阶段
+-        """
+-        # 阶段1
+-        paths, times, base_planner = self.stage1_initial_planning(initial_tasks=initial_tasks)
+-
+-        # 阶段2
+-        conflict_planner = self.stage2_analyze_conflict_field(base_planner)
+-
+-        # 阶段3
+-        self.stage3_test_task_planning(test_tasks=test_tasks,initial_base_planner=base_planner,initial_conflict_planner=conflict_planner)
+-
+-        # 阶段4
+-        self.stage4_compare_results()
+-
+-        # 可视化与保存
+-        self.visualize_results()
+-        self.save_results_to_json()
+-
+-        print("\n" + "=" * 80)
+-        print("✅ 实验完成！")
+-        print(f"📁 结果保存至: {os.path.abspath(self.save_dir)}")
+-        print("=" * 80)
+-
+-
+-# ============================================
+-# 辅助函数
+-# ============================================
+-
+-def load_agv_info(filepath):
+-    """从JSON文件加载AGV信息"""
+-    if os.path.exists(filepath):
+-        with open(filepath, 'r', encoding='utf-8') as f:
+-            agv_data = json.load(f)
+-            # 确保position为tuple格式
+-            for agv_id, info in agv_data.items():
+-                if isinstance(info['position'], list):
+-                    info['position'] = tuple(info['position'])
+-                # 清理非法空格
+-                info['type'] = str(info['type']).strip()
+-            return agv_data
+-    else:
+-        print(f"没有找到{filepath}文件")
+-
+-
+-
+-if __name__ == "__main__":
+-    # 参数配置
+-    SAVE_DIR = "congestion_avoidance_base_3D"
+-    GRID_WIDTH = 20
+-    GRID_HEIGHT = 20
+-    MAP_KEY='FRANSEN'
+-    TASK_COUNTS= 110
+-    shelf_map, outbound_map, region_values = ALL_MAPS[MAP_KEY]
+-    PICKUP_REGION =None  #(min_x,max_x,min_y,max_y)(20,55,25,53)
+-
+-    # 初始化
+-    grid = GridMap(width=GRID_WIDTH, height=GRID_HEIGHT, cell_size=1)
+-    # 绘制功能区值到 grid.grid 矩阵
+-    for shelf_name, coords in shelf_map.items():
+-        val = region_values[shelf_name]
+-        if isinstance(coords, list):
+-            for x, y in coords:
+-                grid.region_coordinate(x, y, val)
+-        elif isinstance(coords, tuple):
+-            x, y = coords
+-            grid.region_coordinate(x, y, val)
+-
+-    tasks = generate_test_tasks(n_tasks=TASK_COUNTS, shelf_map=shelf_map, outbound_zones=outbound_map,
+-                                grid_width=GRID_WIDTH, grid_height=GRID_HEIGHT, pickup_region=PICKUP_REGION, seed=42,
+-                                pickup_strategy='inner' if MAP_KEY == 'C' else None, )
+-
+-    initial_tasks = tasks[:100]
+-    test_tasks = tasks[100:TASK_COUNTS]
+-
+-    agv_info = load_agv_info(AGV_FILEPATH)
+-    # api_deployer = API_ModelDeployer(api_url=API_URL, api_key=API_KEY)
+-    api_deployer = None
+-
+-    # 创建实验
+-    experiment = CongestionAvoidanceExperiment(
+-        grid_map=grid,
+-        base_planner_class=BaseAGVPlanner,
+-        conflict_planner_class=ConflictAGVPlanner,
+-        agv_info=agv_info,
+-        api_deployer=api_deployer,
+-        save_dir=SAVE_DIR
+-    )
+-
+-    # # 执行完整实验
+-    experiment.run_full_experiment(initial_tasks=initial_tasks,test_tasks=test_tasks,n_initial=100, n_test=3)
+-
+-    #
+-    # paths, times, base_planner = experiment.stage1_initial_planning(initial_tasks=initial_tasks)
+-    # conflict_planner = experiment.stage2_analyze_conflict_field(base_planner)
+-    #
+-    # # ========== 【新增：多轮测试】==========
+-    # experiment.multi_round_test(
+-    #     initial_base_planner=base_planner,
+-    #     initial_conflict_planner=conflict_planner,
+-    #     initial_task_count = len(initial_tasks),
+-    #     shelf_map=shelf_map,
+-    #     outbound_map=outbound_map,
+-    #     # test_sizes=(10,20,30,40,50,60,70,80,90,100),
+-    #     # test_sizes=(5, 10, 15, 20, 25, 30, 35, 40, 45, 50),
+-    #     num_rounds=5
+-    # )
+-    #
+-    # # ========== 【新增：绘制图表】==========
+-    # experiment.plot_multi_round_congestion(
+-    #     save_path=os.path.join(SAVE_DIR, "multi_round_congestion.png")
++import sys
++import os
++from copy import deepcopy
++
++pass  # Package imports replace process-wide import-path mutation.
++import copy
++import random
++import numpy as np
++import matplotlib.pyplot as plt
++import json
++import os
++from datetime import datetime
++from typing import Dict, List, Tuple
++from src.original_paper.experiment.CPS_A.path_planner import GridMap
++from src.original_paper.experiment.Astar_base.path_planner import IntegratedAGVPlanner as BaseAGVPlanner
++# from Astar_congestion.path_planner import IntegratedAGVPlanner as ConflictAGVPlanner
++from src.original_paper.experiment.CPS_A.path_planner import IntegratedAGVPlanner as ConflictAGVPlanner
++# from deployer.api_deployer import API_ModelDeployer
++from src.original_paper.experiment.map_config import ALL_MAPS
++from src.original_paper.experiment.task_generator import generate_test_tasks
++
++# 配置参数
++API_URL = "https://api.deepseek.com"
++API_KEY = __import__("os").environ.get("DEEPSEEK_API_KEY", "")
++AGV_FILEPATH = "Astar_base/agv_info"
++DELTA = 1
++CONFLICT_THRESHOLD=0.3
++plt.rcParams['font.family'] = 'Times New Roman'
++timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
++print(timestamp)
++
++
++class MockWaypointGen:
++    """Mock waypoint生成器（用预置数据替代LLM）"""
++
++    def __init__(self, waypoints_map):
++        self.waypoints_map = waypoints_map
++
++    def llm_generate_waypoints(self, parsed_tasks):
++        return self.waypoints_map
++
++
++
++class CongestionAvoidanceExperiment:
++    """前瞻避障实验框架"""
++
++    def __init__(self, grid_map, base_planner_class, conflict_planner_class,
++                 agv_info, api_deployer=None, save_dir="./experiment_results"):
++        """初始化实验"""
++        self.grid = grid_map
++        self.base_planner_class = base_planner_class
++        self.conflict_planner_class = conflict_planner_class
++        self.agv_info = agv_info
++        self.api_deployer = api_deployer
++
++        self.save_dir = save_dir
++        os.makedirs(save_dir, exist_ok=True)
++
++        # 状态记录
++        self.initial_tasks = []
++        self.initial_paths = {}
++        self.initial_times = {}
++        self.test_tasks = []
++        self.conflict_field_data = {}
++        self.congestion_zones = []
++
++        # 测试结果
++        self.test_results = {
++            'base': {},
++            'conflict': {}
++        }
++
++        self.shelf_cells = set()
++        self.outbound_cells = set()
++        self._setup_grid_from_maps() # 初始化货架和出库区
++
++
++    def _create_mock_waypoints(self, tasks: List[Dict]) -> Dict:
++        # 将任务列表转换为规划器需要的waypoints格式
++        waypoints_map = {}
++
++        for task in tasks:
++            agv_id = task["agv_id"]
++
++            waypoints = [
++                task["agv_position"],
++                task["source"],
++                task["destination"]
++            ]
++
++            waypoints_map[agv_id] = {
++                "task_id": task["task_id"],
++                "agv_id": agv_id,
++                "agv_position": task["agv_position"],
++                "source": task["source"],
++                "destination": task["destination"],
++                "waypoints": waypoints,
++                "constraints": task.get("constraints", {})
++            }
++
++        return waypoints_map
++
++    def stage1_initial_planning(self, initial_tasks):
++        """
++        阶段1：用Conflict版本规划初始任务,并返回规划器实例供后续使用
++        """
++        print("\n" + "=" * 60)
++        print("【阶段1】初始规划：Base 版本")
++        print("=" * 60)
++
++        self.initial_tasks = initial_tasks
++
++        # 将任务转换为waypoints格式
++        mock_waypoints = self._create_mock_waypoints(initial_tasks)
++
++        # 创建conflict规划器
++        planner = self.base_planner_class(
++            grid=self.grid,
++            # llm_deployer=None,
++            # api_deployer=self.api_deployer,
++            agv_info=self.agv_info
++        )
++
++        # 用MockWaypointGen替代真实LLM
++        planner.waypoint_generator = MockWaypointGen(mock_waypoints)
++
++        # 执行规划
++        self.initial_paths = planner.batch_plan(parsed_tasks=mock_waypoints)
++
++        path_lengths = [len(path) for path in self.initial_paths.values() if path]
++        avg_path_length = sum(path_lengths) / len(path_lengths) if path_lengths else 0
++        # 提取时间信息
++        for agv_id, task_info in planner.agv_tasks.items():
++            if 'times' in task_info:
++                self.initial_times[agv_id] = task_info['times']
++
++        success_count = sum(1 for p in self.initial_paths.values() if p)
++        print(f"✅ 初始规划(成功/总数)：{success_count}/{len(initial_tasks)}  ")
++        # print(f"✅ 平均路径长度：{avg_path_length:.2f}")
++
++        # 返回规划器实例
++        return self.initial_paths, self.initial_times, planner
++
++
++    def stage2_analyze_conflict_field(self, base_planner):
++        """
++        阶段2：从规划结果中提取冲突场并识别拥堵区域
++        """
++        print("\n" + "=" * 60)
++        print("【阶段2】冲突场分析：识别拥堵区域")
++        print("=" * 60)
++
++        base_reservations = base_planner.ticket_manager.get_all_reservations()
++        # print(f" - 节点预约: {len(base_reservations.get('node_reservations', {}))} 个")
++        # print(f" - 边预约: {len(base_reservations.get('edge_reservations', {}))} 个")
++
++        conflict_field_planner = self.conflict_planner_class(
++            grid=self.grid,
++            # llm_deployer=None,
++            # api_deployer=self.api_deployer,
++            agv_info=self.agv_info
++        )
++        conflict_field_planner.ticket_manager = copy.deepcopy(base_planner.ticket_manager)
++        conflict_field_planner.conflict_updater.ticket_manager = conflict_field_planner.ticket_manager
++
++        # print(f"conflict_planner节点预约有：{len(conflict_field_planner.ticket_manager.node_reservations)}")
++
++        count = 0
++        for agv_id, info in base_planner.agv_tasks.items():
++            if 'path' in info and 'times' in info:
++                count += 1
++                path = info['path']
++                times = info['times']
++                conflict_field_planner.conflict_updater.accumulate_path(path, times, agv_id)
++
++        conflict_field_planner.conflict_updater.batch_update_from_paths()
++        conflict_field_planner.conflict_updater.finalize_batch_update()
++        conflict_field_planner.segment_planner.congestion_dict = conflict_field_planner.conflict_updater.smoothed_dict
++
++        # 获取平滑后的冲突场
++        self.conflict_field_data = conflict_field_planner.conflict_updater.smoothed_dict or {}
++        # print(f"✅ 平滑冲突场生成成功，共 {len(self.conflict_field_data)} 个冲突点")
++
++        # 识别高冲突区域并保存到self.congestion_zones
++        self.congestion_zones = [
++            (pos, val) for pos, val in self.conflict_field_data.items()
++            if val > CONFLICT_THRESHOLD
++        ]
++        self.congestion_zones.sort(key=lambda x: x[1], reverse=True)
++
++        print(f"🔴 识别到 {len(self.congestion_zones)} 个拥堵区域（阈值>{CONFLICT_THRESHOLD}）")
++
++        # if self.congestion_zones:
++        #     print("\n TOP 10 拥堵点：")
++        #     for i, ((x, y, slot), val) in enumerate(self.congestion_zones[:10]):
++        #         print(f" {i + 1}. ({x:2d}, {y:2d}, t={slot:3d}): 冲突值={val:.2f}")
++
++        return conflict_field_planner
++
++    def stage3_test_task_planning(self, test_tasks, initial_base_planner, initial_conflict_planner):
++        """
++        阶段3：在相同初始路径信息上，分别用 Base 和 Conflict 规划测试任务
++        """
++        # print("\n" + "=" * 60)
++        # print("【阶段3】测试任务规划对比")
++        # print("【背景】基于初始任务占据的时空进行规划")
++        # print("=" * 60)
++        print("\n" + "=" * 60)
++        print(f"【测试任务数量】：{len(test_tasks)}")
++        print("\n" + "=" * 60)
++        #保存测试任务，供后续分析使用
++        self.test_tasks = test_tasks
++
++        # print(f"📌 生成了 {len(test_tasks)} 个测试任务（设计通过拥堵区域）")
++
++        # 创建Mock waypoints
++        test_waypoints = self._create_mock_waypoints(test_tasks)
++
++        #复制初始任务的规划信息
++        if initial_base_planner is None:
++            print("⚠️  警告：initial_base_planner 未传入初始规划器")
++            print("   阶段3将在空白背景下规划，无法真实验证前瞻避障效果！")
++        else:
++            # print(f"\n✅ 获取初始任务的时空占用信息...")
++            initial_reservations = initial_base_planner.ticket_manager.get_all_reservations()
++            # print(f"   - 初始任务占用的节点预约: {len(initial_reservations.get('node_reservations', {}))} 个")
++            # print(f"   - 初始任务占用的边预约: {len(initial_reservations.get('edge_reservations', {}))} 个")
++
++        # ============================================
++        # 方案A：Base 版本规划（在初始任务背景下）
++        # ============================================
++
++        # print("\n🔵 方案A：Base 版本规划（基于初始任务背景）...")
++        base_planner = self.base_planner_class(
++            grid=self.grid,
++            # llm_deployer=None,
++            # api_deployer=self.api_deployer,
++            agv_info=self.agv_info
++        )
++        base_planner.waypoint_generator = MockWaypointGen(test_waypoints)
++
++        # 复制初始任务的预约信息
++        if initial_base_planner is not None:
++            base_planner.ticket_manager = copy.deepcopy(initial_base_planner.ticket_manager)
++            base_planner.segment_planner.ticket_manager = base_planner.ticket_manager
++            # print("   ✅ 已载入初始任务的时空占用信息")
++
++        # 执行规划
++        # print("进入stage3规划")
++        base_result = base_planner.batch_plan(parsed_tasks=test_waypoints)
++        initial_reservations = base_planner.ticket_manager.get_all_reservations()
++        # print(f"   - base_planner任务占用的节点预约: {len(initial_reservations.get('node_reservations', {}))} 个")
++        # print(f"   - base_plannner任务占用的边预约: {len(initial_reservations.get('edge_reservations', {}))} 个")
++        self.test_results['base']['paths'] = base_result
++
++        # 提取Base的时间信息
++        base_times = {}
++        for agv_id, task_info in base_planner.agv_tasks.items():
++            if 'times' in task_info:
++                base_times[agv_id] = task_info['times']
++        self.test_results['base']['times'] = base_times
++
++        base_success = sum(1 for p in base_result.values() if p)
++        print(f"   ✅ Base规划完成：{base_success}/{len(test_tasks)} 成功")
++
++        # ============================================
++        # 方案B：Conflict 版本规划（在初始任务背景下）
++        # ============================================
++
++        # print("\n🟠 方案B：Conflict 版本规划（基于初始任务背景）...")
++        conflict_planner = self.conflict_planner_class(
++            grid=self.grid,
++            # llm_deployer=None,
++            # api_deployer=self.api_deployer,
++            agv_info=self.agv_info
++        )
++
++        #复制初始任务的预约信息和冲突场
++        if initial_conflict_planner is not None:
++            conflict_planner = copy.deepcopy(initial_conflict_planner)
++            conflict_planner.waypoint_generator = MockWaypointGen(test_waypoints)
++            conflict_planner.segment_planner.ticket_manager = conflict_planner.conflict_updater.ticket_manager
++            # conflict_planner = copy.deepcopy(initial_conflict_planner)
++            # if hasattr(initial_conflict_planner, 'conflict_updater'):
++            #     conflict_planner.conflict_updater = initial_conflict_planner.conflict_updater
++            #     if hasattr(conflict_planner, 'segment_planner'):
++            #         conflict_planner.conflict_updater.smoothed_dict = initial_conflict_planner.conflict_updater.smoothed_dict
++            #         # print(f"conflict_planner共{len(conflict_planner.segment_planner.congestion_dict)}个冲突点")
++
++            # conflict_planner.ticket_manager = copy.deepcopy(initial_conflict_planner.ticket_manager)
++            # conflict_planner.conflict_updater.ticket_manager = conflict_planner.ticket_manager
++            # conflict_planner.segment_planner.ticket_manager = conflict_planner.ticket_manager
++            # conflict_planner.segment_planner.congestion_dict = conflict_planner.conflict_updater.smoothed_dict
++
++            # reservations = conflict_planner.conflict_updater.ticket_manager.get_all_reservations()
++            # print(f"conflict_planner的预约长度：{len(reservations.get('node_reservations', {}))}")
++            # print(f"conflict_planner的smoothed_dict有{len(conflict_planner.conflict_updater.smoothed_dict)}")
++            # print("   ✅ 已载入初始任务的时空占用信息")
++        # 执行规划
++        conflict_result = conflict_planner.batch_plan(parsed_tasks=test_waypoints)
++        self.test_results['conflict']['paths'] = conflict_result
++
++        # 提取Conflict的时间信息
++        conflict_times = {}
++        for agv_id, task_info in conflict_planner.agv_tasks.items():
++            if 'times' in task_info:
++                conflict_times[agv_id] = task_info['times']
++        self.test_results['conflict']['times'] = conflict_times
++
++        conflict_success = sum(1 for p in conflict_result.values() if p)
++        print(f"   ✅ Conflict规划完成：{conflict_success}/{len(test_tasks)} 成功")
++
++        return self.test_results
++
++
++    # ========================================
++    # 阶段4：结果对比分析
++    # ========================================
++
++    def stage4_compare_results(self) -> Dict:
++        # 阶段4：对比 Base 和 Conflict 的规划结果
++
++        # print("\n" + "=" * 60)
++        # print("【阶段4】结果对比分析")
++        # print("=" * 60)
++
++        analysis = {'base': {}, 'conflict': {}}
++
++        for method in ['base', 'conflict']:
++            paths = self.test_results[method].get('paths', {})
++            times_dict = self.test_results[method].get('times', {})
++
++            success_count = len(paths)
++            total_tasks = len(self.test_tasks)
++            success_rate = success_count / total_tasks if total_tasks > 0 else 0
++
++            # print(f"\n【{method.upper()}版本】")
++            # print(f"  成功率: {success_count}/{total_tasks} = {100 * success_rate:.1f}%")
++
++            # 逐任务详细分析
++            task_analysis = []
++            for agv_id, path in paths.items():
++                if not path or len(path) < 2:
++                    continue
++
++                path_len = len(path)
++
++                # 拥堵覆盖率
++                congestion_info = self._calculate_congestion_coverage(path, times_dict.get(agv_id, []))
++
++                # 计算转弯次数
++                turns = self._count_turns(path)
++
++                # 绕路系数计算
++                detour_ratio = self._calculate_detour_ratio(path)
++
++                task_analysis.append({
++                    'agv_id': agv_id,
++                    'path_length': path_len,
++                    'turns': turns,
++                    'congestion_coverage_ratio':congestion_info['congestion_coverage_ratio'],
++                    'congestion_coverage_path': congestion_info['congestion_coverage_path'],
++                    'congestion_coverage_area': congestion_info['congestion_coverage_area'],
++                    'detour_ratio': detour_ratio
++                })
++
++            # 统计汇总
++            if task_analysis:
++                # print("task_analysis存在")
++                avg_path_len = np.mean([t['path_length'] for t in task_analysis])
++                avg_turns = np.mean([t['turns'] for t in task_analysis])
++                avg_detour = np.mean([t['detour_ratio'] for t in task_analysis])
++
++                # ✅ 关键指标：平均拥堵覆盖率（每条路径：经过的高冲突点/该路径总数）
++                avg_congestion_coverage = np.mean([t['congestion_coverage_ratio'] for t in task_analysis])
++                total_congestion_points = sum(
++                    int(t['congestion_coverage_ratio'] * t['path_length'])
++                    for t in task_analysis
++                )
++                total_path_points = sum(t['path_length'] for t in task_analysis)
++
++                analysis[method] = {
++                    'success_count': success_count,
++                    'total_tasks': total_tasks,
++                    'success_rate': success_rate,
++                    'avg_path_length': avg_path_len,
++                    'avg_turns': avg_turns,
++                    'avg_detour_ratio': avg_detour,
++                    'avg_congestion_coverage': avg_congestion_coverage,
++                    'tasks': task_analysis
++                }
++
++                # print(f"  平均路径长度: {avg_path_len:.1f} 格")
++                # print(f"  平均转弯次数: {avg_turns:.1f}")
++                # print(f"  平均绕路系数: {avg_detour:.2f}")
++                # print(f"\n  🔴 拥堵区域覆盖分析：")
++                # print(f"     - 平均拥堵覆盖率: {100 * avg_congestion_coverage:.1f}%")
++                # print(f"     - 总共跨越拥堵点(跨越点数/路径长度): {total_congestion_points}/{total_path_points}")
++                # print(f"       (越低说明避障效果越好)")
++
++        # ============================================
++        # 对比总结
++        # ============================================
++
++        # print("\n" + "=" * 60)
++        # print("【对比总结】")
++        # print("=" * 60)
++        if 'base' in analysis and 'conflict' in analysis:
++            base_cov = analysis['base']['avg_congestion_coverage']
++            conflict_cov = analysis['conflict']['avg_congestion_coverage']
++            diff = base_cov - conflict_cov
++
++            print(f"Base平均拥堵覆盖率:     {100 * base_cov:.1f}%")
++            print(f"Conflict平均拥堵覆盖率: {100 * conflict_cov:.1f}%")
++            print(f"改善程度:              {100 * diff:.1f}% {'✅' if diff > 0 else '❌'}")
++
++            if diff > 0:
++                print(f"\n✅ Conflict 成功避开了 {100 * diff:.1f}% 的拥堵区域！")
++                print(f"   这验证了其前瞻避障的能力。")
++            else:
++                print(f"\n⚠️  Conflict 没有表现出更好的避障效果")
++
++        self.analysis_results = analysis
++        return analysis
++
++    def _calculate_congestion_coverage(self, path, times=None) -> dict:
++        """
++        计算路径与拥堵区域的详细覆盖情况，返回拥堵覆盖率
++        """
++        if not self.congestion_zones or not path:
++            print("congestion_zones不存在")
++            return {
++                'passes_congestion': False,
++                'congestion_point_count': 0,
++                'total_path_points': len(path) if path else 0,
++                'congestion_coverage_ratio': 0.0,
++                'congestion_coverage_path': 0.0,
++                'congestion_coverage_area':0.0,
++            }
++
++        congestion_positions = set((x, y, slot) for (x, y, slot), _ in self.congestion_zones)
++
++        congestion_point_count = 0
++        total_path_points = len(path)
++
++        for i, (x, y) in enumerate(path):
++            if times is None or i >= len(times):
++                slot = 0
++            else:
++                slot = int(times[i] // DELTA)
++
++            if (x, y, slot) in congestion_positions:
++                congestion_point_count += 1
++
++        congestion_coverage_ratio = congestion_point_count / max(total_path_points, 1)
++        congestion_coverage_percentage_path = f"{100 * congestion_coverage_ratio:.1f}%"
++        congestion_coverage_percentage_area = f"{100 * (congestion_point_count / max(len(congestion_positions), 1)):.1f}%"
++        passes_congestion = congestion_point_count > 0
++
++        return {
++            'passes_congestion': passes_congestion,
++            'congestion_point_count': congestion_point_count,
++            'total_path_points': total_path_points,
++            'congestion_coverage_ratio':congestion_coverage_ratio,
++            'congestion_coverage_path': congestion_coverage_percentage_path, #路径中多少进入congestion
++            'congestion_coverage_area': congestion_coverage_percentage_area  # 占冲突区域的百分比
++        }
++
++    def _calculate_detour_ratio(self, path: List[Tuple]) -> float:
++        """
++        计算绕路系数
++        绮路系数 = 实际路径长 / 欧式距离
++        """
++        if len(path) < 2:
++            return 1.0
++
++        actual_length = len(path) - 1
++        euclidean_distance = np.sqrt((path[0][0] - path[-1][0]) ** 2 + (path[0][1] - path[-1][1]) ** 2)
++
++        return actual_length / max(euclidean_distance, 1.0)
++
++    def _count_turns(self, path: List[Tuple]) -> int:
++        """计算路径的转弯次数"""
++        if len(path) < 3:
++            return 0
++
++        turns = 0
++        prev_dx = path[1][0] - path[0][0]
++        prev_dy = path[1][1] - path[0][1]
++
++        for i in range(2, len(path)):
++            curr_dx = path[i][0] - path[i - 1][0]
++            curr_dy = path[i][1] - path[i - 1][1]
++
++            if (curr_dx, curr_dy) != (prev_dx, prev_dy):
++                turns += 1
++
++            prev_dx, prev_dy = curr_dx, curr_dy
++
++        return turns
++
++    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
++    def multi_round_test(
++            self,
++            initial_base_planner,
++            initial_conflict_planner,
++            initial_task_count,
++            shelf_map,
++            outbound_map,
++            test_sizes=(10, 20, 50, 100),
++            num_rounds=10,
++            seed_base=1000
++    ):
++        """
++        在固定 700 背景任务基础上，对不同任务数量和多轮随机任务做对比测试。
++        test_sizes: 不同测试任务数量，比如 (10, 20, 50, 100)
++        num_rounds: 每种数量跑多少轮
++        """
++        results = {}  # {N: {'base': [...], 'conflict': [...]}}
++        offset_count = initial_task_count
++        for N in test_sizes:
++            base_cov_list = []
++            conflict_cov_list = []
++
++            # [新增] 初始化成功率列表
++            base_success_list = []
++            conflict_success_list = []
++            # === 新增：从 self.initial_paths 中提取所有成功规划的 AGV 起点 ===
++            occupied_initial_positions = set()
++            for agv_id, path in self.initial_paths.items():
++                if path:  # 确保路径存在且不为空（即规划成功）
++                    start_point = tuple(path[0])  # 路径的第一个点就是起点
++                    occupied_initial_positions.add(start_point)
++
++            for r in range(num_rounds):
++                seed = seed_base + N * 100 + r
++                # 生成 N 个随机测试任务（保持背景图一致）
++                test_tasks = generate_test_tasks(
++                    n_tasks=N,
++                    shelf_map=shelf_map,
++                    outbound_zones=outbound_map,
++                    grid_width=self.grid.width,
++                    grid_height=self.grid.height,
++                    seed=seed,
++                    occupied_positions=occupied_initial_positions
++                )
++                #更改测试任务AGV_ID
++                for i, task in enumerate(test_tasks):
++                    new_id_num = offset_count + i + 1
++                    task['agv_id'] = f"AGV-{new_id_num:03d}"
++
++                # 在相同背景下跑一次 Base vs Conflict
++                test_results = self.stage3_test_task_planning(
++                    test_tasks=test_tasks,
++                    initial_base_planner=initial_base_planner,
++                    initial_conflict_planner=initial_conflict_planner
++                )
++
++                # 计算这一轮的平均拥堵覆盖率（stage4_compare_results 已经有逻辑）
++                analysis = self.stage4_compare_results()
++
++                base_cov = analysis['base']['avg_congestion_coverage']
++                conflict_cov = analysis['conflict']['avg_congestion_coverage']
++                base_cov_list.append(base_cov)
++                conflict_cov_list.append(conflict_cov)
++
++                # [新增] 获取成功率 (success_rate 是 0.0 到 1.0 之间的小数)
++                base_success = analysis['base']['success_rate']
++                conflict_success = analysis['conflict']['success_rate']
++                base_success_list.append(base_success)
++                conflict_success_list.append(conflict_success)
++
++                print(f"[N={N}] round {r + 1}/{num_rounds}:拥堵覆盖率： base={base_cov*100:.3f}%, conflict={conflict_cov*100:.3f}%")
++
++            # 多轮统计
++            results[N] = {
++                'base_mean': float(np.mean(base_cov_list)),
++                'base_std': float(np.std(base_cov_list, ddof=1)),
++                'conflict_mean': float(np.mean(conflict_cov_list)),
++                'conflict_std': float(np.std(conflict_cov_list, ddof=1)),
++                # [新增] 成功率统计
++                'base_success_mean': float(np.mean(base_success_list)),
++                'base_success_std': float(np.std(base_success_list, ddof=1)),
++                'conflict_success_mean': float(np.mean(conflict_success_list)),
++                'conflict_success_std': float(np.std(conflict_success_list, ddof=1)),
++                'base_list': base_cov_list,
++                'conflict_list': conflict_cov_list,
++                # 保留原始列表以便后续分析（可选）
++                'base_cov_list': base_cov_list,
++                'conflict_cov_list': conflict_cov_list,
++                'base_success_list': base_success_list,
++                'conflict_success_list': conflict_success_list,
++            }
++
++        self.multi_round_results = results
++
++        # 保存为日志文件
++        log_path = os.path.join(self.save_dir, f'{MAP_KEY}_multi_round_results.log')
++        with open(log_path, 'w', encoding='utf-8') as f:
++            f.write("=== 多轮测试结果 ===\n\n")
++            f.write(f"测试时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
++            f.write(f"轮数: {num_rounds}\n\n")
++
++            for N in sorted(results.keys()):
++                data = results[N]
++                # f.write(f"Test_Size = {N}\n")
++                # f.write(f"Base: {100 * data['base_mean']:.2f}% ± {100 * data['base_std']:.2f}%\n")
++                # f.write(f"Conflict: {100 * data['conflict_mean']:.2f}% ± {100 * data['conflict_std']:.2f}%\n")
++                # f.write(f"绝对改善：{100*(data['base_mean']-data['conflict_mean'])}\n")
++                # f.write(f"相对减少：{100*(data['base_mean']-data['conflict_mean'])/data['base_mean']}\n")
++                # # [新增] 成功率部分
++                # f.write(f"[成功率]\n")
++                # f.write(f"  Base:     {100 * data['base_success_mean']:.2f}% ± {100 * data['base_success_std']:.2f}%\n")
++                # f.write(f"  Conflict: {100 * data['conflict_success_mean']:.2f}% ± {100 * data['conflict_success_std']:.2f}%\n")
++                # f.write(f"  绝对提升：{100 * (data['conflict_success_mean'] - data['base_success_mean']):.2f}%\n")
++                # f.write("-" * 50 + "\n")
++                data = results[N]
++                f.write(f"Test_Size = {N}\n")
++                f.write(f"Base Planner\n")
++                f.write(f"平均路径拥堵覆盖率: {100 * data['base_mean']:.2f}% ± {100 * data['base_std']:.2f}%\n")
++                f.write(f"Conflict Planner\n")
++                f.write(f"平均路径拥堵覆盖率: {100 * data['conflict_mean']:.2f}% ± {100 * data['conflict_std']:.2f}%\n")
++                f.write(f"绝对改善：{100 * (data['base_mean'] - data['conflict_mean'])}\n")
++                f.write(f"相对减少：{100 * (data['base_mean'] - data['conflict_mean']) / data['base_mean']}\n")
++                # [新增] 成功率部分
++                f.write(f"[成功率]\n")
++                f.write(f"  Base:     {100 * data['base_success_mean']:.2f}% ± {100 * data['base_success_std']:.2f}%\n")
++                f.write(
++                    f"  Conflict: {100 * data['conflict_success_mean']:.2f}% ± {100 * data['conflict_success_std']:.2f}%\n")
++                f.write(f"  绝对提升：{100 * (data['conflict_success_mean'] - data['base_success_mean']):.2f}%\n")
++                f.write("-" * 50 + "\n")
++
++        print(f"✅ 日志文件已保存: {log_path}")
++        return results
++    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
++
++    # ========================================
++    # 可视化与保存
++    # ========================================
++
++    def visualize_results(self):
++        """可视化实验结果"""
++        print("\n生成可视化图表...")
++        self._plot_initial_paths_with_congestion()
++        self._plot_test_paths_comparison()
++        self._plot_metrics_comparison()
++        self._plot_test_paths_3d_temporal()
++
++    def _setup_grid_from_maps(self):
++        """根据 ALL_MAPS 设置货架和出库区坐标"""
++        shelf_map, outbound_map, region_values = ALL_MAPS[MAP_KEY]
++
++        self.shelf_cells.clear()
++        self.outbound_cells.clear()
++
++        # 设置货架区域
++        for region_name, coords in shelf_map.items():
++            if isinstance(coords, list):
++                for x, y in coords:
++                    self.shelf_cells.add((x, y))
++            elif isinstance(coords, tuple):
++                x, y = coords
++                self.shelf_cells.add((x, y))
++
++        # 设置出库区域
++        for region_name, coords in outbound_map.items():
++            if isinstance(coords, list):
++                for x, y in coords:
++                    self.outbound_cells.add((x, y))
++            elif isinstance(coords, tuple):
++                x, y = coords
++                self.outbound_cells.add((x, y))
++
++    def _draw_grid_background(self, ax):
++        """绘制网格地图背景（仿照 path_simulation.py）"""
++        import matplotlib.colors as mcolors
++        # 创建网格矩阵
++        grid = np.zeros((self.grid.height, self.grid.width), dtype=int)
++
++        # 标记货架和出库区
++        for x, y in self.shelf_cells:
++            if 0 <= x < self.grid.width and 0 <= y < self.grid.height:
++                grid[y, x] = 1
++
++        for x, y in self.outbound_cells:
++            if 0 <= x < self.grid.width and 0 <= y < self.grid.height:
++                grid[y, x] = 2
++
++        # 自定义颜色
++        colors = ['white', 'gray', 'lightblue']
++        custom_cmap = mcolors.ListedColormap(colors)
++        bounds = [0, 1, 2, 3]
++        norm = mcolors.BoundaryNorm(bounds, custom_cmap.N)
++
++        im = ax.imshow(grid, cmap=custom_cmap, norm=norm, alpha=0.6,
++                       origin='lower', extent=(0, self.grid.width, 0, self.grid.height),
++                       zorder=0)
++        return im
++
++    def _draw_region_boundaries(self, ax):
++        """绘制货架和出库区的边框"""
++        from matplotlib.patches import Rectangle
++
++        for x, y in self.shelf_cells:
++            rect = Rectangle((x, y), 1, 1, linewidth=2, edgecolor='blue',
++                             facecolor='none', linestyle='-', zorder=5)
++            ax.add_patch(rect)
++
++        for x, y in self.outbound_cells:
++            rect = Rectangle((x, y), 1, 1, linewidth=2, edgecolor='darkblue',
++                             facecolor='none', linestyle='-', zorder=5)
++            ax.add_patch(rect)
++
++    def _plot_initial_paths_with_congestion(self):
++        """绘制冲突场热力图"""
++        fig, ax = plt.subplots(figsize=(14, 12))
++
++        self._draw_grid_background(ax)
++        self._draw_region_boundaries(ax)
++
++
++        # 绘制完整的冲突场热力图（用矩形填充整个格子）
++        if self.conflict_field_data:
++            position_conflicts = {}
++
++            for (x, y, slot), val in self.conflict_field_data.items():
++                pos = (x, y)
++                if pos not in position_conflicts:
++                    position_conflicts[pos] = val
++                else:
++                    position_conflicts[pos] = max(position_conflicts[pos], val)
++
++            # 找出最大和最小冲突值用于归一化
++            values = list(position_conflicts.values())
++            min_val = min(values)
++            max_val = max(values)
++
++            # 用矩形绘制每个格子
++            from matplotlib.colors import Normalize
++            from matplotlib.cm import ScalarMappable
++
++            norm = Normalize(vmin=min_val, vmax=max_val)
++            cmap = plt.get_cmap('YlOrRd')
++            sm = ScalarMappable(norm=norm, cmap=cmap)
++
++            for (x, y), val in position_conflicts.items():
++                color = cmap(norm(val))
++                rect = plt.Rectangle((x, y), 1, 1, facecolor=color, edgecolor='gray', linewidth=0.5)
++                ax.add_patch(rect)
++
++            # 添加colorbar
++            cbar = plt.colorbar(sm, ax=ax, label='Conflict Value')
++            cbar.ax.tick_params(labelsize=12)  # 设置colorbar刻度字号
++            cbar.set_label('Conflict Value', fontsize=16)  # 设置label字号
++
++            print(f"✅ 绘制冲突场：{len(position_conflicts)} 个格子，冲突值 {min_val:.2f} ~ {max_val:.2f}")
++        else:
++            print("⚠️ 警告：冲突场数据为空")
++
++        # 坐标轴设置
++        ax.set_xlim(0, self.grid.width)
++        ax.set_ylim(0, self.grid.height)
++        ax.set_xticks(range(0, self.grid.width + 1))
++        ax.set_yticks(range(0, self.grid.height + 1))
++        ax.grid(True, linestyle='--', linewidth=1, alpha=0.5,zorder=1)
++        ax.set_xlabel('X Coordinate', fontsize=16)
++        ax.set_ylabel('Y Coordinate', fontsize=16)
++        ax.set_title('Congestion Field Heatmap', fontsize=18)
++
++        save_path = os.path.join(self.save_dir, 'stage1_congestion_field.png')
++        plt.savefig(save_path, dpi=150, bbox_inches='tight')
++        plt.close()
++        print(f"✅ 保存图表: {save_path}")
++
++    def _plot_test_paths_comparison(self):
++        """绘制测试任务的Base vs Conflict对比"""
++        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
++
++        for ax, method in zip([ax1, ax2], ['base', 'conflict']):
++            paths = self.test_results[method].get('paths', {})
++
++            self._draw_grid_background(ax)
++            self._draw_region_boundaries(ax)
++
++            # 绘制冲突值 > CONFLICT_THRESHOLD 的冲突场热力图
++            if self.conflict_field_data:
++                position_conflicts = {}
++
++                for (x, y, slot), val in self.conflict_field_data.items():
++                    if val > CONFLICT_THRESHOLD:  # ← 用原始值判断
++                        pos = (x, y)
++                        if pos not in position_conflicts:
++                            position_conflicts[pos] = val
++                        else:
++                            position_conflicts[pos] = max(position_conflicts[pos], val)
++
++                values = list(position_conflicts.values())
++                if values:
++                    min_val = min(values)
++                    max_val = max(values)
++
++                    from matplotlib.colors import Normalize
++                    from matplotlib.cm import ScalarMappable
++
++                    norm = Normalize(vmin=min_val, vmax=max_val)
++                    cmap = plt.get_cmap('YlOrRd')
++                    sm = ScalarMappable(norm=norm, cmap=cmap)
++
++                    # 用矩形绘制冲突值 > CONFLICT_THRESHOLD 的区域
++                    for (x, y), val in position_conflicts.items():
++                        color = cmap(norm(val))
++                        rect = plt.Rectangle((x, y), 1, 1, facecolor=color, edgecolor='gray', linewidth=0.5)
++                        ax.add_patch(rect)
++
++                    cbar=plt.colorbar(sm, ax=ax, label='Conflict Value')
++                    cbar.ax.tick_params(labelsize=12)  # colorbar刻度字号
++                    cbar.set_label('Conflict Value', fontsize=16)  # label字号
++
++
++            # 绘制路径（在冲突场上叠加）
++            colors = plt.cm.Set3(np.linspace(0, 1, len(paths)))
++            for (agv_id, path), color in zip(paths.items(), colors):
++                if path:
++                    path_array = np.array(path)
++                    x_coords = path_array[:, 0] + 0.5
++                    y_coords = path_array[:, 1] + 0.5
++                    ax.plot(x_coords, y_coords, color=color, linewidth=2.5,
++                            alpha=0.9, label=agv_id, zorder=10)
++
++                    # 起点和终点
++                    ax.scatter(x_coords[0], y_coords[0], color='green', s=100,
++                               marker='o', edgecolors='black', linewidth=2, zorder=11)
++                    ax.scatter(x_coords[-1], y_coords[-1], color='red', s=200,
++                               marker='*', edgecolors='black', linewidth=1, zorder=11)
++            # 坐标轴设置
++            ax.set_xlim(0, self.grid.width)
++            ax.set_ylim(0, self.grid.height)
++            ax.set_xticks(range(0, self.grid.width + 1))
++            ax.set_yticks(range(0, self.grid.height + 1))
++            ax.grid(True, linestyle='--', linewidth=1, alpha=0.5,zorder=1)
++            ax.set_xlabel('X Coordinate', fontsize=16)
++            ax.set_ylabel('Y Coordinate', fontsize=16)
++            ax.set_title(f'Test Task Planning - {method.upper()} Method', fontsize=18)
++            if len(paths) <= 5:
++                ax.legend(fontsize=9, loc='upper left')
++
++        plt.tight_layout()
++        save_path = os.path.join(self.save_dir, 'stage3_test_paths_comparison.png')
++        plt.savefig(save_path, dpi=150, bbox_inches='tight')
++        plt.close()
++        print(f"✅ 保存图表: {save_path}")
++
++    def _plot_metrics_comparison(self):
++        """绘制Base vs Conflict指标对比"""
++        if not hasattr(self, 'analysis_results'):
++            return
++
++        fig, axes = plt.subplots(2, 2, figsize=(14, 10))
++
++        methods = ['base', 'conflict']
++        results = self.analysis_results
++
++        # 指标1：成功率
++        success_rates = [results[m]['success_rate'] for m in methods]
++        axes[0, 0].bar(methods, success_rates, color=['steelblue', 'orange'])
++        axes[0, 0].set_ylabel('Success Rate')
++        axes[0, 0].set_title('Planning Success Rate')
++        axes[0, 0].set_ylim(0, 1)
++        for i, v in enumerate(success_rates):
++            axes[0, 0].text(i, v + 0.02, f'{100 * v:.1f}%', ha='center')
++
++        # 指标2：平均路径长度
++        avg_lengths = [results[m]['avg_path_length'] for m in methods]
++        axes[0, 1].bar(methods, avg_lengths, color=['steelblue', 'orange'])
++        axes[0, 1].set_ylabel('Path Length (cells)')
++        axes[0, 1].set_title('Average Path Length')
++        for i, v in enumerate(avg_lengths):
++            axes[0, 1].text(i, v + 0.5, f'{v:.1f}', ha='center')
++
++        # 指标3：拥堵覆盖率
++        congestion_rates = [results[m]['avg_congestion_coverage'] for m in methods]
++        axes[1, 0].bar(methods, congestion_rates, color=['red' if c > 0.5 else 'green'
++                                                         for c in congestion_rates])
++        axes[1, 0].set_ylabel('Congestion Coverage Ratio')
++        axes[1, 0].set_title('Congestion Zone Coverage (Lower is Better)')
++        axes[1, 0].set_ylim(0, 1)
++        for i, v in enumerate(congestion_rates):
++            axes[1, 0].text(i, v + 0.02, f'{100 * v:.1f}%', ha='center')
++
++        # 指标4：绕路系数
++        detour_ratios = [results[m]['avg_detour_ratio'] for m in methods]
++        axes[1, 1].bar(methods, detour_ratios, color=['steelblue', 'orange'])
++        axes[1, 1].set_ylabel('Detour Ratio')
++        axes[1, 1].set_title('Path Efficiency (Lower is Better)')
++        for i, v in enumerate(detour_ratios):
++            axes[1, 1].text(i, v + 0.02, f'{v:.2f}', ha='center')
++
++        plt.suptitle('Base vs Conflict Planning Comparison', fontsize=18, y=1.00)
++        plt.tight_layout()
++
++        save_path = os.path.join(self.save_dir, 'stage4_metrics_comparison.png')
++        plt.savefig(save_path, dpi=150, bbox_inches='tight')
++        plt.close()
++        print(f"✅ 保存图表: {save_path}")
++
++    def _plot_test_paths_3d_temporal(self):
++        """绘制三维时空图：Base vs Conflict 路径在冲突场中的表现"""
++        from mpl_toolkits.mplot3d import Axes3D
++
++        # 1. 增大画布，给左右留足空间
++        fig = plt.figure(figsize=(24, 10))
++        points_count = {}
++
++        for idx, method in enumerate(['base', 'conflict'], 1):
++            # 2. 调整 subplot 的位置参数，手动预留更多空间给 Z 轴标签
++            # left=0.05, right=0.95 确保左右不贴边
++            ax = fig.add_subplot(1, 2, idx, projection='3d')
++
++            paths = self.test_results[method].get('paths', {})
++            times_dict = self.test_results[method].get('times', {})
++
++            points_count[method] = 0
++
++            # --- 绘图逻辑保持不变 ---
++            colors = plt.cm.Set3(np.linspace(0, 1, len(paths)))
++            for (agv_id, path), color in zip(paths.items(), colors):
++                if path and agv_id in times_dict:
++                    times = times_dict[agv_id]
++                    x_p = [pt[0] for pt in path]
++                    y_p = [pt[1] for pt in path]
++                    t_p = times
++
++                    ax.plot(x_p, y_p, t_p, color=color, linewidth=3.5,
++                            marker='o', markersize=6, label=agv_id, alpha=0.9, zorder=10)
++
++            # --- 冲突点高亮逻辑保持不变 ---
++            if self.conflict_field_data:
++                intersection_points = []
++                for (agv_id, path), color in zip(paths.items(), colors):
++                    if path and agv_id in times_dict:
++                        times = times_dict[agv_id]
++                        for i, (x, y) in enumerate(path):
++                            if i < len(times):
++                                t = times[i]
++                                slot = int(t // DELTA)
++                                if (x, y, slot) in self.conflict_field_data:
++                                    val = self.conflict_field_data[(x, y, slot)]
++                                    if val > CONFLICT_THRESHOLD:
++                                        intersection_points.append({
++                                            'x': x, 'y': y, 't': t,
++                                            'color': color, 'val': val,
++                                            'method': method
++                                        })
++
++                if intersection_points:
++                    for pt in intersection_points:
++                        ax.scatter([pt['x']], [pt['y']], [pt['t']],
++                                   color='red', s=200, marker='o',
++                                   edgecolors='darkred', linewidth=2, alpha=0.9, zorder=20)
++                    print(f"  [{method}] 路径与冲突场交集点数: {len(intersection_points)}")
++                    points_count[method] = len(intersection_points)
++
++            # --- 冲突场投影逻辑保持不变 ---
++            if self.conflict_field_data:
++                position_conflicts = {}
++                for (x, y, slot), val in self.conflict_field_data.items():
++                    if val > CONFLICT_THRESHOLD:
++                        pos = (x, y)
++                        position_conflicts[pos] = max(position_conflicts.get(pos, 0), val)
++                if position_conflicts:
++                    min_t = ax.get_zlim()[0]
++                    for (x, y), val in position_conflicts.items():
++                        ax.scatter([x], [y], [min_t], color='none', s=50,
++                                   alpha=0.2, marker='s', zorder=1)
++
++            # ================= 修改重点开始 =================
++
++            # 3. 标签与标题调整
++            # labelpad 增加间距，防止标签和刻度重叠
++            ax.set_xlabel('X', fontsize=22, labelpad=20)
++            ax.set_ylabel('Y', fontsize=22, labelpad=20)
++            ax.set_zlabel('T', fontsize=22, labelpad=20)  # 增加 labelpad 确保 Z 轴标签显示
++
++            # 4. 字体大小调整
++            # 26号字体对于默认画布太大，会导致坐标轴被挤出，建议降至 14-18
++            ax.tick_params(axis='both', labelsize=16)
++
++            name_map = {'base': 'CA*', 'conflict': 'CPS-A*'}
++            display_name = name_map.get(method, method.upper())
++
++            # 5. 标题位置调整
++            # pad 从 5 增加到 30，让标题远离坐标轴，靠近图片顶部
++            ax.set_title(f'{display_name}', fontsize=24, pad=30)
++
++            ax.view_init(elev=20, azim=45)
++
++            # ================= 修改重点结束 =================
++
++        # 6. 布局调整
++        diff = points_count['base'] - points_count['conflict']
++        if points_count['base'] > 0:  # 防止除以0
++            ratio = round(diff / points_count['base'], 4)
++            print(f"路径冲突点数减少{diff}个，减少了{ratio * 100}%")
++
++        # 7. 优化子图间距
++        # wspace=0.15 给两个图中间留出呼吸空间（之前 0.02 太挤了）
++        # left=0.04, right=0.96 确保左右边缘不切掉 Z 轴标签
++        plt.subplots_adjust(left=0.04, right=0.96, wspace=0.15, bottom=0.08, top=0.92)
++
++        save_path = os.path.join(self.save_dir, 'stage3_3d_temporal_comparison.png')
++        plt.savefig(save_path, dpi=600, bbox_inches='tight')
++        plt.close()
++        print(f"✅ 保存3D时空图表: {save_path}")
++
++    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
++    def plot_multi_round_congestion(self, save_path="./experiment_results/multi_round_congestion.png"):
++        """
++        横轴：不同测试任务数量
++        纵轴：平均拥堵覆盖率（可加标准差误差棒）
++        一图两线：Base vs Conflict
++        """
++        if not hasattr(self, 'multi_round_results'):
++            raise ValueError("multi_round_results 尚未生成，请先调用 multi_round_test")
++
++        Ns = sorted(self.multi_round_results.keys())
++        base_means = [100 * self.multi_round_results[N]['base_mean'] for N in Ns]
++        base_stds = [100 * self.multi_round_results[N]['base_std'] for N in Ns]
++        conf_means = [100 * self.multi_round_results[N]['conflict_mean'] for N in Ns]
++        conf_stds = [100 * self.multi_round_results[N]['conflict_std'] for N in Ns]
++
++        plt.figure(figsize=(12, 7))
++        plt.errorbar(Ns, base_means, yerr=base_stds, fmt='o-', capsize=4,
++                     label="Base Planner", color="steelblue")
++        plt.errorbar(Ns, conf_means, yerr=conf_stds, fmt='s-', capsize=4,
++                     label="Conflict Planner", color="orange")
++
++        offset_y = 0.3
++        # 标注标准差值（在误差棒旁边）
++        for i, n in enumerate(Ns):
++            plt.text(n, base_means[i] + base_stds[i] + 0.35,
++                     f'σ={base_stds[i]:.1f}%',
++                     ha='center', fontsize=9, color='steelblue', fontweight='bold',
++                     bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7, edgecolor='steelblue'))
++
++            plt.text(n, conf_means[i] - conf_stds[i] - 0.45,
++                     f'σ={conf_stds[i]:.1f}%',
++                     ha='center', fontsize=9, color='orange', fontweight='bold',
++                     bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7, edgecolor='orange'))
++
++        plt.xlabel("Number of test tasks")
++        plt.ylabel("Average congestion coverage (%)")
++        plt.title(
++            "Average congestion coverage vs. number of test tasks\n(700 fixed background tasks, multi-round average)")
++        plt.grid(True, linestyle='--', alpha=0.4)
++        plt.legend()
++        plt.xticks(Ns, fontsize=11)
++        # 自动调整图表范围，确保标注不超出框外
++        y_min = min(conf_means) - max(conf_stds) - 2
++        y_max = max(base_means) + max(base_stds) + 2
++        plt.ylim(y_min, y_max)
++        plt.tight_layout()
++        plt.savefig(save_path, dpi=300)
++        plt.close()
++        print(f"✅ multi-round congestion figure saved to: {save_path}")
++    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
++
++    def save_results_to_json(self):
++        """将实验结果保存为JSON"""
++        results_json = {
++            'experiment_name': 'Congestion Avoidance Test',
++            'timestamp': datetime.now().isoformat(),
++            'initial_tasks_count': len(self.initial_tasks),
++            'congestion_zones_count': len(self.congestion_zones),
++            'analysis': self.analysis_results if hasattr(self, 'analysis_results') else {}
++        }
++
++        save_path = os.path.join(self.save_dir, 'experiment_results.json')
++        with open(save_path, 'w', encoding='utf-8') as f:
++            json.dump(results_json, f, ensure_ascii=False, indent=2)
++
++        print(f"✅ 结果已保存: {save_path}")
++
++    # ========================================
++    # 完整实验流程
++    # ========================================
++
++    def run_full_experiment(self, initial_tasks, test_tasks, n_initial=15, n_test=3):
++        """
++        执行完整前瞻避障实验
++        正确传递规划器实例给各个阶段
++        """
++        # 阶段1
++        paths, times, base_planner = self.stage1_initial_planning(initial_tasks=initial_tasks)
++
++        # 阶段2
++        conflict_planner = self.stage2_analyze_conflict_field(base_planner)
++
++        # 阶段3
++        self.stage3_test_task_planning(test_tasks=test_tasks,initial_base_planner=base_planner,initial_conflict_planner=conflict_planner)
++
++        # 阶段4
++        self.stage4_compare_results()
++
++        # 可视化与保存
++        self.visualize_results()
++        self.save_results_to_json()
++
++        print("\n" + "=" * 80)
++        print("✅ 实验完成！")
++        print(f"📁 结果保存至: {os.path.abspath(self.save_dir)}")
++        print("=" * 80)
++
++
++# ============================================
++# 辅助函数
++# ============================================
++
++def load_agv_info(filepath):
++    """从JSON文件加载AGV信息"""
++    if os.path.exists(filepath):
++        with open(filepath, 'r', encoding='utf-8') as f:
++            agv_data = json.load(f)
++            # 确保position为tuple格式
++            for agv_id, info in agv_data.items():
++                if isinstance(info['position'], list):
++                    info['position'] = tuple(info['position'])
++                # 清理非法空格
++                info['type'] = str(info['type']).strip()
++            return agv_data
++    else:
++        print(f"没有找到{filepath}文件")
++
++
++
++if __name__ == "__main__":
++    # 参数配置
++    SAVE_DIR = "congestion_avoidance_base_3D"
++    GRID_WIDTH = 20
++    GRID_HEIGHT = 20
++    MAP_KEY='FRANSEN'
++    TASK_COUNTS= 110
++    shelf_map, outbound_map, region_values = ALL_MAPS[MAP_KEY]
++    PICKUP_REGION =None  #(min_x,max_x,min_y,max_y)(20,55,25,53)
++
++    # 初始化
++    grid = GridMap(width=GRID_WIDTH, height=GRID_HEIGHT, cell_size=1)
++    # 绘制功能区值到 grid.grid 矩阵
++    for shelf_name, coords in shelf_map.items():
++        val = region_values[shelf_name]
++        if isinstance(coords, list):
++            for x, y in coords:
++                grid.region_coordinate(x, y, val)
++        elif isinstance(coords, tuple):
++            x, y = coords
++            grid.region_coordinate(x, y, val)
++
++    tasks = generate_test_tasks(n_tasks=TASK_COUNTS, shelf_map=shelf_map, outbound_zones=outbound_map,
++                                grid_width=GRID_WIDTH, grid_height=GRID_HEIGHT, pickup_region=PICKUP_REGION, seed=42,
++                                pickup_strategy='inner' if MAP_KEY == 'C' else None, )
++
++    initial_tasks = tasks[:100]
++    test_tasks = tasks[100:TASK_COUNTS]
++
++    agv_info = load_agv_info(AGV_FILEPATH)
++    # api_deployer = API_ModelDeployer(api_url=API_URL, api_key=API_KEY)
++    api_deployer = None
++
++    # 创建实验
++    experiment = CongestionAvoidanceExperiment(
++        grid_map=grid,
++        base_planner_class=BaseAGVPlanner,
++        conflict_planner_class=ConflictAGVPlanner,
++        agv_info=agv_info,
++        api_deployer=api_deployer,
++        save_dir=SAVE_DIR
++    )
++
++    # # 执行完整实验
++    experiment.run_full_experiment(initial_tasks=initial_tasks,test_tasks=test_tasks,n_initial=100, n_test=3)
++
++    #
++    # paths, times, base_planner = experiment.stage1_initial_planning(initial_tasks=initial_tasks)
++    # conflict_planner = experiment.stage2_analyze_conflict_field(base_planner)
++    #
++    # # ========== 【新增：多轮测试】==========
++    # experiment.multi_round_test(
++    #     initial_base_planner=base_planner,
++    #     initial_conflict_planner=conflict_planner,
++    #     initial_task_count = len(initial_tasks),
++    #     shelf_map=shelf_map,
++    #     outbound_map=outbound_map,
++    #     # test_sizes=(10,20,30,40,50,60,70,80,90,100),
++    #     # test_sizes=(5, 10, 15, 20, 25, 30, 35, 40, 45, 50),
++    #     num_rounds=5
++    # )
++    #
++    # # ========== 【新增：绘制图表】==========
++    # experiment.plot_multi_round_congestion(
++    #     save_path=os.path.join(SAVE_DIR, "multi_round_congestion.png")
+     # )

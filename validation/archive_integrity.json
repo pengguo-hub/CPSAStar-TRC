@@ -1,0 +1,126 @@
+[
+  {
+    "source": "04-result_R1_gaussian_sensitivity.zip",
+    "valid_members": 3,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "05-r1_delta_results.zip",
+    "valid_members": 10,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "06-result_R1_9_R_sensitivity.zip",
+    "valid_members": 3,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "07-result_R1_3_dmin_sensitivity.zip",
+    "valid_members": 33,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "08-results_R2_03.zip",
+    "valid_members": 1988,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "10-R2_5_results_formal_FRANSEN200_replaced.zip",
+    "valid_members": 787,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "11-R2-05.zip",
+    "valid_members": 746,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "12-R2-07_complete_verified.zip",
+    "valid_members": 1804,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "13-R2_4_resullts_OD-1-.zip",
+    "valid_members": 6,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "14-R2_4_resullts_OD_jobs.zip",
+    "valid_members": 180,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "15-R2_4_resullts_OD_source_snapshot.zip",
+    "valid_members": 28,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "16-R2_4_resullts_OD_workloads.zip",
+    "valid_members": 90,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "17-R2_4_resullts_OD_attempts.zip",
+    "valid_members": 1165,
+    "invalid_members": 0,
+    "valid": true,
+    "trial_directories": 106,
+    "selected_result_json": 105
+  },
+  {
+    "source": "18-R2_04_OD_backlog_ready_to_run.zip",
+    "valid_members": 355,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "19-R2_7_results_merged_seed42_46.zip",
+    "valid_members": 754,
+    "invalid_members": 249,
+    "valid": false
+  },
+  {
+    "source": "20-experiment.zip",
+    "valid_members": 311,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "21-R1.zip",
+    "valid_members": 100,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "23-plot_r2.zip",
+    "valid_members": 10,
+    "invalid_members": 0,
+    "valid": true
+  },
+  {
+    "source": "R2-02.zip",
+    "valid_members": 51,
+    "invalid_members": 0,
+    "valid": true,
+    "check": "2026-11-02 all members read"
+  },
+  {
+    "source": "R2-03.zip",
+    "valid_members": 425,
+    "invalid_members": 0,
+    "valid": true,
+    "check": "2026-11-02 all members read"
+  }
+]

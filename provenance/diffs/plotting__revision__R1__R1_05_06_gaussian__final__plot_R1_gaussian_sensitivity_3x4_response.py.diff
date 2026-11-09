@@ -1,0 +1,16 @@
+--- 21-R1.zip::R1/R1.5_1.6/plot_R1_gaussian_sensitivity_3x4_response.py
++++ plotting/revision/R1/R1_05_06_gaussian/final/plot_R1_gaussian_sensitivity_3x4_response.py
+@@ -25,9 +25,10 @@
+ #   - Map A/B/C = red / soft blue / soft green
+ # ==========================================================
+ 
+-ZIP_PATH = Path("result_R1_gaussian_sensitivity.zip")
+-WORK_DIR = Path("_R1_gaussian_plot_tmp")
+-OUT_DIR = Path("R1_gaussian_figures_3x4_response")
++_REPO_ROOT = Path(__file__).resolve().parents[5]
++ZIP_PATH = _REPO_ROOT / 'provenance/source_archives/04-result_R1_gaussian_sensitivity.zip'
++WORK_DIR = _REPO_ROOT / 'outputs/plotting_tmp/R1_05_06_gaussian'
++OUT_DIR = _REPO_ROOT / 'figures/revision/R1_05_06_gaussian'
+ 
+ HIGH_LOAD = {"A": 70, "B": 280, "C": 200}
+ MAPS = ["A", "B", "C"]

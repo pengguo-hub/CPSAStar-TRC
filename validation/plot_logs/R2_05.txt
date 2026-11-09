@@ -1,0 +1,4 @@
+/workspace/scratch/6a72a05bf429/CPS-Astar-public-reproducibility/plotting/revision/R2/R2_5/final/plot_r2_05_compact_reordered.py:48: UserWarning: Times New Roman is not installed; using DejaVu Sans for this render.
+  warnings.warn("Times New Roman is not installed; using DejaVu Sans for this render.")
+Read 70 valid trials from provenance/source_archives/10-R2_5_results_formal_FRANSEN200_replaced.zip; no simulations run.
+Wrote figure, summary and audit to /workspace/scratch/6a72a05bf429/CPS-Astar-public-reproducibility/figures/revision/R2_05_scalability

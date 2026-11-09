@@ -1,0 +1,25 @@
+--- 11-R2-05.zip::R2-05/worker.py
++++ experiments/revision/R2_05_scalability/worker.py
+@@ -2,16 +2,16 @@
+ import argparse,platform,sys,time,traceback
+ from pathlib import Path
+ import numpy as np
+-from common import ROOT,read_json,write_json,execution_hash,execution_sources,native_state
+-from original_runtime import load_original,source_audit
+-from protocol import geometry
+-from recorder import Recorder
++from experiments.revision.R2_05_scalability.common import ROOT, read_json, write_json, execution_hash, execution_sources, native_state
++from experiments.revision.R2_05_scalability.original_runtime import load_original, source_audit
++from experiments.revision.R2_05_scalability.protocol import geometry
++from experiments.revision.R2_05_scalability.recorder import Recorder
+ 
+ def execute(job):
+     out=Path(job['output']);w=read_json(job['workload']);start=time.perf_counter()
+     load_original()
+-    from integration.path_planner_lifelong import LifelongPlanner
+-    from benchmark_loader import GridMap
++    from experiments.revision.R2_05_scalability.integration.path_planner_lifelong import LifelongPlanner
++    from experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.benchmark_loader import GridMap
+     grid=GridMap(w['width'],w['height'],1);grid.grid=np.array(w['grid'],dtype=int)
+     recorder=Recorder(w,out);p=LifelongPlanner(grid,w['agv_info'],{a:tuple(v) for a,v in w['initial_positions'].items()},
+                         recorder.initial_queue(),use_priority_replan=True,experiment=recorder)

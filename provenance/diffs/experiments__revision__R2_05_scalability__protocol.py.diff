@@ -1,0 +1,13 @@
+--- 11-R2-05.zip::R2-05/protocol.py
++++ experiments/revision/R2_05_scalability/protocol.py
+@@ -1,8 +1,8 @@
+ """Inputs only. Original task generator and loader; no route searches or feasibility prechecks."""
+ import math,random
+ import numpy as np
+-from common import ROOT,digest,read_json
+-from original_runtime import load_original
++from experiments.revision.R2_05_scalability.common import ROOT, digest, read_json
++from experiments.revision.R2_05_scalability.original_runtime import load_original
+ 
+ FORMAL_SEEDS=list(range(1001,1006))
+ SMOKE_SEEDS=[901]

@@ -1,0 +1,13 @@
+--- 20-experiment.zip::experiment/Lifelong/check_map_max_agvs.py
++++ src/original_paper/experiment/Lifelong/check_map_max_agvs.py
+@@ -12,8 +12,8 @@
+     python check_map_max_agvs.py
+ """
+ 
+-from custom_benchmark_loader import CustomBenchmarkLoader
+-from map_config import ALL_MAPS
++from src.original_paper.experiment.Lifelong.custom_benchmark_loader import CustomBenchmarkLoader
++from src.original_paper.experiment.Lifelong.map_config import ALL_MAPS
+ 
+ 
+ def flatten_cells(cell_dict):

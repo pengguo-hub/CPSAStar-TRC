@@ -1,0 +1,14 @@
+--- 20-experiment.zip::experiment/Lifelong/CPS_A_lifelong/path_planner_lifelong.py
++++ src/original_paper/experiment/Lifelong/CPS_A_lifelong/path_planner_lifelong.py
+@@ -1,8 +1,8 @@
+ #在任务分配增加冲突场
+ from collections import deque
+-from Conflict_Field_Updater import ConflictFieldUpdater
+-from Segment_Planner import SegmentPlanner
+-from Ticket_Manager import TicketManager
++from src.original_paper.experiment.Lifelong.CPS_A_lifelong.Conflict_Field_Updater import ConflictFieldUpdater
++from src.original_paper.experiment.Lifelong.CPS_A_lifelong.Segment_Planner import SegmentPlanner
++from src.original_paper.experiment.Lifelong.CPS_A_lifelong.Ticket_Manager import TicketManager
+ import time
+ 
+ class LifelongPlanner:

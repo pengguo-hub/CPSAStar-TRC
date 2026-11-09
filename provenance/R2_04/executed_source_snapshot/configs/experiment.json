@@ -1,0 +1,42 @@
+{
+  "schema": 5,
+  "protocol": "R2_04_fixed_OD_backlog3000_v1",
+  "fleets": {
+    "STANDARD": [
+      30,
+      50
+    ],
+    "FRANSEN": [
+      100,
+      200
+    ],
+    "RING": [
+      80,
+      160
+    ]
+  },
+  "levels": [
+    "dispersed",
+    "intermediate",
+    "shared"
+  ],
+  "formal_seeds": [
+    39,
+    40,
+    41,
+    42,
+    43
+  ],
+  "smoke_seeds": [
+    7,
+    8
+  ],
+  "horizon": 500,
+  "tasks": 3000,
+  "mode": "backlogged",
+  "arrival_rate": null,
+  "warmup": 0,
+  "trial_wall_timeout": null,
+  "max_expand_enabled": false,
+  "metric_protocol": "all_requests_full_horizon_restricted_time"
+}

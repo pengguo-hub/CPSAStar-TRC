@@ -1,0 +1,11 @@
+--- 20-experiment.zip::experiment/lacam2_python/debug_patch.py
++++ src/original_paper/experiment/lacam2_python/debug_patch.py
+@@ -10,7 +10,7 @@
+ """
+ 
+ import sys, os, time, random
+-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "lacam2_python"))
++pass  # Package imports replace process-wide import-path mutation.
+ 
+ from .lacam2 import Instance, Deadline, solve, Objective, is_feasible_solution
+ from .warehouse_adapter import build_map_file, xy_to_index, index_to_xy, IntegratedAGVPlanner_LaCAM2

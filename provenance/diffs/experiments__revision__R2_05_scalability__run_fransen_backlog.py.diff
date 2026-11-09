@@ -1,0 +1,24 @@
+--- 11-R2-05.zip::R2-05/run_fransen_backlog.py
++++ experiments/revision/R2_05_scalability/run_fransen_backlog.py
+@@ -14,9 +14,9 @@
+ # Install next to the existing run.py. No existing module is replaced or monkey-patched.
+ HERE = Path(__file__).resolve().parent
+ try:
+-    from common import ROOT, read_json, write_json, digest, execution_hash, execution_sources
+-    from protocol import geometry, endpoint_buffer
+-    from run import check_gate
++    from experiments.revision.R2_05_scalability.common import ROOT, read_json, write_json, digest, execution_hash, execution_sources
++    from experiments.revision.R2_05_scalability.protocol import geometry, endpoint_buffer
++    from experiments.revision.R2_05_scalability.run import check_gate
+ except ModuleNotFoundError as exc:
+     raise SystemExit('Place the add-on files in the original R2-05 project root beside run.py and worker.py; do not place them inside results_formal/.') from exc
+ 
+@@ -182,7 +182,7 @@
+         start=time.perf_counter(); print('START',trial['key'],flush=True)
+         with (dest/'native.log').open('w',encoding='utf-8',buffering=1) as log:
+             env=dict(os.environ,PYTHONIOENCODING='utf-8',PYTHONDONTWRITEBYTECODE='1')
+-            process=subprocess.Popen([sys.executable,'-u',str(ROOT/'worker.py'),'--job',str(dest/'job.json')],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,env=env)
++            process=subprocess.Popen([sys.executable,'-u','-m','experiments.revision.R2_05_scalability.worker','--job',str(dest/'job.json')],cwd=ROOT.parents[2],stdout=log,stderr=subprocess.STDOUT,env=env)
+             attempt['pid']=process.pid; write_json(out/'manifest.json',manifest)
+             try: code=process.wait()  # Deliberately no timeout or automatic kill.
+             except KeyboardInterrupt:

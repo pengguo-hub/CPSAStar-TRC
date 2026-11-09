@@ -1,0 +1,13 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/provenance.py
++++ experiments/revision/R2_04_operational_metrics/provenance.py
+@@ -1,8 +1,8 @@
+ """Portable source/input identities and verified reuse; no planning decisions."""
+ import hashlib,json,math
+ from pathlib import Path
+-from workload import digest,write_json,validate_workload
+-from original_runtime import source_audit
++from experiments.revision.R2_04_operational_metrics.workload import digest, write_json, validate_workload
++from experiments.revision.R2_04_operational_metrics.original_runtime import source_audit
+ ROOT=Path(__file__).resolve().parent
+ 
+ def file_hash(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()

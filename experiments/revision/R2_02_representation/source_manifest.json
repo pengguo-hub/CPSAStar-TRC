@@ -1,0 +1,83 @@
+{
+  "archive_sha256": "e184d8cb5aced3e9189e634a5581a60f6e945c3cd85dacdbf564502892571357",
+  "files": [
+    {
+      "original": "experiment/CPS_A/path_planner.py",
+      "copy": "vendor/CPS_A/path_planner.py",
+      "sha256": "ebb24ecba771a2e6478ebad57ee7648d79ffaa96601ae57243713c5b48e937f5",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/CPS_A/Segment_Planner.py",
+      "copy": "vendor/CPS_A/Segment_Planner.py",
+      "sha256": "5903e164e941e80d4ae08fe97226b1932407fe7f850cfd247411ac0f844e798f",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/CPS_A/Ticket_Manager.py",
+      "copy": "vendor/CPS_A/Ticket_Manager.py",
+      "sha256": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/CPS_A/Conflict_Field_Updater.py",
+      "copy": "vendor/CPS_A/Conflict_Field_Updater.py",
+      "sha256": "8df3feaa71b30fb19e1be8f82ca4baede7ea8e287c86a57bc1c738a30628978e",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/Astar_base/path_planner.py",
+      "copy": "vendor/Astar_base/path_planner.py",
+      "sha256": "3f914a37a9346017b14920ce9aec1d523cf2a6d9daa14d1f79999a3c8a0b0be2",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/Astar_base/Segment_Planner.py",
+      "copy": "vendor/Astar_base/Segment_Planner.py",
+      "sha256": "9c6df93e6f1c0c517fc347c175d375cd9b763198f4aae4c3753077e7c291aa8b",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/Astar_base/Ticket_Manager.py",
+      "copy": "vendor/Astar_base/Ticket_Manager.py",
+      "sha256": "9a6715d4f9e504d5866885f116ceea8a453345826b3127ec9ef950fe4ec9a8f6",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/Astar_base/Conflict_Field_Updater.py",
+      "copy": "vendor/Astar_base/Conflict_Field_Updater.py",
+      "sha256": "06359e4c953143072333b3bd4484a37d47dcec34cd596bdacf88b68d67127863",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/Astar_base/Corridor_Generator.py",
+      "copy": "vendor/Astar_base/Corridor_Generator.py",
+      "sha256": "cdc60d5881c695e5c0d1564642afe8e6aa0c57ef0e64390b25686a337ff94902",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/Astar_base/collision_avoidance.py",
+      "copy": "vendor/Astar_base/collision_avoidance.py",
+      "sha256": "5defaf1d9bcb0aa35036d0d7167266968a3f14b5ca35bf46ca6117b7833a89dd",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/map_config.py",
+      "copy": "vendor/map_config.py",
+      "sha256": "ab660fed08a6bae60e0e49b0c5fa5562b7b3b698f59f8edd8900c876d0028255",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/task_generator.py",
+      "copy": "vendor/task_generator.py",
+      "sha256": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13",
+      "status": "COPIED_BYTE_IDENTICAL"
+    },
+    {
+      "original": "experiment/Ablation_experiment/CPS_A_NS/Conflict_Field_Updater.py",
+      "copy": "vendor/Ablation_experiment/CPS_A_NS/Conflict_Field_Updater.py",
+      "sha256": "3ebdafa15fdf7d47b421475cc9ea07a07a95fc6bbdafa859c8169283f1fda213",
+      "status": "COPIED_BYTE_IDENTICAL"
+    }
+  ]
+}

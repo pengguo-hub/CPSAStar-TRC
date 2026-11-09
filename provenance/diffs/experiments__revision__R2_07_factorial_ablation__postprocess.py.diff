@@ -1,0 +1,21 @@
+--- 12-R2-07_complete_verified.zip::R2-07_original_Lifelong_verified/postprocess.py
++++ experiments/revision/R2_07_factorial_ablation/postprocess.py
+@@ -1,12 +1,12 @@
+ """Audit, analyze and plot existing files only. Never launches simulation workers."""
+ import argparse,json
+ from pathlib import Path
+-from audit_results import collect
+-from analysis import analyze
+-from plot_results import plot
+-from verify_sources import verify
+-from make_response import make
+-from workload import write_json
++from experiments.revision.R2_07_factorial_ablation.audit_results import collect
++from experiments.revision.R2_07_factorial_ablation.analysis import analyze
++from experiments.revision.R2_07_factorial_ablation.plot_results import plot
++from experiments.revision.R2_07_factorial_ablation.verify_sources import verify
++from experiments.revision.R2_07_factorial_ablation.make_response import make
++from experiments.revision.R2_07_factorial_ablation.workload import write_json
+ 
+ def main():
+     p=argparse.ArgumentParser();p.add_argument('output',type=Path);p.add_argument('--validation-preview',action='store_true');a=p.parse_args()

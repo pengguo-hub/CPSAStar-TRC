@@ -1,0 +1,8093 @@
+{
+  "row": {
+    "protocol": "direct",
+    "map": "A",
+    "task_count": 50,
+    "seed": 43,
+    "task_seed": 3210870002,
+    "representation": "historical_gaussian",
+    "rollback_mode": "off",
+    "planning_time": 1.1956652000080794,
+    "field_initialization_time": 0.0013331000227481127,
+    "search_and_update_time": 1.1943320999853313,
+    "task_hash": "0647d4f0e763239c5318b18c92568aa9949de1750b99dbd12477ee18dbdb5266",
+    "initial_order_hash": "2b514676f99c35a257b5500fbcfde5dd1ecd99594d1720fd45315dc2ae395724",
+    "timed_out": 0,
+    "run_status": "completed",
+    "rollback_count": 0,
+    "blocker_guard_count": 0,
+    "failed_search_count": 9,
+    "expanded_states": 37590,
+    "parameters": "{\"L\": 1, \"T\": 1, \"alpha\": 1.0, \"bootstrap_replicates\": 10000, \"delta\": 1, \"gamma\": 5.0, \"lookahead_radius\": 1, \"lookahead_slots\": 2, \"max_wait\": 2, \"neutral_radius\": 1, \"neutral_time_radius\": 1, \"omega\": 50.0, \"reference_horizon\": 256, \"retry_limit\": 5, \"sigma_l\": 2.0, \"sigma_t\": 2.0, \"source_profile\": \"direct_R1_aligned_controlled_representation_fixed_turn0.5\", \"speed\": 1.0, \"statistics_seed\": 20261017, \"test_seed_start\": 42, \"time_shift_fraction\": 0.5, \"timeout\": 60.0, \"update_interval\": 20}",
+    "common_planner_signature": "5c9f8b245e3c97780441df666bcd109c5172beee3fc2b87ded13b28b50d3318f",
+    "representation_family": "source",
+    "soft_information_source": "independent_historical_occupancy",
+    "soft_kernel": "gaussian",
+    "success_count": 41,
+    "success_rate": 0.82,
+    "avg_path_length": 29.975609756097562,
+    "avg_path_duration": 31.878048780487806,
+    "avg_wait_steps": 1.9024390243902438,
+    "avg_turns": 6.341463414634147,
+    "neutral_congestion_exposure": 0.1665388316833418,
+    "gaussian_AC": 0.2436092377265344,
+    "timeout_scope": "batch_including_field_init"
+  },
+  "task_rows": [
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0001",
+      "success": 1,
+      "path_length": 38,
+      "path_duration": 40.0,
+      "wait_steps": 2,
+      "turns": 5,
+      "neutral_congestion_exposure": 0.16260162601626016
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0002",
+      "success": 1,
+      "path_length": 30,
+      "path_duration": 32.0,
+      "wait_steps": 2,
+      "turns": 5,
+      "neutral_congestion_exposure": 0.16969696969696968
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0003",
+      "success": 1,
+      "path_length": 30,
+      "path_duration": 31.0,
+      "wait_steps": 1,
+      "turns": 5,
+      "neutral_congestion_exposure": 0.13125
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0004",
+      "success": 1,
+      "path_length": 43,
+      "path_duration": 46.0,
+      "wait_steps": 3,
+      "turns": 12,
+      "neutral_congestion_exposure": 0.1872340425531915
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0005",
+      "success": 1,
+      "path_length": 33,
+      "path_duration": 34.0,
+      "wait_steps": 1,
+      "turns": 5,
+      "neutral_congestion_exposure": 0.09714285714285714
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0006",
+      "success": 1,
+      "path_length": 25,
+      "path_duration": 26.0,
+      "wait_steps": 1,
+      "turns": 3,
+      "neutral_congestion_exposure": 0.16049382716049385
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0007",
+      "success": 1,
+      "path_length": 42,
+      "path_duration": 43.0,
+      "wait_steps": 1,
+      "turns": 7,
+      "neutral_congestion_exposure": 0.09545454545454544
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0008",
+      "success": 1,
+      "path_length": 17,
+      "path_duration": 19.0,
+      "wait_steps": 2,
+      "turns": 7,
+      "neutral_congestion_exposure": 0.22000000000000003
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0009",
+      "success": 1,
+      "path_length": 33,
+      "path_duration": 34.0,
+      "wait_steps": 1,
+      "turns": 8,
+      "neutral_congestion_exposure": 0.21142857142857144
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0010",
+      "success": 1,
+      "path_length": 38,
+      "path_duration": 40.0,
+      "wait_steps": 2,
+      "turns": 8,
+      "neutral_congestion_exposure": 0.1886178861788618
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0011",
+      "success": 1,
+      "path_length": 14,
+      "path_duration": 19.0,
+      "wait_steps": 5,
+      "turns": 4,
+      "neutral_congestion_exposure": 0.15666666666666668
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0012",
+      "success": 1,
+      "path_length": 21,
+      "path_duration": 22.0,
+      "wait_steps": 1,
+      "turns": 8,
+      "neutral_congestion_exposure": 0.11884057971014494
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0013",
+      "success": 1,
+      "path_length": 28,
+      "path_duration": 29.0,
+      "wait_steps": 1,
+      "turns": 7,
+      "neutral_congestion_exposure": 0.1377777777777778
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0014",
+      "success": 1,
+      "path_length": 27,
+      "path_duration": 27.0,
+      "wait_steps": 0,
+      "turns": 6,
+      "neutral_congestion_exposure": 0.23571428571428577
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0015",
+      "success": 1,
+      "path_length": 30,
+      "path_duration": 31.0,
+      "wait_steps": 1,
+      "turns": 5,
+      "neutral_congestion_exposure": 0.225
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0016",
+      "success": 1,
+      "path_length": 24,
+      "path_duration": 24.0,
+      "wait_steps": 0,
+      "turns": 3,
+      "neutral_congestion_exposure": 0.256
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0017",
+      "success": 1,
+      "path_length": 22,
+      "path_duration": 23.0,
+      "wait_steps": 1,
+      "turns": 3,
+      "neutral_congestion_exposure": 0.1416666666666667
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0018",
+      "success": 1,
+      "path_length": 34,
+      "path_duration": 36.0,
+      "wait_steps": 2,
+      "turns": 5,
+      "neutral_congestion_exposure": 0.1423423423423423
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0019",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0020",
+      "success": 1,
+      "path_length": 25,
+      "path_duration": 25.0,
+      "wait_steps": 0,
+      "turns": 4,
+      "neutral_congestion_exposure": 0.2358974358974359
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0021",
+      "success": 1,
+      "path_length": 21,
+      "path_duration": 21.0,
+      "wait_steps": 0,
+      "turns": 4,
+      "neutral_congestion_exposure": 0.15454545454545457
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0022",
+      "success": 1,
+      "path_length": 44,
+      "path_duration": 48.0,
+      "wait_steps": 4,
+      "turns": 9,
+      "neutral_congestion_exposure": 0.19183673469387752
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0023",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0024",
+      "success": 1,
+      "path_length": 35,
+      "path_duration": 37.0,
+      "wait_steps": 2,
+      "turns": 7,
+      "neutral_congestion_exposure": 0.16140350877192988
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0025",
+      "success": 1,
+      "path_length": 38,
+      "path_duration": 46.0,
+      "wait_steps": 8,
+      "turns": 6,
+      "neutral_congestion_exposure": 0.19858156028368798
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0026",
+      "success": 1,
+      "path_length": 25,
+      "path_duration": 25.0,
+      "wait_steps": 0,
+      "turns": 3,
+      "neutral_congestion_exposure": 0.25897435897435894
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0027",
+      "success": 1,
+      "path_length": 50,
+      "path_duration": 52.0,
+      "wait_steps": 2,
+      "turns": 10,
+      "neutral_congestion_exposure": 0.06666666666666667
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0028",
+      "success": 1,
+      "path_length": 47,
+      "path_duration": 48.0,
+      "wait_steps": 1,
+      "turns": 10,
+      "neutral_congestion_exposure": 0.14829931972789115
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0029",
+      "success": 1,
+      "path_length": 46,
+      "path_duration": 49.0,
+      "wait_steps": 3,
+      "turns": 11,
+      "neutral_congestion_exposure": 0.16666666666666663
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0030",
+      "success": 1,
+      "path_length": 47,
+      "path_duration": 52.0,
+      "wait_steps": 5,
+      "turns": 13,
+      "neutral_congestion_exposure": 0.12452830188679247
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0031",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0032",
+      "success": 1,
+      "path_length": 14,
+      "path_duration": 14.0,
+      "wait_steps": 0,
+      "turns": 3,
+      "neutral_congestion_exposure": 0.14222222222222222
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0033",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0034",
+      "success": 1,
+      "path_length": 26,
+      "path_duration": 28.0,
+      "wait_steps": 2,
+      "turns": 7,
+      "neutral_congestion_exposure": 0.2
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0035",
+      "success": 1,
+      "path_length": 32,
+      "path_duration": 36.0,
+      "wait_steps": 4,
+      "turns": 9,
+      "neutral_congestion_exposure": 0.14414414414414417
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0036",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0037",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0038",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0039",
+      "success": 1,
+      "path_length": 47,
+      "path_duration": 52.0,
+      "wait_steps": 5,
+      "turns": 11,
+      "neutral_congestion_exposure": 0.07672955974842768
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0040",
+      "success": 1,
+      "path_length": 15,
+      "path_duration": 18.0,
+      "wait_steps": 3,
+      "turns": 7,
+      "neutral_congestion_exposure": 0.10526315789473684
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0041",
+      "success": 1,
+      "path_length": 37,
+      "path_duration": 39.0,
+      "wait_steps": 2,
+      "turns": 4,
+      "neutral_congestion_exposure": 0.15833333333333335
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0042",
+      "success": 1,
+      "path_length": 29,
+      "path_duration": 32.0,
+      "wait_steps": 3,
+      "turns": 6,
+      "neutral_congestion_exposure": 0.1696969696969697
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0043",
+      "success": 1,
+      "path_length": 14,
+      "path_duration": 14.0,
+      "wait_steps": 0,
+      "turns": 5,
+      "neutral_congestion_exposure": 0.09333333333333334
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0044",
+      "success": 1,
+      "path_length": 7,
+      "path_duration": 7.0,
+      "wait_steps": 0,
+      "turns": 3,
+      "neutral_congestion_exposure": 0.05
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0045",
+      "success": 1,
+      "path_length": 17,
+      "path_duration": 20.0,
+      "wait_steps": 3,
+      "turns": 9,
+      "neutral_congestion_exposure": 0.2285714285714286
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0046",
+      "success": 1,
+      "path_length": 44,
+      "path_duration": 46.0,
+      "wait_steps": 2,
+      "turns": 4,
+      "neutral_congestion_exposure": 0.21418439716312063
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0047",
+      "success": 1,
+      "path_length": 15,
+      "path_duration": 17.0,
+      "wait_steps": 2,
+      "turns": 5,
+      "neutral_congestion_exposure": 0.19259259259259262
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0048",
+      "success": 1,
+      "path_length": 25,
+      "path_duration": 25.0,
+      "wait_steps": 0,
+      "turns": 4,
+      "neutral_congestion_exposure": 0.3076923076923077
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0049",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    },
+    {
+      "protocol": "direct",
+      "map": "A",
+      "task_count": 50,
+      "seed": 43,
+      "representation": "historical_gaussian",
+      "rollback_mode": "off",
+      "agv_id": "TASK-0050",
+      "success": 0,
+      "path_length": null,
+      "path_duration": null,
+      "wait_steps": null,
+      "neutral_congestion_exposure": null,
+      "turns": null
+    }
+  ],
+  "paths": {
+    "TASK-0001": {
+      "path": [
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0
+      ]
+    },
+    "TASK-0002": {
+      "path": [
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ],
+        [
+          15,
+          5
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0
+      ]
+    },
+    "TASK-0003": {
+      "path": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0
+      ]
+    },
+    "TASK-0004": {
+      "path": [
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ],
+        [
+          15,
+          5
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0
+      ]
+    },
+    "TASK-0005": {
+      "path": [
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0
+      ]
+    },
+    "TASK-0006": {
+      "path": [
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          15,
+          5
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0
+      ]
+    },
+    "TASK-0007": {
+      "path": [
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0
+      ]
+    },
+    "TASK-0008": {
+      "path": [
+        [
+          10,
+          8
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          14,
+          4
+        ],
+        [
+          15,
+          4
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0
+      ]
+    },
+    "TASK-0009": {
+      "path": [
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          6
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0
+      ]
+    },
+    "TASK-0010": {
+      "path": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0
+      ]
+    },
+    "TASK-0011": {
+      "path": [
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0
+      ]
+    },
+    "TASK-0012": {
+      "path": [
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          6
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0
+      ]
+    },
+    "TASK-0013": {
+      "path": [
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0
+      ]
+    },
+    "TASK-0014": {
+      "path": [
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          14,
+          1
+        ],
+        [
+          14,
+          2
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0
+      ]
+    },
+    "TASK-0015": {
+      "path": [
+        [
+          14,
+          2
+        ],
+        [
+          14,
+          2
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          14,
+          4
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0
+      ]
+    },
+    "TASK-0016": {
+      "path": [
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ],
+        [
+          15,
+          5
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0
+      ]
+    },
+    "TASK-0017": {
+      "path": [
+        [
+          15,
+          4
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ],
+        [
+          15,
+          5
+        ],
+        [
+          15,
+          6
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0
+      ]
+    },
+    "TASK-0018": {
+      "path": [
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          6
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0
+      ]
+    },
+    "TASK-0020": {
+      "path": [
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0
+      ]
+    },
+    "TASK-0021": {
+      "path": [
+        [
+          14,
+          1
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          15,
+          5
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0
+      ]
+    },
+    "TASK-0022": {
+      "path": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0,
+        47.0,
+        48.0
+      ]
+    },
+    "TASK-0024": {
+      "path": [
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0
+      ]
+    },
+    "TASK-0025": {
+      "path": [
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0
+      ]
+    },
+    "TASK-0026": {
+      "path": [
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ],
+        [
+          15,
+          5
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0
+      ]
+    },
+    "TASK-0027": {
+      "path": [
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0,
+        47.0,
+        48.0,
+        49.0,
+        50.0,
+        51.0,
+        52.0
+      ]
+    },
+    "TASK-0028": {
+      "path": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          12,
+          1
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0,
+        47.0,
+        48.0
+      ]
+    },
+    "TASK-0029": {
+      "path": [
+        [
+          10,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0,
+        47.0,
+        48.0,
+        49.0
+      ]
+    },
+    "TASK-0030": {
+      "path": [
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          6
+        ],
+        [
+          15,
+          5
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0,
+        47.0,
+        48.0,
+        49.0,
+        50.0,
+        51.0,
+        52.0
+      ]
+    },
+    "TASK-0032": {
+      "path": [
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          15,
+          5
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0
+      ]
+    },
+    "TASK-0034": {
+      "path": [
+        [
+          12,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          12,
+          1
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0
+      ]
+    },
+    "TASK-0035": {
+      "path": [
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          12,
+          1
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0
+      ]
+    },
+    "TASK-0039": {
+      "path": [
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0,
+        47.0,
+        48.0,
+        49.0,
+        50.0,
+        51.0,
+        52.0
+      ]
+    },
+    "TASK-0040": {
+      "path": [
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0
+      ]
+    },
+    "TASK-0041": {
+      "path": [
+        [
+          11,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0
+      ]
+    },
+    "TASK-0042": {
+      "path": [
+        [
+          13,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0
+      ]
+    },
+    "TASK-0043": {
+      "path": [
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          14,
+          4
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0
+      ]
+    },
+    "TASK-0044": {
+      "path": [
+        [
+          14,
+          7
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          6
+        ],
+        [
+          15,
+          5
+        ],
+        [
+          15,
+          4
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0
+      ]
+    },
+    "TASK-0045": {
+      "path": [
+        [
+          10,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          14,
+          6
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0
+      ]
+    },
+    "TASK-0046": {
+      "path": [
+        [
+          14,
+          4
+        ],
+        [
+          14,
+          4
+        ],
+        [
+          14,
+          4
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          14,
+          6
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ]
+      ],
+      "times": [
+        0,
+        1,
+        2,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0,
+        26.0,
+        27.0,
+        28.0,
+        29.0,
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        34.0,
+        35.0,
+        36.0,
+        37.0,
+        38.0,
+        39.0,
+        40.0,
+        41.0,
+        42.0,
+        43.0,
+        44.0,
+        45.0,
+        46.0
+      ]
+    },
+    "TASK-0047": {
+      "path": [
+        [
+          14,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          14,
+          6
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0
+      ]
+    },
+    "TASK-0048": {
+      "path": [
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          4
+        ]
+      ],
+      "times": [
+        0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0
+      ]
+    }
+  },
+  "attempt_order": [
+    "TASK-0032",
+    "TASK-0041",
+    "TASK-0044",
+    "TASK-0046",
+    "TASK-0006",
+    "TASK-0012",
+    "TASK-0015",
+    "TASK-0017",
+    "TASK-0020",
+    "TASK-0021",
+    "TASK-0025",
+    "TASK-0026",
+    "TASK-0047",
+    "TASK-0048",
+    "TASK-0001",
+    "TASK-0002",
+    "TASK-0003",
+    "TASK-0004",
+    "TASK-0005",
+    "TASK-0007",
+    "TASK-0008",
+    "TASK-0009",
+    "TASK-0010",
+    "TASK-0011",
+    "TASK-0013",
+    "TASK-0014",
+    "TASK-0016",
+    "TASK-0018",
+    "TASK-0019",
+    "TASK-0022",
+    "TASK-0023",
+    "TASK-0024",
+    "TASK-0027",
+    "TASK-0028",
+    "TASK-0029",
+    "TASK-0030",
+    "TASK-0031",
+    "TASK-0033",
+    "TASK-0034",
+    "TASK-0035",
+    "TASK-0036",
+    "TASK-0037",
+    "TASK-0038",
+    "TASK-0039",
+    "TASK-0040",
+    "TASK-0042",
+    "TASK-0043",
+    "TASK-0045",
+    "TASK-0049",
+    "TASK-0050"
+  ],
+  "field_updates": [
+    {
+      "raw_occupancy_count": 0,
+      "temporal_domain": [
+        0,
+        256
+      ],
+      "source_metadata": {
+        "map": "A",
+        "load": 50,
+        "calibration_seeds": [
+          10000,
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010,
+          10011,
+          10012,
+          10013,
+          10014,
+          10015,
+          10016,
+          10017,
+          10018,
+          10019,
+          10020,
+          10021,
+          10022,
+          10023,
+          10024,
+          10025,
+          10026,
+          10027,
+          10028,
+          10029
+        ],
+        "generator": "collision_only_controlled_planner",
+        "rollback": "off",
+        "soft_congestion": "none",
+        "value_semantics": "mean raw occupancy E[psi(x,y,t)] in occupancy-count units",
+        "gaussian_applied_at_test_time": true,
+        "reference_horizon": 256,
+        "calibration_success_rate": 0.848,
+        "calibration_timeout_count": 0,
+        "representation": "historical_gaussian",
+        "soft_kernel": "same_gaussian_as_exact_CPS_A"
+      }
+    },
+    {
+      "raw_occupancy_count": 0,
+      "temporal_domain": [
+        0,
+        256
+      ],
+      "source_metadata": {
+        "map": "A",
+        "load": 50,
+        "calibration_seeds": [
+          10000,
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010,
+          10011,
+          10012,
+          10013,
+          10014,
+          10015,
+          10016,
+          10017,
+          10018,
+          10019,
+          10020,
+          10021,
+          10022,
+          10023,
+          10024,
+          10025,
+          10026,
+          10027,
+          10028,
+          10029
+        ],
+        "generator": "collision_only_controlled_planner",
+        "rollback": "off",
+        "soft_congestion": "none",
+        "value_semantics": "mean raw occupancy E[psi(x,y,t)] in occupancy-count units",
+        "gaussian_applied_at_test_time": true,
+        "reference_horizon": 256,
+        "calibration_success_rate": 0.848,
+        "calibration_timeout_count": 0,
+        "representation": "historical_gaussian",
+        "soft_kernel": "same_gaussian_as_exact_CPS_A"
+      }
+    },
+    {
+      "raw_occupancy_count": 0,
+      "temporal_domain": [
+        0,
+        256
+      ],
+      "source_metadata": {
+        "map": "A",
+        "load": 50,
+        "calibration_seeds": [
+          10000,
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010,
+          10011,
+          10012,
+          10013,
+          10014,
+          10015,
+          10016,
+          10017,
+          10018,
+          10019,
+          10020,
+          10021,
+          10022,
+          10023,
+          10024,
+          10025,
+          10026,
+          10027,
+          10028,
+          10029
+        ],
+        "generator": "collision_only_controlled_planner",
+        "rollback": "off",
+        "soft_congestion": "none",
+        "value_semantics": "mean raw occupancy E[psi(x,y,t)] in occupancy-count units",
+        "gaussian_applied_at_test_time": true,
+        "reference_horizon": 256,
+        "calibration_success_rate": 0.848,
+        "calibration_timeout_count": 0,
+        "representation": "historical_gaussian",
+        "soft_kernel": "same_gaussian_as_exact_CPS_A"
+      }
+    },
+    {
+      "raw_occupancy_count": 0,
+      "temporal_domain": [
+        0,
+        256
+      ],
+      "source_metadata": {
+        "map": "A",
+        "load": 50,
+        "calibration_seeds": [
+          10000,
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010,
+          10011,
+          10012,
+          10013,
+          10014,
+          10015,
+          10016,
+          10017,
+          10018,
+          10019,
+          10020,
+          10021,
+          10022,
+          10023,
+          10024,
+          10025,
+          10026,
+          10027,
+          10028,
+          10029
+        ],
+        "generator": "collision_only_controlled_planner",
+        "rollback": "off",
+        "soft_congestion": "none",
+        "value_semantics": "mean raw occupancy E[psi(x,y,t)] in occupancy-count units",
+        "gaussian_applied_at_test_time": true,
+        "reference_horizon": 256,
+        "calibration_success_rate": 0.848,
+        "calibration_timeout_count": 0,
+        "representation": "historical_gaussian",
+        "soft_kernel": "same_gaussian_as_exact_CPS_A"
+      }
+    }
+  ],
+  "validation": {
+    "node_conflicts": 0,
+    "edge_conflicts": 0,
+    "checked_agents": 41
+  },
+  "field_source_metadata": {
+    "map": "A",
+    "load": 50,
+    "calibration_seeds": [
+      10000,
+      10001,
+      10002,
+      10003,
+      10004,
+      10005,
+      10006,
+      10007,
+      10008,
+      10009,
+      10010,
+      10011,
+      10012,
+      10013,
+      10014,
+      10015,
+      10016,
+      10017,
+      10018,
+      10019,
+      10020,
+      10021,
+      10022,
+      10023,
+      10024,
+      10025,
+      10026,
+      10027,
+      10028,
+      10029
+    ],
+    "generator": "collision_only_controlled_planner",
+    "rollback": "off",
+    "soft_congestion": "none",
+    "value_semantics": "mean raw occupancy E[psi(x,y,t)] in occupancy-count units",
+    "gaussian_applied_at_test_time": true,
+    "reference_horizon": 256,
+    "calibration_success_rate": 0.848,
+    "calibration_timeout_count": 0,
+    "representation": "historical_gaussian",
+    "soft_kernel": "same_gaussian_as_exact_CPS_A"
+  }
+}

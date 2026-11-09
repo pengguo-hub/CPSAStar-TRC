@@ -1,0 +1,9 @@
+{
+  "checked_numeric_entries": 183,
+  "matches": 183,
+  "mismatches": 0,
+  "n_independent_seeds": 5,
+  "two_sided_exact_signflip_minimum_p": 0.0625,
+  "source": "supplied result rows only; Response figures/tables/narrative transcription",
+  "historical_holm_families_not_assumed": true
+}

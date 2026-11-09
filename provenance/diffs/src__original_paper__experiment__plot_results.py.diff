@@ -1,0 +1,33 @@
+--- 20-experiment.zip::experiment/plot_results.py
++++ src/original_paper/experiment/plot_results.py
+@@ -6,6 +6,8 @@
+ 
+ 配置区在脚本顶部，修改 LOG_DIR、MAP_KEYS、TASK_COUNTS_LIST 即可。
+ """
++from pathlib import Path as _RepositoryPath
++_REPO_ROOT = _RepositoryPath(__file__).resolve().parents[2]
+ 
+ import os
+ import json
+@@ -18,10 +20,10 @@
+ # ============================================================
+ # 用户配置区
+ # ============================================================
+-LOG_DIR          = "F:/PythonFiles/pythonProject/SRTP/experiment/oneshot_54"
++LOG_DIR          = str(_REPO_ROOT / 'results/original_paper/one_shot')
+ MAP_KEYS         = ['STANDARD']           # 要画的地图，每种地图输出一张图
+ TASK_COUNTS_LIST = list(range(10, 101, 10))  # 横轴档位，要和实验一致
+-SAVE_DIR         = "F:/PythonFiles/pythonProject/SRTP/experiment/oneshot_54"
++SAVE_DIR         = str(_REPO_ROOT / 'figures/original_paper/one_shot')
+ 
+ # 1. 设置全局中文字体，这里以 SimHei (黑体) 为例
+ plt.rcParams['font.sans-serif'] = ['Times New Roman']
+@@ -159,7 +161,7 @@
+     legend_labels = []
+ 
+     for p in LEGEND_ORDER:
+-        if p not in STYLES:
++        if p not in STYLES or p not in means_sr:
+             continue
+         style = STYLES.get(p, DEFAULT_STYLE).copy()
+         label = DISPLAY_NAMES.get(p, p)

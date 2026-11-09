@@ -1,0 +1,16 @@
+--- 21-R1.zip::R1/R1.5_1.6/plot_R1_gaussian_sensitivity.py
++++ plotting/revision/R1/R1_05_06_gaussian/superseded/plot_R1_gaussian_sensitivity.py
+@@ -13,9 +13,10 @@
+ #   3) all individual panel PNGs
+ # ==========================================================
+ 
+-ZIP_PATH = Path("result_R1_gaussian_sensitivity.zip")
+-WORK_DIR = Path("_R1_gaussian_plot_tmp")
+-OUT_DIR = Path("R1_gaussian_figures")
++_REPO_ROOT = Path(__file__).resolve().parents[5]
++ZIP_PATH = _REPO_ROOT / 'provenance/source_archives/04-result_R1_gaussian_sensitivity.zip'
++WORK_DIR = _REPO_ROOT / 'outputs/plotting_tmp/R1_05_06_gaussian'
++OUT_DIR = _REPO_ROOT / 'figures/revision/R1_05_06_gaussian/alternative'
+ 
+ HIGH_LOAD = {"A": 70, "B": 280, "C": 200}  # Scheme A
+ MAPS = ["A", "B", "C"]

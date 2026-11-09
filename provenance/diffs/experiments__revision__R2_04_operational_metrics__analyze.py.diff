@@ -1,0 +1,13 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/analyze.py
++++ experiments/revision/R2_04_operational_metrics/analyze.py
+@@ -5,8 +5,8 @@
+ import numpy as np
+ import pandas as pd
+ from scipy.stats import t,ttest_1samp
+-from workload import write_json,digest,validate_workload
+-from provenance import cached_result,execution_sources,file_hash
++from experiments.revision.R2_04_operational_metrics.workload import write_json, digest, validate_workload
++from experiments.revision.R2_04_operational_metrics.provenance import cached_result, execution_sources, file_hash
+ 
+ PRIMARY=['throughput','waiting_time','flow_time','queue_length']
+ AUX=['queue_waiting_time','execution_stall_time','movement_time','active_stalled_queue','mean_active_fraction','completed_only_service_time','completed_only_flow','completed','unfinished_fraction','planning_seconds','requeues']

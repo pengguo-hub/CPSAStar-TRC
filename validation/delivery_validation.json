@@ -1,0 +1,14 @@
+{
+  "complete_archive": "CPS-Astar-public-reproducibility.zip",
+  "source_only_archive": "CPS-Astar-public-source-only.zip",
+  "final_result_record": "CPS-Astar-delivery-validation.json supplied alongside the archives",
+  "checks": [
+    "new ZIP creation",
+    "unzip -t",
+    "fresh empty-directory extraction",
+    "SHA256SUMS verification",
+    "compile and explicit imports",
+    "source-only exclusions"
+  ],
+  "source_archive_damage": "Known R2.07 inner damage is preserved; outer ZIP integrity is independent"
+}

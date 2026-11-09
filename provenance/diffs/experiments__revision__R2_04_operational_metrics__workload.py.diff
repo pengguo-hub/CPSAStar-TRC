@@ -1,0 +1,16 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/workload.py
++++ experiments/revision/R2_04_operational_metrics/workload.py
+@@ -2,10 +2,10 @@
+ import hashlib,json,random
+ from pathlib import Path
+ from collections import Counter
+-from original_runtime import load_original
++from experiments.revision.R2_04_operational_metrics.original_runtime import load_original
+ load_original()
+-from benchmark_loader import GridMap
+-from map_config import ALL_MAPS
++from experiments.revision.R2_04_operational_metrics.vendor.portable_vendor.experiment.Lifelong.benchmark_loader import GridMap
++from experiments.revision.R2_04_operational_metrics.vendor.portable_vendor.experiment.Lifelong.map_config import ALL_MAPS
+ ROOT=Path(__file__).resolve().parent
+ SIZES={'STANDARD':(16,11),'FRANSEN':(20,20),'RING':(20,20)}
+ FLEETS={'STANDARD':[30,50],'FRANSEN':[100,200],'RING':[80,160]}

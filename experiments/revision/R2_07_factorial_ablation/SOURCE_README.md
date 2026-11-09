@@ -1,0 +1,93 @@
+# R2-07：原始 Lifelong 四因素消融运行包
+
+本包仅处理 `TRC_Referee_Report_CPS_Astar.pdf` 官方第 7 条，以及前文关于组件归因、Gaussian 证据不足、rollback 拓扑依赖和参数交互的批评。`R4_Response.pdf` 未作为意见依据。
+
+**正式实验未运行：0 / 1440。** 包中 smoke / 复跑 / 原生对照只验证程序，不能作为论文结论。
+
+## 正式设计
+
+| 地图 | 尺寸 | AGV | 初始任务 | 观察窗口 | 组合 | seeds | trials |
+|---|---|---:|---:|---:|---:|---|---:|
+| STANDARD | 16×11 | 50 | 3000 | 0–500，无预热 | 16 | 39–68 | 480 |
+| FRANSEN | 20×20 | 150 | 3000 | 0–500，无预热 | 16 | 39–68 | 480 |
+| RING | 20×20 | 120 | 3000 | 0–500，无预热 | 16 | 39–68 | 480 |
+
+合计 **16 × 3 × 30 = 1440 trials**。完整配置在 `configs/experiment.json`，已生成的逐条件计划在 `verification/formal_plan/trial_plan.csv`。每个地图/seed 内复用同一输入文件及哈希，执行顺序用独立随机流打乱；串行子进程运行。
+
+原论文代码实际启用的基线是 **S1_L0_P1_R1**；S1_L1_P1_R1 是新增 look-ahead 的组合，不能叫原始基线。
+
+| 因素 | 0 | 1 |
+|---|---|---|
+| S | 原始 `path_conflict_dict` 的 raw slot visit counts | 原始 Gaussian 平滑 |
+| L | 原始有效 Manhattan 启发式 | Manhattan + 显式新增的未来邻域拥堵项 |
+| P | 动态评分固定 1，关闭数值 priority swap；保留 rollback 必需重试顺序 | 原始动态评分与 rollback 内 priority swap |
+| R | 原有直接失败并放回任务队列分支 | 原 bounded rollback、blocker selection 与重试分支 |
+
+P×R、S×L 是实现上的真实交互，完整因子设计能估计这些条件性贡献，但不保证贡献可加。P 是“动态评分 + 数值交换”的明确机制组，不能进一步归因为其中某一个子项。详见 `reports/02_factor_definitions.md`。
+
+## 安装与独立运行
+
+推荐 Python 3.12（本次验证环境见 `verification/environment.json`）。在解压后的项目根目录打开终端：
+
+```bash
+python -m venv .venv
+# Windows PowerShell:
+.venv\Scripts\Activate.ps1
+# Windows cmd 可用：.venv\Scripts\activate.bat
+# Linux/macOS 可用：source .venv/bin/activate
+python -m pip install -r requirements-tested.txt
+python tools/verify_package.py
+python verify_sources.py
+python -m unittest discover -s tests -v
+python verify_original.py
+python run.py --smoke --output smoke_local
+python postprocess.py smoke_local --validation-preview
+python run.py --formal --dry-run --output plan_local
+```
+
+第三方依赖为 NumPy、pandas、SciPy、Matplotlib。`requirements-tested.txt` 固定本次验证版本；`requirements.txt` 保留兼容范围。Python 和这些标准第三方包需安装，项目源码、地图和输入生成依赖全部包含，无需旧工程、兄弟目录或 `experiment.zip`。没有离线 wheel 仓库。
+
+由你启动完整正式实验：
+
+```bash
+python run.py --formal --seeds 30 --seed-start 39 --output results_formal
+python postprocess.py results_formal
+```
+
+`run.py` 不带模式时也沿用旧入口的正式默认配置；第一次使用建议明确写 `--smoke` 或 `--dry-run`。`--dry-run` 生成工作负载、1440 个 job 和 CSV 计划，绝不启动 worker。仅改变 `--seeds` 或 `--seed-start` 会明确成为子集/不同设计，不能冒充上述完整正式实验。
+
+## 原始基线与运行边界
+
+`original/` 的 13 个源文件来自实际 `experiment.zip` 字节；`CPS_A_lifelong/` 是正式 worker 真正导入的运行副本。源码校验同时报告实际导入路径。Ticket_Manager 按字节一致；七个 search/预约方法及六个状态/rollback 方法的 AST 一致；其余必要增量有逐文件 diff。
+
+保留原始任务分配、候选任务匹配顺序、任务队列、两阶段 pickup/dropoff、节点/边预约、pending 原有行为、commit/update、失败回队列流程。3000 个请求在构造 planner 时直接进入原始队列，无未来任务注入逻辑。
+
+原始 `MAX_EXPAND=5000` 惰性常量与注释保留，但计数/判断从未启用；未添加其他搜索上限。原始连续等待上限 2 和 rollback 最多重试 5 次保留，二者不是新增搜索截断。
+
+**没有 trial 墙钟超时参数或 timeout 调用，没有 100 步预热，没有持续预约修复、静态可达性预检查或物理碰撞检查。** 原算法可能在某次搜索长时间不返回，本包不会自动杀进程；查看 `current_trial.json`、日志和最近 checkpoint。手动中断会保留中断记录，不作为完整 500 步结果。
+
+## 输出、恢复与统计
+
+每个输出目录包含：
+
+- `trial_plan.csv` / `run_manifest.json`：完整逐 trial 计划、环境、运行代码哈希。
+- `workloads/*.json`：原始地图哈希、初始位置、3000 个带 ID 的请求；所有 release=0。
+- `jobs/*.json`：可移植相对路径、因素和运行设置。
+- `runs/*.json`：结果、任务账本、事件、队列轨迹、实际位置帧、导入记录。
+- `logs/*.log` / `checkpoints/*.json`：标准输出和每 10 个已完成 cycle 的部分诊断。
+- `raw_results.csv` / `data_quality.csv` / `completion_status.json`：全部计划行，包括未运行、失败、中断、提前结束及记录无效状态。
+- 后处理：`summary_results.csv`、`significance_tests.csv`、`seed_contrasts.csv`、五组 PDF/PNG 图、后处理状态文件。
+
+同代码、同计划再次执行相同输出目录会保留已有结果，包括失败结果；不会自动选择性重跑失败。代码或计划变更须使用新目录。后处理只读取结果，不启动仿真。源文件被编辑后校验会失败，不能直接复用旧验证声明。
+
+统计包括相对原基线的 15 个配对对比、4 个主效应、全部 6 个二阶交互、P|R / R|P / S|L / L|S 条件效应。先在每个 seed 内计算对比，再跨独立 seed 汇总。按地图报告，不把地图、组合、任务或时间步当独立 seed。输出有效 n、均值差、95% t CI、bootstrap CI 敏感性、双侧符号翻转检验和按预定义族 Holm 校正。n<2 的 CI/p 留空。
+
+失败、未到窗口末端和缺失组合不参与完整窗口性能均值，但始终出现在可靠性记录及剔除原因中；不得将完整案例分析解释为所有 trial 的无条件表现。完整正式数据才生成数值英文回复辅助稿；现有英文方法回复草稿在 `reports/05_Reviewer2_7_response_draft.md`。
+
+## 验证证据与日志限制
+
+本轮 11 项单元测试、13 文件原始来源核验、四个小场景逐 cycle 原生等价检查、16 组合 smoke 和 1440 条 dry-run 通过。原生等价稠密场景触发 24 次 rollback，验证没有只覆盖“不发生 rollback”的路径。正式规模仿真未执行。
+
+smoke 为 STANDARD、10 辆、40 个初始任务、24 步、seed 39。最新 16 条结构化记录均完整；其中 3 份 stdout 日志存在缺口，分别在 `verification/console_replays/` 单独复跑，任务、事件、位置和字段/队列轨迹与原记录一致，复跑标准输出完整。原日志未覆盖，复跑不计入统计 n。根因尚未确认，因此不宣称原始 stdout 全部完整。此前日志落盘诊断保留在 `verification/diagnostic_initial_smoke/`，也不作为额外独立样本。
+
+打包与独立解压验证见 `verification/package_validation_protocol.md`；全新目录中的实际校验日志收录于 `verification/independent_prepack/`；最终归档还会再次实际测试。所有 smoke 图均标记 NOT FOR MANUSCRIPT。

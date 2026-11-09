@@ -1,0 +1,20 @@
+[
+  {
+    "experiment": "R2_04_operational_metrics",
+    "passed": true,
+    "stdout": "PASS: 14 unchanged original files; bounded integration diff; MAX_EXPAND disabled.\n",
+    "stderr": ""
+  },
+  {
+    "experiment": "R2_05_scalability",
+    "passed": true,
+    "stdout": "PASS: 14 unchanged original files; bounded integration diff; MAX_EXPAND disabled.\n",
+    "stderr": ""
+  },
+  {
+    "experiment": "R2_07_factorial_ablation",
+    "passed": true,
+    "stdout": "{\n  \"passed\": true,\n  \"verified_files\": 42,\n  \"authority_files\": 13,\n  \"imports\": {\n    \"path_planner_lifelong\": \"CPS_A_lifelong/path_planner_lifelong.py\",\n    \"Segment_Planner\": \"CPS_A_lifelong/Segment_Planner.py\",\n    \"Ticket_Manager\": \"CPS_A_lifelong/Ticket_Manager.py\",\n    \"Conflict_Field_Updater\": \"CPS_A_lifelong/Conflict_Field_Updater.py\"\n  },\n  \"original_search_ast\": true,\n  \"ticket_manager_byte_identical\": true,\n  \"active_expansion_cap\": false,\n  \"trial_wall_timeout\": false,\n  \"warmup\": 0,\n  \"physical_checks\": false,\n  \"source_fingerprint\": \"cd1f6f6edeb512b85ce8acd71b22d0d50adff37fee6cc8e85e8a5fff24b6bc0c\"\n}\n",
+    "stderr": ""
+  }
+]

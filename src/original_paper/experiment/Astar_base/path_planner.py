@@ -1,0 +1,525 @@
+import numpy as np
+import json
+from datetime import datetime
+import time
+from src.original_paper.experiment.Astar_base.Conflict_Field_Updater import ConflictFieldUpdater
+from src.original_paper.experiment.Astar_base.Corridor_Generator import CorridorGenerator
+from src.original_paper.experiment.Astar_base.Segment_Planner import SegmentPlanner
+from src.original_paper.experiment.Astar_base.Ticket_Manager import TicketManager
+from src.original_paper.experiment.Astar_base.collision_avoidance import DynamicObstacleHandler
+
+
+class GridMap:
+    def __init__(self, width=100, height=100,cell_size=1):
+        self.width = width
+        self.height = height
+        self.cell_size = cell_size
+        self.grid = np.zeros((height, width), dtype=int) #0表示空地，1表示障碍物
+        self.static_obstacles = set()  # 静态障碍物坐标集合
+        self.dynamic_obstacles = set()  # 动态障碍物集合
+        self.agv_positions = {}  # AGV当前位置字典，格式：{agv_id: (x,y)}
+
+    def add_static_obstacle(self, x, y):
+        """添加静态障碍物"""
+        if 0 <= x < self.width and 0 <= y < self.height:
+            self.grid[y][x] = 1
+            self.static_obstacles.add((x, y))
+
+    def remove_static_obstacle(self, x, y):
+        """移除静态障碍物"""
+        if (x, y) in self.static_obstacles:
+            self.static_obstacles.remove((x, y))
+            self.grid[y][x] = 0
+
+    def add_dynamic_obstacle(self, x, y):
+        """添加动态障碍物"""
+        if 0 <= x < self.width and 0 <= y < self.height:
+            self.dynamic_obstacles.add((x, y))
+
+    def remove_dynamic_obstacle(self, x, y):
+        """移除动态障碍物"""
+        self.dynamic_obstacles.discard((x, y))
+
+    def region_coordinate(self,x,y,value):
+        if 0 <= x < self.width and 0 <= y < self.height:
+            self.grid[y][x] = value
+            self.static_obstacles.add((x,y))
+
+    def get_grid_matrix(self):
+        """返回网格矩阵的深拷贝（NumPy数组）"""
+        return self.grid.copy()  # 深拷贝NumPy数组
+
+
+class LLM_Waypoints:
+    def __init__(self, grid_map,llm_deployer,api_deployer):
+        self.grid = grid_map
+        self.llm_deployer = llm_deployer  # 由外部传入，不在这里加载模型
+        self.llm_waypoints = []
+        self.api_deployer = api_deployer
+
+    #新增✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+    def set_optimized_prompt_builder(self, prompt_builder_func):
+        """设置优化后的prompt构建函数"""
+        self.optimized_prompt_builder = prompt_builder_func
+
+    def llm_generate_waypoints_optimized(self, parsed_tasks):
+        """使用优化后的prompt生成关键点"""
+        if not hasattr(self, 'optimized_prompt_builder'):
+            # 如果没有设置优化prompt，使用原始方法
+            print("🔥🔥🔥没有optimized_prompt_builder")
+            return self.llm_generate_waypoints(parsed_tasks)
+
+        # 使用优化后的prompt
+        width = self.grid.width
+        height = self.grid.height
+        static_obstacles = list(self.grid.static_obstacles)
+        dynamic_obstacles = list(self.grid.dynamic_obstacles)
+
+        tasks_for_llm = [
+            {
+                "task_id": t["task_id"],
+                "agv_id": t["agv_id"],
+                "agv_position": t["agv_position"],
+                "source": t["source"],
+                "destination": t["destination"],
+                "constraints": t.get("constraints", {})
+            }
+            for t in parsed_tasks
+        ]
+
+        optimized_prompt = self.optimized_prompt_builder(width, height, static_obstacles, dynamic_obstacles, tasks_for_llm)
+        # print(f"\n优化后的prompt: {optimized_prompt}")
+        raw_output = self.api_deployer.api_generate_from_full_prompt(optimized_prompt)
+        waypoints_map = self._parse_llm_output(raw_output)
+        # print(f"✨✨LMM路径选取返回内容：{waypoints_map}")
+        validate_waypoints_map = self._validate_waypoints(waypoints_map, parsed_tasks)
+        # print(f"✨✨验证后的waypoints_map:{validate_waypoints_map}")
+        return validate_waypoints_map
+    # ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+
+    def llm_generate_waypoints(self, parsed_tasks):
+        """
+           构建给LLM的路径规划提示词，包含地图尺寸、障碍物、动态信息等
+        """
+        # 地图尺寸
+        width = self.grid.width
+        height = self.grid.height
+        # 静态障碍物（示例格式：[[x1,y1],[x2,y2],...]）
+        static_obstacles = list(self.grid.static_obstacles) # 需自行实现返回列表
+        # 动态障碍物（示例格式：[[x1,y1],[x2,y2],...]）
+        dynamic_obstacles = list(self.grid.dynamic_obstacles)
+
+        # 构建任务列表
+        tasks_for_llm = [
+            {
+                "task_id": t["task_id"],
+                "agv_id": t["agv_id"],
+                "agv_position": t["agv_position"],
+                "source": t["source"],
+                "destination": t["destination"],
+                "constraints": t.get("constraints", {})
+            }
+            for t in parsed_tasks
+        ]
+
+
+        prompt=f"""
+        你是一个高精度路径规划专家，请根据以下信息和要求生成AGV路径规划结果：
+        【输入参数】
+        地图尺寸：{width}x{height}
+        静态障碍物：{static_obstacles}
+        动态障碍物：{dynamic_obstacles}
+
+        【坐标系说明】
+        i为行索引（上→下），j为列索引（左→右），网格值1表示障碍物
+
+        【动作空间】
+        可行动作：
+        0:上[i-1,j] 1:下[i+1,j] 2:右[i,j+1] 3:左[i,j-1],仅允许四领域移动
+
+        【任务列表】
+        每个任务结构如下,每个任务中的task_id是任务编号，agv_id是agv的编号，agv_position是agv的当前位置，source是取货点，destination是放货点：
+        {json.dumps(tasks_for_llm, ensure_ascii=False, indent=2)}
+        【关键点生成要求】
+        - 为每个任务生成个关键路径节点个关键路径点
+        - 策略：最优路径
+        - 排序方式：按效率排序  
+        - 路径要求：高效避开所有障碍物
+
+        1. 必须严格按照指定的JSON格式输出
+        2. waypoints必须包含多个路径点
+        3. 路径必须避开所有障碍物
+        4. 优先选择欧氏距离最短的路径
+        5. 考虑AGV运动约束（4方向移动）
+        6.waypoints起点必须是agv_position，必须包含source，终点必须是destination
+        
+        【】
+        ### 输出格式示例
+        {{
+            "results": [
+                {{
+                    "task_id": "任务ID",
+                    "agv_id": "AGV编号",
+                    "waypoints": [[x1,y1], [x2,y2], ...]
+                }}
+            ]
+        }}
+        请输出规划结果，必须是合法JSON格式。
+        """
+
+        # print(f"/n输入的prompt:{prompt}")
+        # print(f"[DEBUG] tasks_for_llm count: {len(tasks_for_llm)}")
+        raw_output = self.api_deployer.api_generate_from_full_prompt(prompt)
+        # print(f"\n[DEBUG llm_generate] raw_output 返回值: {raw_output}\n*******END********", flush=True)
+        waypoints_map = self._parse_llm_output(raw_output)
+        # print(f"\n[DEBUG llm_generate] waypoints_map 返回值: {waypoints_map}", flush=True)
+        # print(f"[DEBUG] parsed_tasks for validation = {parsed_tasks}", flush=True)
+        valid_waypoints_map = self._validate_waypoints(waypoints_map, parsed_tasks)
+        # if valid_waypoints_map:
+        #     print(f"\n[DEBUG✅,valid_waypoints_map生成成功,valid_waypoints_map type]: {type(valid_waypoints_map)}; contents: {valid_waypoints_map}")
+        return valid_waypoints_map
+
+    def _parse_llm_output(self, llm_output):
+        """
+        支持批量任务的 LLM 输出解析，返回 {task_id: waypoints, ...}
+        """
+        # 直接是 dict 且含 results 字段
+        if isinstance(llm_output, dict) and "results" in llm_output:
+            result = {}
+            for item in llm_output["results"]:
+                task_id = str(item.get("task_id"))
+                agv_id = item.get("agv_id")
+                waypoints = item.get("waypoints", [])
+                if agv_id is None or task_id is None:
+                    continue
+                result[task_id] = {"agv_id":agv_id, "waypoints":waypoints}
+            # print(f"[DEBUG] _parse_llm_output 返回 = {result}", flush=True)
+            return result
+
+        # 如果是字符串，尝试正则提取
+        text = json.dumps(llm_output) if not isinstance(llm_output, str) else llm_output
+        try:
+            # 尝试直接解析
+            parsed = json.loads(text)
+            if "results" in parsed:
+                return {item["agv_id"]: item["waypoints"] for item in parsed["results"]}
+        except Exception:
+            pass
+
+        return {} # 兜底：返回空
+
+    def _validate_waypoints(self, waypoints_map, parsed_tasks, maxlenth=8):
+        """
+        批量校验所有任务的 waypoints。
+        waypoints_map: {task_id:{"agv_id": agv_id,"waypoints":waypoints}, ...}
+        parsed_tasks: 任务列表，含 task_id、agv_id、agv_position、source、destination
+        返回:
+        {
+            agv_id: {
+                "waypoints": [...],
+                "constraints": ...,
+                "agv_position": ...,
+                "source": ...,
+                "destination": ...,
+                "index_map": {
+                    "agv_position": idx1,
+                    "source": idx2,
+                    "destination": idx3
+                }
+            },
+            ...
+        }
+        """
+        #debug
+        # print(f"[DEBUG 1] Enter _validate_waypoints")  # 入口
+        # print(f"[DEBUG 1] waypoints_map keys: {list(waypoints_map.keys())}")
+        # print(f"[DEBUG 1] parsed_tasks count: {len(parsed_tasks)}")
+        valid_map = {}
+        # 构建 task_id 到任务信息的映射
+        task_info_map = {str(t["task_id"]): t for t in parsed_tasks}
+        # print(f"[DEBUG 2] task_info_map keys: {list(task_info_map.keys())}")
+        for task_id, info in waypoints_map.items():
+            # print(f"[DEBUG 3] Processing task_id={task_id}")
+            task = task_info_map.get(task_id, {})
+            if not task:
+                # print(f"[WARN] No parsed task for task_id={task_id}, skipping")
+                continue
+            agv_id = info.get("agv_id")
+            raw_waypoints = info.get("waypoints", [])
+            # print(f"[DEBUG 4] Raw waypoints for {agv_id}: {raw_waypoints}")
+            agv_position = task.get("agv_position")
+            source = task.get("source")
+            destination = task.get("destination")
+            # print(f"[DEBUG 4] agv_position={agv_position}, source={source}, destination={destination}")
+            constraints = task.get("constraints")
+            valid_waypoints = []
+            # 确保起点
+            if not raw_waypoints or raw_waypoints[0] != list(agv_position):
+                print(f"[DEBUG 5] Prepending agv_position")
+                valid_waypoints.append(list(agv_position))
+
+            for idx, pt in enumerate(raw_waypoints):
+                x, y = pt
+                in_bounds = 0 <= x < self.grid.width and 0 <= y < self.grid.height
+                not_dynamic = (x, y) not in self.grid.dynamic_obstacles
+                not_static = (x, y) not in self.grid.static_obstacles
+                is_free = in_bounds and self.grid.grid[y][x] == 0 and not_dynamic and not_static
+
+                # print(f"[DEBUG 6] pt[{idx}]={pt}: in_bounds={in_bounds}, "
+                #       f"grid==0?{self.grid.grid[y][x] == 0 if in_bounds else 'NA'}, "
+                #       f"not_dynamic={not_dynamic}, not_static={not_static}")
+
+                if is_free:
+                    valid_waypoints.append(pt)
+                    # print(f"[DEBUG 6]   → kept")
+                # else:
+                    # print(f"[DEBUG 6]   → dropped")
+            # 确保 source 在中间
+            # source_list = list(source)
+            # if source_list not in valid_waypoints:
+            #     insert_index = min(len(valid_waypoints), max(1, len(valid_waypoints) // 2))
+            #     valid_waypoints.insert(insert_index, source_list)
+                # print(f"[DEBUG 7] Inserted source at idx={insert_index}")
+            # 确保终点
+            # if valid_waypoints[-1] != list(destination):
+            #     valid_waypoints.append(list(destination))
+                # print(f"[DEBUG 9] Appended destination")
+            #计算关键点下标：
+            index_map = {}
+            try:
+                index_map["agv_position"] = valid_waypoints.index(list(agv_position))
+            except Exception:
+                index_map["agv_position"] = None
+            try:
+                index_map["source"] = valid_waypoints.index(list(source))
+            except Exception:
+                index_map["source"] = None
+            try:
+                index_map["destination"] = valid_waypoints.index(list(destination))
+            except Exception:
+                index_map["destination"] = None
+
+            # print(f"[DEBUG 10] valid_waypoints for {agv_id}: {valid_waypoints}")
+            # print(f"[DEBUG 10] index_map: {index_map}")
+
+            valid_map[agv_id] = {
+                "waypoints": valid_waypoints,
+                "constraints": constraints,
+                "agv_position": agv_position,
+                "source": source,
+                "destination": destination,
+                "index_map": index_map
+            }
+        # print(f"[DEBUG 11] Exiting _validate_waypoints with valid_map keys: {list(valid_map.keys())}")
+        return valid_map
+
+
+class IntegratedAGVPlanner:
+    def __init__(self, grid, agv_info,llm_deployer=None, api_deployer=None, waypoint_generator=None, time_window_size=20, buffer_time=0.5):
+        self.grid = grid
+        self.llm_deployer = llm_deployer
+        self.api_deployer = api_deployer
+        self.agv_info=agv_info
+        self.time_window_size = time_window_size
+        self.buffer_time = buffer_time
+        # 状态记录
+        self.agv_tasks = {}  # {agv_id: {path, tickets, ...}}
+        self.corridors = {}  # {corridor_id: corridor_data}
+        self.conflict_field = None  # 动态冲突场
+        # 核心组件
+        self.ticket_manager = TicketManager()
+        self.conflict_updater = ConflictFieldUpdater(self.grid,self.ticket_manager)
+        self.corridor_generator = CorridorGenerator(max_width=3, min_width=1) # 初始化走廊的最大宽度和最小宽度
+        if waypoint_generator is not None:
+            self.waypoint_generator = waypoint_generator
+        else:
+            self.waypoint_generator = LLM_Waypoints(self.grid, self.llm_deployer,self.api_deployer) #由外部设置
+        self.segment_planner = SegmentPlanner(self.grid, self.ticket_manager, self.corridor_generator,self.conflict_updater)
+        self.collision_avoidance = DynamicObstacleHandler(
+            grid=self.grid,
+            ticket_manager=self.ticket_manager,
+            segment_planner=self.segment_planner,
+            path = {aid: info["path"] for aid, info in self.agv_tasks.items() if "path" in info},
+            current_time = datetime.now(),
+            agv_info=agv_info
+        )
+
+
+    def batch_plan(self,parsed_tasks):
+        # ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+        time_now=0
+
+        # Step 1: 生成关键路径点
+        if self.waypoint_generator  is None:
+            raise ValueError("waypoint_generator未设置")
+        # waypoints_map = self.waypoint_generator.llm_generate_waypoints_optimized(parsed_tasks)
+        waypoints_map = self.waypoint_generator.llm_generate_waypoints(parsed_tasks) # 用于test.py
+        for agv_id, info in waypoints_map.items():
+            info["waypoints"] = [tuple(pt) for pt in info["waypoints"]]  # 把原来的list换成tuple[(x1,y1),...,(xn,yn)]
+
+        # Step 2: 按优先级排序
+        ## 初始化任务状态
+        self.agv_tasks = {
+            agv_id: {
+                'start': info['waypoints'][0],
+                'end': info['waypoints'][-1],
+                'constraints': info['constraints'],
+                'waypoints': [tuple(info['agv_position']),tuple(info['source']),tuple(info['destination'])],
+                'path': [],
+                'position': info['waypoints'][0]
+            }
+            for agv_id, info in waypoints_map.items()
+        }
+        # for agv_id,task in self.agv_tasks.items():
+        #     print(f"{agv_id},waypoints={task['waypoints']}")
+
+        sorted_agvs = self._sort_agvs_by_priority_and_deadline()
+
+        # >>>>>>>>>> 新增：注册所有 AGV 起点占用 <<<<<<<<<<
+        for agv_id, info in self.agv_tasks.items():
+            reservations = []
+            start_pos = info['waypoints'][0]
+            priority = sorted_agvs[agv_id]
+            # 记录预占的时间点
+            reserved_times = set()
+            for i in range(self.segment_planner.MAX_WAIT + 1):
+                t = round(time_now + i * self.conflict_updater.delta, 1)
+                reservations.append((start_pos, t))
+                reserved_times.add(t)
+            success = self.ticket_manager.reserve(agv_id, reservations, priority)
+            if success:
+                self.agv_tasks[agv_id]['reserved_start_times'] = reserved_times
+            # else:
+            #     print(f" {agv_id} 在起点{start_pos}预约失败")
+
+        # initial_reservations = self.ticket_manager.get_all_reservations()
+        # print(
+        #         f"  起点预约过后ticket - base_planner任务占用的节点预约: {len(initial_reservations.get('node_reservations', {}))} 个")
+        # print(
+        #         f"  起点预约过后ticket - base_plannner任务占用的边预约: {len(initial_reservations.get('edge_reservations', {}))} 个")
+
+        # Step 3: 分段规划
+        paths = {}
+        for agv_id in sorted_agvs:
+            weighted_priority = sorted_agvs[agv_id]
+            path,times = self.segment_planner.plan_agv(
+                agv_id=agv_id,
+                waypoints=self.agv_tasks[agv_id]['waypoints'],
+                priority=weighted_priority,
+                max_retries=3,
+                enable_turn_penalty= True,
+                agv_info=self.agv_info,
+                current_time=round(time_now,1)
+            ) # 多轮根据冲突势场调整走廊宽度
+
+            if path:
+                # print(f"完整的路径：{path}")
+                paths[agv_id] = path
+                self.agv_tasks[agv_id]['path'] = path
+                self.agv_tasks[agv_id]['times'] = times
+                self.agv_tasks[agv_id]['status'] = 'planned'
+                self._release_unused_start_reservations(agv_id)
+                initial_reservations = self.ticket_manager.get_all_reservations()
+                # print(
+                #     f"  删除起点预约 - base_planner任务占用的节点预约: {len(initial_reservations.get('node_reservations', {}))} 个")
+                # 动态更新冲突场
+               #self.conflict_dict = self.conflict_updater.update_from_existing_paths(paths)
+               #self.segment_planner.update_conflict_field(self.conflict_dict)
+            #collision_avoidance
+            # sensor_data = ...  # 外部感知、仿真采集或测试
+            # self.collision_avoidance.update_sensor_data(sensor_data)
+            # conflicts = self.collision_avoidance.check_future_conflicts(lookahead_time=10, replan_window=5)
+            # print(f"[DEBUG] 检测到未来冲突: {conflicts}", flush=True)
+        # Historical local debug path omitted in the public copy.
+        return paths
+
+    def _sort_agvs_by_priority_and_deadline(self):
+        """
+        同时考虑 priority（emergency>high>normal）与 time_limit（HH:MM 格式或 None）排序，
+        返回排序后的 AGV ID 列表。
+        """
+        now = datetime.now()
+        # 优先级映射
+        priority_map = {'emergency': 3, 'high': 2, 'normal': 1}
+
+        scores = {}
+        # 先找出所有非 None 的剩余分钟，用于归一化
+        all_time_left = []
+        for agv_id, task in self.agv_tasks.items():
+            time_limit = task['constraints'].get('time_limit')
+            if time_limit:
+                # 解析为 datetime（只取今日 HH:MM）
+                deadline = datetime.strptime(time_limit, "%H:%M").replace(
+                    year=now.year, month=now.month, day=now.day
+                )
+                time_left =  (deadline - now).total_seconds() / 60
+            else:
+                time_left = None
+            task['priority_val'] = priority_map.get(task['constraints'].get('priority'), 1)
+            task['timeleft_val'] = time_left
+            if time_left is not None:
+                all_time_left.append(time_left)
+
+        max_time_left = max(all_time_left) if all_time_left else 1
+
+        # 计算综合得分：优先级归一化 + （1 - 剩余时间归一化）
+        for agv_id, task in self.agv_tasks.items():
+            priority_norm = task['priority_val'] / 3.0
+            time_left_raw = task['timeleft_val']
+            if time_left_raw is None:
+                time_norm = 0.0
+            else:
+                if time_left_raw < 0:
+                    urgency_factor = 2
+                    time_norm = 1 + (-time_left_raw)/max_time_left * urgency_factor
+                else:
+                    time_norm = 1 - (task['timeleft_val'] / max_time_left)
+            # 权重各 0.5，可按需调整
+            scores[agv_id] = 0.5 * priority_norm + 0.5 * time_norm
+
+        # 按分数降序返回 AGV ID 列表
+        return { agv_id: scores[agv_id] for agv_id in sorted(scores.keys(), key=lambda x: scores[x], reverse=True)}
+
+    def _release_unused_start_reservations(self, agv_id):
+        """基于实际路径时间，释放未使用的起点预约"""
+        task = self.agv_tasks[agv_id]
+
+        if 'reserved_start_times' not in task:
+            # print(f"{agv_id} 无 reserved_start_times")
+            return
+
+        if 'times' not in task or 'path' not in task:
+            print(f"{agv_id} 无 path 或 times，无法判断预约使用情况")
+            return
+
+        start_pos = tuple(task['waypoints'][0])
+        reserved_times = set(round(t, 1) for t in task['reserved_start_times'])  # 统一精度
+
+        # ✅ 从真实路径中提取在起点的时间点
+        path = task['path']
+        times = task['times']
+        used_times_in_start = set()
+
+        for pos, t in zip(path, times):
+            pos = tuple(pos)
+            rounded_t = round(t, 1)
+            if pos == start_pos and rounded_t in reserved_times:
+                used_times_in_start.add(rounded_t)
+
+        times_to_release = reserved_times - used_times_in_start
+
+        # 逐个释放
+        for t in times_to_release:
+            key = (start_pos, t)
+            # 从 node_reservations 中安全移除该 AGV未使用的起点的预约
+            if key in self.ticket_manager.node_reservations:
+                self.ticket_manager.node_reservations[key].pop(agv_id, None)
+                # 如果这个时空点没有 AGV 了，删除整个条目
+                if not self.ticket_manager.node_reservations[key]:
+                    del self.ticket_manager.node_reservations[key]
+
+            # 2. 从反向索引中移除
+            self.ticket_manager.agv_reservations[agv_id].discard((start_pos, t))
+
+        # print(f"AGV {agv_id}: 释放了 {len(times_to_release)} 个未使用的起点预约")
+

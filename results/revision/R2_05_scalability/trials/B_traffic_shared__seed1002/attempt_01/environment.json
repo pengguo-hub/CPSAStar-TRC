@@ -1,0 +1,33 @@
+{
+  "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]",
+  "numpy": "2.1.3",
+  "platform": "Linux-5.15.0-112-generic-x86_64-with-glibc2.35",
+  "processor": "x86_64",
+  "source_hash": "89396635d4c5f9d363d898eee42b9cd6c5b4bf4a2a49d861b099b127b1f6384e",
+  "source_files": {
+    "original_runtime.py": "494a9e444b5b15a6ba2554dedf8fddafcac9a881453f58e29ce57a0cf0cd51d7",
+    "common.py": "b5fa34b26cc08876ed5772563a9872f141838cbac555106f139ed81a1e66658c",
+    "protocol.py": "030f8078632c78e4107e19c460df76957044423f25cce6445e1e4100cbd127ec",
+    "recorder.py": "239e2c416c9e9e43098dd9f03b6e960770341a5168bce82806f31e710aaf86ba",
+    "worker.py": "8d674e35d76a30eee563ed4b4831bb5b977906a273e37b8d9ee245819ecebab0",
+    "integration/path_planner_lifelong.py": "7062a54a8334b85141db2bc05605c250ce66130ca2bbdb043654605c31bf2370",
+    "configs/traffic_couplings.json": "96dd0e3217731a401cc8b90ea3ee34edb1f18ed661f952bc4176b9992fa67794",
+    "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Conflict_Field_Updater.py": "0487443c0b4e572d873bbe4dbdc956cd13af975ec23e7f061c61f9b7f67cb2f1",
+    "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Segment_Planner.py": "ef9085c90759572c963bba8058a5c0a58f653f3f9ef99eb812e5506635b2e798",
+    "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/Ticket_Manager.py": "3dbdffae675185635b76eadedb8c02157b19d1b980da8eb74f34dabe20458fe2",
+    "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/benchmark_loader.py": "f7e0973235fbf2033f9dc2f8a07fff6888fb2738e2c11c9f879cb3e4e3bd9440",
+    "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/path_planner_lifelong.py": "2fe8a3302e8a69bd10ac5ad982c2b87d2c0ca3f03bde403b6dc2ceff56bda8da",
+    "vendor/SRTP/experiment/Lifelong/CPS_A_lifelong/test_lifelong.py": "bfa1dd2cfa31ff55211a9bac74798ffbfada17796ec11c86d7eed0b89ddc9e9a",
+    "vendor/SRTP/experiment/Lifelong/benchmark_loader.py": "c6c39ebdaf9c7392f897a3f10c11506fb611492bb609fef1a7232fbd256cde1e",
+    "vendor/SRTP/experiment/Lifelong/custom_benchmark_loader.py": "83e0c2dad1df6b9afe7857fc8d18137709e4ecd1316a578a4365215f9fd2af41",
+    "vendor/SRTP/experiment/Lifelong/map_config.py": "8e2bdfaec88063706d0b4528cd1598d2249eca324e2195eca7e51af671c24b2b",
+    "vendor/SRTP/experiment/Lifelong/plot_throughput_ourmaps.py": "e210eaf0dc7904a05c0de08cb1a1ad740c2026d6b1ec7ed78f0b979dda51d51f",
+    "vendor/SRTP/experiment/Lifelong/task_generator.py": "f3569144ceaa41fac51fb0a57bf418dd4476e4e803e3f15cf7f5d00977396c13",
+    "vendor/SRTP/experiment/Lifelong/test_ourmap.py": "b4d8c2f35d7443205338c44f6c5416309aa18decb66c0cb311605592e8217b6f",
+    "vendor/SRTP/experiment/map_config.py": "ab660fed08a6bae60e0e49b0c5fa5562b7b3b698f59f8edd8900c876d0028255"
+  },
+  "trial_wall_timeout": null,
+  "max_expand_enabled": false,
+  "purpose": "formal"
+}

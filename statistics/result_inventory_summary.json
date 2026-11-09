@@ -1,0 +1,17 @@
+{
+  "revision_analysis_rows": {
+    "R1_03_dmin": 90,
+    "R1_05_06_gaussian": 480,
+    "R1_07_08_delta": 105,
+    "R1_09_retry_limit": 180,
+    "R2_02_representation": 240,
+    "R2_03_parameter_interactions": 2520,
+    "R2_04_operational_metrics": 180,
+    "R2_05_scalability": 70,
+    "R2_07_factorial_ablation": 240
+  },
+  "revision_analysis_row_total": 4105,
+  "original_one_shot_algorithm_seed_rows": 1310,
+  "original_one_shot_files": 42,
+  "result_files": 3745
+}

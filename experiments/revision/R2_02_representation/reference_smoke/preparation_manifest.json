@@ -1,0 +1,46 @@
+{
+  "config": {
+    "alpha": 1.0,
+    "gamma": 5.0,
+    "omega": 50.0,
+    "L": 1,
+    "T": 1,
+    "sigma_l": 2.0,
+    "sigma_t": 2.0,
+    "delta": 1,
+    "speed": 1.0,
+    "max_wait": 2,
+    "lookahead_radius": 1,
+    "lookahead_slots": 2,
+    "update_interval": 20,
+    "retry_limit": 5,
+    "timeout": 60.0,
+    "neutral_radius": 1,
+    "neutral_time_radius": 1,
+    "bootstrap_replicates": 10000,
+    "statistics_seed": 20261017,
+    "test_seed_start": 42,
+    "time_shift_fraction": 0.5,
+    "reference_horizon": 256,
+    "source_profile": "direct_R1_aligned_controlled_representation_fixed_turn0.5"
+  },
+  "maps": [
+    "A"
+  ],
+  "calibration_seeds": [
+    10000,
+    10001
+  ],
+  "loads": {
+    "A": [
+      20
+    ]
+  },
+  "generator": "collision_only_controlled_planner",
+  "rollback": "off",
+  "soft_congestion": "none",
+  "learned_epochs": 1,
+  "samples_per_episode": 3,
+  "hidden": 24,
+  "smoke": true
+}

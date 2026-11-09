@@ -1,0 +1,10 @@
+{
+  "source_zip": "19-R2_7_results_merged_seed42_46.zip",
+  "trials_used": 240,
+  "map_seed_blocks": 15,
+  "readable_json": 237,
+  "unreadable_json": 3,
+  "effects_rows": 864,
+  "figure_effect_rows": 48,
+  "output": "/workspace/scratch/6a72a05bf429/updated/CPS-Astar-public-reproducibility/figures/revision/R2_07_factorial_ablation"
+}

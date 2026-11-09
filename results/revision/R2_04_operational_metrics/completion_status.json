@@ -1,0 +1,21 @@
+{
+  "expected_trials": 180,
+  "validated_trials": 180,
+  "remaining_or_invalid": 0,
+  "smoke": false,
+  "formal_complete": true,
+  "purpose": "formal",
+  "independent_seed_count": 5,
+  "seeds": [
+    39,
+    40,
+    41,
+    42,
+    43
+  ],
+  "suite": "all",
+  "trial_wall_timeout": null,
+  "status_counts": {
+    "completed": 180
+  }
+}

@@ -1,0 +1,17 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/run.py
++++ experiments/revision/R2_04_operational_metrics/run.py
+@@ -2,10 +2,10 @@
+ import argparse,json,platform,random,sys
+ from pathlib import Path
+ import pandas as pd
+-from workload import plan_cases,build_workload,write_json,digest,FLEETS
+-from provenance import ROOT,execution_sources,job_hash,file_hash,cached_result
+-from original_runtime import source_audit
+-from execution import output_lock,run_trial,emit,utc,read_optional
++from experiments.revision.R2_04_operational_metrics.workload import plan_cases, build_workload, write_json, digest, FLEETS
++from experiments.revision.R2_04_operational_metrics.provenance import ROOT, execution_sources, job_hash, file_hash, cached_result
++from experiments.revision.R2_04_operational_metrics.original_runtime import source_audit
++from experiments.revision.R2_04_operational_metrics.execution import output_lock, run_trial, emit, utc, read_optional
+ 
+ def gate_check():
+     expected=read_optional(ROOT/'provenance/r204_baseline_files.json')

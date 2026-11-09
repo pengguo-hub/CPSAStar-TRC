@@ -1,0 +1,7 @@
+{
+  "expected": 240,
+  "completed": 240,
+  "all_jobs_complete": true,
+  "independent_seed_count": 5,
+  "smoke": false
+}

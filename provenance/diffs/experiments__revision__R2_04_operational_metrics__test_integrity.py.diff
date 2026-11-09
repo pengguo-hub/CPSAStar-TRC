@@ -1,0 +1,13 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/test_integrity.py
++++ experiments/revision/R2_04_operational_metrics/test_integrity.py
+@@ -1,8 +1,8 @@
+ """Small rejection tests for tampered records; no new experiment is run."""
+ import argparse,copy,gzip,json
+ from pathlib import Path
+-from workload import ROOT,build_workload,plan_cases,validate_workload,write_json
+-from analyze import audit_one
++from experiments.revision.R2_04_operational_metrics.workload import ROOT, build_workload, plan_cases, validate_workload, write_json
++from experiments.revision.R2_04_operational_metrics.analyze import audit_one
+ def must_reject(name,fn,results):
+     try:fn()
+     except (AssertionError,ValueError,RuntimeError) as ex:results.append(dict(test=name,passed=True,rejection=type(ex).__name__))

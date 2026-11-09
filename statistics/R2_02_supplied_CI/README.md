@@ -1,0 +1,1 @@
+Derived from unchanged saved data with the newly supplied statistics_analysis.py. run_validation.csv extracts stored validation records from 240 source run JSON files; it is not a newly executed collision test. Raw inputs are never overwritten. Figures preserve the supplied bootstrap-CI convention and fixed axis limits; the separately labeled SD reconstruction remains available.

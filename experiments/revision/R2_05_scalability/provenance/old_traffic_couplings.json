@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "map": "FRANSEN",
+  "origins": [
+    [
+      5,
+      7
+    ],
+    [
+      14,
+      7
+    ],
+    [
+      5,
+      12
+    ],
+    [
+      14,
+      12
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      12,
+      5
+    ],
+    [
+      7,
+      14
+    ],
+    [
+      12,
+      14
+    ]
+  ],
+  "destinations": [
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      14
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      19
+    ],
+    [
+      14,
+      0
+    ],
+    [
+      14,
+      19
+    ],
+    [
+      19,
+      5
+    ],
+    [
+      19,
+      14
+    ]
+  ],
+  "distance_by_origin": [
+    16,
+    16,
+    16,
+    16,
+    21,
+    21,
+    21,
+    21
+  ],
+  "endpoint_buffer_radius": 1,
+  "headway_radius": 2,
+  "selection": "geometry-only enumeration; fixed origin-specific distances and bijective destinations; choose minimum, nearest score midpoint, maximum reference overlap; no trial outcomes used",
+  "feasible_permutations": 16,
+  "score_definition": "mean pair overlap of all-shortest-path interior visit probabilities, excluding all origin/destination graph-radius-1 neighborhoods",
+  "levels": {
+    "dispersed": {
+      "permutation": [
+        4,
+        2,
+        5,
+        3,
+        7,
+        1,
+        6,
+        0
+      ],
+      "reference_overlap": 0.7259398623331281
+    },
+    "intermediate": {
+      "permutation": [
+        6,
+        2,
+        7,
+        3,
+        5,
+        1,
+        4,
+        0
+      ],
+      "reference_overlap": 1.1531589307292283
+    },
+    "shared": {
+      "permutation": [
+        6,
+        0,
+        7,
+        1,
+        5,
+        3,
+        4,
+        2
+      ],
+      "reference_overlap": 1.6596970202372197
+    }
+  }
+}

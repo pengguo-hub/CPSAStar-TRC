@@ -1,0 +1,7 @@
+# R1_09_retry_limit
+
+Portable source copy; imports/paths changed, planner function logic unchanged.
+
+Canonical data: results/revision/R1_09_retry_limit. See [commands](../../../REPRODUCIBILITY.md), [experiment map](../../../docs/EXPERIMENTS.md) and [statistics](../../../docs/STATISTICS.md).
+
+SOURCE_README.md, when present, is supplied historical documentation; root instructions govern the portable package.

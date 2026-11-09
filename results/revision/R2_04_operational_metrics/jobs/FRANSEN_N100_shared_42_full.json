@@ -1,0 +1,24 @@
+{
+  "case": "FRANSEN_N100_shared",
+  "seed": 42,
+  "variant": "full",
+  "purpose": "formal",
+  "code_hash": "c605b423f78d34aa1fd80def0aab5e34656fdbc0151f7ae8d592a564bda3fa07",
+  "condition": {
+    "name": "FRANSEN_N100_shared",
+    "map": "FRANSEN",
+    "fleet": 100,
+    "horizon": 500,
+    "mode": "backlogged",
+    "arrival_rate": null,
+    "concentration": null,
+    "od_mode": "shared",
+    "followup": 500,
+    "initial_backlog": 3000,
+    "tiles": 1,
+    "protocol": "R2_04_fixed_OD_backlog3000_v1"
+  },
+  "workload_hash": "7e45a510a64aacf6f11d5dd9075a5936a70ac195c8a124f713db4048a93dd2ae",
+  "workload_file": "/root/autodl-tmp/R2_04_OD_backlog_ready_to_run/results_od_formal/workloads/FRANSEN_N100_shared_42.json",
+  "job_hash": "63eb40b3111f3d5e9609ebaf70d440c8430ddfde5e94e16fe4850639f6ae154f"
+}

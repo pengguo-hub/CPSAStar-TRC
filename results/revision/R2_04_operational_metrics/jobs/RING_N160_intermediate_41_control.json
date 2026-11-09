@@ -1,0 +1,24 @@
+{
+  "case": "RING_N160_intermediate",
+  "seed": 41,
+  "variant": "control",
+  "purpose": "formal",
+  "code_hash": "c605b423f78d34aa1fd80def0aab5e34656fdbc0151f7ae8d592a564bda3fa07",
+  "condition": {
+    "name": "RING_N160_intermediate",
+    "map": "RING",
+    "fleet": 160,
+    "horizon": 500,
+    "mode": "backlogged",
+    "arrival_rate": null,
+    "concentration": null,
+    "od_mode": "intermediate",
+    "followup": 500,
+    "initial_backlog": 3000,
+    "tiles": 1,
+    "protocol": "R2_04_fixed_OD_backlog3000_v1"
+  },
+  "workload_hash": "3d4364e209f55f366cd58bbec9188524f96fc99222023e09e3c55857f9ed2bcf",
+  "workload_file": "/root/autodl-tmp/R2_04_OD_backlog_ready_to_run/results_od_formal/workloads/RING_N160_intermediate_41.json",
+  "job_hash": "25fc1fc370a2978beaba2e52553a2ff064efe142776e69b463208356cefa5a41"
+}

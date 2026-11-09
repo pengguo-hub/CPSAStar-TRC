@@ -1,0 +1,15 @@
+--- 20-experiment.zip::experiment/Lifelong/custom_benchmark_loader.py
++++ src/original_paper/experiment/Lifelong/custom_benchmark_loader.py
+@@ -1,9 +1,9 @@
+ from collections import deque
+ import random
+ 
+-from benchmark_loader import GridMap
+-from map_config import ALL_MAPS
+-from task_generator import generate_test_tasks
++from src.original_paper.experiment.Lifelong.benchmark_loader import GridMap
++from src.original_paper.experiment.Lifelong.map_config import ALL_MAPS
++from src.original_paper.experiment.Lifelong.task_generator import generate_test_tasks
+ 
+ 
+ MANUAL_MAP_SIZES = {

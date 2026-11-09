@@ -1,0 +1,13 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/provenance/reproduce_geometry_candidates.py
++++ experiments/revision/R2_04_operational_metrics/provenance/reproduce_geometry_candidates.py
+@@ -2,8 +2,8 @@
+ import sys,itertools,json,collections,time
+ from pathlib import Path
+ import numpy as np
+-sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+-from workload import grid_for
++pass  # Package imports replace process-wide import-path mutation.
++from experiments.revision.R2_04_operational_metrics.workload import grid_for
+ 
+ def prepare(mp,O,D):
+  g=grid_for(mp).grid;V=[(x,y) for y in range(g.shape[0]) for x in range(g.shape[1]) if g[y,x]==0];ix={p:i for i,p in enumerate(V)};adj=[[ix[q] for q in [(x+1,y),(x-1,y),(x,y+1),(x,y-1)] if q in ix] for x,y in V]

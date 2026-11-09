@@ -1,0 +1,36 @@
+--- 20-experiment.zip::experiment/Lifelong/Guide_Paths/guided_pibt/mapf_planner.py
++++ src/original_paper/experiment/Lifelong/Guide_Paths/guided_pibt/mapf_planner.py
+@@ -76,25 +76,14 @@
+ 
+ _WORKSPACE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ if _WORKSPACE not in _sys.path:
+-    _sys.path.insert(0, _WORKSPACE)
+-
+-
+-from traffic_mapf.types import (
+-    SharedEnvironment as TFSharedEnv,
+-    AgentState as TFAgentState,
+-    Int4, HeuristicTable, Dist2Path,
+-    MAX_TIMESTEP, GUIDANCE_LNS, LNS_GROUP_SIZE,
+-)
+-from traffic_mapf.heuristics import (
+-    init_heuristic, get_heuristic,
+-    init_dist_2_path, get_dist_2_path,
+-)
+-from traffic_mapf.traj_lns import TrajLNS
+-from traffic_mapf.flow import (
+-    init_traj, init_dist_table, destroy_improve,
+-    add_traj, remove_traj, update_traj,
+-)
+-from traffic_mapf.utils import get_neighbor_locs
++    pass  # Package imports replace process-wide import-path mutation.
++
++
++from src.original_paper.experiment.Lifelong.Guide_Paths.traffic_mapf.types import SharedEnvironment as TFSharedEnv, AgentState as TFAgentState, Int4, HeuristicTable, Dist2Path, MAX_TIMESTEP, GUIDANCE_LNS, LNS_GROUP_SIZE
++from src.original_paper.experiment.Lifelong.Guide_Paths.traffic_mapf.heuristics import init_heuristic, get_heuristic, init_dist_2_path, get_dist_2_path
++from src.original_paper.experiment.Lifelong.Guide_Paths.traffic_mapf.traj_lns import TrajLNS
++from src.original_paper.experiment.Lifelong.Guide_Paths.traffic_mapf.flow import init_traj, init_dist_table, destroy_improve, add_traj, remove_traj, update_traj
++from src.original_paper.experiment.Lifelong.Guide_Paths.traffic_mapf.utils import get_neighbor_locs
+ 
+ 
+ # ===========================================================================

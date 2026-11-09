@@ -1,0 +1,31 @@
+--- 20-experiment.zip::experiment/Lifelong/RHCR/test_rhcr.py
++++ src/original_paper/experiment/Lifelong/RHCR/test_rhcr.py
+@@ -2,21 +2,23 @@
+ test_rhcr.py - RHCR 对比测试脚本
+ 接口与 test_lifelong.py 完全一致，确保实验对比公平。
+ """
++from pathlib import Path as _RepositoryPath
++_REPO_ROOT = _RepositoryPath(__file__).resolve().parents[4]
+ import time
+ import sys
+ import os
+ from datetime import datetime
+ 
+-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++pass  # Package imports replace process-wide import-path mutation.
+ 
+-from SRTP.experiment.Lifelong.benchmark_loader import BenchmarkLoader
+-from rhcr_lifelong import RHCRPlanner
++from src.original_paper.experiment.Lifelong.benchmark_loader import BenchmarkLoader
++from src.original_paper.experiment.Lifelong.RHCR.rhcr_lifelong import RHCRPlanner
+ 
+ # =========================================================================
+ # 配置区：与 test_lifelong.py 保持完全一致
+ # =========================================================================
+-MAP_FILE  = "F:/PythonFiles/pythonProject/SRTP/experiment/Lifelong/scenarios/random-64-10/random-64-64-10.map"
+-SCEN_FILE = "F:/PythonFiles/pythonProject/SRTP/experiment/Lifelong/scenarios/random-64-10/scen-random/random-64-64-10-random-1.scen"
++MAP_FILE  = str(_REPO_ROOT / 'data/original_paper/experiment/Lifelong/scenarios/random-64-10/random-64-64-10.map')
++SCEN_FILE = str(_REPO_ROOT / 'data/original_paper/experiment/Lifelong/scenarios/random-64-10/scen-random/random-64-64-10-random-1.scen')
+ 
+ NUM_AGVS  = 100
+ MAX_TASKS = 1000

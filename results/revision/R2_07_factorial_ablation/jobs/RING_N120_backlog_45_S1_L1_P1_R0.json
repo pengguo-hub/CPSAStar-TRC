@@ -1,0 +1,21 @@
+{
+  "trial_id": "RING_N120_backlog_45_S1_L1_P1_R0",
+  "case": "RING_N120_backlog",
+  "map": "RING",
+  "seed": 45,
+  "variant": {
+    "name": "S1_L1_P1_R0",
+    "S": 1,
+    "L": 1,
+    "P": 1,
+    "R": 0
+  },
+  "workload": "workloads/RING_N120_backlog_45.json",
+  "result": "runs/RING_N120_backlog_45_S1_L1_P1_R0.json",
+  "checkpoint": "checkpoints/RING_N120_backlog_45_S1_L1_P1_R0.json",
+  "log": "logs/RING_N120_backlog_45_S1_L1_P1_R0.log",
+  "workload_hash": "9a90e7fba2dd7f3d9278e8d792bca77b675e34fd7b1ada5bb62e468b0c09d913",
+  "code_hash": "fbfd4c06bf5e5fed9467d6e4ab4b1cf3ed7149ab066e314b90808495422d4a43",
+  "horizon": 500,
+  "warmup": 0
+}

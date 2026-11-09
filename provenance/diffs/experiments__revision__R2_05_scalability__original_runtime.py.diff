@@ -1,0 +1,29 @@
+--- 11-R2-05.zip::R2-05/original_runtime.py
++++ experiments/revision/R2_05_scalability/original_runtime.py
+@@ -10,7 +10,7 @@
+ 
+ ROOT = Path(__file__).resolve().parent
+ VENDOR = ROOT / 'vendor'
+-LIFELONG = VENDOR / 'SRTP/experiment/Lifelong'
++LIFELONG = VENDOR / 'portable_vendor/experiment/Lifelong'
+ CORE = LIFELONG / 'CPS_A_lifelong'
+ 
+ 
+@@ -21,13 +21,13 @@
+ 
+ 
+ def load_original():
+-    # Original absolute sibling imports and SRTP.experiment.map_config both work.
++    # Original absolute sibling imports and the reference map module are resolved explicitly.
+     # The Lifelong loader is ahead of the duplicate MovingAI-only core loader.
+-    sys.path[:0] = [str(LIFELONG), str(CORE), str(VENDOR)]
++    pass  # Package imports replace process-wide import-path mutation.
+     names = ['custom_benchmark_loader', 'CPS_A_lifelong.path_planner_lifelong',
+              'Conflict_Field_Updater', 'Segment_Planner', 'Ticket_Manager',
+-             'benchmark_loader', 'map_config', 'task_generator', 'SRTP.experiment.map_config']
+-    modules = {n: importlib.import_module(n) for n in names}
++             'benchmark_loader', 'map_config', 'task_generator', 'reference_map_config']
++    modules = {n: importlib.import_module({'custom_benchmark_loader': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.custom_benchmark_loader', 'CPS_A_lifelong.path_planner_lifelong': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.CPS_A_lifelong.path_planner_lifelong', 'Conflict_Field_Updater': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.CPS_A_lifelong.Conflict_Field_Updater', 'Segment_Planner': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.CPS_A_lifelong.Segment_Planner', 'Ticket_Manager': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.CPS_A_lifelong.Ticket_Manager', 'benchmark_loader': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.benchmark_loader', 'map_config': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.map_config', 'task_generator': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.Lifelong.task_generator', 'reference_map_config': 'experiments.revision.R2_05_scalability.vendor.portable_vendor.experiment.map_config'}[n]) for n in names}
+     paths = {n: str(Path(m.__file__).resolve()) for n, m in modules.items()}
+     # This is source provenance, not a map reachability or planner feasibility check.
+     if not all(Path(p).is_relative_to(VENDOR.resolve()) for p in paths.values()):

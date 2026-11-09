@@ -1,0 +1,16 @@
+--- 20-experiment.zip::experiment/Lifelong/CMPP/run_cmpp_lifelong.py
++++ src/original_paper/experiment/Lifelong/CMPP/run_cmpp_lifelong.py
+@@ -11,10 +11,10 @@
+ import time
+ from datetime import datetime
+ 
+-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++pass  # Package imports replace process-wide import-path mutation.
+ 
+-from benchmark_loader import BenchmarkLoader
+-from lifelong_cmpp_planner import LifelongPlanner
++from src.original_paper.experiment.Lifelong.CMPP.benchmark_loader import BenchmarkLoader
++from src.original_paper.experiment.Lifelong.CMPP.lifelong_cmpp_planner import LifelongPlanner
+ 
+ # ============================================================================
+ # 配置（与 test_lifelong.py 保持一致）

@@ -1,0 +1,11 @@
+--- 21-R1.zip::R1/R1.3/CPS_A/path_planner.py
++++ experiments/revision/R1_03_dmin/CPS_A/path_planner.py
+@@ -218,7 +218,7 @@
+             # self.collision_avoidance.update_sensor_data(sensor_data)
+             # conflicts = self.collision_avoidance.check_future_conflicts(lookahead_time=10, replan_window=5)
+             # print(f"[DEBUG] 检测到未来冲突: {conflicts}", flush=True)
+-        # self.ticket_manager.save_current_reservations_by_agv("F:/PythonFiles/pythonProject/SRTP/experiment/agv_final_state.json")
++        # Historical local debug path omitted in the public copy.
+         # === 调试：检查时空券层面的真冲突 ===
+         # self.debug_check_ticket_conflicts()
+         return paths

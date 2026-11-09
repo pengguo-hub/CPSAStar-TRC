@@ -1,0 +1,1 @@
+Saved high-fleet R2-04 figures to figures/revision/R2_04_operational_metrics/main; font: DejaVu Serif; plotted trials: 90

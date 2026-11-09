@@ -1,0 +1,17 @@
+{
+  "new_source_python_modified": false,
+  "new_source_members_checked": 801,
+  "repository_wrappers": [
+    "scripts/replot_R2_02_CI.py",
+    "scripts/validate_update.py"
+  ],
+  "existing_scripts_updated": [
+    "scripts/validate.py",
+    "scripts/replot.py",
+    "scripts/index_results.py",
+    "scripts/audit_provenance.py",
+    "scripts/export_public.py"
+  ],
+  "purpose": "isolated original imports, saved-result analysis, new source mapping, compact export; planner algorithms unchanged",
+  "R2_04_unchanged_files": 497
+}

@@ -1,0 +1,21 @@
+{
+  "trial_id": "STANDARD_N50_backlog_43_S1_L1_P1_R0",
+  "case": "STANDARD_N50_backlog",
+  "map": "STANDARD",
+  "seed": 43,
+  "variant": {
+    "name": "S1_L1_P1_R0",
+    "S": 1,
+    "L": 1,
+    "P": 1,
+    "R": 0
+  },
+  "workload": "workloads/STANDARD_N50_backlog_43.json",
+  "result": "runs/STANDARD_N50_backlog_43_S1_L1_P1_R0.json",
+  "checkpoint": "checkpoints/STANDARD_N50_backlog_43_S1_L1_P1_R0.json",
+  "log": "logs/STANDARD_N50_backlog_43_S1_L1_P1_R0.log",
+  "workload_hash": "5c9a70c4d4ee6294663b479769bfbcb970ed045ccafc01ee3f4d5eb121b1618a",
+  "code_hash": "fbfd4c06bf5e5fed9467d6e4ab4b1cf3ed7149ab066e314b90808495422d4a43",
+  "horizon": 500,
+  "warmup": 0
+}

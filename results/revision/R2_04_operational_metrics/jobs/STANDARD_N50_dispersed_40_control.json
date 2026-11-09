@@ -1,0 +1,24 @@
+{
+  "case": "STANDARD_N50_dispersed",
+  "seed": 40,
+  "variant": "control",
+  "purpose": "formal",
+  "code_hash": "c605b423f78d34aa1fd80def0aab5e34656fdbc0151f7ae8d592a564bda3fa07",
+  "condition": {
+    "name": "STANDARD_N50_dispersed",
+    "map": "STANDARD",
+    "fleet": 50,
+    "horizon": 500,
+    "mode": "backlogged",
+    "arrival_rate": null,
+    "concentration": null,
+    "od_mode": "dispersed",
+    "followup": 500,
+    "initial_backlog": 3000,
+    "tiles": 1,
+    "protocol": "R2_04_fixed_OD_backlog3000_v1"
+  },
+  "workload_hash": "3d7358a50df7d69e35872a93d47d1e6a419caa88509d9f6a96c9c0057f87a078",
+  "workload_file": "/root/autodl-tmp/R2_04_OD_backlog_ready_to_run/results_od_formal/workloads/STANDARD_N50_dispersed_40.json",
+  "job_hash": "9d947517cfa18d73b78b6dcce12a25e6dc9e8e00f64563904f4434806a3f8db1"
+}

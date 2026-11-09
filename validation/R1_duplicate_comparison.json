@@ -1,0 +1,33 @@
+[
+  {
+    "experiment": "dmin",
+    "canonical": "07-result_R1_3_dmin_sensitivity.zip",
+    "embedded_member": "R1/R1.3/result_R1_3_dmin_sensitivity.zip",
+    "archive_byte_identical": true,
+    "member_hashes_equal": true
+  },
+  {
+    "experiment": "gaussian",
+    "canonical": "04-result_R1_gaussian_sensitivity.zip",
+    "embedded_member": "R1/R1.5_1.6/result_R1_gaussian_sensitivity.zip",
+    "archive_byte_identical": false,
+    "member_hashes_equal": true
+  },
+  {
+    "experiment": "delta",
+    "canonical": "05-r1_delta_results.zip",
+    "embedded_member": "R1/R1.7_R1.8/r1_delta_results.zip",
+    "archive_byte_identical": false,
+    "member_hashes_equal": false,
+    "sorted_numerical_rows_equal": true,
+    "canonical_rows": 105,
+    "embedded_rows": 105
+  },
+  {
+    "experiment": "retry",
+    "canonical": "06-result_R1_9_R_sensitivity.zip",
+    "embedded_member": "R1/R1.9/result_R1_9_R_sensitivity.zip",
+    "archive_byte_identical": true,
+    "member_hashes_equal": true
+  }
+]

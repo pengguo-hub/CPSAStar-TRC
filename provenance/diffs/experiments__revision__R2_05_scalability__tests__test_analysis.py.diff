@@ -1,0 +1,19 @@
+--- 11-R2-05.zip::R2-05/tests/test_analysis.py
++++ experiments/revision/R2_05_scalability/tests/test_analysis.py
+@@ -1,6 +1,6 @@
+ import unittest
+ from pathlib import Path
+-from analyze import statistics,traffic_from_trace,audit_trial
++from experiments.revision.R2_05_scalability.analyze import statistics, traffic_from_trace, audit_trial
+ 
+ class AnalysisTests(unittest.TestCase):
+     def test_seed_uncertainty_and_missing_values(self):
+@@ -25,7 +25,7 @@
+         self.assertEqual(evidence[0]['other_arrivals'],[dict(agent='a',time=1),dict(agent='c',time=4)])
+ 
+     def test_incomplete_not_accepted_as_full_run(self):
+-        from common import digest
++        from experiments.revision.R2_05_scalability.common import digest
+         w=dict(requests=[]);w['workload_hash']=digest(w)
+         row=dict(workload_hash=w['workload_hash'],status='interrupted',eligible=False,partial_throughput=.4)
+         self.assertIn('not a complete eligible trial',audit_trial(Path('unused'),w,row))

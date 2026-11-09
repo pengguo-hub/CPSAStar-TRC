@@ -1,0 +1,15 @@
+--- 21-R1.zip::R1/R1.5_1.6/test_r1_gaussian_sensitivity.py
++++ experiments/revision/R1_05_06_gaussian/test_r1_gaussian_sensitivity.py
+@@ -25,9 +25,9 @@
+ 
+ import numpy as np
+ 
+-from map_config import ALL_MAPS
+-from task_generator import generate_test_tasks
+-from CPS_A.path_planner import GridMap, IntegratedAGVPlanner
++from experiments.revision.R1_05_06_gaussian.map_config import ALL_MAPS
++from experiments.revision.R1_05_06_gaussian.task_generator import generate_test_tasks
++from experiments.revision.R1_05_06_gaussian.CPS_A.path_planner import GridMap, IntegratedAGVPlanner
+ 
+ 
+ # ============================================================

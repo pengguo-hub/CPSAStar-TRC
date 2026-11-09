@@ -1,0 +1,2636 @@
+{
+  "schema": 1,
+  "case": {
+    "name": "A_rate0.25",
+    "map": "STANDARD",
+    "fleet": 30,
+    "tiles": 1,
+    "arrival_rate": 0.25,
+    "mode": "poisson",
+    "horizon": 500,
+    "warmup": 0,
+    "axes": [
+      "arrival_rate"
+    ],
+    "traffic_coupling": null
+  },
+  "seed": 1003,
+  "width": 16,
+  "height": 11,
+  "grid": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "initial_positions": {
+    "agv_0": [
+      11,
+      5
+    ],
+    "agv_1": [
+      6,
+      6
+    ],
+    "agv_2": [
+      6,
+      4
+    ],
+    "agv_3": [
+      6,
+      2
+    ],
+    "agv_4": [
+      12,
+      8
+    ],
+    "agv_5": [
+      7,
+      5
+    ],
+    "agv_6": [
+      5,
+      5
+    ],
+    "agv_7": [
+      2,
+      6
+    ],
+    "agv_8": [
+      6,
+      5
+    ],
+    "agv_9": [
+      15,
+      4
+    ],
+    "agv_10": [
+      3,
+      0
+    ],
+    "agv_11": [
+      4,
+      8
+    ],
+    "agv_12": [
+      15,
+      3
+    ],
+    "agv_13": [
+      8,
+      0
+    ],
+    "agv_14": [
+      8,
+      5
+    ],
+    "agv_15": [
+      12,
+      5
+    ],
+    "agv_16": [
+      9,
+      10
+    ],
+    "agv_17": [
+      0,
+      10
+    ],
+    "agv_18": [
+      11,
+      0
+    ],
+    "agv_19": [
+      6,
+      3
+    ],
+    "agv_20": [
+      0,
+      4
+    ],
+    "agv_21": [
+      12,
+      6
+    ],
+    "agv_22": [
+      14,
+      9
+    ],
+    "agv_23": [
+      10,
+      8
+    ],
+    "agv_24": [
+      15,
+      7
+    ],
+    "agv_25": [
+      4,
+      10
+    ],
+    "agv_26": [
+      4,
+      0
+    ],
+    "agv_27": [
+      10,
+      7
+    ],
+    "agv_28": [
+      8,
+      2
+    ],
+    "agv_29": [
+      2,
+      8
+    ]
+  },
+  "agv_info": {
+    "agv_0": {
+      "speed": 1.0
+    },
+    "agv_1": {
+      "speed": 1.0
+    },
+    "agv_2": {
+      "speed": 1.0
+    },
+    "agv_3": {
+      "speed": 1.0
+    },
+    "agv_4": {
+      "speed": 1.0
+    },
+    "agv_5": {
+      "speed": 1.0
+    },
+    "agv_6": {
+      "speed": 1.0
+    },
+    "agv_7": {
+      "speed": 1.0
+    },
+    "agv_8": {
+      "speed": 1.0
+    },
+    "agv_9": {
+      "speed": 1.0
+    },
+    "agv_10": {
+      "speed": 1.0
+    },
+    "agv_11": {
+      "speed": 1.0
+    },
+    "agv_12": {
+      "speed": 1.0
+    },
+    "agv_13": {
+      "speed": 1.0
+    },
+    "agv_14": {
+      "speed": 1.0
+    },
+    "agv_15": {
+      "speed": 1.0
+    },
+    "agv_16": {
+      "speed": 1.0
+    },
+    "agv_17": {
+      "speed": 1.0
+    },
+    "agv_18": {
+      "speed": 1.0
+    },
+    "agv_19": {
+      "speed": 1.0
+    },
+    "agv_20": {
+      "speed": 1.0
+    },
+    "agv_21": {
+      "speed": 1.0
+    },
+    "agv_22": {
+      "speed": 1.0
+    },
+    "agv_23": {
+      "speed": 1.0
+    },
+    "agv_24": {
+      "speed": 1.0
+    },
+    "agv_25": {
+      "speed": 1.0
+    },
+    "agv_26": {
+      "speed": 1.0
+    },
+    "agv_27": {
+      "speed": 1.0
+    },
+    "agv_28": {
+      "speed": 1.0
+    },
+    "agv_29": {
+      "speed": 1.0
+    }
+  },
+  "requests": [
+    {
+      "id": 1,
+      "release": 0,
+      "pickup": [
+        8,
+        6
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 0,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 36,
+      "release": 6,
+      "pickup": [
+        14,
+        2
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 1,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 51,
+      "release": 10,
+      "pickup": [
+        8,
+        1
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 2,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 57,
+      "release": 11,
+      "pickup": [
+        12,
+        1
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 3,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 62,
+      "release": 11,
+      "pickup": [
+        12,
+        6
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 4,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 67,
+      "release": 12,
+      "pickup": [
+        12,
+        9
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 5,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 72,
+      "release": 13,
+      "pickup": [
+        10,
+        6
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 6,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 77,
+      "release": 14,
+      "pickup": [
+        6,
+        1
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 7,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 80,
+      "release": 15,
+      "pickup": [
+        4,
+        8
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 8,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 137,
+      "release": 28,
+      "pickup": [
+        3,
+        10
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 9,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 156,
+      "release": 33,
+      "pickup": [
+        8,
+        9
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 10,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 159,
+      "release": 33,
+      "pickup": [
+        10,
+        4
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 11,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 163,
+      "release": 35,
+      "pickup": [
+        14,
+        3
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 12,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 196,
+      "release": 42,
+      "pickup": [
+        13,
+        0
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 13,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 238,
+      "release": 52,
+      "pickup": [
+        12,
+        4
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 14,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 248,
+      "release": 54,
+      "pickup": [
+        8,
+        7
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 15,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 330,
+      "release": 73,
+      "pickup": [
+        8,
+        3
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 16,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 334,
+      "release": 74,
+      "pickup": [
+        8,
+        7
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 17,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 341,
+      "release": 75,
+      "pickup": [
+        2,
+        6
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 18,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 384,
+      "release": 86,
+      "pickup": [
+        2,
+        2
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 19,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 415,
+      "release": 92,
+      "pickup": [
+        7,
+        10
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 20,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 446,
+      "release": 98,
+      "pickup": [
+        6,
+        1
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 21,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 478,
+      "release": 104,
+      "pickup": [
+        12,
+        8
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 22,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 488,
+      "release": 108,
+      "pickup": [
+        6,
+        8
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 23,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 543,
+      "release": 119,
+      "pickup": [
+        12,
+        6
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 24,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 570,
+      "release": 128,
+      "pickup": [
+        12,
+        1
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 25,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 583,
+      "release": 131,
+      "pickup": [
+        7,
+        5
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 26,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 618,
+      "release": 139,
+      "pickup": [
+        0,
+        8
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 27,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 647,
+      "release": 148,
+      "pickup": [
+        4,
+        2
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 28,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 680,
+      "release": 154,
+      "pickup": [
+        2,
+        8
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 29,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 689,
+      "release": 156,
+      "pickup": [
+        6,
+        8
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 30,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 694,
+      "release": 157,
+      "pickup": [
+        14,
+        8
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 31,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 727,
+      "release": 162,
+      "pickup": [
+        5,
+        10
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 32,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 801,
+      "release": 180,
+      "pickup": [
+        6,
+        4
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 33,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 837,
+      "release": 187,
+      "pickup": [
+        10,
+        8
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 34,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 857,
+      "release": 194,
+      "pickup": [
+        12,
+        1
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 35,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 861,
+      "release": 194,
+      "pickup": [
+        7,
+        10
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 36,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 878,
+      "release": 200,
+      "pickup": [
+        2,
+        1
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 37,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 888,
+      "release": 202,
+      "pickup": [
+        7,
+        10
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 38,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 891,
+      "release": 203,
+      "pickup": [
+        6,
+        7
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 39,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 906,
+      "release": 207,
+      "pickup": [
+        10,
+        1
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 40,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 917,
+      "release": 209,
+      "pickup": [
+        0,
+        1
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 41,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 922,
+      "release": 210,
+      "pickup": [
+        1,
+        10
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 42,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 926,
+      "release": 212,
+      "pickup": [
+        4,
+        8
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 43,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 931,
+      "release": 212,
+      "pickup": [
+        6,
+        8
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 44,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 936,
+      "release": 214,
+      "pickup": [
+        10,
+        8
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 45,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 957,
+      "release": 218,
+      "pickup": [
+        7,
+        5
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 46,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 979,
+      "release": 224,
+      "pickup": [
+        12,
+        1
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 47,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 980,
+      "release": 224,
+      "pickup": [
+        5,
+        0
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 48,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 983,
+      "release": 225,
+      "pickup": [
+        6,
+        7
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 49,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1000,
+      "release": 230,
+      "pickup": [
+        7,
+        5
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 50,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1019,
+      "release": 233,
+      "pickup": [
+        6,
+        1
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 51,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1031,
+      "release": 236,
+      "pickup": [
+        4,
+        3
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 52,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1032,
+      "release": 236,
+      "pickup": [
+        8,
+        9
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 53,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1039,
+      "release": 238,
+      "pickup": [
+        0,
+        7
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 54,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1045,
+      "release": 239,
+      "pickup": [
+        6,
+        6
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 55,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1052,
+      "release": 241,
+      "pickup": [
+        6,
+        8
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 56,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1055,
+      "release": 242,
+      "pickup": [
+        4,
+        6
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 57,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1061,
+      "release": 244,
+      "pickup": [
+        8,
+        1
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 58,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1068,
+      "release": 245,
+      "pickup": [
+        0,
+        6
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 59,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1085,
+      "release": 249,
+      "pickup": [
+        0,
+        8
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 60,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1088,
+      "release": 249,
+      "pickup": [
+        10,
+        6
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 61,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1093,
+      "release": 250,
+      "pickup": [
+        1,
+        10
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 62,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1109,
+      "release": 252,
+      "pickup": [
+        2,
+        4
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 63,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1128,
+      "release": 257,
+      "pickup": [
+        10,
+        7
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 64,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1134,
+      "release": 258,
+      "pickup": [
+        5,
+        0
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 65,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1137,
+      "release": 259,
+      "pickup": [
+        14,
+        7
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 66,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1141,
+      "release": 259,
+      "pickup": [
+        12,
+        3
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 67,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1185,
+      "release": 270,
+      "pickup": [
+        8,
+        3
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 68,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1190,
+      "release": 271,
+      "pickup": [
+        6,
+        1
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 69,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1234,
+      "release": 285,
+      "pickup": [
+        14,
+        3
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 70,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1242,
+      "release": 286,
+      "pickup": [
+        12,
+        8
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 71,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1247,
+      "release": 288,
+      "pickup": [
+        5,
+        5
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 72,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1254,
+      "release": 290,
+      "pickup": [
+        4,
+        4
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 73,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1258,
+      "release": 291,
+      "pickup": [
+        4,
+        1
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 74,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1270,
+      "release": 293,
+      "pickup": [
+        14,
+        4
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 75,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1282,
+      "release": 295,
+      "pickup": [
+        5,
+        10
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 76,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1298,
+      "release": 299,
+      "pickup": [
+        3,
+        0
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 77,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1309,
+      "release": 302,
+      "pickup": [
+        0,
+        4
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 78,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1310,
+      "release": 302,
+      "pickup": [
+        4,
+        7
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 79,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1387,
+      "release": 323,
+      "pickup": [
+        8,
+        8
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 80,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1388,
+      "release": 323,
+      "pickup": [
+        8,
+        8
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 81,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1391,
+      "release": 324,
+      "pickup": [
+        2,
+        4
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 82,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1409,
+      "release": 327,
+      "pickup": [
+        10,
+        7
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 83,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1429,
+      "release": 331,
+      "pickup": [
+        1,
+        5
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 84,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1449,
+      "release": 336,
+      "pickup": [
+        2,
+        8
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 85,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1450,
+      "release": 336,
+      "pickup": [
+        10,
+        3
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 86,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1453,
+      "release": 337,
+      "pickup": [
+        13,
+        0
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 87,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1464,
+      "release": 340,
+      "pickup": [
+        4,
+        2
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 88,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1475,
+      "release": 342,
+      "pickup": [
+        1,
+        10
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 89,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1504,
+      "release": 349,
+      "pickup": [
+        10,
+        1
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 90,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1515,
+      "release": 350,
+      "pickup": [
+        2,
+        1
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 91,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1516,
+      "release": 351,
+      "pickup": [
+        3,
+        5
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 92,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1546,
+      "release": 359,
+      "pickup": [
+        14,
+        2
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 93,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1564,
+      "release": 363,
+      "pickup": [
+        0,
+        3
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 94,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1585,
+      "release": 367,
+      "pickup": [
+        6,
+        2
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 95,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1598,
+      "release": 369,
+      "pickup": [
+        2,
+        1
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 96,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1613,
+      "release": 371,
+      "pickup": [
+        3,
+        5
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 97,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1625,
+      "release": 373,
+      "pickup": [
+        0,
+        9
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 98,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1631,
+      "release": 375,
+      "pickup": [
+        10,
+        7
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 99,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1654,
+      "release": 379,
+      "pickup": [
+        8,
+        6
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 0,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1667,
+      "release": 382,
+      "pickup": [
+        14,
+        2
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 1,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1680,
+      "release": 385,
+      "pickup": [
+        8,
+        1
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 2,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1685,
+      "release": 386,
+      "pickup": [
+        12,
+        1
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 3,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1686,
+      "release": 386,
+      "pickup": [
+        12,
+        6
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 4,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1703,
+      "release": 389,
+      "pickup": [
+        12,
+        9
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 5,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1758,
+      "release": 402,
+      "pickup": [
+        10,
+        6
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 6,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1761,
+      "release": 402,
+      "pickup": [
+        6,
+        1
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 7,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1774,
+      "release": 406,
+      "pickup": [
+        4,
+        8
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 8,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1800,
+      "release": 412,
+      "pickup": [
+        3,
+        10
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 9,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1827,
+      "release": 417,
+      "pickup": [
+        8,
+        9
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 10,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1885,
+      "release": 429,
+      "pickup": [
+        10,
+        4
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 11,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1887,
+      "release": 429,
+      "pickup": [
+        14,
+        3
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 12,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1890,
+      "release": 430,
+      "pickup": [
+        13,
+        0
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 13,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1896,
+      "release": 431,
+      "pickup": [
+        12,
+        4
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 14,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1919,
+      "release": 435,
+      "pickup": [
+        8,
+        7
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 15,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1951,
+      "release": 444,
+      "pickup": [
+        8,
+        3
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 16,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1953,
+      "release": 445,
+      "pickup": [
+        8,
+        7
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 17,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1971,
+      "release": 449,
+      "pickup": [
+        2,
+        6
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 18,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1987,
+      "release": 451,
+      "pickup": [
+        2,
+        2
+      ],
+      "dropoff": [
+        15,
+        3
+      ],
+      "base_index": 19,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2019,
+      "release": 459,
+      "pickup": [
+        7,
+        10
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 20,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2020,
+      "release": 459,
+      "pickup": [
+        6,
+        1
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 21,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2035,
+      "release": 462,
+      "pickup": [
+        12,
+        8
+      ],
+      "dropoff": [
+        15,
+        7
+      ],
+      "base_index": 22,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2067,
+      "release": 468,
+      "pickup": [
+        6,
+        8
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 23,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2111,
+      "release": 478,
+      "pickup": [
+        12,
+        6
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 24,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2121,
+      "release": 480,
+      "pickup": [
+        12,
+        1
+      ],
+      "dropoff": [
+        15,
+        4
+      ],
+      "base_index": 25,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2178,
+      "release": 491,
+      "pickup": [
+        7,
+        5
+      ],
+      "dropoff": [
+        15,
+        5
+      ],
+      "base_index": 26,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2192,
+      "release": 495,
+      "pickup": [
+        0,
+        8
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 27,
+      "tile": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2200,
+      "release": 496,
+      "pickup": [
+        4,
+        2
+      ],
+      "dropoff": [
+        15,
+        6
+      ],
+      "base_index": 28,
+      "tile": [
+        0,
+        0
+      ]
+    }
+  ],
+  "free_cells": 120,
+  "map_hash": "1f42bb46c6cea418dfe753b55bcdad960e3ddff134f46f7a4b35b3240fdf1682",
+  "od_protocol": "original_100_OD_cyclic_order_with_tile_offsets",
+  "release_hash": "1efe0e1f75e3fd440c929df5a2c27d2221801995c2c2367d470518af61b007bf",
+  "pickup_hash": "756c461438d479906584a530c7f7f358e8df8589670aac7f631f06170475508c",
+  "initial_positions_hash": "dc5ad942f3c6525dc68ff49944f60c5a3a2a4d20adc2f6fcf61aa11ac653c674",
+  "workload_hash": "e45b2be2cd0a630cbc7446b53329a920cdfe5a4c0be3bfe252aafa3be48a08c1"
+}

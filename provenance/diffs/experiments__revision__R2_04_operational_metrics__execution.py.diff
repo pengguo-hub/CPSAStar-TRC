@@ -1,0 +1,22 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/execution.py
++++ experiments/revision/R2_04_operational_metrics/execution.py
+@@ -2,8 +2,8 @@
+ import contextlib,json,os,subprocess,sys,time,uuid
+ from datetime import datetime,timezone
+ from pathlib import Path
+-from workload import write_json
+-from provenance import ROOT,cached_result,file_hash,validate_completed
++from experiments.revision.R2_04_operational_metrics.workload import write_json
++from experiments.revision.R2_04_operational_metrics.provenance import ROOT, cached_result, file_hash, validate_completed
+ def utc():return datetime.now(timezone.utc).isoformat()
+ def emit(event,**fields):print(json.dumps(dict(event=event,utc=utc(),**fields),ensure_ascii=False),flush=True)
+ def read_optional(p):
+@@ -42,7 +42,7 @@
+     emit('START',trial=key,trial_wall_timeout=None,log=str(dest/'run.log'))
+     env=dict(os.environ,PYTHONIOENCODING='utf-8',PYTHONHASHSEED='0',OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1')
+     with (dest/'run.log').open('w',encoding='utf-8') as log:
+-        process=subprocess.Popen([sys.executable,'-u',str(ROOT/'worker.py'),'--job',str(dest/'job.json')],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,env=env)
++        process=subprocess.Popen([sys.executable,'-u','-m','experiments.revision.R2_04_operational_metrics.worker','--job',str(dest/'job.json')],cwd=ROOT.parents[2],stdout=log,stderr=subprocess.STDOUT,env=env)
+         meta['pid']=process.pid;write_json(dest/'attempt.json',meta);nextbeat=heartbeat
+         try:
+             while process.poll() is None:

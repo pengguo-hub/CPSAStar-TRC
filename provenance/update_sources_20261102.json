@@ -1,0 +1,29 @@
+{
+  "base_archive_sha256": "446b934e4b8edcaa85195baf336613bf8ac6562dd9cdbd46a02b5c881c154743",
+  "new_code_sources": [
+    {
+      "source": "R2-02.zip",
+      "latest_upload": "18-R2-02.zip",
+      "size_bytes": 1286498,
+      "sha256": "268c04925814802ccf5b98e16b1765e400049dce2dbd522edae3345ef729e9bb",
+      "disposition": "2026-11-02 update; exact source retained"
+    },
+    {
+      "source": "R2-03.zip",
+      "latest_upload": "19-R2-03.zip",
+      "size_bytes": 2619483,
+      "sha256": "15178d861ae3147edacd4835cd402b518fcc6afeb25ce5d07d36846c292edd08",
+      "disposition": "2026-11-02 update; exact source retained"
+    }
+  ],
+  "R2_07_reupload": {
+    "latest_upload": "21-R2_7_results_merged_seed42_46.zip",
+    "canonical_path": "provenance/data_archives/19-R2_7_results_merged_seed42_46.zip",
+    "identical_to_previous": true,
+    "sha256": "a621cd6dd453d60c5d6af5dc684500ef104e417181950ed8d7179d0329c0f6f3",
+    "size_bytes": 172442201,
+    "total_entries": 1015,
+    "unreadable_entries": 250
+  },
+  "R2_04": "User-confirmed unchanged; retained prior organized contents; new merged container not processed."
+}

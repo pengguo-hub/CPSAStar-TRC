@@ -1,0 +1,22 @@
+[
+  {
+    "uploaded_filename": "R2-04_ready_to_run.zip",
+    "sha256": "561e180b2eec04cb6c4b9e4c4e759e532dc39d027b5d56442f5dd79f34db1f11",
+    "size_bytes": 24207531
+  },
+  {
+    "uploaded_filename": "R2-05.zip",
+    "sha256": "b91e32a0442ff08aee9d50de1fceae307293c53917b1f9e062855fcdca2d9ac3",
+    "size_bytes": 10201803
+  },
+  {
+    "uploaded_filename": "R2_4_results_formal.zip",
+    "sha256": "24f5104c116e31ed04b9e3c56170e79ad7414c55af15669e9542a3dde4027251",
+    "size_bytes": 155714625
+  },
+  {
+    "uploaded_filename": "experiment.zip",
+    "sha256": "e184d8cb5aced3e9189e634a5581a60f6e945c3cd85dacdbf564502892571357",
+    "size_bytes": 1624046
+  }
+]

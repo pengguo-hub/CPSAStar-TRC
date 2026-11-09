@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "base_reference": "R2_5_results_formal.zip/results_formal/manifest.json",
+  "install": "Add files beside original run.py; replace no existing project files",
+  "files": [
+    {
+      "path": "README_FRANSEN_BACKLOG.md",
+      "bytes": 7252,
+      "sha256": "b8fc3a056f22d34cb90ba6188603ca0c1c2540aa84830f6e4e36a5c0309680e8"
+    },
+    {
+      "path": "fransen_backlog_config.json",
+      "bytes": 551,
+      "sha256": "793d400ce768932656bb4a5e00e54930c9202137441bffe7e06d1391a98e8562"
+    },
+    {
+      "path": "fransen_backlog_reference.json",
+      "bytes": 9417,
+      "sha256": "faa14f8fae0b1b57756b047495dcb55fd37f7eacd70d88b95f32128139fe8ba2"
+    },
+    {
+      "path": "fransen_backlog_validation/README.txt",
+      "bytes": 292,
+      "sha256": "e50ef7eef779ac125716ea46c11a052858d44809b0f81d12582716d21ff253b5"
+    },
+    {
+      "path": "fransen_backlog_validation/dry_run_all.log",
+      "bytes": 858,
+      "sha256": "ce42ddc9626b787cd999189bb5287a81420e8b2d631f88f7b32d821991e09d63"
+    },
+    {
+      "path": "fransen_backlog_validation/dry_run_single.log",
+      "bytes": 213,
+      "sha256": "7646f84abe669931fedc8ccf8953d7160dae0c951a2ebc9c44e368393cdca0d9"
+    },
+    {
+      "path": "fransen_backlog_validation/original_package_integrity.log",
+      "bytes": 184,
+      "sha256": "cac9f475400e7dd2ab8b2316de428360eb63c1bbff3459a4aee4f69765b7143e"
+    },
+    {
+      "path": "fransen_backlog_validation/reference_trial_runtime_check.json",
+      "bytes": 2387,
+      "sha256": "4517e79e1169eddfec739c794c5377dd574c47d53af43e1dc90c06d0d78273e5"
+    },
+    {
+      "path": "fransen_backlog_validation/small_interface_native.log",
+      "bytes": 2100,
+      "sha256": "e888b63739e0cc6f3324249bfb8379865970fea6d76a60b35852cc3ba09f8235"
+    },
+    {
+      "path": "fransen_backlog_validation/small_interface_result.json",
+      "bytes": 2191,
+      "sha256": "558aa069e33c6662556445dfd1de477d4141e4282480f762097843c396894bb8"
+    },
+    {
+      "path": "fransen_backlog_validation/validation_report.json",
+      "bytes": 4514,
+      "sha256": "5b30f0b3150ce0a34631a3f0b1e4e66c9e4dca57a7f9d2b60753084d81f80293"
+    },
+    {
+      "path": "run_fransen_backlog.py",
+      "bytes": 13520,
+      "sha256": "a842f320196a771db157441a4fc7f886d5c2967aeed869341c8bcb1cbd40d0e8"
+    }
+  ]
+}

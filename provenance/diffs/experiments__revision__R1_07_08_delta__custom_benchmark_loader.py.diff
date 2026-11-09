@@ -1,0 +1,15 @@
+--- 21-R1.zip::R1/R1.7_R1.8/custom_benchmark_loader.py
++++ experiments/revision/R1_07_08_delta/custom_benchmark_loader.py
+@@ -1,9 +1,9 @@
+ from collections import deque
+ import random
+ 
+-from benchmark_loader import GridMap
+-from map_config import ALL_MAPS
+-from task_generator import generate_test_tasks
++from experiments.revision.R1_07_08_delta.benchmark_loader import GridMap
++from experiments.revision.R1_07_08_delta.map_config import ALL_MAPS
++from experiments.revision.R1_07_08_delta.task_generator import generate_test_tasks
+ 
+ 
+ MANUAL_MAP_SIZES = {

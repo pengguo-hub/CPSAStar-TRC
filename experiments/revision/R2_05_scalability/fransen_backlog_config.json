@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "experiment_id": "R2_05_FRANSEN_N200_backlog3000_v1",
+  "map": "FRANSEN",
+  "fleet": 200,
+  "tasks": 3000,
+  "horizon": 500,
+  "warmup": 0,
+  "mode": "backlogged",
+  "arrival_rate": null,
+  "levels": ["dispersed", "intermediate", "shared"],
+  "seeds": [1001, 1002, 1003, 1004, 1005],
+  "origin_order_rng_offset": 701,
+  "initial_position_rng_offset": 101,
+  "task_block_size": 8,
+  "initial_position_rule": "original traffic rule: shuffled free cells outside the common endpoint buffer",
+  "formal_trials_executed_in_delivery": 0
+}

@@ -1,0 +1,27 @@
+--- 18-R2_04_OD_backlog_ready_to_run.zip::R2_04_OD_backlog_ready_to_run/worker.py
++++ experiments/revision/R2_04_operational_metrics/worker.py
+@@ -3,17 +3,17 @@
+ from pathlib import Path
+ import sys
+ import numpy as np
+-from common import read_json,native_state
+-from original_runtime import load_original
+-from workload import grid_for,write_json,digest
+-from provenance import verify_job
+-from observations import Recorder
+-from mechanism import attach_plan_observer
++from experiments.revision.R2_04_operational_metrics.common import read_json, native_state
++from experiments.revision.R2_04_operational_metrics.original_runtime import load_original
++from experiments.revision.R2_04_operational_metrics.workload import grid_for, write_json, digest
++from experiments.revision.R2_04_operational_metrics.provenance import verify_job
++from experiments.revision.R2_04_operational_metrics.observations import Recorder
++from experiments.revision.R2_04_operational_metrics.mechanism import attach_plan_observer
+ 
+ def execute(job):
+     w,sources=verify_job(job);started=time.perf_counter();out=Path(job['result']).parent
+     _,_,imports=load_original()
+-    from integration.path_planner_lifelong import LifelongPlanner
++    from experiments.revision.R2_04_operational_metrics.integration.path_planner_lifelong import LifelongPlanner
+     p=None;rec=None;error=None;status='completed';loop_wall=None
+     try:
+         rec=Recorder(w,out,job['variant'])
